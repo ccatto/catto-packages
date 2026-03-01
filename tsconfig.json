@@ -1,0 +1,42 @@
+{
+  "compilerOptions": {
+    "composite": true,
+    "declaration": true,
+    "declarationMap": true,
+    "incremental": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
+    "inlineSources": false,
+    "isolatedModules": true,
+    "moduleResolution": "node",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "preserveWatchOutput": true,
+    "skipLibCheck": true,
+    "strict": true,
+    "target": "esnext",
+    "module": "esnext",
+    "baseUrl": ".",
+    "paths": {
+      "*": ["./*"]
+    },
+    "typeRoots": ["./node_modules/@types"]
+  },
+  "exclude": ["node_modules"],
+  "references": [
+    { "path": "./packages/profanity" },
+    { "path": "./packages/catto-shared" },
+    { "path": "./packages/logger" },
+    { "path": "./packages/ui" },
+    { "path": "./packages/react-auth" },
+    { "path": "./packages/react-contact" },
+    { "path": "./packages/react-mobile" },
+    { "path": "./packages/react-push" },
+    { "path": "./packages/nest-auth" },
+    { "path": "./packages/nest-email" },
+    { "path": "./packages/nest-sms" },
+    { "path": "./packages/nest-payments" },
+    { "path": "./packages/nest-recaptcha" },
+    { "path": "./packages/nest-push" }
+  ]
+}
