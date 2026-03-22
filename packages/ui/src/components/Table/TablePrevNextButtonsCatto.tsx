@@ -1,4 +1,4 @@
-// @catto/ui - TablePrevNextButtonsCatto
+// @ccatto/ui - TablePrevNextButtonsCatto
 // Table pagination buttons - Previous and Next arrows
 'use client';
 

@@ -1,4 +1,4 @@
-// @catto/ui - BadgeCatto Tests
+// @ccatto/ui - BadgeCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import BadgeCatto from '../../components/Badge/BadgeCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -36,7 +36,7 @@ describe('BadgeCatto', () => {
     it('applies primary variant styles', () => {
       render(<BadgeCatto variant="primary">Primary</BadgeCatto>);
       const badge = screen.getByText('Primary');
-      expect(badge.className).toContain('bg-blue-100');
+      expect(badge.className).toContain('bg-theme-primary-subtle');
     });
 
     it('applies success variant styles', () => {

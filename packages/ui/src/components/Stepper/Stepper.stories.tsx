@@ -1,4 +1,4 @@
-// @catto/ui - Stepper Components Stories
+// @ccatto/ui - Stepper Components Stories
 import type { Meta, StoryObj } from '@storybook/react';
 import DetailedStepperCatto from './DetailedStepperCatto';
 import ProgressStepperCatto from './ProgressStepperCatto';

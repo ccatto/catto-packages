@@ -1,4 +1,4 @@
-// @catto/react-contact — reCAPTCHA v3 hook
+// @ccatto/react-contact — reCAPTCHA v3 hook
 
 import { useCallback, useEffect, useState } from 'react';
 import { getLogger } from '../logger';

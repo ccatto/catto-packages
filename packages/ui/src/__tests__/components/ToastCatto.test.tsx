@@ -1,4 +1,4 @@
-// @catto/ui - ToastCatto Tests
+// @ccatto/ui - ToastCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import ToastCatto from '../../components/Toast/ToastCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -117,7 +117,7 @@ describe('ToastCatto', () => {
       render(<ToastCatto body="Message" variant="primary" />);
 
       const alert = screen.getByRole('alert');
-      expect(alert.className).toContain('bg-blue-500');
+      expect(alert.className).toContain('bg-theme-primary');
     });
 
     it('applies success variant styles', () => {

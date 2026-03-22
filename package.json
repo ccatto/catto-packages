@@ -12,7 +12,7 @@
     "lint": "turbo run lint",
     "clean": "turbo run clean",
     "prettier": "prettier --write --ignore-unknown --no-error-on-unmatched-pattern .",
-    "build:all": "yarn workspace @catto/profanity build && yarn workspace @catto/logger build && yarn workspace @catto/shared build && yarn workspace @catto/ui build && yarn workspace @catto/react-auth build && yarn workspace @catto/react-contact build && yarn workspace @catto/react-mobile build && yarn workspace @catto/react-push build && yarn workspace @catto/nest-auth build && yarn workspace @catto/nest-email build && yarn workspace @catto/nest-sms build && yarn workspace @catto/nest-recaptcha build && yarn workspace @catto/nest-push build && yarn workspace @catto/nest-payments build",
+    "build:all": "yarn workspace @ccatto/profanity build && yarn workspace @ccatto/logger build && yarn workspace @ccatto/shared build && yarn workspace @ccatto/ui build && yarn workspace @ccatto/react-auth build && yarn workspace @ccatto/react-contact build && yarn workspace @ccatto/react-mobile build && yarn workspace @ccatto/react-push build && yarn workspace @ccatto/nest-auth build && yarn workspace @ccatto/nest-email build && yarn workspace @ccatto/nest-sms build && yarn workspace @ccatto/nest-recaptcha build && yarn workspace @ccatto/nest-push build && yarn workspace @ccatto/nest-payments build",
     "postinstall": "yarn build:all"
   },
   "resolutions": {

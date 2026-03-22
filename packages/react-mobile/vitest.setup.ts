@@ -1,4 +1,4 @@
-// @catto/react-mobile - Vitest setup with Capacitor mocks
+// @ccatto/react-mobile - Vitest setup with Capacitor mocks
 
 import '@testing-library/jest-dom';
 

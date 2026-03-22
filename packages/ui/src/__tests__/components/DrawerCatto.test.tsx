@@ -1,4 +1,4 @@
-// @catto/ui - DrawerCatto Tests
+// @ccatto/ui - DrawerCatto Tests
 // Comprehensive tests for the slide-in drawer component
 
 import { fireEvent, render, screen, waitFor } from '@testing-library/react';

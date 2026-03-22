@@ -1,20 +1,20 @@
-# @catto/nest-payments
+# @ccatto/nest-payments
 
 NestJS dynamic module wrapping the Stripe SDK. Provides services for PaymentIntent creation, Checkout Sessions, and webhook verification.
 
 ## Install
 
 ```bash
-npm install @catto/nest-payments
+npm install @ccatto/nest-payments
 # or
-yarn add @catto/nest-payments
+yarn add @ccatto/nest-payments
 ```
 
 ## Quick Start
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { CattoPaymentsModule } from '@catto/nest-payments';
+import { CattoPaymentsModule } from '@ccatto/nest-payments';
 
 @Module({
   imports: [
@@ -30,7 +30,7 @@ export class AppModule {}
 Inject the service in your controllers or providers:
 
 ```typescript
-import { CattoPaymentsService } from '@catto/nest-payments';
+import { CattoPaymentsService } from '@ccatto/nest-payments';
 
 @Injectable()
 export class OrderService {

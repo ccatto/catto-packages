@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - JWT Strategy
+ * @ccatto/nest-auth - JWT Strategy
  *
  * Passport JWT strategy that validates tokens using the configured secret
  * and verifies users exist in the database via the injected Prisma service.

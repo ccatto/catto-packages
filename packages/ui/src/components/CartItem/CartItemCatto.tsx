@@ -1,4 +1,4 @@
-// @catto/ui - CartItemCatto Component
+// @ccatto/ui - CartItemCatto Component
 // Cart line item display with quantity and actions
 'use client';
 

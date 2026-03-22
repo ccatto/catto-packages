@@ -1,4 +1,4 @@
-// @catto/react-contact — Zod schema factory
+// @ccatto/react-contact — Zod schema factory
 
 import { z } from 'zod';
 import type {

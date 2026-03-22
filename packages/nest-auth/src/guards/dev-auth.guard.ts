@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Dev Auth Guard
+ * @ccatto/nest-auth - Dev Auth Guard
  *
  * Bypasses authentication in development. Extends GqlAuthGuard
  * but always returns true.

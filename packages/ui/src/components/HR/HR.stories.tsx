@@ -1,4 +1,4 @@
-// @catto/ui - HR (Horizontal Rule / Divider) Components Stories
+// @ccatto/ui - HR (Horizontal Rule / Divider) Components Stories
 import type { Meta, StoryObj } from '@storybook/react';
 import {
   HRAnimatedLineCatto,

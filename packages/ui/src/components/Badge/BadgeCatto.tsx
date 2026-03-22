@@ -1,4 +1,4 @@
-// @catto/ui - BadgeCatto Component
+// @ccatto/ui - BadgeCatto Component
 // Status badges, count indicators, and labels
 'use client';
 

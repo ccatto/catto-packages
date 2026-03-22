@@ -1,4 +1,4 @@
-// @catto/ui - LanguageSwitcherCatto Component
+// @ccatto/ui - LanguageSwitcherCatto Component
 // Headless/presentational language switcher - i18n logic stays in the app
 'use client';
 

@@ -1,4 +1,4 @@
-// @catto/ui - OtpInputCatto Tests
+// @ccatto/ui - OtpInputCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import OtpInputCatto from '../../components/OtpInput/OtpInputCatto';
 import { fireEvent, render, screen } from '../test-utils';

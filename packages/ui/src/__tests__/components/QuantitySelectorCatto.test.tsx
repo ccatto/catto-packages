@@ -1,4 +1,4 @@
-// @catto/ui - QuantitySelectorCatto Tests
+// @ccatto/ui - QuantitySelectorCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import QuantitySelectorCatto from '../../components/QuantitySelector/QuantitySelectorCatto';
 import { fireEvent, render, screen } from '../test-utils';

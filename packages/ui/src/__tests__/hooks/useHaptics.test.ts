@@ -1,4 +1,4 @@
-// @catto/ui - useHaptics Tests
+// @ccatto/ui - useHaptics Tests
 // Tests for the haptic feedback hook
 
 import { act, renderHook } from '@testing-library/react';

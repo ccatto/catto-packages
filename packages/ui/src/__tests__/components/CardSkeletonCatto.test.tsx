@@ -1,4 +1,4 @@
-// @catto/ui - CardSkeletonCatto Tests
+// @ccatto/ui - CardSkeletonCatto Tests
 import { describe, expect, it } from 'vitest';
 import CardSkeletonCatto from '../../components/Skeleton/CardSkeletonCatto';
 import { render } from '../test-utils';

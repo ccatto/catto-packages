@@ -1,4 +1,4 @@
-// @catto/ui - ToastCatto Component
+// @ccatto/ui - ToastCatto Component
 'use client';
 
 import React, { useCallback, useEffect, useState } from 'react';

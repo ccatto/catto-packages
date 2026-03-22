@@ -1,4 +1,4 @@
-// @catto/ui - InputCatto Tests
+// @ccatto/ui - InputCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import InputCatto from '../../components/Input/InputCatto';
 import { fireEvent, render, screen } from '../test-utils';

@@ -1,4 +1,4 @@
-// @catto/ui - AvatarUploadCatto Component
+// @ccatto/ui - AvatarUploadCatto Component
 // Reusable avatar upload UI with file picker, preview, validation, and upload delegation
 'use client';
 

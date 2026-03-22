@@ -1,13 +1,13 @@
-// @catto/ui - German Labels
+// @ccatto/ui - German Labels
 // Deutsch - de
 
 import type { CattoUILabels } from '../defaults';
 
 /**
- * German translations for all @catto/ui components
+ * German translations for all @ccatto/ui components
  *
  * @example
- * import { germanLabels } from '@catto/ui';
+ * import { germanLabels } from '@ccatto/ui';
  *
  * // Use with a specific component
  * <SelectCatto labels={germanLabels.select} />

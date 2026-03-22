@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Auth API Interface
+ * @ccatto/react-auth - Auth API Interface
  *
  * Abstract interface for auth API calls. Apps provide their own
  * implementation (e.g., GraphQL, REST, etc.).

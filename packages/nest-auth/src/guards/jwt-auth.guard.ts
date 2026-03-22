@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - JWT Auth Guard
+ * @ccatto/nest-auth - JWT Auth Guard
  *
  * Handles both HTTP and GraphQL contexts for JWT authentication.
  * 100% generic — no app-specific dependencies.

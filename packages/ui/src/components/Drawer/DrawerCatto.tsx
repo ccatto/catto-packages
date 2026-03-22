@@ -1,4 +1,4 @@
-// @catto/ui - DrawerCatto Component
+// @ccatto/ui - DrawerCatto Component
 // Generic slide-in drawer with Portal support
 'use client';
 

@@ -1,4 +1,4 @@
-// @catto/ui - Accessibility Test Utilities
+// @ccatto/ui - Accessibility Test Utilities
 import axe, { type AxeResults } from 'axe-core';
 import { expect } from 'vitest';
 

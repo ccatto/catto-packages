@@ -1,4 +1,4 @@
-// @catto/ui - LoadingCircleOrangeFancyCatto Component
+// @ccatto/ui - LoadingCircleOrangeFancyCatto Component
 'use client';
 
 import React from 'react';

@@ -1,12 +1,12 @@
 /**
- * @catto/nest-payments - CattoPaymentsModule
+ * @ccatto/nest-payments - CattoPaymentsModule
  *
  * Dynamic NestJS module providing Stripe payment integration.
  *
  * ## Usage
  *
  * ```typescript
- * import { CattoPaymentsModule } from '@catto/nest-payments';
+ * import { CattoPaymentsModule } from '@ccatto/nest-payments';
  *
  * @Module({
  *   imports: [

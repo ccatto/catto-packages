@@ -1,4 +1,4 @@
-// @catto/ui - CarouselCatto Tests
+// @ccatto/ui - CarouselCatto Tests
 import { afterEach, beforeEach, describe, expect, it, vi } from 'vitest';
 import CarouselCatto from '../../components/Carousel/CarouselCatto';
 import { act, fireEvent, render, screen } from '../test-utils';

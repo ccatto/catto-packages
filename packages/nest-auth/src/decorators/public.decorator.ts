@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Public Decorator
+ * @ccatto/nest-auth - Public Decorator
  *
  * Marks a route or resolver as publicly accessible (no auth required).
  * Use with a guard that checks for IS_PUBLIC_KEY metadata.

@@ -1,4 +1,4 @@
-// @catto/ui - PageHeaderCatto Component
+// @ccatto/ui - PageHeaderCatto Component
 'use client';
 
 import React, { ReactNode } from 'react';

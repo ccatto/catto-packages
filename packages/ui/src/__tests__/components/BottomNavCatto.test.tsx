@@ -1,4 +1,4 @@
-// @catto/ui - BottomNavCatto Tests
+// @ccatto/ui - BottomNavCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import BottomNavCatto, {
   type BottomNavItem,
@@ -88,8 +88,8 @@ describe('BottomNavCatto', () => {
       render(<BottomNavCatto items={itemsWithActive} />);
 
       const links = screen.getAllByRole('link');
-      expect(links[0].className).toContain('text-orange-600');
-      expect(links[1].className).not.toContain('text-orange-600');
+      expect(links[0].className).toContain('text-theme-secondary');
+      expect(links[1].className).not.toContain('text-theme-secondary');
     });
 
     it('applies inactive styles to non-active items', () => {
@@ -112,7 +112,7 @@ describe('BottomNavCatto', () => {
       render(<BottomNavCatto items={itemsWithActive} />);
 
       const links = screen.getAllByRole('link');
-      expect(links[1].className).toContain('text-gray-600');
+      expect(links[1].className).toContain('text-theme-text-muted');
     });
   });
 

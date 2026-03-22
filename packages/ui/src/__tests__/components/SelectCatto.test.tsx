@@ -1,4 +1,4 @@
-// @catto/ui - SelectCatto Tests
+// @ccatto/ui - SelectCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import SelectCatto from '../../components/Select/SelectCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -294,7 +294,7 @@ describe('SelectCatto', () => {
       );
 
       // Uses explicit Tailwind colors
-      const selectButton = container.querySelector('.bg-slate-800');
+      const selectButton = container.querySelector('.bg-theme-surface');
       expect(selectButton).toBeInTheDocument();
     });
 
@@ -310,7 +310,7 @@ describe('SelectCatto', () => {
       );
 
       // Uses explicit Tailwind colors
-      const selectButton = container.querySelector('.text-blue-300');
+      const selectButton = container.querySelector('.text-theme-primary');
       expect(selectButton).toBeInTheDocument();
     });
 

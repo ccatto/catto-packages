@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Hooks
+ * @ccatto/react-auth - Hooks
  *
  * React hooks for authentication, organization access, and permissions.
  * Hooks will be populated as they are extracted from the app.

@@ -1,4 +1,4 @@
-// @catto/ui - DatePickerCatto Component
+// @ccatto/ui - DatePickerCatto Component
 'use client';
 
 import React, { forwardRef, useEffect, useId, useRef, useState } from 'react';

@@ -1,5 +1,5 @@
 {
-  "name": "@catto/nest-sms",
+  "name": "@ccatto/nest-sms",
   "version": "1.0.0",
   "description": "Catto SMS - NestJS SMS service with Telnyx integration",
   "license": "MIT",

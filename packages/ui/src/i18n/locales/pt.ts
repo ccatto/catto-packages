@@ -1,13 +1,13 @@
-// @catto/ui - Portuguese (Brazilian) Labels
+// @ccatto/ui - Portuguese (Brazilian) Labels
 // Português (Brasil) - pt-BR
 
 import type { CattoUILabels } from '../defaults';
 
 /**
- * Portuguese (Brazilian) translations for all @catto/ui components
+ * Portuguese (Brazilian) translations for all @ccatto/ui components
  *
  * @example
- * import { portugueseLabels } from '@catto/ui';
+ * import { portugueseLabels } from '@ccatto/ui';
  *
  * // Use with a specific component
  * <SelectCatto labels={portugueseLabels.select} />

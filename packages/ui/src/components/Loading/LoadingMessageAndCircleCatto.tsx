@@ -1,4 +1,4 @@
-// @catto/ui - LoadingMessageAndCircleCatto Component
+// @ccatto/ui - LoadingMessageAndCircleCatto Component
 'use client';
 
 import React from 'react';

@@ -1,5 +1,5 @@
 /**
- * @catto/nest-email
+ * @ccatto/nest-email
  *
  * Catto Email - NestJS email service with SendGrid integration.
  * Provides a config-driven email sending service with dynamic module support.
@@ -7,7 +7,7 @@
  * ## Quick Start
  *
  * ```typescript
- * import { CattoEmailModule, CattoEmailService } from '@catto/nest-email';
+ * import { CattoEmailModule, CattoEmailService } from '@ccatto/nest-email';
  *
  * @Module({
  *   imports: [

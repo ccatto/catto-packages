@@ -1,10 +1,10 @@
-# @catto/ui Roadmap
+# @ccatto/ui Roadmap
 
 > Future improvement ideas for the RLeaguez component library
 
 ## Current State
 
-@catto/ui is a React component library with:
+@ccatto/ui is a React component library with:
 
 - **Components**: ButtonCatto, CardCatto, InputCatto, SelectCatto, ToastCatto, MellowModalCatto, EmptyStateCatto, TabsCatto, Skeletons, Loading states
 - **Hooks**: `useHaptics`, `useDragDropList`, `useTableStateCatto`, `useTableInstanceCatto`
@@ -71,6 +71,6 @@
 
 ## Notes
 
-- @catto/ui is internal to RLeaguez, not published to npm
+- @ccatto/ui is internal to RLeaguez, not published to npm
 - Focus on components actually needed by RLeaguez
 - Avoid over-engineering; add features as needed

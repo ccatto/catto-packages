@@ -1,5 +1,5 @@
 /**
- * @catto/ui Theme System
+ * @ccatto/ui Theme System
  * ======================
  *
  * Theme registry and type definitions.

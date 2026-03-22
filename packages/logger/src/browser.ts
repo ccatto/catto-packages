@@ -1,4 +1,4 @@
-// @catto/logger — Browser logger factory
+// @ccatto/logger — Browser logger factory
 
 import pino from 'pino';
 import { extractError } from './errors';

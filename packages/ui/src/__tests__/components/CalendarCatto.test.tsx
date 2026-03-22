@@ -1,4 +1,4 @@
-// @catto/ui - CalendarCatto Tests
+// @ccatto/ui - CalendarCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import CalendarCatto from '../../components/Calendar/CalendarCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -114,7 +114,7 @@ describe('CalendarCatto', () => {
 
       // The selected date (15) should have orange background
       const day15 = screen.getByText('15');
-      expect(day15.className).toContain('bg-orange-500');
+      expect(day15.className).toContain('bg-theme-secondary');
     });
   });
 

@@ -1,4 +1,4 @@
-// @catto/ui - NavLinkGroupCatto Tests
+// @ccatto/ui - NavLinkGroupCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import NavLinkGroupCatto, {
   type NavLinkItem,
@@ -86,7 +86,7 @@ describe('NavLinkGroupCatto', () => {
         <NavLinkGroupCatto items={mockItems} title="Navigation" />,
       );
 
-      const titleContainer = container.querySelector('.text-gray-500');
+      const titleContainer = container.querySelector('.text-theme-text-subtle');
       expect(titleContainer).toBeInTheDocument();
     });
 
@@ -99,7 +99,7 @@ describe('NavLinkGroupCatto', () => {
         />,
       );
 
-      const titleContainer = container.querySelector('.text-orange-600');
+      const titleContainer = container.querySelector('.text-theme-secondary');
       expect(titleContainer).toBeInTheDocument();
     });
   });
@@ -114,8 +114,8 @@ describe('NavLinkGroupCatto', () => {
       render(<NavLinkGroupCatto items={itemsWithActive} />);
 
       const links = screen.getAllByRole('link');
-      expect(links[0].className).toContain('bg-orange-100');
-      expect(links[0].className).toContain('text-orange-700');
+      expect(links[0].className).toContain('bg-theme-secondary-subtle');
+      expect(links[0].className).toContain('text-theme-secondary');
     });
 
     it('applies inactive styles to non-active items', () => {
@@ -127,7 +127,7 @@ describe('NavLinkGroupCatto', () => {
       render(<NavLinkGroupCatto items={itemsWithActive} />);
 
       const links = screen.getAllByRole('link');
-      expect(links[1].className).toContain('text-gray-700');
+      expect(links[1].className).toContain('text-theme-text-muted');
     });
   });
 

@@ -1,6 +1,6 @@
-# @catto/ui Component Dependency Diagram
+# @ccatto/ui Component Dependency Diagram
 
-This document shows the dependency relationships between components in the @catto/ui package.
+This document shows the dependency relationships between components in the @ccatto/ui package.
 
 ## Legend
 
@@ -14,7 +14,7 @@ This document shows the dependency relationships between components in the @catt
 ## Component Hierarchy
 
 ```
-@catto/ui
+@ccatto/ui
 ├── Core UI Components
 │   ├── ButtonCatto (standalone)
 │   ├── CardCatto (standalone)
@@ -242,11 +242,11 @@ PricingCardCatto
 
 ```typescript
 // ✅ Recommended: Import from main entry
-import { ButtonCatto, CardCatto, TableCatto } from '@catto/ui';
+import { ButtonCatto, CardCatto, TableCatto } from '@ccatto/ui';
 // ✅ Also works: Import from barrel exports
-import { TableCatto } from '@catto/ui/components/Table';
+import { TableCatto } from '@ccatto/ui/components/Table';
 // ❌ Avoid: Deep imports (may break)
-import ButtonCatto from '@catto/ui/dist/components/Button/ButtonCatto';
+import ButtonCatto from '@ccatto/ui/dist/components/Button/ButtonCatto';
 ```
 
 ---

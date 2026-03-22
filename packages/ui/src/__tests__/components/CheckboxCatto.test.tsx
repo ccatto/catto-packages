@@ -1,4 +1,4 @@
-// @catto/ui - CheckboxCatto Tests
+// @ccatto/ui - CheckboxCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import CheckboxCatto from '../../components/Checkbox/CheckboxCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -65,7 +65,7 @@ describe('CheckboxCatto', () => {
         <CheckboxCatto id="test" checked={true} onChange={vi.fn()} />,
       );
 
-      const visual = container.querySelector('.bg-orange-500');
+      const visual = container.querySelector('.bg-theme-secondary');
       expect(visual).toBeInTheDocument();
     });
 
@@ -74,7 +74,7 @@ describe('CheckboxCatto', () => {
         <CheckboxCatto id="test" checked={false} onChange={vi.fn()} />,
       );
 
-      const visual = container.querySelector('.border-blue-500');
+      const visual = container.querySelector('.border-theme-primary');
       expect(visual).toBeInTheDocument();
     });
   });

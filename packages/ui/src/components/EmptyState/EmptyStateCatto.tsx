@@ -1,4 +1,4 @@
-// @catto/ui - EmptyStateCatto Component
+// @ccatto/ui - EmptyStateCatto Component
 'use client';
 
 import React, { ReactNode } from 'react';

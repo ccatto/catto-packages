@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Current User Decorator
+ * @ccatto/nest-auth - Current User Decorator
  *
  * Extracts the authenticated user from the GraphQL context.
  * Normalizes .id and .userId properties for compatibility across auth strategies.

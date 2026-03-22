@@ -1,4 +1,4 @@
-// @catto/ui - useTableInstanceCatto Tests
+// @ccatto/ui - useTableInstanceCatto Tests
 // Tests for the table instance creation hook
 
 import { ColumnDef } from '@tanstack/react-table';

@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - JWT Auth Service
+ * @ccatto/react-auth - JWT Auth Service
  *
  * Platform-agnostic JWT authentication service.
  * Handles token storage, login, register, refresh, and passkey auth.
@@ -8,7 +8,7 @@
  *
  * @example
  * ```typescript
- * import { JwtAuthService, CapacitorAuthStorage } from '@catto/react-auth';
+ * import { JwtAuthService, CapacitorAuthStorage } from '@ccatto/react-auth';
  *
  * const storage = new CapacitorAuthStorage({ keyPrefix: 'myapp' });
  * const authService = new JwtAuthService(storage, myApiService, undefined, {

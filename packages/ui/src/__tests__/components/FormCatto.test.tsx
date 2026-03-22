@@ -1,4 +1,4 @@
-// @catto/ui - FormCatto Tests
+// @ccatto/ui - FormCatto Tests
 // Comprehensive tests for the form component with react-hook-form and Zod validation
 
 import { render, screen, waitFor, within } from '@testing-library/react';

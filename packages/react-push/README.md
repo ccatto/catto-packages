@@ -1,19 +1,19 @@
-# @catto/react-push
+# @ccatto/react-push
 
 React hooks for Capacitor push notifications on iOS and Android. Handles registration, permissions, and notification listeners. Silently no-ops on web.
 
 ## Install
 
 ```bash
-npm install @catto/react-push
+npm install @ccatto/react-push
 # or
-yarn add @catto/react-push
+yarn add @ccatto/react-push
 ```
 
 ## Quick Start
 
 ```tsx
-import { usePushNotifications } from '@catto/react-push';
+import { usePushNotifications } from '@ccatto/react-push';
 
 function App() {
   const { token, requestPermission, isRegistered } = usePushNotifications({

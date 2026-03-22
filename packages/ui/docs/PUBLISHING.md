@@ -1,6 +1,6 @@
-# Publishing @catto/ui to npm
+# Publishing @ccatto/ui to npm
 
-This guide covers how to publish @catto/ui to npm and the workflow for releasing updates.
+This guide covers how to publish @ccatto/ui to npm and the workflow for releasing updates.
 
 ---
 
@@ -22,7 +22,7 @@ npm login
 
 ### 3. Create npm Organization (for @catto scope)
 
-Since the package is scoped as `@catto/ui`, you need an npm organization:
+Since the package is scoped as `@ccatto/ui`, you need an npm organization:
 
 1. Go to https://www.npmjs.com/org/create
 2. Create organization named `catto`
@@ -33,7 +33,7 @@ Since the package is scoped as `@catto/ui`, you need an npm organization:
 ### 4. Verify Package Name is Available
 
 ```bash
-npm view @catto/ui
+npm view @ccatto/ui
 # Should return 404 if not yet published
 ```
 
@@ -46,13 +46,13 @@ Before publishing any version, verify:
 - [ ] All tests pass
 
   ```bash
-  yarn workspace @catto/ui test:run
+  yarn workspace @ccatto/ui test:run
   ```
 
 - [ ] Build succeeds
 
   ```bash
-  yarn workspace @catto/ui build
+  yarn workspace @ccatto/ui build
   ```
 
 - [ ] Version is updated in `package.json`
@@ -71,7 +71,7 @@ Ensure these fields are set:
 
 ```json
 {
-  "name": "@catto/ui",
+  "name": "@ccatto/ui",
   "version": "1.0.0",
   "description": "Production-ready React component library with Tailwind CSS v4",
   "author": "Chris Catto",
@@ -134,10 +134,10 @@ npm publish --access public
 
 ```bash
 # Check it's live on npm
-npm view @catto/ui
+npm view @ccatto/ui
 
 # View on npmjs.com
-# https://www.npmjs.com/package/@catto/ui
+# https://www.npmjs.com/package/@ccatto/ui
 ```
 
 ---
@@ -182,7 +182,7 @@ npm version major  # 1.0.0 → 2.0.0
 ```bash
 # 1. Make your fix
 # 2. Run tests
-yarn workspace @catto/ui test:run
+yarn workspace @ccatto/ui test:run
 
 # 3. Update version
 cd packages/ui
@@ -213,7 +213,7 @@ git push && git push --tags
 # 3. Update README (component count)
 
 # 4. Run tests
-yarn workspace @catto/ui test:run
+yarn workspace @ccatto/ui test:run
 
 # 5. Update version
 cd packages/ui
@@ -240,7 +240,7 @@ git push && git push --tags
 
 ## GitHub Repository Setup (Optional)
 
-If you want a separate public repo for @catto/ui:
+If you want a separate public repo for @ccatto/ui:
 
 ### Option A: Separate Repository
 
@@ -310,12 +310,12 @@ yarn build
 
 After publishing:
 
-- [ ] Verify on npmjs.com: https://www.npmjs.com/package/@catto/ui
+- [ ] Verify on npmjs.com: https://www.npmjs.com/package/@ccatto/ui
 - [ ] Test install in a fresh project:
   ```bash
   mkdir test-install && cd test-install
   npm init -y
-  npm install @catto/ui
+  npm install @ccatto/ui
   ```
 - [ ] Create GitHub release with changelog (optional)
 - [ ] Announce on social media (optional)
@@ -330,23 +330,23 @@ After publishing:
 npm whoami
 
 # View package info
-npm view @catto/ui
+npm view @ccatto/ui
 
 # View all versions
-npm view @catto/ui versions
+npm view @ccatto/ui versions
 
 # Unpublish (within 72 hours only!)
-npm unpublish @catto/ui@1.0.0
+npm unpublish @ccatto/ui@1.0.0
 
 # Deprecate a version
-npm deprecate @catto/ui@1.0.0 "Use 1.0.1 instead"
+npm deprecate @ccatto/ui@1.0.0 "Use 1.0.1 instead"
 
 # Transfer ownership
-npm owner add username @catto/ui
+npm owner add username @ccatto/ui
 
 # See download stats
-npm stats @catto/ui
-# Or visit: https://www.npmjs.com/package/@catto/ui
+npm stats @ccatto/ui
+# Or visit: https://www.npmjs.com/package/@ccatto/ui
 ```
 
 ---

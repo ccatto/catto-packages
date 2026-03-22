@@ -1,4 +1,4 @@
-// @catto/ui - Main Entry Point
+// @ccatto/ui - Main Entry Point
 'use client';
 
 // ============================================

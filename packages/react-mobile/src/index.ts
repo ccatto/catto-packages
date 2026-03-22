@@ -1,4 +1,4 @@
-// @catto/react-mobile - React hooks for Capacitor mobile apps
+// @ccatto/react-mobile - React hooks for Capacitor mobile apps
 
 // Logger
 export { configureMobileLogger, getLogger } from './logger';

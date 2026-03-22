@@ -1,4 +1,4 @@
-// @catto/ui - PricingCardCatto Tests
+// @ccatto/ui - PricingCardCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import PricingCardCatto from '../../components/PricingCard/PricingCardCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -189,7 +189,7 @@ describe('PricingCardCatto', () => {
         />,
       );
       const card = screen.getByTestId('card');
-      expect(card.className).toContain('border-orange-500');
+      expect(card.className).toContain('border-theme-secondary');
     });
 
     it('applies enterprise variant styles', () => {

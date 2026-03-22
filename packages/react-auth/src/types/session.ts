@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Session Types
+ * @ccatto/react-auth - Session Types
  *
  * Types for enriched sessions, users, and compatibility with NextAuth patterns.
  */

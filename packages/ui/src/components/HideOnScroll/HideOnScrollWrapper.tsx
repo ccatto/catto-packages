@@ -1,4 +1,4 @@
-// @catto/ui - HideOnScrollWrapper Component
+// @ccatto/ui - HideOnScrollWrapper Component
 // Wrapper that hides content when scrolling down, shows when scrolling up
 'use client';
 

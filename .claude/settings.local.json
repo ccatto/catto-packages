@@ -15,7 +15,14 @@
       "Bash(curl:*)",
       "Bash(npm profile:*)",
       "Bash(npm org:*)",
-      "Bash(npm pack:*)"
+      "Bash(npm pack:*)",
+      "Bash(gh run:*)",
+      "Bash(yarn workspace:*)",
+      "Bash(yarn test:*)",
+      "Bash(git stash:*)",
+      "Bash(npx vitest:*)",
+      "Bash(ls packages/ui/vitest.config.*)",
+      "Bash(find:*)"
     ]
   }
 }

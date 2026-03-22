@@ -1,4 +1,4 @@
-// @catto/react-push - React hooks for Capacitor push notifications
+// @ccatto/react-push - React hooks for Capacitor push notifications
 
 // Logger
 export { configurePushLogger, getLogger } from './logger';

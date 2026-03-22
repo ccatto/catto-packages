@@ -1,4 +1,4 @@
-// @catto/ui - SearchableSelectCatto Tests
+// @ccatto/ui - SearchableSelectCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import SearchableSelectCatto from '../../components/SearchableSelect/SearchableSelectCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -427,7 +427,7 @@ describe('SearchableSelectCatto', () => {
         />,
       );
 
-      const selectContainer = container.querySelector('.bg-slate-50');
+      const selectContainer = container.querySelector('.bg-theme-surface');
       expect(selectContainer).toBeInTheDocument();
     });
 
@@ -440,7 +440,7 @@ describe('SearchableSelectCatto', () => {
         />,
       );
 
-      const selectContainer = container.querySelector('.bg-orange-50');
+      const selectContainer = container.querySelector('.bg-theme-secondary-subtle');
       expect(selectContainer).toBeInTheDocument();
     });
 
@@ -454,7 +454,7 @@ describe('SearchableSelectCatto', () => {
         />,
       );
 
-      const selectContainer = container.querySelector('.bg-indigo-50');
+      const selectContainer = container.querySelector('.bg-theme-primary-subtle');
       expect(selectContainer).toBeInTheDocument();
     });
   });

@@ -1,4 +1,4 @@
-// @catto/ui - EmptyStateCatto Tests
+// @ccatto/ui - EmptyStateCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import EmptyStateCatto from '../../components/EmptyState/EmptyStateCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -186,7 +186,7 @@ describe('EmptyStateCatto', () => {
 
       const wrapper = container.firstChild as HTMLElement;
       // Uses explicit Tailwind colors
-      expect(wrapper.className).toContain('from-orange-500/10');
+      expect(wrapper.className).toContain('from-theme-secondary-subtle');
     });
 
     it('applies noResults variant styles', () => {
@@ -224,7 +224,7 @@ describe('EmptyStateCatto', () => {
 
       const wrapper = container.firstChild as HTMLElement;
       // Uses explicit Tailwind colors
-      expect(wrapper.className).toContain('from-blue-600/10');
+      expect(wrapper.className).toContain('from-theme-primary-subtle');
     });
   });
 
@@ -268,7 +268,7 @@ describe('EmptyStateCatto', () => {
 
       const wrapper = container.firstChild as HTMLElement;
       expect(wrapper.className).toContain('my-custom-class');
-      expect(wrapper.className).toContain('from-orange-500/10');
+      expect(wrapper.className).toContain('from-theme-secondary-subtle');
     });
   });
 });

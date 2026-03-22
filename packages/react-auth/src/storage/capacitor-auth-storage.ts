@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Capacitor Auth Storage
+ * @ccatto/react-auth - Capacitor Auth Storage
  *
  * Capacitor-based auth storage using @capacitor/preferences.
  * Works on BOTH web and mobile (no platform detection needed!).

@@ -1,12 +1,12 @@
 /**
- * @catto/nest-auth - CattoAuthModule
+ * @ccatto/nest-auth - CattoAuthModule
  *
  * Dynamic NestJS module providing JWT authentication infrastructure.
  *
  * ## Usage
  *
  * ```typescript
- * import { CattoAuthModule } from '@catto/nest-auth';
+ * import { CattoAuthModule } from '@ccatto/nest-auth';
  * import { PrismaService } from '../prisma/prisma.service';
  * import { PrismaModule } from '../prisma/prisma.module';
  *
@@ -50,12 +50,12 @@ export class CattoAuthModule {
   static forRoot(options: CattoAuthModuleOptions): DynamicModule {
     if (!options.jwt?.secret) {
       throw new Error(
-        '@catto/nest-auth: jwt.secret is required in CattoAuthModule.forRoot()',
+        '@ccatto/nest-auth: jwt.secret is required in CattoAuthModule.forRoot()',
       );
     }
     if (!options.prismaToken) {
       throw new Error(
-        '@catto/nest-auth: prismaToken is required in CattoAuthModule.forRoot()',
+        '@ccatto/nest-auth: prismaToken is required in CattoAuthModule.forRoot()',
       );
     }
 

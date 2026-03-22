@@ -1,4 +1,4 @@
-// @catto/ui - AvatarCatto Component
+// @ccatto/ui - AvatarCatto Component
 // User avatar with image, initials fallback, and status indicator
 'use client';
 

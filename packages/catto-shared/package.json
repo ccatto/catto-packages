@@ -1,5 +1,5 @@
 {
-  "name": "@catto/shared",
+  "name": "@ccatto/shared",
   "version": "1.0.0",
   "description": "Catto Shared - Reusable TypeScript utilities (profanity filter, geo, color)",
   "license": "MIT",
@@ -34,7 +34,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@catto/profanity": "^1.0.0"
+    "@ccatto/profanity": "^1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

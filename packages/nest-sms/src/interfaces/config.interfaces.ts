@@ -1,5 +1,5 @@
 /**
- * Configuration for @catto/nest-sms
+ * Configuration for @ccatto/nest-sms
  */
 export interface CattoSmsConfig {
   /** SMS provider (currently only 'telnyx' is supported) */

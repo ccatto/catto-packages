@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Configuration Interfaces
+ * @ccatto/nest-auth - Configuration Interfaces
  *
  * Interfaces for configuring the CattoAuthModule.
  */

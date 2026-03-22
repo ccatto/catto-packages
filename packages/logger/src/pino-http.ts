@@ -1,4 +1,4 @@
-// @catto/logger — NestJS pinoHttp config factory
+// @ccatto/logger — NestJS pinoHttp config factory
 
 import type { PinoHttpConfig } from './types';
 
@@ -6,7 +6,7 @@ import type { PinoHttpConfig } from './types';
  * Create a pinoHttp configuration object for NestJS LoggerModule.forRoot().
  *
  * Usage in app.module.ts:
- *   import { createPinoHttpConfig } from '@catto/logger';
+ *   import { createPinoHttpConfig } from '@ccatto/logger';
  *   LoggerModule.forRoot({ pinoHttp: createPinoHttpConfig() })
  *
  * Requires `pino-http` peer dependency. `pino-pretty` optional (dev only).

@@ -1,4 +1,4 @@
-# @catto/ui
+# @ccatto/ui
 
 > **Catto** _(noun)_ — Pronounced like it rhymes with "tomato" or "potato" 🍅🥔
 >
@@ -16,7 +16,7 @@ Now I'm sharing them with the community. Take them, use them, build something co
 
 ## Who Is This For?
 
-**@catto/ui is built for you if:**
+**@ccatto/ui is built for you if:**
 
 - You're building a **Next.js 14+** app with the App Router
 - You use **Tailwind CSS** (v3 or v4) for styling
@@ -41,9 +41,9 @@ Now I'm sharing them with the community. Take them, use them, build something co
 
 ## Overview
 
-**@catto/ui** provides a comprehensive set of accessible, themeable UI components that work seamlessly with Next.js 14+ and React 18+. Built with a "dark-first" design philosophy, every component looks great in both light and dark modes out of the box.
+**@ccatto/ui** provides a comprehensive set of accessible, themeable UI components that work seamlessly with Next.js 14+ and React 18+. Built with a "dark-first" design philosophy, every component looks great in both light and dark modes out of the box.
 
-**Why choose @catto/ui?**
+**Why choose @ccatto/ui?**
 
 - **Production-Tested** — Battle-tested in the RLeaguez sports platform serving real users
 - **Accessibility First** — ARIA labels, keyboard navigation, and screen reader support built-in
@@ -53,7 +53,7 @@ Now I'm sharing them with the community. Take them, use them, build something co
 - **Consistent API** — Predictable props patterns across all components (`variant`, `size`, `className`)
 - **Zero Config Theming** — CSS custom properties for runtime theme switching without rebuilds
 
-Whether you're building a dashboard, e-commerce site, or mobile app, @catto/ui gives you the building blocks to ship faster without sacrificing quality.
+Whether you're building a dashboard, e-commerce site, or mobile app, @ccatto/ui gives you the building blocks to ship faster without sacrificing quality.
 
 ## Features
 
@@ -73,10 +73,10 @@ Whether you're building a dashboard, e-commerce site, or mobile app, @catto/ui g
 
 ```bash
 # Using yarn (recommended for RLeaguez monorepo)
-yarn add @catto/ui
+yarn add @ccatto/ui
 
 # Using npm
-npm install @catto/ui
+npm install @ccatto/ui
 ```
 
 ### Peer Dependencies
@@ -107,7 +107,7 @@ npm install @catto/ui
 ## Quick Start
 
 ```tsx
-import { ButtonCatto, CardCatto, InputCatto } from '@catto/ui';
+import { ButtonCatto, CardCatto, InputCatto } from '@ccatto/ui';
 
 function MyComponent() {
   return (
@@ -128,7 +128,7 @@ Add the package to your Tailwind CSS content sources:
 ```css
 /* In your global.css (Tailwind v4) */
 @import 'tailwindcss';
-@source "../../node_modules/@catto/ui/dist";
+@source "../../node_modules/@ccatto/ui/dist";
 ```
 
 Or in `tailwind.config.js` (Tailwind v3):
@@ -137,7 +137,7 @@ Or in `tailwind.config.js` (Tailwind v3):
 module.exports = {
   content: [
     // ... your other paths
-    './node_modules/@catto/ui/dist/**/*.{js,cjs}',
+    './node_modules/@ccatto/ui/dist/**/*.{js,cjs}',
   ],
 };
 ```
@@ -148,11 +148,11 @@ Import the theme CSS files in your app:
 
 ```tsx
 // In your layout or global styles
-import '@catto/ui/themes/tokens.css';
-import '@catto/ui/themes/rleaguez.css';
+import '@ccatto/ui/themes/tokens.css';
+import '@ccatto/ui/themes/rleaguez.css';
 
 // Or for the alternative theme:
-// import '@catto/ui/themes/neon-pulse.css';
+// import '@ccatto/ui/themes/neon-pulse.css';
 ```
 
 ---
@@ -289,7 +289,7 @@ import '@catto/ui/themes/rleaguez.css';
 ### ButtonCatto
 
 ```tsx
-import { ButtonCatto } from '@catto/ui';
+import { ButtonCatto } from '@ccatto/ui';
 import { Mail } from 'lucide-react';
 
 <ButtonCatto variant="primary" size="medium" onClick={handleClick}>
@@ -310,7 +310,7 @@ import { Mail } from 'lucide-react';
 ### CardCatto
 
 ```tsx
-import { CardCatto } from '@catto/ui';
+import { CardCatto } from '@ccatto/ui';
 
 <CardCatto
   title="Section Title"
@@ -325,7 +325,7 @@ import { CardCatto } from '@catto/ui';
 ### BadgeCatto
 
 ```tsx
-import { BadgeCatto } from '@catto/ui';
+import { BadgeCatto } from '@ccatto/ui';
 
 <BadgeCatto variant="success">Active</BadgeCatto>
 <BadgeCatto variant="error" pulse>Live</BadgeCatto>
@@ -337,7 +337,7 @@ import { BadgeCatto } from '@catto/ui';
 ### ProductCardCatto
 
 ```tsx
-import { ProductCardCatto } from '@catto/ui';
+import { ProductCardCatto } from '@ccatto/ui';
 
 <ProductCardCatto
   name="Premium Widget"
@@ -354,7 +354,7 @@ import { ProductCardCatto } from '@catto/ui';
 ### MellowModalCatto
 
 ```tsx
-import { MellowModalCatto } from '@catto/ui';
+import { MellowModalCatto } from '@ccatto/ui';
 
 <MellowModalCatto
   isOpen={isOpen}
@@ -376,7 +376,7 @@ import { MellowModalCatto } from '@catto/ui';
 Provides haptic feedback on mobile devices (requires Capacitor).
 
 ```tsx
-import { useHaptics } from '@catto/ui';
+import { useHaptics } from '@ccatto/ui';
 
 function MyComponent() {
   const { triggerHaptic, isAvailable } = useHaptics();
@@ -394,7 +394,7 @@ function MyComponent() {
 Manages TanStack Table state (sorting, filtering, visibility, selection).
 
 ```tsx
-import { useTableStateCatto } from '@catto/ui';
+import { useTableStateCatto } from '@ccatto/ui';
 
 function MyTable() {
   const {
@@ -417,7 +417,7 @@ function MyTable() {
 Creates a TanStack Table instance with common configuration.
 
 ```tsx
-import { useTableInstanceCatto } from '@catto/ui';
+import { useTableInstanceCatto } from '@ccatto/ui';
 
 function MyTable({ data, columns }) {
   const table = useTableInstanceCatto(data, columns);
@@ -430,7 +430,7 @@ function MyTable({ data, columns }) {
 Drag and drop list functionality.
 
 ```tsx
-import { useDragDropList } from '@catto/ui';
+import { useDragDropList } from '@ccatto/ui';
 
 function MyList({ items, onReorder }) {
   const { dragHandleProps, isDragging } = useDragDropList({
@@ -450,7 +450,7 @@ function MyList({ items, onReorder }) {
 Class name merge utility (combines clsx + tailwind-merge).
 
 ```tsx
-import { cn } from '@catto/ui';
+import { cn } from '@ccatto/ui';
 
 <div className={cn('base-class', isActive && 'active-class', className)} />;
 ```
@@ -462,7 +462,7 @@ import {
   formatPhoneNumber,
   isValidPhoneNumber,
   parsePhoneNumber,
-} from '@catto/ui';
+} from '@ccatto/ui';
 
 formatPhoneNumber('+15551234567'); // "(555) 123-4567"
 isValidPhoneNumber('5551234567'); // true
@@ -471,7 +471,7 @@ isValidPhoneNumber('5551234567'); // true
 ### Keyboard Utilities
 
 ```tsx
-import { handleKeyboardSelect, isEnterOrSpace } from '@catto/ui';
+import { handleKeyboardSelect, isEnterOrSpace } from '@ccatto/ui';
 
 <div role="button" tabIndex={0} onKeyDown={handleKeyboardSelect(onClick)}>
   Accessible button
@@ -499,7 +499,7 @@ All components accept a `labels` prop for easy internationalization. We also shi
 ### Using Pre-made Translations
 
 ```tsx
-import { portugueseLabels, SelectCatto, spanishLabels } from '@catto/ui';
+import { portugueseLabels, SelectCatto, spanishLabels } from '@ccatto/ui';
 
 // Use with a specific component
 <SelectCatto labels={spanishLabels.select} options={options} />;
@@ -520,7 +520,7 @@ const labels =
 You can also provide your own translations:
 
 ```tsx
-import { defaultLabels, SelectCatto } from '@catto/ui';
+import { defaultLabels, SelectCatto } from '@ccatto/ui';
 
 const frenchLabels = {
   ...defaultLabels,
@@ -547,7 +547,7 @@ import type {
   StyleAnimations,
   StyleWidth,
   ThemeType,
-} from '@catto/ui';
+} from '@ccatto/ui';
 ```
 
 ---
@@ -557,14 +557,14 @@ import type {
 Run Storybook to explore all components visually:
 
 ```bash
-yarn workspace @catto/ui storybook
+yarn workspace @ccatto/ui storybook
 # Opens at http://localhost:6006
 ```
 
 Build static Storybook:
 
 ```bash
-yarn workspace @catto/ui build-storybook
+yarn workspace @ccatto/ui build-storybook
 ```
 
 ---

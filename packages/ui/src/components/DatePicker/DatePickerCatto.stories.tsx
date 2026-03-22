@@ -1,4 +1,4 @@
-// @catto/ui - DatePickerCatto Stories
+// @ccatto/ui - DatePickerCatto Stories
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import DatePickerCatto from './DatePickerCatto';

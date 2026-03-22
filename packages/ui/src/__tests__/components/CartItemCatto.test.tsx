@@ -1,4 +1,4 @@
-// @catto/ui - CartItemCatto Tests
+// @ccatto/ui - CartItemCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import CartItemCatto from '../../components/CartItem/CartItemCatto';
 import { fireEvent, render, screen } from '../test-utils';

@@ -1,4 +1,4 @@
-// @catto/ui - PageLoadingCatto Tests
+// @ccatto/ui - PageLoadingCatto Tests
 import { describe, expect, it } from 'vitest';
 import PageLoadingCatto from '../../components/Loading/PageLoadingCatto';
 import { render, screen } from '../test-utils';
@@ -15,7 +15,7 @@ describe('PageLoadingCatto', () => {
     it('renders with orange color', () => {
       const { container } = render(<PageLoadingCatto />);
 
-      const svg = container.querySelector('svg.text-orange-500');
+      const svg = container.querySelector('svg.text-theme-secondary');
       expect(svg).toBeInTheDocument();
     });
 
@@ -76,14 +76,14 @@ describe('PageLoadingCatto', () => {
       const { container } = render(<PageLoadingCatto minHeight="screen" />);
 
       const wrapper = container.firstChild as HTMLElement;
-      expect(wrapper.className).toContain('bg-slate-50');
+      expect(wrapper.className).toContain('bg-theme-background');
     });
 
     it('has no background when minHeight is auto', () => {
       const { container } = render(<PageLoadingCatto minHeight="auto" />);
 
       const wrapper = container.firstChild as HTMLElement;
-      expect(wrapper.className).not.toContain('bg-slate-50');
+      expect(wrapper.className).not.toContain('bg-theme-background');
     });
   });
 

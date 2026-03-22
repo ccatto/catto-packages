@@ -1,5 +1,5 @@
 /**
- * Configuration for @catto/nest-recaptcha
+ * Configuration for @ccatto/nest-recaptcha
  */
 export interface CattoRecaptchaConfig {
   /** Google reCAPTCHA v3 secret key. If undefined, verification is disabled (dev mode). */

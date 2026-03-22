@@ -1,4 +1,4 @@
-// @catto/ui - useTableInstanceCatto Hook
+// @ccatto/ui - useTableInstanceCatto Hook
 'use client';
 
 import {

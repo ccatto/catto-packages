@@ -1,13 +1,13 @@
-// @catto/ui - Spanish Labels
+// @ccatto/ui - Spanish Labels
 // Español - es
 
 import type { CattoUILabels } from '../defaults';
 
 /**
- * Spanish translations for all @catto/ui components
+ * Spanish translations for all @ccatto/ui components
  *
  * @example
- * import { spanishLabels } from '@catto/ui';
+ * import { spanishLabels } from '@ccatto/ui';
  *
  * // Use with a specific component
  * <SelectCatto labels={spanishLabels.select} />

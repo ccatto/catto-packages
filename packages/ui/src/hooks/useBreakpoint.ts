@@ -1,4 +1,4 @@
-// @catto/ui - useBreakpoint Hook
+// @ccatto/ui - useBreakpoint Hook
 // Returns the current Tailwind CSS breakpoint name based on window width
 // SSR-safe: defaults to 'md' during server rendering
 'use client';

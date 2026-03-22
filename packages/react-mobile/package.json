@@ -1,5 +1,5 @@
 {
-  "name": "@catto/react-mobile",
+  "name": "@ccatto/react-mobile",
   "version": "1.0.0",
   "description": "Catto Mobile - React hooks for Capacitor mobile apps",
   "license": "MIT",
@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@catto/logger": "^1.0.0"
+    "@ccatto/logger": "^1.0.0"
   },
   "devDependencies": {
     "@capacitor/app": "^8.0.0",

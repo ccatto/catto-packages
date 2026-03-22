@@ -1,4 +1,4 @@
-// @catto/ui - QuantitySelectorCatto Component
+// @ccatto/ui - QuantitySelectorCatto Component
 // Quantity input with increment/decrement buttons
 'use client';
 

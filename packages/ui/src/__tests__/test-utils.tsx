@@ -1,4 +1,4 @@
-// @catto/ui Test Utilities
+// @ccatto/ui Test Utilities
 // Custom render function and testing helpers
 
 import type { ReactElement, ReactNode } from 'react';
@@ -19,7 +19,7 @@ afterEach(() => {
 // Theme Provider Wrapper (Placeholder)
 // ============================================
 
-// Note: @catto/ui uses CSS custom properties for theming rather than React context.
+// Note: @ccatto/ui uses CSS custom properties for theming rather than React context.
 // This wrapper is a placeholder for future theme context if needed.
 interface WrapperProps {
   children: ReactNode;

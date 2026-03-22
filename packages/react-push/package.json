@@ -1,5 +1,5 @@
 {
-  "name": "@catto/react-push",
+  "name": "@ccatto/react-push",
   "version": "1.0.0",
   "description": "Catto Push - React hooks for Capacitor push notifications",
   "license": "MIT",
@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@catto/logger": "^1.0.0"
+    "@ccatto/logger": "^1.0.0"
   },
   "devDependencies": {
     "@capacitor/core": "^8.0.0",

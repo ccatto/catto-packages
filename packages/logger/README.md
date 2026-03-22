@@ -1,4 +1,4 @@
-# @catto/logger
+# @ccatto/logger
 
 Shared logger interface and Pino factories for browser and Node.js environments.
 
@@ -7,15 +7,15 @@ Provides env-aware log levels (debug in development, info in production), pretty
 ## Install
 
 ```bash
-npm install @catto/logger
+npm install @ccatto/logger
 # or
-yarn add @catto/logger
+yarn add @ccatto/logger
 ```
 
 ## Quick Start
 
 ```typescript
-import { createBrowserLogger, createNodeLogger } from '@catto/logger';
+import { createBrowserLogger, createNodeLogger } from '@ccatto/logger';
 
 // Browser (React, Next.js client)
 const log = createBrowserLogger({ name: 'my-app' });

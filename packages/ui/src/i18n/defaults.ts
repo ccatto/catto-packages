@@ -1,4 +1,4 @@
-// @catto/ui - Default i18n Labels
+// @ccatto/ui - Default i18n Labels
 // These are the default English labels used by components.
 // Override these by passing a `labels` prop to components or by
 // providing your own labels object to your app's i18n provider.
@@ -160,7 +160,7 @@ export interface CattoUILabels {
 }
 
 /**
- * Default English labels for all @catto/ui components
+ * Default English labels for all @ccatto/ui components
  *
  * Usage in your app:
  * 1. Import these defaults

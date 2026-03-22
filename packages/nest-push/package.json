@@ -1,5 +1,5 @@
 {
-  "name": "@catto/nest-push",
+  "name": "@ccatto/nest-push",
   "version": "1.0.0",
   "description": "Catto Push - NestJS Firebase Cloud Messaging (FCM) push notification service",
   "license": "MIT",

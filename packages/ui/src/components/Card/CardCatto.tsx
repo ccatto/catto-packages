@@ -1,4 +1,4 @@
-// @catto/ui - CardCatto Component
+// @ccatto/ui - CardCatto Component
 'use client';
 
 import React, {

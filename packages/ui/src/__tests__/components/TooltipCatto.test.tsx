@@ -1,4 +1,4 @@
-// @catto/ui - TooltipCatto Tests
+// @ccatto/ui - TooltipCatto Tests
 // Tests for the CSS-based tooltip (uses group-hover, no JS state)
 import { fireEvent } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';
@@ -155,7 +155,7 @@ describe('TooltipCatto', () => {
       );
 
       const tooltip = screen.getByRole('tooltip');
-      expect(tooltip.className).toContain('bg-orange-500');
+      expect(tooltip.className).toContain('bg-theme-secondary');
     });
 
     it('applies navy variant styles', () => {
@@ -166,7 +166,7 @@ describe('TooltipCatto', () => {
       );
 
       const tooltip = screen.getByRole('tooltip');
-      expect(tooltip.className).toContain('bg-slate-800');
+      expect(tooltip.className).toContain('bg-theme-primary');
     });
 
     it('applies dark variant styles', () => {

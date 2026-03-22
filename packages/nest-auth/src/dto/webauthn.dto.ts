@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - WebAuthn DTOs
+ * @ccatto/nest-auth - WebAuthn DTOs
  *
  * Data transfer objects for WebAuthn/Passkey operations.
  */

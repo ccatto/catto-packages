@@ -1,4 +1,4 @@
-// @catto/logger — Node.js logger factory
+// @ccatto/logger — Node.js logger factory
 
 import pino from 'pino';
 import { extractError } from './errors';

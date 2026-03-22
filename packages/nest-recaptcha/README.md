@@ -1,20 +1,20 @@
-# @catto/nest-recaptcha
+# @ccatto/nest-recaptcha
 
 NestJS dynamic module for Google reCAPTCHA v3 server-side verification.
 
 ## Install
 
 ```bash
-npm install @catto/nest-recaptcha
+npm install @ccatto/nest-recaptcha
 # or
-yarn add @catto/nest-recaptcha
+yarn add @ccatto/nest-recaptcha
 ```
 
 ## Quick Start
 
 ```typescript
 import { Module } from '@nestjs/common';
-import { CattoRecaptchaModule } from '@catto/nest-recaptcha';
+import { CattoRecaptchaModule } from '@ccatto/nest-recaptcha';
 
 @Module({
   imports: [
@@ -30,7 +30,7 @@ export class AppModule {}
 Inject the service to verify tokens:
 
 ```typescript
-import { CattoRecaptchaService } from '@catto/nest-recaptcha';
+import { CattoRecaptchaService } from '@ccatto/nest-recaptcha';
 
 @Injectable()
 export class ContactService {

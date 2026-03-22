@@ -1,14 +1,14 @@
 'use client';
 
 /**
- * @catto/ui ThemeProvider
+ * @ccatto/ui ThemeProvider
  * =======================
  *
  * React context for runtime theme switching.
  * Manages theme state, localStorage persistence, and DOM updates.
  *
  * Usage:
- *   import { ThemeProvider, useTheme } from '@catto/ui';
+ *   import { ThemeProvider, useTheme } from '@ccatto/ui';
  *
  *   // Wrap your app
  *   <ThemeProvider defaultTheme="rleaguez">

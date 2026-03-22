@@ -1,20 +1,20 @@
-# @catto/react-auth
+# @ccatto/react-auth
 
 React/Next.js authentication package with Better Auth integration, JWT auth, session management, and mobile (Capacitor) support.
 
 ## Install
 
 ```bash
-npm install @catto/react-auth
+npm install @ccatto/react-auth
 # or
-yarn add @catto/react-auth
+yarn add @ccatto/react-auth
 ```
 
 ## Quick Start
 
 ```tsx
 // Client-side
-import { useSession, signIn, signOut } from '@catto/react-auth';
+import { useSession, signIn, signOut } from '@ccatto/react-auth';
 
 function Profile() {
   const session = useSession();
@@ -32,15 +32,15 @@ function Profile() {
 
 ```typescript
 // Server-side
-import { createCattoAuth } from '@catto/react-auth/server';
+import { createCattoAuth } from '@ccatto/react-auth/server';
 ```
 
 ## Sub-exports
 
 | Entry Point | Description |
 | --- | --- |
-| `@catto/react-auth` | Client-side hooks, providers, types |
-| `@catto/react-auth/server` | Server-side auth config, session enrichment |
+| `@ccatto/react-auth` | Client-side hooks, providers, types |
+| `@ccatto/react-auth/server` | Server-side auth config, session enrichment |
 
 ## Peer Dependencies
 

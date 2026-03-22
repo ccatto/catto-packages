@@ -1,4 +1,4 @@
-// @catto/ui Vitest Setup
+// @ccatto/ui Vitest Setup
 // Mocks for browser APIs and optional dependencies
 
 import * as matchers from '@testing-library/jest-dom/matchers';

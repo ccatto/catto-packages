@@ -1,5 +1,5 @@
 /**
- * @catto/nest-sms
+ * @ccatto/nest-sms
  *
  * Catto SMS - NestJS SMS service with Telnyx integration.
  * Provides a config-driven SMS sending service with dynamic module support.
@@ -7,7 +7,7 @@
  * ## Quick Start
  *
  * ```typescript
- * import { CattoSmsModule, CattoSmsService } from '@catto/nest-sms';
+ * import { CattoSmsModule, CattoSmsService } from '@ccatto/nest-sms';
  *
  * @Module({
  *   imports: [
