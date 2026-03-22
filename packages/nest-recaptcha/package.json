@@ -4,6 +4,23 @@
   "description": "Catto reCAPTCHA - NestJS Google reCAPTCHA v3 verification",
   "license": "MIT",
   "author": "Chris Catto",
+  "keywords": [
+    "nestjs",
+    "recaptcha",
+    "google",
+    "verification",
+    "typescript",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/nest-recaptcha",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/nest-recaptcha"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [

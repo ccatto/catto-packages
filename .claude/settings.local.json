@@ -1,0 +1,21 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(grep -v \"^\\\\.$\\\\|^\\\\.\\\\.$\")",
+      "Bash(ls -la /Users/chriscatto/Documents/GitK8/catto-packages/packages/*/package.json)",
+      "Bash(xargs -I {} basename {})",
+      "Bash(yarn install:*)",
+      "Bash(npm view:*)",
+      "Bash(curl -s \"https://registry.npmjs.org/@catto%2ftest\")",
+      "Bash(curl -s \"https://registry.npmjs.org/-/user/org.couchdb.user:catto\")",
+      "Bash(curl -s \"https://www.npmjs.com/org/catto\" -o /dev/null -w \"%{http_code}\")",
+      "Bash(curl -s \"https://registry.npmjs.org/-/org/catto\" -w \"\\\\nHTTP: %{http_code}\")",
+      "Bash(curl -s \"https://registry.npmjs.org/-/v1/search?text=scope:catto&size=1\")",
+      "Bash(python3 -m json.tool)",
+      "Bash(curl:*)",
+      "Bash(npm profile:*)",
+      "Bash(npm org:*)",
+      "Bash(npm pack:*)"
+    ]
+  }
+}

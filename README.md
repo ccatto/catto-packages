@@ -51,7 +51,21 @@ yarn prettier
 
 ## Using in Consuming Apps
 
-Currently these packages are used via local workspace references. CI/CD publishing to npm will be added in a future update.
+All packages are published to **npmjs.com** under the `@catto` scope.
+
+```bash
+# NestJS backend packages
+npm install @catto/nest-auth @catto/nest-email @catto/nest-push @catto/nest-sms
+
+# React frontend packages
+npm install @catto/ui @catto/react-auth
+```
+
+### CI/CD
+
+Packages are automatically published on merge to `main` when a package version is bumped. The GitHub Actions workflow detects unpublished versions and publishes them.
+
+To publish, you need an `NPM_TOKEN` secret configured in the GitHub repo settings.
 
 ## License
 
