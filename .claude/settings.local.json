@@ -15,7 +15,9 @@
       "Bash(curl:*)",
       "Bash(npm profile:*)",
       "Bash(npm org:*)",
-      "Bash(npm pack:*)"
+      "Bash(npm pack:*)",
+      "Bash(gh run:*)",
+      "Bash(yarn workspace:*)"
     ]
   }
 }
