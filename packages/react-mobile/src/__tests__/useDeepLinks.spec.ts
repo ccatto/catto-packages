@@ -1,3 +1,4 @@
+import { App } from '@capacitor/app';
 import { Capacitor } from '@capacitor/core';
 import { renderHook } from '@testing-library/react';
 import { parseDeepLink, useDeepLinks } from '../hooks/useDeepLinks';
@@ -58,7 +59,6 @@ describe('useDeepLinks', () => {
 
   it('should not register listeners on web', () => {
     vi.mocked(Capacitor.isNativePlatform).mockReturnValue(false);
-    const { App } = vi.mocked(require('@capacitor/app'));
 
     renderHook(() => useDeepLinks({ onDeepLink: vi.fn() }));
 

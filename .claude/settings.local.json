@@ -18,7 +18,8 @@
       "Bash(npm pack:*)",
       "Bash(gh run:*)",
       "Bash(yarn workspace:*)",
-      "Bash(yarn test:*)"
+      "Bash(yarn test:*)",
+      "Bash(git stash:*)"
     ]
   }
 }
