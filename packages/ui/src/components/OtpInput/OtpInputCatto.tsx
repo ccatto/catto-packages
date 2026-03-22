@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 import {
   ClipboardEvent,
@@ -7,8 +7,8 @@ import {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { cn } from '../../utils';
+} from "react";
+import { cn } from "../../utils";
 
 export interface OtpInputCattoProps {
   /** Number of OTP digits */
@@ -45,9 +45,9 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
       error,
       className,
     },
-    ref,
+    ref
   ) => {
-    const [otp, setOtp] = useState<string[]>(new Array(length).fill(''));
+    const [otp, setOtp] = useState<string[]>(new Array(length).fill(""));
     const inputRefs = useRef<(HTMLInputElement | null)[]>([]);
 
     // Focus first input on mount (if autoFocus is enabled)
@@ -60,7 +60,7 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
     // Clear digits and refocus first input on error (e.g., wrong code)
     useEffect(() => {
       if (error) {
-        setOtp(new Array(length).fill(''));
+        setOtp(new Array(length).fill(""));
         setTimeout(() => {
           inputRefs.current[0]?.focus();
         }, 100);
@@ -69,8 +69,8 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
 
     // Check if OTP is complete
     useEffect(() => {
-      const otpValue = otp.join('');
-      if (otpValue.length === length && !otp.includes('')) {
+      const otpValue = otp.join("");
+      if (otpValue.length === length && !otp.includes("")) {
         onComplete(otpValue);
       }
     }, [otp, length, onComplete]);
@@ -94,29 +94,29 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
 
     const handleKeyDown = (
       index: number,
-      e: KeyboardEvent<HTMLInputElement>,
+      e: KeyboardEvent<HTMLInputElement>
     ) => {
       if (disabled) return;
 
       // Backspace: clear current or move to previous
-      if (e.key === 'Backspace') {
+      if (e.key === "Backspace") {
         if (otp[index]) {
           const newOtp = [...otp];
-          newOtp[index] = '';
+          newOtp[index] = "";
           setOtp(newOtp);
         } else if (index > 0) {
           inputRefs.current[index - 1]?.focus();
           const newOtp = [...otp];
-          newOtp[index - 1] = '';
+          newOtp[index - 1] = "";
           setOtp(newOtp);
         }
       }
 
       // Arrow keys for navigation
-      if (e.key === 'ArrowLeft' && index > 0) {
+      if (e.key === "ArrowLeft" && index > 0) {
         inputRefs.current[index - 1]?.focus();
       }
-      if (e.key === 'ArrowRight' && index < length - 1) {
+      if (e.key === "ArrowRight" && index < length - 1) {
         inputRefs.current[index + 1]?.focus();
       }
     };
@@ -125,10 +125,10 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
       if (disabled) return;
 
       e.preventDefault();
-      const pastedData = e.clipboardData.getData('text').replace(/\D/g, '');
+      const pastedData = e.clipboardData.getData("text").replace(/\D/g, "");
 
       if (pastedData.length === length) {
-        const newOtp = pastedData.split('').slice(0, length);
+        const newOtp = pastedData.split("").slice(0, length);
         setOtp(newOtp);
         inputRefs.current[length - 1]?.focus();
       }
@@ -142,7 +142,7 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
     return (
       <div
         ref={ref}
-        className={cn('flex flex-col items-center gap-2', className)}
+        className={cn("flex flex-col items-center gap-2", className)}
       >
         <div className="flex gap-2 sm:gap-3">
           {otp.map((digit, index) => (
@@ -161,16 +161,16 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
               onFocus={() => handleFocus(index)}
               disabled={disabled}
               className={cn(
-                'h-12 w-10 sm:h-14 sm:w-12',
-                'rounded-lg border-2 text-center text-xl font-bold',
-                'transition-all duration-150',
-                'focus:outline-none focus:ring-2 focus:ring-theme-secondary',
+                "h-12 w-10 sm:h-14 sm:w-12",
+                "rounded-lg border-2 text-center text-xl font-bold",
+                "transition-all duration-150",
+                "focus:outline-none focus:ring-2 focus:ring-theme-secondary",
                 error
-                  ? 'border-red-500 bg-red-50 text-red-700 dark:border-red-400 dark:bg-red-900/30 dark:text-red-300'
+                  ? "border-red-500 bg-red-50 text-red-700 dark:border-red-400 dark:bg-red-900/30 dark:text-red-300"
                   : digit
-                    ? 'border-theme-secondary bg-theme-secondary-subtle text-theme-text'
-                    : 'border-theme-border bg-theme-surface text-theme-text',
-                disabled ? 'cursor-not-allowed opacity-50' : 'cursor-text',
+                  ? "border-theme-secondary bg-theme-secondary-subtle text-theme-text"
+                  : "border-theme-border bg-theme-surface text-theme-text",
+                disabled ? "cursor-not-allowed opacity-50" : "cursor-text"
               )}
               aria-label={`Digit ${index + 1} of ${length}`}
             />
@@ -181,9 +181,9 @@ const OtpInputCatto = forwardRef<HTMLDivElement, OtpInputCattoProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
-OtpInputCatto.displayName = 'OtpInputCatto';
+OtpInputCatto.displayName = "OtpInputCatto";
 
 export default OtpInputCatto;

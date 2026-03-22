@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface DetailedStep {
   /** Step title */
@@ -31,8 +31,8 @@ const DetailedStepperCatto: React.FC<DetailedStepperCattoProps> = ({
   return (
     <ol
       className={cn(
-        'w-full items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-8 rtl:space-x-reverse',
-        className,
+        "w-full items-center space-y-4 sm:flex sm:space-y-0 sm:space-x-8 rtl:space-x-reverse",
+        className
       )}
     >
       {steps.map((step, index) => {
@@ -44,18 +44,18 @@ const DetailedStepperCatto: React.FC<DetailedStepperCattoProps> = ({
           <li
             key={index}
             className={cn(
-              'flex items-center space-x-2.5 rtl:space-x-reverse',
+              "flex items-center space-x-2.5 rtl:space-x-reverse",
               isActive
-                ? 'text-blue-600 dark:text-blue-500'
-                : 'text-gray-500 dark:text-gray-400',
+                ? "text-blue-600 dark:text-blue-500"
+                : "text-gray-500 dark:text-gray-400"
             )}
           >
             <span
               className={cn(
-                'flex h-8 w-8 shrink-0 items-center justify-center rounded-full border',
+                "flex h-8 w-8 shrink-0 items-center justify-center rounded-full border",
                 isActive
-                  ? 'border-blue-600 dark:border-blue-500'
-                  : 'border-gray-500 dark:border-gray-400',
+                  ? "border-blue-600 dark:border-blue-500"
+                  : "border-gray-500 dark:border-gray-400"
               )}
             >
               {index + 1}

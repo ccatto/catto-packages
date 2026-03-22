@@ -1,49 +1,49 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { ArrowRight, Check, Download, Mail, Trash2 } from 'lucide-react';
-import ButtonCatto from './ButtonCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { ArrowRight, Check, Download, Mail, Trash2 } from "lucide-react";
+import ButtonCatto from "./ButtonCatto";
 
 const meta = {
-  title: 'Components/Button',
+  title: "Components/Button",
   component: ButtonCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     variant: {
-      control: 'select',
+      control: "select",
       options: [
-        'primary',
-        'secondary',
-        'tertiary',
-        'catto',
-        'ghost',
-        'outline',
-        'danger',
-        'goGreen',
-        'pill',
-        'pillOutline',
-        'funOrange',
-        'outlineRoundedXL',
-        'blueGradientXL',
+        "primary",
+        "secondary",
+        "tertiary",
+        "catto",
+        "ghost",
+        "outline",
+        "danger",
+        "goGreen",
+        "pill",
+        "pillOutline",
+        "funOrange",
+        "outlineRoundedXL",
+        "blueGradientXL",
       ],
     },
     size: {
-      control: 'select',
-      options: ['small', 'medium', 'large'],
+      control: "select",
+      options: ["small", "medium", "large"],
     },
     width: {
-      control: 'select',
-      options: ['full', 'auto', 'fit'],
+      control: "select",
+      options: ["full", "auto", "fit"],
     },
     haptic: {
-      control: 'select',
-      options: ['none', 'light', 'medium', 'heavy'],
+      control: "select",
+      options: ["none", "light", "medium", "heavy"],
     },
     animation: {
-      control: 'select',
-      options: ['none', 'tada', 'bounce', 'pulse'],
+      control: "select",
+      options: ["none", "tada", "bounce", "pulse"],
     },
   },
   args: {
@@ -60,33 +60,33 @@ type Story = StoryObj<typeof meta>;
 
 export const Primary: Story = {
   args: {
-    variant: 'primary',
-    children: 'Primary Button',
-    width: 'auto',
+    variant: "primary",
+    children: "Primary Button",
+    width: "auto",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    variant: 'secondary',
-    children: 'Secondary Button',
-    width: 'auto',
+    variant: "secondary",
+    children: "Secondary Button",
+    width: "auto",
   },
 };
 
 export const Tertiary: Story = {
   args: {
-    variant: 'tertiary',
-    children: 'Tertiary Button',
-    width: 'auto',
+    variant: "tertiary",
+    children: "Tertiary Button",
+    width: "auto",
   },
 };
 
 export const Catto: Story = {
   args: {
-    variant: 'catto',
-    children: 'Catto Button',
-    width: 'auto',
+    variant: "catto",
+    children: "Catto Button",
+    width: "auto",
   },
 };
 
@@ -96,18 +96,18 @@ export const Catto: Story = {
 
 export const Danger: Story = {
   args: {
-    variant: 'danger',
-    children: 'Delete',
-    width: 'auto',
+    variant: "danger",
+    children: "Delete",
+    width: "auto",
     leftIcon: <Trash2 className="h-4 w-4" />,
   },
 };
 
 export const GoGreen: Story = {
   args: {
-    variant: 'goGreen',
-    children: 'Confirm',
-    width: 'auto',
+    variant: "goGreen",
+    children: "Confirm",
+    width: "auto",
     leftIcon: <Check className="h-4 w-4" />,
   },
 };
@@ -118,16 +118,16 @@ export const GoGreen: Story = {
 
 export const Ghost: Story = {
   args: {
-    variant: 'ghost',
+    variant: "ghost",
     children: <Mail className="h-4 w-4" />,
   },
 };
 
 export const Outline: Story = {
   args: {
-    variant: 'outline',
-    children: 'Outline Button',
-    width: 'auto',
+    variant: "outline",
+    children: "Outline Button",
+    width: "auto",
   },
 };
 
@@ -137,23 +137,23 @@ export const Outline: Story = {
 
 export const FunOrange: Story = {
   args: {
-    variant: 'funOrange',
-    children: 'Get Started',
+    variant: "funOrange",
+    children: "Get Started",
   },
 };
 
 export const BlueGradientXL: Story = {
   args: {
-    variant: 'blueGradientXL',
-    children: 'Sign Up Now',
-    width: 'auto',
+    variant: "blueGradientXL",
+    children: "Sign Up Now",
+    width: "auto",
   },
 };
 
 export const OutlineRoundedXL: Story = {
   args: {
-    variant: 'outlineRoundedXL',
-    children: 'Learn More',
+    variant: "outlineRoundedXL",
+    children: "Learn More",
   },
 };
 
@@ -163,17 +163,17 @@ export const OutlineRoundedXL: Story = {
 
 export const Pill: Story = {
   args: {
-    variant: 'pill',
-    children: 'Pill Button',
-    width: 'auto',
+    variant: "pill",
+    children: "Pill Button",
+    width: "auto",
   },
 };
 
 export const PillOutline: Story = {
   args: {
-    variant: 'pillOutline',
-    children: 'Pill Outline',
-    width: 'auto',
+    variant: "pillOutline",
+    children: "Pill Outline",
+    width: "auto",
   },
 };
 
@@ -183,28 +183,28 @@ export const PillOutline: Story = {
 
 export const Small: Story = {
   args: {
-    variant: 'primary',
-    size: 'small',
-    children: 'Small Button',
-    width: 'auto',
+    variant: "primary",
+    size: "small",
+    children: "Small Button",
+    width: "auto",
   },
 };
 
 export const Medium: Story = {
   args: {
-    variant: 'primary',
-    size: 'medium',
-    children: 'Medium Button',
-    width: 'auto',
+    variant: "primary",
+    size: "medium",
+    children: "Medium Button",
+    width: "auto",
   },
 };
 
 export const Large: Story = {
   args: {
-    variant: 'primary',
-    size: 'large',
-    children: 'Large Button',
-    width: 'auto',
+    variant: "primary",
+    size: "large",
+    children: "Large Button",
+    width: "auto",
   },
 };
 
@@ -214,19 +214,19 @@ export const Large: Story = {
 
 export const Disabled: Story = {
   args: {
-    variant: 'primary',
-    children: 'Disabled Button',
+    variant: "primary",
+    children: "Disabled Button",
     disabled: true,
-    width: 'auto',
+    width: "auto",
   },
 };
 
 export const Loading: Story = {
   args: {
-    variant: 'primary',
-    children: 'Loading...',
+    variant: "primary",
+    children: "Loading...",
     isLoading: true,
-    width: 'auto',
+    width: "auto",
   },
 };
 
@@ -236,29 +236,29 @@ export const Loading: Story = {
 
 export const WithLeftIcon: Story = {
   args: {
-    variant: 'primary',
-    children: 'Send Email',
+    variant: "primary",
+    children: "Send Email",
     leftIcon: <Mail className="h-4 w-4" />,
-    width: 'auto',
+    width: "auto",
   },
 };
 
 export const WithRightIcon: Story = {
   args: {
-    variant: 'primary',
-    children: 'Continue',
+    variant: "primary",
+    children: "Continue",
     rightIcon: <ArrowRight className="h-4 w-4" />,
-    width: 'auto',
+    width: "auto",
   },
 };
 
 export const WithBothIcons: Story = {
   args: {
-    variant: 'primary',
-    children: 'Download',
+    variant: "primary",
+    children: "Download",
     leftIcon: <Download className="h-4 w-4" />,
     rightIcon: <ArrowRight className="h-4 w-4" />,
-    width: 'auto',
+    width: "auto",
   },
 };
 
@@ -268,13 +268,13 @@ export const WithBothIcons: Story = {
 
 export const FullWidth: Story = {
   args: {
-    variant: 'primary',
-    children: 'Full Width Button',
-    width: 'full',
+    variant: "primary",
+    children: "Full Width Button",
+    width: "full",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '400px' }}>
+      <div style={{ width: "400px" }}>
         <Story />
       </div>
     ),
@@ -283,16 +283,16 @@ export const FullWidth: Story = {
 
 export const AutoWidth: Story = {
   args: {
-    variant: 'primary',
-    children: 'Auto Width',
-    width: 'auto',
+    variant: "primary",
+    children: "Auto Width",
+    width: "auto",
   },
 };
 
 export const FitWidth: Story = {
   args: {
-    variant: 'primary',
-    children: 'Fit Content',
-    width: 'fit',
+    variant: "primary",
+    children: "Fit Content",
+    width: "fit",
   },
 };

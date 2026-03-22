@@ -1,13 +1,13 @@
 // @ccatto/ui - PageLoadingCatto Component
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 export interface PageLoadingCattoProps {
   /** Optional message to display below the spinner */
   message?: string;
   /** Minimum height for the container. Defaults to 'screen' (100vh) */
-  minHeight?: 'screen' | 'full' | 'auto';
+  minHeight?: "screen" | "full" | "auto";
   /** Show Rz logo inside the spinner */
   showLogo?: boolean;
 }
@@ -78,21 +78,21 @@ const RzLogoSvg: React.FC<{ size: number }> = ({ size }) => (
  */
 const PageLoadingCatto: React.FC<PageLoadingCattoProps> = ({
   message,
-  minHeight = 'screen',
+  minHeight = "screen",
   showLogo = false,
 }) => {
   const heightClass =
-    minHeight === 'screen'
-      ? 'min-h-screen'
-      : minHeight === 'full'
-        ? 'min-h-full h-full'
-        : 'min-h-full h-full'; // 'auto' - fill parent container
+    minHeight === "screen"
+      ? "min-h-screen"
+      : minHeight === "full"
+      ? "min-h-full h-full"
+      : "min-h-full h-full"; // 'auto' - fill parent container
 
   // When minHeight is 'auto', use transparent bg (assumes it's inside a styled container)
-  const bgClass = minHeight === 'auto' ? '' : 'bg-theme-background';
+  const bgClass = minHeight === "auto" ? "" : "bg-theme-background";
 
   // Size: larger when showing logo to accommodate it clearly
-  const spinnerSize = showLogo ? 'h-24 w-24' : 'h-16 w-16';
+  const spinnerSize = showLogo ? "h-24 w-24" : "h-16 w-16";
   const logoSize = 56; // Inner logo slightly smaller than container
 
   return (

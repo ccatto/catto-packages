@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useEffect, useRef, useState } from 'react';
-import { cn } from '../../utils';
+import { useEffect, useRef, useState } from "react";
+import { cn } from "../../utils";
 
 export interface CarouselCattoProps {
   /** Array of image URLs */
@@ -22,8 +22,8 @@ export interface CarouselCattoProps {
 const CarouselCatto: React.FC<CarouselCattoProps> = ({
   images,
   interval = 3000,
-  width = 'w-[500px]',
-  height = 'h-[300px]',
+  width = "w-[500px]",
+  height = "h-[300px]",
   className,
 }) => {
   const [currentIndex, setCurrentIndex] = useState(0);
@@ -44,7 +44,7 @@ const CarouselCatto: React.FC<CarouselCattoProps> = ({
 
   useEffect(() => {
     if (carouselRef.current) {
-      carouselRef.current.style.transition = 'transform 0.5s ease-in-out';
+      carouselRef.current.style.transition = "transform 0.5s ease-in-out";
       carouselRef.current.style.transform = `translateX(-${
         currentIndex * 100
       }%)`;
@@ -62,7 +62,7 @@ const CarouselCatto: React.FC<CarouselCattoProps> = ({
 
   const goToPrevious = () => {
     setCurrentIndex(
-      (prevIndex) => (prevIndex - 1 + images.length) % images.length,
+      (prevIndex) => (prevIndex - 1 + images.length) % images.length
     );
     restartInterval();
   };
@@ -73,18 +73,18 @@ const CarouselCatto: React.FC<CarouselCattoProps> = ({
   };
 
   return (
-    <div className={cn('relative overflow-hidden', width, height, className)}>
+    <div className={cn("relative overflow-hidden", width, height, className)}>
       <div
         className="flex transition-transform duration-500 ease-in-out"
         ref={carouselRef}
-        style={{ '--image-count': images.length } as React.CSSProperties}
+        style={{ "--image-count": images.length } as React.CSSProperties}
       >
         {images.map((image, index) => (
           <div
             key={index}
             className={cn(
-              'h-full w-full shrink-0 bg-cover bg-center',
-              index === currentIndex ? 'active' : '',
+              "h-full w-full shrink-0 bg-cover bg-center",
+              index === currentIndex ? "active" : ""
             )}
             style={{ backgroundImage: `url(${image})` }}
           />

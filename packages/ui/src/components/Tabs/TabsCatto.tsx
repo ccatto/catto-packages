@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import ButtonCatto from '../Button/ButtonCatto';
+import React, { useCallback, useEffect, useRef, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import ButtonCatto from "../Button/ButtonCatto";
 
 export interface TabItem {
   id: string;
@@ -22,9 +22,9 @@ export interface TabsCattoProps {
   /** Controlled active tab ID - if provided, component is controlled and parent manages state */
   activeTab?: string;
   /** Visual style variant */
-  variant?: 'default' | 'underline' | 'pills' | 'bordered';
+  variant?: "default" | "underline" | "pills" | "bordered";
   /** Font size */
-  size?: 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+  size?: "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
   /** Whether tabs should stretch to fill container width */
   fullWidth?: boolean;
   /** Callback when active tab changes (legacy, kept for backwards compatibility) */
@@ -38,7 +38,7 @@ export interface TabsCattoProps {
   /** Additional CSS classes for the content area */
   contentClassName?: string;
   /** Alignment of tabs */
-  align?: 'left' | 'center' | 'right';
+  align?: "left" | "center" | "right";
   /** Enable horizontal scrolling when tabs overflow (recommended for mobile) */
   scrollable?: boolean;
   /** Show scroll indicator chevrons when content overflows */
@@ -65,25 +65,25 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
   tabs,
   defaultTab,
   activeTab: controlledActiveTab,
-  variant = 'default',
-  size = 'md',
+  variant = "default",
+  size = "md",
   fullWidth = false,
   onChange,
   onTabChange,
-  className = '',
-  tabsClassName = '',
-  contentClassName = '',
-  align = 'left',
+  className = "",
+  tabsClassName = "",
+  contentClassName = "",
+  align = "left",
   scrollable = false,
   showScrollIndicators = true,
-  scrollGradientFrom = 'from-theme-background',
+  scrollGradientFrom = "from-theme-background",
 }) => {
   // Determine if controlled mode (parent manages state)
   const isControlled = controlledActiveTab !== undefined;
 
   // Internal state for uncontrolled mode
   const [internalActiveTab, setInternalActiveTab] = useState(
-    defaultTab || tabs[0]?.id,
+    defaultTab || tabs[0]?.id
   );
 
   // Use controlled value if provided, otherwise use internal state
@@ -119,12 +119,12 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
             tabElement.clientWidth / 2;
           container.scrollTo({
             left: Math.max(0, scrollLeft),
-            behavior: 'smooth',
+            behavior: "smooth",
           });
         }
       }
     },
-    [scrollable],
+    [scrollable]
   );
 
   const handleTabClick = (tabId: string) => {
@@ -174,37 +174,37 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
     });
 
     resizeObserver.observe(element);
-    element.addEventListener('scroll', checkScroll);
+    element.addEventListener("scroll", checkScroll);
 
     return () => {
       clearTimeout(initialCheckTimeout);
       resizeObserver.disconnect();
-      element.removeEventListener('scroll', checkScroll);
+      element.removeEventListener("scroll", checkScroll);
     };
   }, [scrollable, checkScroll, tabs.length]);
 
   // Detect desktop viewport for centering (only when scrollable)
   useEffect(() => {
     if (!scrollable) return;
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
-    const mediaQuery = window.matchMedia('(min-width: 768px)');
+    const mediaQuery = window.matchMedia("(min-width: 768px)");
     setIsDesktop(mediaQuery.matches);
 
     const handler = (e: MediaQueryListEvent) => setIsDesktop(e.matches);
-    mediaQuery.addEventListener('change', handler);
+    mediaQuery.addEventListener("change", handler);
 
-    return () => mediaQuery.removeEventListener('change', handler);
+    return () => mediaQuery.removeEventListener("change", handler);
   }, [scrollable]);
 
   // Size classes
   const sizeClasses = {
-    sm: 'px-3 py-1.5 text-sm',
-    md: 'px-4 py-2 text-base',
-    lg: 'px-5 py-2.5 text-lg',
-    xl: 'px-6 py-3 text-xl',
-    '2xl': 'px-7 py-3.5 text-2xl',
-    '3xl': 'px-8 py-4 text-3xl',
+    sm: "px-3 py-1.5 text-sm",
+    md: "px-4 py-2 text-base",
+    lg: "px-5 py-2.5 text-lg",
+    xl: "px-6 py-3 text-xl",
+    "2xl": "px-7 py-3.5 text-2xl",
+    "3xl": "px-8 py-4 text-3xl",
   };
 
   // Get styles for each variant
@@ -216,52 +216,52 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
     }
 
     switch (variant) {
-      case 'underline':
+      case "underline":
         return `${base} border-b-2 ${
           isActive
-            ? 'text-theme-secondary border-theme-secondary'
-            : 'text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:border-gray-600'
+            ? "text-theme-secondary border-theme-secondary"
+            : "text-gray-500 border-transparent hover:text-gray-700 hover:border-gray-300 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:border-gray-600"
         }`;
 
-      case 'pills':
+      case "pills":
         return `${base} rounded-full ${
           isActive
-            ? 'bg-theme-secondary text-theme-on-secondary'
-            : 'text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'
+            ? "bg-theme-secondary text-theme-on-secondary"
+            : "text-gray-600 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800"
         }`;
 
-      case 'bordered':
+      case "bordered":
         return `${base} border-2 rounded-lg ${
           isActive
-            ? 'border-theme-secondary bg-theme-secondary-subtle text-theme-secondary'
-            : 'border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-800'
+            ? "border-theme-secondary bg-theme-secondary-subtle text-theme-secondary"
+            : "border-gray-200 text-gray-600 hover:border-gray-300 hover:bg-gray-50 dark:border-gray-700 dark:text-gray-400 dark:hover:border-gray-600 dark:hover:bg-gray-800"
         }`;
 
       default: // 'default'
         return `${base} rounded-t-lg border-b-2 ${
           isActive
-            ? 'bg-theme-surface text-theme-secondary border-theme-secondary'
-            : 'text-gray-500 border-transparent hover:text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-800'
+            ? "bg-theme-surface text-theme-secondary border-theme-secondary"
+            : "text-gray-500 border-transparent hover:text-gray-700 hover:bg-gray-50 dark:text-gray-400 dark:hover:text-gray-300 dark:hover:bg-gray-800"
         }`;
     }
   };
 
   // Container alignment classes
   const alignClasses = {
-    left: 'justify-start',
-    center: 'justify-center',
-    right: 'justify-end',
+    left: "justify-start",
+    center: "justify-center",
+    right: "justify-end",
   };
 
   // Tab container border based on variant
   const containerBorderClass =
-    variant === 'underline'
-      ? 'border-b border-gray-200 dark:border-gray-700'
-      : variant === 'pills'
-        ? 'gap-2 px-2'
-        : variant === 'bordered'
-          ? 'gap-2'
-          : 'gap-1';
+    variant === "underline"
+      ? "border-b border-gray-200 dark:border-gray-700"
+      : variant === "pills"
+      ? "gap-2 px-2"
+      : variant === "bordered"
+      ? "gap-2"
+      : "gap-1";
 
   const activeContent = tabs.find((tab) => tab.id === activeTab)?.content;
 
@@ -280,7 +280,7 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
           }}
           onClick={() => !tab.disabled && handleTabClick(tab.id)}
           className={`${getTabStyles(activeTab === tab.id, !!tab.disabled)} ${
-            fullWidth ? 'flex-1' : ''
+            fullWidth ? "flex-1" : ""
           } flex items-center justify-center gap-2 flex-shrink-0`}
           aria-selected={activeTab === tab.id}
           aria-disabled={tab.disabled}
@@ -311,7 +311,7 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
                 onClick={() => {
                   scrollContainerRef.current?.scrollBy({
                     left: -150,
-                    behavior: 'smooth',
+                    behavior: "smooth",
                   });
                 }}
                 className="p-1.5 min-w-0 pointer-events-auto"
@@ -325,12 +325,12 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
           {/* Scrollable container */}
           <div
             ref={scrollContainerRef}
-            className={`flex ${containerBorderClass} ${tabsClassName} overflow-x-auto scrollbar-hide`}
+            className={`flex ${containerBorderClass} ${tabsClassName} overflow-x-auto scrollbar-none`}
             role="tablist"
             style={{
-              scrollbarWidth: 'none',
-              msOverflowStyle: 'none',
-              WebkitOverflowScrolling: 'touch',
+              scrollbarWidth: "none",
+              msOverflowStyle: "none",
+              WebkitOverflowScrolling: "touch",
             }}
           >
             <div
@@ -340,8 +340,8 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
                 ...(isDesktop &&
                   !showLeftIndicator &&
                   !showRightIndicator && {
-                    marginLeft: 'auto',
-                    marginRight: 'auto',
+                    marginLeft: "auto",
+                    marginRight: "auto",
                   }),
               }}
             >
@@ -361,7 +361,7 @@ const TabsCatto: React.FC<TabsCattoProps> = ({
                 onClick={() => {
                   scrollContainerRef.current?.scrollBy({
                     left: 150,
-                    behavior: 'smooth',
+                    behavior: "smooth",
                   });
                 }}
                 className="p-1.5 min-w-0 pointer-events-auto"

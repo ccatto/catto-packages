@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useEffect, useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from '../../i18n/defaults';
-import { cn } from '../../utils';
-import CalendarEventCard from './CalendarEventCard';
-import { CalendarEventItem, EventCalendarTheme } from './types';
+import React, { useEffect, useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from "../../i18n/defaults";
+import { cn } from "../../utils";
+import CalendarEventCard from "./CalendarEventCard";
+import { CalendarEventItem, EventCalendarTheme } from "./types";
 
 export interface DayViewLabels extends CalendarLabels {
   /** Text for "Today" button */
@@ -22,11 +22,11 @@ export interface DayViewLabels extends CalendarLabels {
 
 export const DEFAULT_DAY_VIEW_LABELS: Required<DayViewLabels> = {
   ...DEFAULT_CALENDAR_LABELS,
-  todayButton: 'Today',
-  previousDay: 'Previous day',
-  nextDay: 'Next day',
-  allDay: 'All day',
-  noEvents: 'No events scheduled',
+  todayButton: "Today",
+  previousDay: "Previous day",
+  nextDay: "Next day",
+  allDay: "All day",
+  noEvents: "No events scheduled",
 };
 
 export interface DayViewCattoProps {
@@ -60,11 +60,11 @@ export interface DayViewCattoProps {
 
 // Theme classes
 const themeClasses: Record<EventCalendarTheme, string> = {
-  midnightEmber: 'bg-slate-800 text-slate-50 dark:bg-slate-900',
-  sunset: 'bg-amber-50 text-amber-900 dark:bg-amber-900 dark:text-amber-100',
-  ocean: 'bg-blue-50 text-blue-900 dark:bg-blue-900 dark:text-blue-100',
-  forest: 'bg-green-50 text-green-900 dark:bg-green-900 dark:text-green-100',
-  lavender: 'bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100',
+  midnightEmber: "bg-slate-800 text-slate-50 dark:bg-slate-900",
+  sunset: "bg-amber-50 text-amber-900 dark:bg-amber-900 dark:text-amber-100",
+  ocean: "bg-blue-50 text-blue-900 dark:bg-blue-900 dark:text-blue-100",
+  forest: "bg-green-50 text-green-900 dark:bg-green-900 dark:text-green-100",
+  lavender: "bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100",
 };
 
 /**
@@ -73,13 +73,13 @@ const themeClasses: Record<EventCalendarTheme, string> = {
 const generateTimeSlots = (
   startHour: number,
   endHour: number,
-  slotDuration: 30 | 60,
+  slotDuration: 30 | 60
 ): string[] => {
   const slots: string[] = [];
   for (let hour = startHour; hour < endHour; hour++) {
-    slots.push(`${hour.toString().padStart(2, '0')}:00`);
+    slots.push(`${hour.toString().padStart(2, "0")}:00`);
     if (slotDuration === 30) {
-      slots.push(`${hour.toString().padStart(2, '0')}:30`);
+      slots.push(`${hour.toString().padStart(2, "0")}:30`);
     }
   }
   return slots;
@@ -89,13 +89,13 @@ const generateTimeSlots = (
  * Format time to display format
  */
 const formatTimeDisplay = (time: string): string => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const period = hours >= 12 ? 'PM' : 'AM';
+  const [hours, minutes] = time.split(":").map(Number);
+  const period = hours >= 12 ? "PM" : "AM";
   const displayHours = hours % 12 || 12;
   if (minutes === 0) {
     return `${displayHours}:00 ${period}`;
   }
-  return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+  return `${displayHours}:${minutes.toString().padStart(2, "0")} ${period}`;
 };
 
 /**
@@ -105,10 +105,10 @@ const getEventsForSlot = (
   events: CalendarEventItem[],
   date: Date,
   slotTime: string,
-  slotDuration: number,
+  slotDuration: number
 ): CalendarEventItem[] => {
   const dateStr = date.toDateString();
-  const slotStart = parseInt(slotTime.replace(':', ''), 10);
+  const slotStart = parseInt(slotTime.replace(":", ""), 10);
   const slotEnd = slotStart + (slotDuration === 30 ? 30 : 100);
 
   return events.filter((event) => {
@@ -123,7 +123,7 @@ const getEventsForSlot = (
     } catch {
       // Handle HH:mm format
       if (/^\d{2}:\d{2}$/.test(event.startTime)) {
-        const eventTime = parseInt(event.startTime.replace(':', ''), 10);
+        const eventTime = parseInt(event.startTime.replace(":", ""), 10);
         return eventTime >= slotStart && eventTime < slotEnd;
       }
       return false;
@@ -136,7 +136,7 @@ const getEventsForSlot = (
  */
 const getAllDayEvents = (
   events: CalendarEventItem[],
-  date: Date,
+  date: Date
 ): CalendarEventItem[] => {
   const dateStr = date.toDateString();
   return events.filter((event) => {
@@ -168,7 +168,7 @@ const DayViewCatto: React.FC<DayViewCattoProps> = ({
   startHour = 6,
   endHour = 22,
   slotDuration = 60,
-  theme = 'midnightEmber',
+  theme = "midnightEmber",
   labels = {},
   showNavigation = true,
   showTodayButton = true,
@@ -186,7 +186,7 @@ const DayViewCatto: React.FC<DayViewCattoProps> = ({
   // Generate time slots
   const timeSlots = useMemo(
     () => generateTimeSlots(startHour, endHour, slotDuration),
-    [startHour, endHour, slotDuration],
+    [startHour, endHour, slotDuration]
   );
 
   // Get events for this date
@@ -225,19 +225,19 @@ const DayViewCatto: React.FC<DayViewCattoProps> = ({
 
   // Format date header
   const dateHeaderText = currentDate.toLocaleDateString(mergedLabels.locale, {
-    weekday: 'long',
-    month: 'long',
-    day: 'numeric',
-    year: 'numeric',
+    weekday: "long",
+    month: "long",
+    day: "numeric",
+    year: "numeric",
   });
 
   return (
     <div
       className={cn(
-        'w-full max-w-2xl',
+        "w-full max-w-2xl",
         themeClasses[theme],
-        'rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden',
-        className,
+        "rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden",
+        className
       )}
     >
       {/* Header */}
@@ -316,15 +316,15 @@ const DayViewCatto: React.FC<DayViewCattoProps> = ({
               events,
               currentDate,
               time,
-              slotDuration,
+              slotDuration
             );
 
             return (
               <div
                 key={time}
                 className={cn(
-                  'flex border-b last:border-b-0 dark:border-gray-700',
-                  'min-h-16',
+                  "flex border-b last:border-b-0 dark:border-gray-700",
+                  "min-h-16"
                 )}
               >
                 {/* Time label */}
@@ -335,8 +335,8 @@ const DayViewCatto: React.FC<DayViewCattoProps> = ({
                 {/* Slot content */}
                 <div
                   className={cn(
-                    'flex-1 p-2',
-                    'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50',
+                    "flex-1 p-2",
+                    "cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50"
                   )}
                   onClick={() => onSlotClick?.(time)}
                 >
@@ -363,6 +363,6 @@ const DayViewCatto: React.FC<DayViewCattoProps> = ({
   );
 };
 
-DayViewCatto.displayName = 'DayViewCatto';
+DayViewCatto.displayName = "DayViewCatto";
 
 export default DayViewCatto;

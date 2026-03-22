@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import LoadingMessageAndCircleCatto from './LoadingMessageAndCircleCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import LoadingMessageAndCircleCatto from "./LoadingMessageAndCircleCatto";
 
 const meta = {
-  title: 'Components/Loading/MessageAndCircle',
+  title: "Components/Loading/MessageAndCircle",
   component: LoadingMessageAndCircleCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof LoadingMessageAndCircleCatto>;
 
@@ -15,19 +15,19 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    message: 'Loading...',
+    message: "Loading...",
   },
 };
 
 export const CustomMessage: Story = {
   args: {
-    message: 'Fetching your data...',
+    message: "Fetching your data...",
   },
 };
 
 export const LongMessage: Story = {
   args: {
     message:
-      'Please wait while we process your request. This may take a moment.',
+      "Please wait while we process your request. This may take a moment.",
   },
 };

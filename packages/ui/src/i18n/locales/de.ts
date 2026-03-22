@@ -1,7 +1,7 @@
 // @ccatto/ui - German Labels
 // Deutsch - de
 
-import type { CattoUILabels } from '../defaults';
+import type { CattoUILabels } from "../defaults";
 
 /**
  * German translations for all @ccatto/ui components
@@ -17,64 +17,64 @@ import type { CattoUILabels } from '../defaults';
  */
 export const germanLabels: CattoUILabels = {
   modal: {
-    closeButton: 'Fenster schließen',
+    closeButton: "Fenster schließen",
   },
   select: {
-    placeholder: 'Bitte auswählen',
-    noOptions: 'Keine Optionen verfügbar',
-    clearButton: 'Auswahl löschen',
+    placeholder: "Bitte auswählen",
+    noOptions: "Keine Optionen verfügbar",
+    clearButton: "Auswahl löschen",
   },
   phoneInput: {
-    placeholder: '0151 12345678',
+    placeholder: "0151 12345678",
   },
   datePicker: {
-    placeholder: 'Datum auswählen',
-    clearButton: 'Datum löschen',
-    calendarButton: 'Kalender öffnen',
+    placeholder: "Datum auswählen",
+    clearButton: "Datum löschen",
+    calendarButton: "Kalender öffnen",
   },
   calendar: {
-    locale: 'de-DE',
-    dayNames: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
-    previousMonth: 'Vorheriger Monat',
-    nextMonth: 'Nächster Monat',
-    today: 'Heute',
+    locale: "de-DE",
+    dayNames: ["So", "Mo", "Di", "Mi", "Do", "Fr", "Sa"],
+    previousMonth: "Vorheriger Monat",
+    nextMonth: "Nächster Monat",
+    today: "Heute",
   },
   table: {
-    filterPlaceholder: 'Suchen...',
-    emptyMessage: 'Keine Daten verfügbar',
-    loadingMessage: 'Laden...',
-    previousPage: 'Vorherige Seite',
-    nextPage: 'Nächste Seite',
-    pageInfo: 'Seite {current} von {total}',
-    rowsPerPage: 'Zeilen pro Seite',
-    selectAll: 'Alle auswählen',
-    selectRow: 'Zeile auswählen',
+    filterPlaceholder: "Suchen...",
+    emptyMessage: "Keine Daten verfügbar",
+    loadingMessage: "Laden...",
+    previousPage: "Vorherige Seite",
+    nextPage: "Nächste Seite",
+    pageInfo: "Seite {current} von {total}",
+    rowsPerPage: "Zeilen pro Seite",
+    selectAll: "Alle auswählen",
+    selectRow: "Zeile auswählen",
   },
   emptyState: {
-    defaultTitle: 'Keine Daten',
-    defaultDescription: 'Hier gibt es noch nichts',
-    errorTitle: 'Ein Fehler ist aufgetreten',
-    errorDescription: 'Bitte versuchen Sie es später erneut',
-    noResultsTitle: 'Keine Ergebnisse gefunden',
-    noResultsDescription: 'Versuchen Sie, Ihre Suche oder Filter anzupassen',
+    defaultTitle: "Keine Daten",
+    defaultDescription: "Hier gibt es noch nichts",
+    errorTitle: "Ein Fehler ist aufgetreten",
+    errorDescription: "Bitte versuchen Sie es später erneut",
+    noResultsTitle: "Keine Ergebnisse gefunden",
+    noResultsDescription: "Versuchen Sie, Ihre Suche oder Filter anzupassen",
   },
   drawer: {
-    closeButton: 'Panel schließen',
+    closeButton: "Panel schließen",
   },
   toast: {
-    dismiss: 'Schließen',
-    successTitle: 'Erfolg',
-    errorTitle: 'Fehler',
-    warningTitle: 'Warnung',
-    infoTitle: 'Information',
+    dismiss: "Schließen",
+    successTitle: "Erfolg",
+    errorTitle: "Fehler",
+    warningTitle: "Warnung",
+    infoTitle: "Information",
   },
   addToCalendar: {
-    buttonText: 'Kalender',
-    buttonTooltip: 'Zum Kalender hinzufügen',
-    downloadTitle: '.ics herunterladen',
-    downloadDescription: 'Apple Kalender, Outlook',
-    googleTitle: 'Google Kalender',
-    googleDescription: 'Öffnet in neuem Tab',
+    buttonText: "Kalender",
+    buttonTooltip: "Zum Kalender hinzufügen",
+    downloadTitle: ".ics herunterladen",
+    downloadDescription: "Apple Kalender, Outlook",
+    googleTitle: "Google Kalender",
+    googleDescription: "Öffnet in neuem Tab",
   },
 };
 

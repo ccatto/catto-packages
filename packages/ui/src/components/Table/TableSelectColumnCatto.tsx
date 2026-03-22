@@ -1,10 +1,10 @@
 // @ccatto/ui - TableSelectColumnCatto
 // Creates a checkbox selection column for TableCatto
 // Gmail-style row selection - hidden by default, shown when showSelection={true}
-'use client';
+"use client";
 
-import { ColumnDef } from '@tanstack/react-table';
-import CheckboxCatto from '../Checkbox/CheckboxCatto';
+import { ColumnDef } from "@tanstack/react-table";
+import CheckboxCatto from "../Checkbox/CheckboxCatto";
 
 /**
  * Creates a checkbox selection column for use with TableCatto
@@ -18,7 +18,7 @@ import CheckboxCatto from '../Checkbox/CheckboxCatto';
  */
 export function createSelectColumn<T>(): ColumnDef<T, unknown> {
   return {
-    id: 'select',
+    id: "select",
     header: ({ table }) => (
       <div
         className="flex items-center justify-center"

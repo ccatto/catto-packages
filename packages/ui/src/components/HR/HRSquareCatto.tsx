@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRSquareCattoProps {
   /** Additional CSS classes */
@@ -14,8 +14,8 @@ const HRSquareCatto: React.FC<HRSquareCattoProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        'w-3 h-3 bg-theme-primary mx-auto my-4 rounded-sm',
-        className,
+        "w-3 h-3 bg-theme-primary mx-auto my-4 rounded-sm",
+        className
       )}
     />
   );

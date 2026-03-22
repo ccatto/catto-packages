@@ -1,31 +1,31 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { AlertCircle, Check, Info as InfoIcon, Star } from 'lucide-react';
-import BadgeCatto from './BadgeCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { AlertCircle, Check, Info as InfoIcon, Star } from "lucide-react";
+import BadgeCatto from "./BadgeCatto";
 
 const meta = {
-  title: 'Components/Badge',
+  title: "Components/Badge",
   component: BadgeCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     variant: {
-      control: 'select',
+      control: "select",
       options: [
-        'default',
-        'primary',
-        'secondary',
-        'success',
-        'warning',
-        'error',
-        'info',
-        'outline',
+        "default",
+        "primary",
+        "secondary",
+        "success",
+        "warning",
+        "error",
+        "info",
+        "outline",
       ],
     },
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg'],
+      control: "select",
+      options: ["xs", "sm", "md", "lg"],
     },
   },
 } satisfies Meta<typeof BadgeCatto>;
@@ -39,57 +39,57 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    children: 'Default',
-    variant: 'default',
+    children: "Default",
+    variant: "default",
   },
 };
 
 export const Primary: Story = {
   args: {
-    children: 'Primary',
-    variant: 'primary',
+    children: "Primary",
+    variant: "primary",
   },
 };
 
 export const Secondary: Story = {
   args: {
-    children: 'Secondary',
-    variant: 'secondary',
+    children: "Secondary",
+    variant: "secondary",
   },
 };
 
 export const Success: Story = {
   args: {
-    children: 'Success',
-    variant: 'success',
+    children: "Success",
+    variant: "success",
   },
 };
 
 export const Warning: Story = {
   args: {
-    children: 'Warning',
-    variant: 'warning',
+    children: "Warning",
+    variant: "warning",
   },
 };
 
 export const Error: Story = {
   args: {
-    children: 'Error',
-    variant: 'error',
+    children: "Error",
+    variant: "error",
   },
 };
 
 export const Info: Story = {
   args: {
-    children: 'Info',
-    variant: 'info',
+    children: "Info",
+    variant: "info",
   },
 };
 
 export const Outline: Story = {
   args: {
-    children: 'Outline',
-    variant: 'outline',
+    children: "Outline",
+    variant: "outline",
   },
 };
 
@@ -99,33 +99,33 @@ export const Outline: Story = {
 
 export const ExtraSmall: Story = {
   args: {
-    children: 'XS',
-    size: 'xs',
-    variant: 'primary',
+    children: "XS",
+    size: "xs",
+    variant: "primary",
   },
 };
 
 export const Small: Story = {
   args: {
-    children: 'Small',
-    size: 'sm',
-    variant: 'primary',
+    children: "Small",
+    size: "sm",
+    variant: "primary",
   },
 };
 
 export const Medium: Story = {
   args: {
-    children: 'Medium',
-    size: 'md',
-    variant: 'primary',
+    children: "Medium",
+    size: "md",
+    variant: "primary",
   },
 };
 
 export const Large: Story = {
   args: {
-    children: 'Large',
-    size: 'lg',
-    variant: 'primary',
+    children: "Large",
+    size: "lg",
+    variant: "primary",
   },
 };
 
@@ -135,24 +135,24 @@ export const Large: Story = {
 
 export const WithLeftIcon: Story = {
   args: {
-    children: 'Verified',
-    variant: 'success',
+    children: "Verified",
+    variant: "success",
     leftIcon: <Check className="h-3 w-3" />,
   },
 };
 
 export const WithRightIcon: Story = {
   args: {
-    children: 'Alert',
-    variant: 'error',
+    children: "Alert",
+    variant: "error",
     rightIcon: <AlertCircle className="h-3 w-3" />,
   },
 };
 
 export const WithBothIcons: Story = {
   args: {
-    children: 'Featured',
-    variant: 'warning',
+    children: "Featured",
+    variant: "warning",
     leftIcon: <Star className="h-3 w-3" />,
     rightIcon: <InfoIcon className="h-3 w-3" />,
   },
@@ -164,24 +164,24 @@ export const WithBothIcons: Story = {
 
 export const Dot: Story = {
   args: {
-    children: 'New',
-    variant: 'success',
+    children: "New",
+    variant: "success",
     dot: true,
   },
 };
 
 export const Pulse: Story = {
   args: {
-    children: 'Live',
-    variant: 'error',
+    children: "Live",
+    variant: "error",
     pulse: true,
   },
 };
 
 export const Rounded: Story = {
   args: {
-    children: '99+',
-    variant: 'primary',
+    children: "99+",
+    variant: "primary",
     rounded: true,
   },
 };

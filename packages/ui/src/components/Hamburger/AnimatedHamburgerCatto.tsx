@@ -1,15 +1,15 @@
 // @ccatto/ui - AnimatedHamburgerCatto Component
 // Animated 3-bar hamburger that transforms to X when open
-'use client';
+"use client";
 
-import React from 'react';
-import { cn } from '../../utils';
+import React from "react";
+import { cn } from "../../utils";
 
 // ============================================
 // Types
 // ============================================
 
-export type HamburgerSize = 'sm' | 'md' | 'lg';
+export type HamburgerSize = "sm" | "md" | "lg";
 
 export interface AnimatedHamburgerCattoProps {
   /** Whether the hamburger is in open (X) state */
@@ -25,7 +25,7 @@ export interface AnimatedHamburgerCattoProps {
   /** Additional className for the button */
   className?: string;
   /** Accessible label */
-  'aria-label'?: string;
+  "aria-label"?: string;
 }
 
 // Size configurations with pixel values for reliable cross-package rendering
@@ -46,7 +46,7 @@ const sizeConfig: Record<
     topOffset: 2,
     middleOffset: 7,
     bottomOffset: 12,
-    labelClass: 'text-[10px] mt-1',
+    labelClass: "text-[10px] mt-1",
   },
   md: {
     containerSize: 20,
@@ -54,7 +54,7 @@ const sizeConfig: Record<
     topOffset: 3,
     middleOffset: 9,
     bottomOffset: 15,
-    labelClass: 'text-xs mt-1.5',
+    labelClass: "text-xs mt-1.5",
   },
   lg: {
     containerSize: 24,
@@ -62,7 +62,7 @@ const sizeConfig: Record<
     topOffset: 4,
     middleOffset: 11,
     bottomOffset: 18,
-    labelClass: 'text-xs mt-2',
+    labelClass: "text-xs mt-2",
   },
 };
 
@@ -91,18 +91,18 @@ const sizeConfig: Record<
 const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
   isOpen,
   onClick,
-  size = 'lg',
+  size = "lg",
   label,
   showLabel = true,
   className,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
 }) => {
   const config = sizeConfig[size];
 
   // Text/label color classes - these control the bar color via currentColor
   const textColorClass = isOpen
-    ? 'text-red-700 dark:text-red-400'
-    : 'text-green-700 dark:text-green-500';
+    ? "text-red-700 dark:text-red-400"
+    : "text-green-700 dark:text-green-500";
 
   // Calculate the middle position for transforms
   const middleY = config.middleOffset;
@@ -112,17 +112,17 @@ const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
   const containerStyle: React.CSSProperties = {
     width: config.containerSize,
     height: config.containerSize,
-    position: 'relative',
+    position: "relative",
   };
 
   // Base bar style
   const baseBarStyle: React.CSSProperties = {
-    position: 'absolute',
+    position: "absolute",
     left: 0,
     width: config.containerSize,
     height: config.barHeight,
-    backgroundColor: 'currentColor',
-    transition: 'transform 300ms, opacity 300ms',
+    backgroundColor: "currentColor",
+    transition: "transform 300ms, opacity 300ms",
   };
 
   // Top bar style
@@ -131,7 +131,7 @@ const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
     top: config.topOffset,
     transform: isOpen
       ? `translateY(${translateAmount}px) rotate(45deg)`
-      : 'none',
+      : "none",
   };
 
   // Middle bar style
@@ -147,20 +147,20 @@ const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
     top: config.bottomOffset,
     transform: isOpen
       ? `translateY(-${config.bottomOffset - middleY}px) rotate(-45deg)`
-      : 'none',
+      : "none",
   };
 
   return (
     <button
       onClick={onClick}
       className={cn(
-        'relative flex flex-col items-center rounded-lg p-2 transition-colors',
+        "relative flex flex-col items-center rounded-lg p-2 transition-colors",
         textColorClass,
-        'hover:bg-theme-surface-secondary',
-        'focus:outline-none focus:ring-2 focus:ring-theme-secondary',
-        className,
+        "hover:bg-theme-surface-secondary",
+        "focus:outline-none focus:ring-2 focus:ring-theme-secondary",
+        className
       )}
-      aria-label={ariaLabel || (isOpen ? 'Close menu' : 'Open menu')}
+      aria-label={ariaLabel || (isOpen ? "Close menu" : "Open menu")}
       aria-expanded={isOpen}
     >
       {/* Hamburger bars container */}

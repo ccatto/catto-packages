@@ -1,147 +1,147 @@
-import { fireEvent, render, screen } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import ThemeSwitcherCatto from '../../components/ThemeSwitcher/ThemeSwitcherCatto';
-import { ThemeProvider } from '../../context/ThemeProvider';
+import { fireEvent, render, screen } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import ThemeSwitcherCatto from "../../components/ThemeSwitcher/ThemeSwitcherCatto";
+import { ThemeProvider } from "../../context/ThemeProvider";
 
 // Mock the themes module
-vi.mock('../../themes', () => ({
-  THEMES: ['rleaguez', 'neon-pulse'] as const,
+vi.mock("../../themes", () => ({
+  THEMES: ["rleaguez", "neon-pulse"] as const,
   THEME_METADATA: {
-    rleaguez: { label: 'RLeaguez', description: 'Orange and navy theme' },
-    'neon-pulse': { label: 'Neon Pulse', description: 'Vibrant neon theme' },
+    rleaguez: { label: "RLeaguez", description: "Orange and navy theme" },
+    "neon-pulse": { label: "Neon Pulse", description: "Vibrant neon theme" },
   },
-  isValidTheme: (theme: string) => ['rleaguez', 'neon-pulse'].includes(theme),
+  isValidTheme: (theme: string) => ["rleaguez", "neon-pulse"].includes(theme),
 }));
 
 // Wrapper component with ThemeProvider
 const renderWithThemeProvider = (
   ui: React.ReactElement,
-  options?: { defaultTheme?: 'rleaguez' | 'neon-pulse' },
+  options?: { defaultTheme?: "rleaguez" | "neon-pulse" }
 ) => {
   return render(
     <ThemeProvider
-      defaultTheme={options?.defaultTheme || 'rleaguez'}
+      defaultTheme={options?.defaultTheme || "rleaguez"}
       disablePersistence
     >
       {ui}
-    </ThemeProvider>,
+    </ThemeProvider>
   );
 };
 
-describe('ThemeSwitcherCatto', () => {
+describe("ThemeSwitcherCatto", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  describe('rendering', () => {
-    it('renders with default props', () => {
+  describe("rendering", () => {
+    it("renders with default props", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />);
 
-      expect(screen.getByText('Theme')).toBeInTheDocument();
+      expect(screen.getByText("Theme")).toBeInTheDocument();
     });
 
-    it('renders with custom label', () => {
+    it("renders with custom label", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto label="Color Scheme" />);
 
-      expect(screen.getByText('Color Scheme')).toBeInTheDocument();
+      expect(screen.getByText("Color Scheme")).toBeInTheDocument();
     });
 
-    it('displays current theme as selected', () => {
+    it("displays current theme as selected", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />);
 
-      expect(screen.getByText('RLeaguez')).toBeInTheDocument();
+      expect(screen.getByText("RLeaguez")).toBeInTheDocument();
     });
 
-    it('shows all available themes in dropdown', () => {
+    it("shows all available themes in dropdown", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />);
 
       // Click to open dropdown
-      const trigger = screen.getByRole('combobox');
+      const trigger = screen.getByRole("combobox");
       fireEvent.click(trigger);
 
       // After opening, there will be multiple RLeaguez texts (trigger + option)
-      const rleaguezElements = screen.getAllByText('RLeaguez');
+      const rleaguezElements = screen.getAllByText("RLeaguez");
       expect(rleaguezElements.length).toBeGreaterThanOrEqual(1);
 
       // Neon Pulse should appear as an option
-      expect(screen.getByText('Neon Pulse')).toBeInTheDocument();
+      expect(screen.getByText("Neon Pulse")).toBeInTheDocument();
     });
   });
 
-  describe('props', () => {
-    it('applies custom className', () => {
+  describe("props", () => {
+    it("applies custom className", () => {
       const { container } = renderWithThemeProvider(
-        <ThemeSwitcherCatto className="custom-class" />,
+        <ThemeSwitcherCatto className="custom-class" />
       );
 
-      const selectWrapper = container.querySelector('.custom-class');
+      const selectWrapper = container.querySelector(".custom-class");
       expect(selectWrapper).toBeInTheDocument();
     });
 
-    it('renders with small size', () => {
+    it("renders with small size", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto size="sm" />);
 
-      expect(screen.getByText('Theme')).toBeInTheDocument();
+      expect(screen.getByText("Theme")).toBeInTheDocument();
     });
 
-    it('renders with large size', () => {
+    it("renders with large size", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto size="lg" />);
 
-      expect(screen.getByText('Theme')).toBeInTheDocument();
+      expect(screen.getByText("Theme")).toBeInTheDocument();
     });
 
-    it('renders with auto width', () => {
+    it("renders with auto width", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto width="auto" />);
 
-      expect(screen.getByText('Theme')).toBeInTheDocument();
+      expect(screen.getByText("Theme")).toBeInTheDocument();
     });
 
-    it('renders with full width', () => {
+    it("renders with full width", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto width="full" />);
 
-      expect(screen.getByText('Theme')).toBeInTheDocument();
+      expect(screen.getByText("Theme")).toBeInTheDocument();
     });
   });
 
-  describe('theme switching', () => {
-    it('changes theme when selecting a new option', () => {
+  describe("theme switching", () => {
+    it("changes theme when selecting a new option", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />);
 
       // Open dropdown
-      const trigger = screen.getByRole('combobox');
+      const trigger = screen.getByRole("combobox");
       fireEvent.click(trigger);
 
       // Click on Neon Pulse option
-      const neonPulseOption = screen.getByRole('option', {
+      const neonPulseOption = screen.getByRole("option", {
         name: /Neon Pulse/i,
       });
       fireEvent.click(neonPulseOption);
 
       // Verify the theme changed (the select now shows Neon Pulse)
-      expect(screen.getByText('Neon Pulse')).toBeInTheDocument();
+      expect(screen.getByText("Neon Pulse")).toBeInTheDocument();
     });
 
-    it('starts with provided default theme', () => {
+    it("starts with provided default theme", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />, {
-        defaultTheme: 'neon-pulse',
+        defaultTheme: "neon-pulse",
       });
 
-      expect(screen.getByText('Neon Pulse')).toBeInTheDocument();
+      expect(screen.getByText("Neon Pulse")).toBeInTheDocument();
     });
   });
 
-  describe('accessibility', () => {
-    it('has accessible label', () => {
+  describe("accessibility", () => {
+    it("has accessible label", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto label="Select Theme" />);
 
-      expect(screen.getByText('Select Theme')).toBeInTheDocument();
-      expect(screen.getByRole('combobox')).toBeInTheDocument();
+      expect(screen.getByText("Select Theme")).toBeInTheDocument();
+      expect(screen.getByRole("combobox")).toBeInTheDocument();
     });
 
-    it('can be navigated with keyboard', () => {
+    it("can be navigated with keyboard", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />);
 
-      const trigger = screen.getByRole('combobox');
+      const trigger = screen.getByRole("combobox");
 
       // Focus and open with Enter
       trigger.focus();
@@ -149,15 +149,15 @@ describe('ThemeSwitcherCatto', () => {
     });
   });
 
-  describe('error handling', () => {
-    it('throws error when used outside ThemeProvider', () => {
+  describe("error handling", () => {
+    it("throws error when used outside ThemeProvider", () => {
       // Suppress console.error for this test
       const consoleError = vi
-        .spyOn(console, 'error')
+        .spyOn(console, "error")
         .mockImplementation(() => {});
 
       expect(() => render(<ThemeSwitcherCatto />)).toThrow(
-        'useTheme must be used within a ThemeProvider',
+        "useTheme must be used within a ThemeProvider"
       );
 
       consoleError.mockRestore();

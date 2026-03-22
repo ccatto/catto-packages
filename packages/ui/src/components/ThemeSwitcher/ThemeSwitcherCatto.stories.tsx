@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import ThemeSwitcherCatto from './ThemeSwitcherCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import ThemeSwitcherCatto from "./ThemeSwitcherCatto";
 
 const meta = {
-  title: 'Components/ThemeSwitcher',
+  title: "Components/ThemeSwitcher",
   component: ThemeSwitcherCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof ThemeSwitcherCatto>;
 

@@ -1,33 +1,33 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import EmptyStateCatto from './EmptyStateCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import EmptyStateCatto from "./EmptyStateCatto";
 
 const meta = {
-  title: 'Components/EmptyState',
+  title: "Components/EmptyState",
   component: EmptyStateCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     iconType: {
-      control: 'select',
+      control: "select",
       options: [
-        'teams',
-        'players',
-        'tournaments',
-        'venues',
-        'matches',
-        'members',
-        'leagues',
-        'search',
-        'error',
-        'default',
+        "teams",
+        "players",
+        "tournaments",
+        "venues",
+        "matches",
+        "members",
+        "leagues",
+        "search",
+        "error",
+        "default",
       ],
     },
     variant: {
-      control: 'select',
-      options: ['default', 'primary', 'noResults', 'error', 'subtle'],
+      control: "select",
+      options: ["default", "primary", "noResults", "error", "subtle"],
     },
   },
 } satisfies Meta<typeof EmptyStateCatto>;
@@ -37,18 +37,18 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    title: 'No items found',
-    description: 'There are no items to display at this time.',
+    title: "No items found",
+    description: "There are no items to display at this time.",
   },
 };
 
 export const NoTeams: Story = {
   args: {
-    title: 'No Teams Yet',
-    description: 'Create your first team to get started with the league.',
-    iconType: 'teams',
+    title: "No Teams Yet",
+    description: "Create your first team to get started with the league.",
+    iconType: "teams",
     action: {
-      label: 'Create Team',
+      label: "Create Team",
       onClick: fn(),
     },
   },
@@ -56,11 +56,11 @@ export const NoTeams: Story = {
 
 export const NoPlayers: Story = {
   args: {
-    title: 'No Players',
-    description: 'Add players to your team roster.',
-    iconType: 'players',
+    title: "No Players",
+    description: "Add players to your team roster.",
+    iconType: "players",
     action: {
-      label: 'Add Player',
+      label: "Add Player",
       onClick: fn(),
     },
   },
@@ -68,11 +68,11 @@ export const NoPlayers: Story = {
 
 export const NoTournaments: Story = {
   args: {
-    title: 'No Tournaments',
-    description: 'There are no upcoming tournaments scheduled.',
-    iconType: 'tournaments',
+    title: "No Tournaments",
+    description: "There are no upcoming tournaments scheduled.",
+    iconType: "tournaments",
     action: {
-      label: 'Create Tournament',
+      label: "Create Tournament",
       onClick: fn(),
     },
   },
@@ -80,22 +80,22 @@ export const NoTournaments: Story = {
 
 export const NoSearchResults: Story = {
   args: {
-    title: 'No Results Found',
-    description: 'Try adjusting your search terms or filters.',
-    iconType: 'search',
-    variant: 'noResults',
+    title: "No Results Found",
+    description: "Try adjusting your search terms or filters.",
+    iconType: "search",
+    variant: "noResults",
   },
 };
 
 export const ErrorState: Story = {
   args: {
-    title: 'Something Went Wrong',
+    title: "Something Went Wrong",
     description:
-      'We encountered an error loading this content. Please try again.',
-    iconType: 'error',
-    variant: 'error',
+      "We encountered an error loading this content. Please try again.",
+    iconType: "error",
+    variant: "error",
     action: {
-      label: 'Try Again',
+      label: "Try Again",
       onClick: fn(),
     },
   },
@@ -103,11 +103,11 @@ export const ErrorState: Story = {
 
 export const PrimaryVariant: Story = {
   args: {
-    title: 'Get Started',
-    description: 'Welcome! Create your first item to begin.',
-    variant: 'primary',
+    title: "Get Started",
+    description: "Welcome! Create your first item to begin.",
+    variant: "primary",
     action: {
-      label: 'Create New',
+      label: "Create New",
       onClick: fn(),
     },
   },
@@ -115,19 +115,19 @@ export const PrimaryVariant: Story = {
 
 export const SubtleVariant: Story = {
   args: {
-    title: 'All Caught Up',
-    description: 'You have no new notifications.',
-    variant: 'subtle',
+    title: "All Caught Up",
+    description: "You have no new notifications.",
+    variant: "subtle",
   },
 };
 
 export const NoVenues: Story = {
   args: {
-    title: 'No Venues',
-    description: 'Add venues where your matches will be played.',
-    iconType: 'venues',
+    title: "No Venues",
+    description: "Add venues where your matches will be played.",
+    iconType: "venues",
     action: {
-      label: 'Add Venue',
+      label: "Add Venue",
       onClick: fn(),
     },
   },
@@ -135,19 +135,19 @@ export const NoVenues: Story = {
 
 export const NoMatches: Story = {
   args: {
-    title: 'No Matches Scheduled',
-    description: 'Matches will appear here once the schedule is created.',
-    iconType: 'matches',
+    title: "No Matches Scheduled",
+    description: "Matches will appear here once the schedule is created.",
+    iconType: "matches",
   },
 };
 
 export const NoMembers: Story = {
   args: {
-    title: 'No Members',
-    description: 'Invite members to join your organization.',
-    iconType: 'members',
+    title: "No Members",
+    description: "Invite members to join your organization.",
+    iconType: "members",
     action: {
-      label: 'Invite Members',
+      label: "Invite Members",
       onClick: fn(),
     },
   },

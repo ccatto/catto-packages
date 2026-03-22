@@ -1,14 +1,14 @@
 // @ccatto/ui - ButtonTogglePillCatto Stories
-import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import ButtonTogglePillCatto from './ButtonTogglePillCatto';
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import ButtonTogglePillCatto from "./ButtonTogglePillCatto";
 
 const meta = {
-  title: 'Components/ButtonTogglePillCatto',
+  title: "Components/ButtonTogglePillCatto",
   component: ButtonTogglePillCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof ButtonTogglePillCatto>;
 
@@ -17,7 +17,7 @@ type Story = StoryObj<typeof meta>;
 
 // Interactive wrapper
 const ToggleWrapper = (
-  props: React.ComponentProps<typeof ButtonTogglePillCatto>,
+  props: React.ComponentProps<typeof ButtonTogglePillCatto>
 ) => {
   const [isLeft, setIsLeft] = useState(props.initialState ?? true);
 
@@ -32,7 +32,7 @@ const ToggleWrapper = (
         }}
       />
       <p className="text-sm text-slate-500 dark:text-slate-400">
-        Current: {isLeft ? 'Dark Mode (Moon)' : 'Light Mode (Sun)'}
+        Current: {isLeft ? "Dark Mode (Moon)" : "Light Mode (Sun)"}
       </p>
     </div>
   );
@@ -41,7 +41,7 @@ const ToggleWrapper = (
 export const Default: Story = {
   render: (args) => <ToggleWrapper {...args} />,
   args: {
-    onToggle: (isLeft) => console.log('Toggle:', isLeft ? 'Dark' : 'Light'),
+    onToggle: (isLeft) => console.log("Toggle:", isLeft ? "Dark" : "Light"),
   },
 };
 
@@ -49,7 +49,7 @@ export const StartLight: Story = {
   render: (args) => <ToggleWrapper {...args} />,
   args: {
     initialState: false,
-    onToggle: (isLeft) => console.log('Toggle:', isLeft ? 'Dark' : 'Light'),
+    onToggle: (isLeft) => console.log("Toggle:", isLeft ? "Dark" : "Light"),
   },
 };
 
@@ -57,6 +57,6 @@ export const StartDark: Story = {
   render: (args) => <ToggleWrapper {...args} />,
   args: {
     initialState: true,
-    onToggle: (isLeft) => console.log('Toggle:', isLeft ? 'Dark' : 'Light'),
+    onToggle: (isLeft) => console.log("Toggle:", isLeft ? "Dark" : "Light"),
   },
 };

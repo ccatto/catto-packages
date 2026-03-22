@@ -1,20 +1,20 @@
 // @ccatto/ui - AvatarUploadCatto Component
 // Reusable avatar upload UI with file picker, preview, validation, and upload delegation
-'use client';
+"use client";
 
-import { useRef, useState } from 'react';
-import AvatarCatto, { type AvatarSize } from './AvatarCatto';
+import { useRef, useState } from "react";
+import AvatarCatto, { type AvatarSize } from "./AvatarCatto";
 
 const DEFAULT_MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB
-const DEFAULT_ALLOWED_TYPES = ['image/jpeg', 'image/png', 'image/webp'];
+const DEFAULT_ALLOWED_TYPES = ["image/jpeg", "image/png", "image/webp"];
 
 const DEFAULT_LABELS = {
-  changePhoto: 'Change photo',
-  addPhoto: 'Add photo',
-  uploading: 'Uploading...',
-  invalidType: 'Please select a JPEG, PNG, or WebP image',
-  tooLarge: 'Image must be under 5MB',
-  uploadFailed: 'Upload failed. Please try again.',
+  changePhoto: "Change photo",
+  addPhoto: "Add photo",
+  uploading: "Uploading...",
+  invalidType: "Please select a JPEG, PNG, or WebP image",
+  tooLarge: "Image must be under 5MB",
+  uploadFailed: "Upload failed. Please try again.",
 };
 
 export interface AvatarUploadCattoLabels {
@@ -72,13 +72,13 @@ export interface AvatarUploadCattoProps {
 export default function AvatarUploadCatto({
   src,
   name,
-  size = '2xl',
+  size = "2xl",
   editable = false,
   onUpload,
   maxFileSize = DEFAULT_MAX_FILE_SIZE,
   allowedTypes = DEFAULT_ALLOWED_TYPES,
   labels: userLabels,
-  className = '',
+  className = "",
 }: AvatarUploadCattoProps) {
   const labels = { ...DEFAULT_LABELS, ...userLabels };
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
@@ -89,7 +89,7 @@ export default function AvatarUploadCatto({
   const displayUrl = previewUrl || src || undefined;
 
   const handleFileChange = async (
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => {
     const file = event.target.files?.[0];
     if (!file) return;
@@ -126,7 +126,7 @@ export default function AvatarUploadCatto({
       URL.revokeObjectURL(localPreview);
       // Reset input so same file can be re-selected
       if (fileInputRef.current) {
-        fileInputRef.current.value = '';
+        fileInputRef.current.value = "";
       }
     }
   };
@@ -143,8 +143,8 @@ export default function AvatarUploadCatto({
       <div
         className={
           editable
-            ? 'group relative cursor-pointer transition-transform active:scale-95'
-            : 'relative'
+            ? "group relative cursor-pointer transition-transform active:scale-95"
+            : "relative"
         }
         onClick={triggerFileInput}
       >
@@ -152,7 +152,7 @@ export default function AvatarUploadCatto({
           src={displayUrl}
           name={name}
           size={size}
-          alt={name || 'Profile'}
+          alt={name || "Profile"}
         />
 
         {/* Desktop: subtle full overlay on hover */}
@@ -237,7 +237,7 @@ export default function AvatarUploadCatto({
         <input
           ref={fileInputRef}
           type="file"
-          accept={allowedTypes.join(',')}
+          accept={allowedTypes.join(",")}
           onChange={handleFileChange}
           className="hidden"
         />

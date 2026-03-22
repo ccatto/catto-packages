@@ -1,5 +1,5 @@
 // @ccatto/ui - useTableInstanceCatto Hook
-'use client';
+"use client";
 
 import {
   ColumnDef,
@@ -11,8 +11,8 @@ import {
   Row,
   useReactTable,
   VisibilityState,
-} from '@tanstack/react-table';
-import { useTableStateCatto } from './useTableStateCatto';
+} from "@tanstack/react-table";
+import { useTableStateCatto } from "./useTableStateCatto";
 
 export interface UseTableInstanceCattoOptions<TData> {
   /** Initial column visibility state (e.g., { searchable: false } to hide a column) */
@@ -37,7 +37,7 @@ function createDefaultGlobalFilterFn<TData>(): FilterFn<TData> {
       .map((cell) => cell.getValue())
       .filter((val) => val != null)
       .map((val) => String(val).toLowerCase())
-      .join(' ');
+      .join(" ");
 
     return rowValues.includes(search);
   };
@@ -46,10 +46,11 @@ function createDefaultGlobalFilterFn<TData>(): FilterFn<TData> {
 export function useTableInstanceCatto<TData, TValue>(
   data: TData[],
   columns: ColumnDef<TData, TValue>[],
-  options?: UseTableInstanceCattoOptions<TData>,
+  options?: UseTableInstanceCattoOptions<TData>
 ) {
   const tableState = useTableStateCatto({
     initialColumnVisibility: options?.initialColumnVisibility,
+    pageSize: options?.pageSize,
   });
 
   const table = useReactTable({
@@ -57,9 +58,6 @@ export function useTableInstanceCatto<TData, TValue>(
     columns,
     getCoreRowModel: getCoreRowModel(),
     getPaginationRowModel: getPaginationRowModel(),
-    ...(options?.pageSize
-      ? { initialState: { pagination: { pageSize: options.pageSize } } }
-      : {}),
     onSortingChange: tableState.setSorting,
     getSortedRowModel: getSortedRowModel(),
     onColumnFiltersChange: tableState.setColumnFilters,
@@ -67,6 +65,8 @@ export function useTableInstanceCatto<TData, TValue>(
     onColumnVisibilityChange: tableState.setColumnVisibility,
     onRowSelectionChange: tableState.setRowSelection,
     onGlobalFilterChange: tableState.setGlobalFilter,
+    onPaginationChange: tableState.setPagination,
+    autoResetPageIndex: false,
     globalFilterFn:
       options?.globalFilterFn ?? createDefaultGlobalFilterFn<TData>(),
     state: {
@@ -75,6 +75,7 @@ export function useTableInstanceCatto<TData, TValue>(
       columnVisibility: tableState.columnVisibility,
       rowSelection: tableState.rowSelection,
       globalFilter: tableState.globalFilter,
+      pagination: tableState.pagination,
     },
   });
 

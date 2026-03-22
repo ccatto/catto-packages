@@ -10,7 +10,7 @@
  */
 
 /* Light Mode */
-[data-theme='forest-earth'] {
+[data-theme="forest-earth"] {
   /* Primary = Forest Green */
   --catto-theme-primary: #166534; /* green-800 */
   --catto-theme-primary-hover: #15803d; /* green-700 */
@@ -51,8 +51,8 @@
 }
 
 /* Dark Mode */
-[data-theme='forest-earth'].dark,
-.dark[data-theme='forest-earth'] {
+[data-theme="forest-earth"].dark,
+.dark[data-theme="forest-earth"] {
   /* Primary = Lighter green for dark mode readability */
   --catto-theme-primary: #22c55e; /* green-500 */
   --catto-theme-primary-hover: #4ade80; /* green-400 */

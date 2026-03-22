@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import TableSkeletonCatto from './TableSkeletonCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import TableSkeletonCatto from "./TableSkeletonCatto";
 
 const meta = {
-  title: 'Components/Skeleton/Table',
+  title: "Components/Skeleton/Table",
   component: TableSkeletonCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'padded',
+    layout: "padded",
   },
 } satisfies Meta<typeof TableSkeletonCatto>;
 

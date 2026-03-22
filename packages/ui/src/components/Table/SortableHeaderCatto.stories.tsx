@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import SortableHeaderCatto from './SortableHeaderCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import SortableHeaderCatto from "./SortableHeaderCatto";
 
 const meta = {
-  title: 'Components/Table/SortableHeader',
+  title: "Components/Table/SortableHeader",
   component: SortableHeaderCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof SortableHeaderCatto>;
 
@@ -23,32 +23,32 @@ const mockColumn = {
 
 const mockColumnAsc = {
   ...mockColumn,
-  getIsSorted: () => 'asc',
+  getIsSorted: () => "asc",
 };
 
 const mockColumnDesc = {
   ...mockColumn,
-  getIsSorted: () => 'desc',
+  getIsSorted: () => "desc",
 };
 
 export const Default: Story = {
   args: {
     column: mockColumn as any,
-    title: 'Column Name',
+    title: "Column Name",
   },
 };
 
 export const SortedAscending: Story = {
   args: {
     column: mockColumnAsc as any,
-    title: 'Name',
+    title: "Name",
   },
 };
 
 export const SortedDescending: Story = {
   args: {
     column: mockColumnDesc as any,
-    title: 'Name',
+    title: "Name",
   },
 };
 

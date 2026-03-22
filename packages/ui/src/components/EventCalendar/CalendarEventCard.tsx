@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import React from 'react';
-import { cn } from '../../utils';
-import { CalendarEventItem, eventColorClasses, eventTypeIcons } from './types';
+import React from "react";
+import { cn } from "../../utils";
+import { CalendarEventItem, eventColorClasses, eventTypeIcons } from "./types";
 
 export interface CalendarEventCardProps {
   /** The event to display */
@@ -12,7 +12,7 @@ export interface CalendarEventCardProps {
   /** Hover handler for the event */
   onHover?: (event: CalendarEventItem | null) => void;
   /** Display mode - compact for month view, expanded for day/week */
-  variant?: 'compact' | 'expanded';
+  variant?: "compact" | "expanded";
   /** Whether to show the time */
   showTime?: boolean;
   /** Whether to show the event type icon */
@@ -27,18 +27,18 @@ export interface CalendarEventCardProps {
 const formatTime = (timeStr: string): string => {
   // Handle HH:mm format
   if (/^\d{2}:\d{2}$/.test(timeStr)) {
-    const [hours, minutes] = timeStr.split(':').map(Number);
-    const period = hours >= 12 ? 'PM' : 'AM';
+    const [hours, minutes] = timeStr.split(":").map(Number);
+    const period = hours >= 12 ? "PM" : "AM";
     const displayHours = hours % 12 || 12;
-    return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+    return `${displayHours}:${minutes.toString().padStart(2, "0")} ${period}`;
   }
 
   // Handle ISO 8601 format
   try {
     const date = new Date(timeStr);
-    return date.toLocaleTimeString('en-US', {
-      hour: 'numeric',
-      minute: '2-digit',
+    return date.toLocaleTimeString("en-US", {
+      hour: "numeric",
+      minute: "2-digit",
       hour12: true,
     });
   } catch {
@@ -58,12 +58,12 @@ const CalendarEventCard: React.FC<CalendarEventCardProps> = ({
   event,
   onClick,
   onHover,
-  variant = 'compact',
+  variant = "compact",
   showTime = false,
   showIcon = true,
   className,
 }) => {
-  const colors = eventColorClasses[event.color || 'blue'];
+  const colors = eventColorClasses[event.color || "blue"];
   const icon = event.type ? eventTypeIcons[event.type] : null;
 
   const handleClick = (e: React.MouseEvent) => {
@@ -79,7 +79,7 @@ const CalendarEventCard: React.FC<CalendarEventCardProps> = ({
     onHover?.(null);
   };
 
-  if (variant === 'compact') {
+  if (variant === "compact") {
     return (
       <button
         type="button"
@@ -87,15 +87,15 @@ const CalendarEventCard: React.FC<CalendarEventCardProps> = ({
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
         className={cn(
-          'w-full text-left text-xs truncate px-1.5 py-0.5 rounded',
-          'transition-colors duration-150 cursor-pointer',
-          'border-l-2',
+          "w-full text-left text-xs truncate px-1.5 py-0.5 rounded",
+          "transition-colors duration-150 cursor-pointer",
+          "border-l-2",
           colors.bg,
           colors.text,
           colors.border,
           colors.hover,
-          'focus:outline-none focus:ring-1 focus:ring-orange-500',
-          className,
+          "focus:outline-none focus:ring-1 focus:ring-orange-500",
+          className
         )}
         title={event.title}
       >
@@ -118,15 +118,15 @@ const CalendarEventCard: React.FC<CalendarEventCardProps> = ({
       onMouseEnter={handleMouseEnter}
       onMouseLeave={handleMouseLeave}
       className={cn(
-        'w-full text-left p-2 rounded-lg',
-        'transition-colors duration-150 cursor-pointer',
-        'border-l-4',
+        "w-full text-left p-2 rounded-lg",
+        "transition-colors duration-150 cursor-pointer",
+        "border-l-4",
         colors.bg,
         colors.text,
         colors.border,
         colors.hover,
-        'focus:outline-none focus:ring-2 focus:ring-orange-500',
-        className,
+        "focus:outline-none focus:ring-2 focus:ring-orange-500",
+        className
       )}
     >
       <div className="flex items-start gap-2">
@@ -148,6 +148,6 @@ const CalendarEventCard: React.FC<CalendarEventCardProps> = ({
   );
 };
 
-CalendarEventCard.displayName = 'CalendarEventCard';
+CalendarEventCard.displayName = "CalendarEventCard";
 
 export default CalendarEventCard;

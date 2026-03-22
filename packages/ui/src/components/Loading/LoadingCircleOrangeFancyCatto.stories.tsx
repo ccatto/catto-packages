@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import LoadingCircleOrangeFancyCatto from './LoadingCircleOrangeFancyCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import LoadingCircleOrangeFancyCatto from "./LoadingCircleOrangeFancyCatto";
 
 const meta = {
-  title: 'Components/Loading/CircleOrangeFancy',
+  title: "Components/Loading/CircleOrangeFancy",
   component: LoadingCircleOrangeFancyCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof LoadingCircleOrangeFancyCatto>;
 

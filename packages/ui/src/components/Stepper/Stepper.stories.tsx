@@ -1,14 +1,14 @@
 // @ccatto/ui - Stepper Components Stories
-import type { Meta, StoryObj } from '@storybook/react';
-import DetailedStepperCatto from './DetailedStepperCatto';
-import ProgressStepperCatto from './ProgressStepperCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import DetailedStepperCatto from "./DetailedStepperCatto";
+import ProgressStepperCatto from "./ProgressStepperCatto";
 
 const meta = {
-  title: 'Components/Stepper',
+  title: "Components/Stepper",
   component: ProgressStepperCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof ProgressStepperCatto>;
 
@@ -69,16 +69,16 @@ export const ProgressFiveSteps: Story = {
 // DetailedStepperCatto Stories
 
 const detailedSteps = [
-  { title: 'Account Info', description: 'Enter your email and password' },
-  { title: 'Personal Details', description: 'Your name and phone number' },
-  { title: 'Confirmation', description: 'Review and submit' },
+  { title: "Account Info", description: "Enter your email and password" },
+  { title: "Personal Details", description: "Your name and phone number" },
+  { title: "Confirmation", description: "Review and submit" },
 ];
 
 const detailedSteps4 = [
-  { title: 'Cart', description: 'Review items' },
-  { title: 'Shipping', description: 'Delivery address' },
-  { title: 'Payment', description: 'Payment method' },
-  { title: 'Confirmation', description: 'Place order' },
+  { title: "Cart", description: "Review items" },
+  { title: "Shipping", description: "Delivery address" },
+  { title: "Payment", description: "Payment method" },
+  { title: "Confirmation", description: "Place order" },
 ];
 
 export const DetailedDefault: Story = {
@@ -100,7 +100,7 @@ export const DetailedFourSteps: Story = {
 export const DetailedNoDescriptions: Story = {
   render: () => (
     <DetailedStepperCatto
-      steps={[{ title: 'Step 1' }, { title: 'Step 2' }, { title: 'Step 3' }]}
+      steps={[{ title: "Step 1" }, { title: "Step 2" }, { title: "Step 3" }]}
       currentStep={1}
     />
   ),
@@ -110,9 +110,9 @@ export const DetailedWithCompletedSteps: Story = {
   render: () => (
     <DetailedStepperCatto
       steps={[
-        { title: 'Setup', description: 'Complete', completed: true },
-        { title: 'Configure', description: 'In progress' },
-        { title: 'Deploy', description: 'Pending' },
+        { title: "Setup", description: "Complete", completed: true },
+        { title: "Configure", description: "In progress" },
+        { title: "Deploy", description: "Pending" },
       ]}
       currentStep={1}
     />

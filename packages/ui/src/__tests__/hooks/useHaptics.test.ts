@@ -1,14 +1,14 @@
 // @ccatto/ui - useHaptics Tests
 // Tests for the haptic feedback hook
 
-import { act, renderHook } from '@testing-library/react';
-import { beforeEach, describe, expect, it, vi } from 'vitest';
-import { useHaptics } from '../../hooks/useHaptics';
+import { act, renderHook } from "@testing-library/react";
+import { beforeEach, describe, expect, it, vi } from "vitest";
+import { useHaptics } from "../../hooks/useHaptics";
 
 // The mocks are already set up in vitest.setup.ts
 // We just need to test the hook behavior
 
-describe('useHaptics', () => {
+describe("useHaptics", () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
@@ -17,30 +17,30 @@ describe('useHaptics', () => {
   // Return Type Tests
   // ============================================
 
-  describe('Return Type', () => {
-    it('returns impact function', () => {
+  describe("Return Type", () => {
+    it("returns impact function", () => {
       const { result } = renderHook(() => useHaptics());
-      expect(typeof result.current.impact).toBe('function');
+      expect(typeof result.current.impact).toBe("function");
     });
 
-    it('returns notification function', () => {
+    it("returns notification function", () => {
       const { result } = renderHook(() => useHaptics());
-      expect(typeof result.current.notification).toBe('function');
+      expect(typeof result.current.notification).toBe("function");
     });
 
-    it('returns selectionChanged function', () => {
+    it("returns selectionChanged function", () => {
       const { result } = renderHook(() => useHaptics());
-      expect(typeof result.current.selectionChanged).toBe('function');
+      expect(typeof result.current.selectionChanged).toBe("function");
     });
 
-    it('returns vibrate function', () => {
+    it("returns vibrate function", () => {
       const { result } = renderHook(() => useHaptics());
-      expect(typeof result.current.vibrate).toBe('function');
+      expect(typeof result.current.vibrate).toBe("function");
     });
 
-    it('returns isNative boolean', () => {
+    it("returns isNative boolean", () => {
       const { result } = renderHook(() => useHaptics());
-      expect(typeof result.current.isNative).toBe('boolean');
+      expect(typeof result.current.isNative).toBe("boolean");
     });
   });
 
@@ -48,33 +48,33 @@ describe('useHaptics', () => {
   // Web Platform Tests (Non-Native)
   // ============================================
 
-  describe('Web Platform (Non-Native)', () => {
-    it('isNative is false on web', () => {
+  describe("Web Platform (Non-Native)", () => {
+    it("isNative is false on web", () => {
       const { result } = renderHook(() => useHaptics());
       expect(result.current.isNative).toBe(false);
     });
 
-    it('impact does not throw on web', async () => {
+    it("impact does not throw on web", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await expect(async () => {
         await act(async () => {
-          await result.current.impact('light');
+          await result.current.impact("light");
         });
       }).not.toThrow();
     });
 
-    it('notification does not throw on web', async () => {
+    it("notification does not throw on web", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await expect(async () => {
         await act(async () => {
-          await result.current.notification('success');
+          await result.current.notification("success");
         });
       }).not.toThrow();
     });
 
-    it('selectionChanged does not throw on web', async () => {
+    it("selectionChanged does not throw on web", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await expect(async () => {
@@ -84,7 +84,7 @@ describe('useHaptics', () => {
       }).not.toThrow();
     });
 
-    it('vibrate does not throw on web', async () => {
+    it("vibrate does not throw on web", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await expect(async () => {
@@ -99,39 +99,39 @@ describe('useHaptics', () => {
   // Impact Weight Tests
   // ============================================
 
-  describe('Impact Weights', () => {
-    it('accepts light weight', async () => {
+  describe("Impact Weights", () => {
+    it("accepts light weight", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
-        await result.current.impact('light');
+        await result.current.impact("light");
       });
 
       // No error should occur
       expect(true).toBe(true);
     });
 
-    it('accepts medium weight', async () => {
+    it("accepts medium weight", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
-        await result.current.impact('medium');
+        await result.current.impact("medium");
       });
 
       expect(true).toBe(true);
     });
 
-    it('accepts heavy weight', async () => {
+    it("accepts heavy weight", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
-        await result.current.impact('heavy');
+        await result.current.impact("heavy");
       });
 
       expect(true).toBe(true);
     });
 
-    it('uses light as default weight', async () => {
+    it("uses light as default weight", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
@@ -146,38 +146,38 @@ describe('useHaptics', () => {
   // Notification Style Tests
   // ============================================
 
-  describe('Notification Styles', () => {
-    it('accepts success style', async () => {
+  describe("Notification Styles", () => {
+    it("accepts success style", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
-        await result.current.notification('success');
+        await result.current.notification("success");
       });
 
       expect(true).toBe(true);
     });
 
-    it('accepts warning style', async () => {
+    it("accepts warning style", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
-        await result.current.notification('warning');
+        await result.current.notification("warning");
       });
 
       expect(true).toBe(true);
     });
 
-    it('accepts error style', async () => {
+    it("accepts error style", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
-        await result.current.notification('error');
+        await result.current.notification("error");
       });
 
       expect(true).toBe(true);
     });
 
-    it('uses success as default style', async () => {
+    it("uses success as default style", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
@@ -192,8 +192,8 @@ describe('useHaptics', () => {
   // Vibrate Duration Tests
   // ============================================
 
-  describe('Vibrate Duration', () => {
-    it('accepts custom duration', async () => {
+  describe("Vibrate Duration", () => {
+    it("accepts custom duration", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
@@ -203,7 +203,7 @@ describe('useHaptics', () => {
       expect(true).toBe(true);
     });
 
-    it('uses default duration of 300', async () => {
+    it("uses default duration of 300", async () => {
       const { result } = renderHook(() => useHaptics());
 
       await act(async () => {
@@ -218,8 +218,8 @@ describe('useHaptics', () => {
   // Hook Stability Tests
   // ============================================
 
-  describe('Hook Stability', () => {
-    it('returns stable function references', () => {
+  describe("Hook Stability", () => {
+    it("returns stable function references", () => {
       const { result, rerender } = renderHook(() => useHaptics());
 
       const firstImpact = result.current.impact;
@@ -235,7 +235,7 @@ describe('useHaptics', () => {
       expect(result.current.vibrate).toBe(firstVibrate);
     });
 
-    it('isNative remains stable across rerenders', () => {
+    it("isNative remains stable across rerenders", () => {
       const { result, rerender } = renderHook(() => useHaptics());
 
       const firstIsNative = result.current.isNative;

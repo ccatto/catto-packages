@@ -194,136 +194,136 @@ export interface CattoUILabels {
  */
 export const defaultLabels: CattoUILabels = {
   modal: {
-    closeButton: 'Close modal',
+    closeButton: "Close modal",
   },
   select: {
-    placeholder: 'Select an option',
-    noOptions: 'No options found',
-    clearButton: 'Clear selection',
+    placeholder: "Select an option",
+    noOptions: "No options found",
+    clearButton: "Clear selection",
   },
   phoneInput: {
-    placeholder: '(555) 123-4567',
+    placeholder: "(555) 123-4567",
   },
   datePicker: {
-    placeholder: 'Select a date',
-    clearButton: 'Clear date',
-    calendarButton: 'Open calendar',
+    placeholder: "Select a date",
+    clearButton: "Clear date",
+    calendarButton: "Open calendar",
   },
   calendar: {
-    locale: 'en-US',
-    dayNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-    previousMonth: 'Previous month',
-    nextMonth: 'Next month',
-    today: 'Today',
+    locale: "en-US",
+    dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    previousMonth: "Previous month",
+    nextMonth: "Next month",
+    today: "Today",
   },
   table: {
-    filterPlaceholder: 'Search...',
-    emptyMessage: 'No data available',
-    loadingMessage: 'Loading...',
-    previousPage: 'Previous page',
-    nextPage: 'Next page',
-    pageInfo: 'Page {current} of {total}',
-    rowsPerPage: 'Rows per page',
-    selectAll: 'Select all rows',
-    selectRow: 'Select row',
+    filterPlaceholder: "Search...",
+    emptyMessage: "No data available",
+    loadingMessage: "Loading...",
+    previousPage: "Previous page",
+    nextPage: "Next page",
+    pageInfo: "Page {current} of {total}",
+    rowsPerPage: "Rows per page",
+    selectAll: "Select all rows",
+    selectRow: "Select row",
   },
   emptyState: {
-    defaultTitle: 'No data',
+    defaultTitle: "No data",
     defaultDescription: "There's nothing here yet",
-    errorTitle: 'Something went wrong',
-    errorDescription: 'Please try again later',
-    noResultsTitle: 'No results found',
-    noResultsDescription: 'Try adjusting your search or filters',
+    errorTitle: "Something went wrong",
+    errorDescription: "Please try again later",
+    noResultsTitle: "No results found",
+    noResultsDescription: "Try adjusting your search or filters",
   },
   drawer: {
-    closeButton: 'Close drawer',
+    closeButton: "Close drawer",
   },
   toast: {
-    dismiss: 'Dismiss',
-    successTitle: 'Success',
-    errorTitle: 'Error',
-    warningTitle: 'Warning',
-    infoTitle: 'Info',
+    dismiss: "Dismiss",
+    successTitle: "Success",
+    errorTitle: "Error",
+    warningTitle: "Warning",
+    infoTitle: "Info",
   },
   addToCalendar: {
-    buttonText: 'Calendar',
-    buttonTooltip: 'Add to calendar',
-    downloadTitle: 'Download .ics',
-    downloadDescription: 'Apple Calendar, Outlook',
-    googleTitle: 'Google Calendar',
-    googleDescription: 'Opens in new tab',
+    buttonText: "Calendar",
+    buttonTooltip: "Add to calendar",
+    downloadTitle: "Download .ics",
+    downloadDescription: "Apple Calendar, Outlook",
+    googleTitle: "Google Calendar",
+    googleDescription: "Opens in new tab",
   },
 };
 
 // Export individual defaults for direct use
 export const DEFAULT_MODAL_LABELS: Required<ModalLabels> = {
-  closeButton: 'Close modal',
+  closeButton: "Close modal",
 };
 
 export const DEFAULT_SELECT_LABELS: Required<SelectLabels> = {
-  placeholder: 'Select an option',
-  noOptions: 'No options found',
-  clearButton: 'Clear selection',
+  placeholder: "Select an option",
+  noOptions: "No options found",
+  clearButton: "Clear selection",
 };
 
 export const DEFAULT_PHONE_INPUT_LABELS: Required<PhoneInputLabels> = {
-  placeholder: '(555) 123-4567',
+  placeholder: "(555) 123-4567",
 };
 
 export const DEFAULT_DATE_PICKER_LABELS: Required<DatePickerLabels> = {
-  placeholder: 'Select a date',
-  clearButton: 'Clear date',
-  calendarButton: 'Open calendar',
+  placeholder: "Select a date",
+  clearButton: "Clear date",
+  calendarButton: "Open calendar",
 };
 
 export const DEFAULT_CALENDAR_LABELS: Required<CalendarLabels> = {
-  locale: 'en-US',
-  dayNames: ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'],
-  previousMonth: 'Previous month',
-  nextMonth: 'Next month',
-  today: 'Today',
+  locale: "en-US",
+  dayNames: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+  previousMonth: "Previous month",
+  nextMonth: "Next month",
+  today: "Today",
 };
 
 export const DEFAULT_TABLE_LABELS: Required<TableLabels> = {
-  filterPlaceholder: 'Search...',
-  emptyMessage: 'No data available',
-  loadingMessage: 'Loading...',
-  previousPage: 'Previous page',
-  nextPage: 'Next page',
-  pageInfo: 'Page {current} of {total}',
-  rowsPerPage: 'Rows per page',
-  selectAll: 'Select all rows',
-  selectRow: 'Select row',
+  filterPlaceholder: "Search...",
+  emptyMessage: "No data available",
+  loadingMessage: "Loading...",
+  previousPage: "Previous page",
+  nextPage: "Next page",
+  pageInfo: "Page {current} of {total}",
+  rowsPerPage: "Rows per page",
+  selectAll: "Select all rows",
+  selectRow: "Select row",
 };
 
 export const DEFAULT_EMPTY_STATE_LABELS: Required<EmptyStateLabels> = {
-  defaultTitle: 'No data',
+  defaultTitle: "No data",
   defaultDescription: "There's nothing here yet",
-  errorTitle: 'Something went wrong',
-  errorDescription: 'Please try again later',
-  noResultsTitle: 'No results found',
-  noResultsDescription: 'Try adjusting your search or filters',
+  errorTitle: "Something went wrong",
+  errorDescription: "Please try again later",
+  noResultsTitle: "No results found",
+  noResultsDescription: "Try adjusting your search or filters",
 };
 
 export const DEFAULT_DRAWER_LABELS: Required<DrawerLabels> = {
-  closeButton: 'Close drawer',
+  closeButton: "Close drawer",
 };
 
 export const DEFAULT_TOAST_LABELS: Required<ToastLabels> = {
-  dismiss: 'Dismiss',
-  successTitle: 'Success',
-  errorTitle: 'Error',
-  warningTitle: 'Warning',
-  infoTitle: 'Info',
+  dismiss: "Dismiss",
+  successTitle: "Success",
+  errorTitle: "Error",
+  warningTitle: "Warning",
+  infoTitle: "Info",
 };
 
 export const DEFAULT_ADD_TO_CALENDAR_LABELS: Required<AddToCalendarLabels> = {
-  buttonText: 'Calendar',
-  buttonTooltip: 'Add to calendar',
-  downloadTitle: 'Download .ics',
-  downloadDescription: 'Apple Calendar, Outlook',
-  googleTitle: 'Google Calendar',
-  googleDescription: 'Opens in new tab',
+  buttonText: "Calendar",
+  buttonTooltip: "Add to calendar",
+  downloadTitle: "Download .ics",
+  downloadDescription: "Apple Calendar, Outlook",
+  googleTitle: "Google Calendar",
+  googleDescription: "Opens in new tab",
 };
 
 /**
@@ -388,34 +388,34 @@ export interface TimeSlotPickerLabels {
 
 export const DEFAULT_EVENT_CALENDAR_LABELS: Required<EventCalendarLabels> = {
   ...DEFAULT_CALENDAR_LABELS,
-  todayButton: 'Today',
-  noEvents: 'No events',
-  moreEvents: '+{count} more',
-  month: 'Month',
-  week: 'Week',
-  day: 'Day',
+  todayButton: "Today",
+  noEvents: "No events",
+  moreEvents: "+{count} more",
+  month: "Month",
+  week: "Week",
+  day: "Day",
 };
 
 export const DEFAULT_WEEK_VIEW_LABELS: Required<WeekViewLabels> = {
   ...DEFAULT_CALENDAR_LABELS,
-  todayButton: 'Today',
-  previousWeek: 'Previous week',
-  nextWeek: 'Next week',
-  allDay: 'All day',
+  todayButton: "Today",
+  previousWeek: "Previous week",
+  nextWeek: "Next week",
+  allDay: "All day",
 };
 
 export const DEFAULT_DAY_VIEW_LABELS: Required<DayViewLabels> = {
   ...DEFAULT_CALENDAR_LABELS,
-  todayButton: 'Today',
-  previousDay: 'Previous day',
-  nextDay: 'Next day',
-  allDay: 'All day',
-  noEvents: 'No events scheduled',
+  todayButton: "Today",
+  previousDay: "Previous day",
+  nextDay: "Next day",
+  allDay: "All day",
+  noEvents: "No events scheduled",
 };
 
 export const DEFAULT_TIME_SLOT_PICKER_LABELS: Required<TimeSlotPickerLabels> = {
-  header: 'Select a time',
-  noSlots: 'No available times',
-  booked: 'Booked',
-  selected: 'Selected',
+  header: "Select a time",
+  noSlots: "No available times",
+  booked: "Booked",
+  selected: "Selected",
 };

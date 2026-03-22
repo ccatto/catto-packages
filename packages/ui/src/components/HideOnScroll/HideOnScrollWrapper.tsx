@@ -1,15 +1,15 @@
 // @ccatto/ui - HideOnScrollWrapper Component
 // Wrapper that hides content when scrolling down, shows when scrolling up
-'use client';
+"use client";
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { cn } from '../../utils';
+import React, { useCallback, useEffect, useState } from "react";
+import { cn } from "../../utils";
 
 // ============================================
 // Types
 // ============================================
 
-export type HideDirection = 'up' | 'down';
+export type HideDirection = "up" | "down";
 
 export interface HideOnScrollWrapperProps {
   /** Content to wrap */
@@ -51,7 +51,7 @@ export interface HideOnScrollWrapperProps {
  */
 const HideOnScrollWrapper: React.FC<HideOnScrollWrapperProps> = ({
   children,
-  hideDirection = 'up',
+  hideDirection = "up",
   threshold = 10,
   enabled = true,
   className,
@@ -97,23 +97,23 @@ const HideOnScrollWrapper: React.FC<HideOnScrollWrapperProps> = ({
       timeoutId = setTimeout(handleScroll, 10);
     };
 
-    window.addEventListener('scroll', debouncedScroll, { passive: true });
+    window.addEventListener("scroll", debouncedScroll, { passive: true });
     return () => {
-      window.removeEventListener('scroll', debouncedScroll);
+      window.removeEventListener("scroll", debouncedScroll);
       clearTimeout(timeoutId);
     };
   }, [handleScroll, enabled]);
 
   // Transform class based on hide direction and visibility
   const transformClass = isVisible
-    ? 'translate-y-0'
-    : hideDirection === 'up'
-      ? '-translate-y-full'
-      : 'translate-y-full';
+    ? "translate-y-0"
+    : hideDirection === "up"
+    ? "-translate-y-full"
+    : "translate-y-full";
 
   return (
     <div
-      className={cn('transition-transform', transformClass, className)}
+      className={cn("transition-transform", transformClass, className)}
       style={{ transitionDuration: `${transitionDuration}ms` }}
     >
       {children}

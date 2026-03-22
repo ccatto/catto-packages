@@ -1,9 +1,9 @@
 // @ccatto/ui - CourtScheduleGridCatto Component
-'use client';
+"use client";
 
-import { ReactNode, useCallback, useMemo, useState } from 'react';
-import { Check, X } from 'lucide-react';
-import { cn } from '../../utils';
+import { ReactNode, useCallback, useMemo, useState } from "react";
+import { Check, X } from "lucide-react";
+import { cn } from "../../utils";
 
 // ============================================
 // Types
@@ -29,7 +29,7 @@ export interface CourtTimeSlotState {
   /** Time slot string */
   time: string;
   /** Availability state */
-  state: 'available' | 'booked' | 'partial' | 'unavailable';
+  state: "available" | "booked" | "partial" | "unavailable";
   /** Optional tooltip/description */
   tooltip?: string;
   /** Optional metadata for click handlers */
@@ -54,13 +54,13 @@ export interface CourtScheduleGridLabels {
 }
 
 export const DEFAULT_COURT_SCHEDULE_GRID_LABELS: CourtScheduleGridLabels = {
-  courtHeader: 'Court',
-  available: 'Available',
-  booked: 'Booked',
-  partial: 'Partial',
-  unavailable: 'Unavailable',
-  noCourts: 'No courts available',
-  noCourtsDescription: 'No courts are configured for this venue.',
+  courtHeader: "Court",
+  available: "Available",
+  booked: "Booked",
+  partial: "Partial",
+  unavailable: "Unavailable",
+  noCourts: "No courts available",
+  noCourtsDescription: "No courts are configured for this venue.",
 };
 
 /** Data passed during drag-drop operations */
@@ -82,19 +82,19 @@ export interface CourtScheduleGridCattoProps {
   onSlotClick?: (
     courtId: number | string,
     time: string,
-    state: CourtTimeSlotState | undefined,
+    state: CourtTimeSlotState | undefined
   ) => void;
   /** Whether slots are clickable */
   interactive?: boolean;
   /** Size variant */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Show icons in slots */
   showIcons?: boolean;
   /** Custom cell renderer (overrides default) */
   renderCell?: (
     state: CourtTimeSlotState | undefined,
     courtId: number | string,
-    time: string,
+    time: string
   ) => ReactNode;
   /** i18n labels */
   labels?: Partial<CourtScheduleGridLabels>;
@@ -108,13 +108,13 @@ export interface CourtScheduleGridCattoProps {
   onDrop?: (
     courtId: number | string,
     time: string,
-    data: ScheduleDropData,
+    data: ScheduleDropData
   ) => void;
   /** Filter function to determine if a drop should be accepted */
   canDrop?: (
     courtId: number | string,
     time: string,
-    state: CourtTimeSlotState | undefined,
+    state: CourtTimeSlotState | undefined
   ) => boolean;
 }
 
@@ -128,7 +128,7 @@ export function CourtScheduleGridCatto({
   slotStates,
   onSlotClick,
   interactive = true,
-  size = 'md',
+  size = "md",
   showIcons = true,
   renderCell,
   labels: customLabels,
@@ -149,22 +149,22 @@ export function CourtScheduleGridCatto({
       e: React.DragEvent,
       courtId: number | string,
       time: string,
-      slotState: CourtTimeSlotState | undefined,
+      slotState: CourtTimeSlotState | undefined
     ) => {
       if (!acceptDrop) return;
 
       // Check if drop is allowed for this slot
       const isDropAllowed = canDrop
         ? canDrop(courtId, time, slotState)
-        : slotState?.state === 'available';
+        : slotState?.state === "available";
 
       if (isDropAllowed) {
         e.preventDefault();
-        e.dataTransfer.dropEffect = 'move';
+        e.dataTransfer.dropEffect = "move";
         setDragOverSlot(`${courtId}-${time}`);
       }
     },
-    [acceptDrop, canDrop],
+    [acceptDrop, canDrop]
   );
 
   // Handle drag leave event
@@ -178,7 +178,7 @@ export function CourtScheduleGridCatto({
       e: React.DragEvent,
       courtId: number | string,
       time: string,
-      slotState: CourtTimeSlotState | undefined,
+      slotState: CourtTimeSlotState | undefined
     ) => {
       e.preventDefault();
       setDragOverSlot(null);
@@ -188,21 +188,21 @@ export function CourtScheduleGridCatto({
       // Check if drop is allowed
       const isDropAllowed = canDrop
         ? canDrop(courtId, time, slotState)
-        : slotState?.state === 'available';
+        : slotState?.state === "available";
 
       if (!isDropAllowed) return;
 
       try {
-        const dataStr = e.dataTransfer.getData('application/json');
+        const dataStr = e.dataTransfer.getData("application/json");
         if (dataStr) {
           const data: ScheduleDropData = JSON.parse(dataStr);
           onDrop(courtId, time, data);
         }
       } catch (error) {
-        console.error('Failed to parse drop data:', error);
+        console.error("Failed to parse drop data:", error);
       }
     },
-    [acceptDrop, onDrop, canDrop],
+    [acceptDrop, onDrop, canDrop]
   );
 
   // Build a lookup map for quick access: `${courtId}-${time}` -> state
@@ -216,53 +216,53 @@ export function CourtScheduleGridCatto({
 
   // Size classes
   const cellSizeClasses = {
-    sm: 'w-8 h-8 text-xs',
-    md: 'w-10 h-10 text-sm',
-    lg: 'w-12 h-12 text-base',
+    sm: "w-8 h-8 text-xs",
+    md: "w-10 h-10 text-sm",
+    lg: "w-12 h-12 text-base",
   };
 
   const headerSizeClasses = {
-    sm: 'text-xs px-1 py-1',
-    md: 'text-sm px-2 py-2',
-    lg: 'text-base px-3 py-2',
+    sm: "text-xs px-1 py-1",
+    md: "text-sm px-2 py-2",
+    lg: "text-base px-3 py-2",
   };
 
   const courtNameSizeClasses = {
-    sm: 'text-xs px-2 py-1 min-w-20',
-    md: 'text-sm px-3 py-2 min-w-28',
-    lg: 'text-base px-4 py-2 min-w-32',
+    sm: "text-xs px-2 py-1 min-w-20",
+    md: "text-sm px-3 py-2 min-w-28",
+    lg: "text-base px-4 py-2 min-w-32",
   };
 
   // State colors
-  const getStateClasses = (state: CourtTimeSlotState['state'] | undefined) => {
+  const getStateClasses = (state: CourtTimeSlotState["state"] | undefined) => {
     switch (state) {
-      case 'available':
-        return 'bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400';
-      case 'booked':
-        return 'bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400';
-      case 'partial':
-        return 'bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400';
-      case 'unavailable':
-        return 'bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500';
+      case "available":
+        return "bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-400";
+      case "booked":
+        return "bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400";
+      case "partial":
+        return "bg-orange-100 dark:bg-orange-900/30 text-orange-700 dark:text-orange-400";
+      case "unavailable":
+        return "bg-gray-100 dark:bg-gray-800 text-gray-400 dark:text-gray-500";
       default:
-        return 'bg-gray-50 dark:bg-gray-800/50 text-gray-300 dark:text-gray-600';
+        return "bg-gray-50 dark:bg-gray-800/50 text-gray-300 dark:text-gray-600";
     }
   };
 
   // Default cell content
   const getDefaultCellContent = (
-    state: CourtTimeSlotState['state'] | undefined,
+    state: CourtTimeSlotState["state"] | undefined
   ) => {
     if (!showIcons) return null;
 
     switch (state) {
-      case 'available':
+      case "available":
         return <Check className="w-4 h-4" />;
-      case 'booked':
+      case "booked":
         return <X className="w-4 h-4" />;
-      case 'partial':
+      case "partial":
         return <span className="text-xs font-medium">P</span>;
-      case 'unavailable':
+      case "unavailable":
         return <span className="text-xs">—</span>;
       default:
         return null;
@@ -274,8 +274,8 @@ export function CourtScheduleGridCatto({
     return (
       <div
         className={cn(
-          'text-center py-8 text-gray-500 dark:text-gray-400',
-          className,
+          "text-center py-8 text-gray-500 dark:text-gray-400",
+          className
         )}
       >
         <p className="font-medium">{labels.noCourts}</p>
@@ -287,16 +287,16 @@ export function CourtScheduleGridCatto({
   // Loading skeleton
   if (isLoading) {
     return (
-      <div className={cn('animate-pulse', className)}>
+      <div className={cn("animate-pulse", className)}>
         <div className="overflow-x-auto">
           <table className="w-full border-collapse">
             <thead>
               <tr>
                 <th
                   className={cn(
-                    'bg-gray-200 dark:bg-gray-700 rounded',
+                    "bg-gray-200 dark:bg-gray-700 rounded",
                     headerSizeClasses[size],
-                    'w-28',
+                    "w-28"
                   )}
                 >
                   <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-16" />
@@ -305,8 +305,8 @@ export function CourtScheduleGridCatto({
                   <th
                     key={i}
                     className={cn(
-                      'bg-gray-200 dark:bg-gray-700',
-                      headerSizeClasses[size],
+                      "bg-gray-200 dark:bg-gray-700",
+                      headerSizeClasses[size]
                     )}
                   >
                     <div className="h-4 bg-gray-300 dark:bg-gray-600 rounded w-12 mx-auto" />
@@ -319,8 +319,8 @@ export function CourtScheduleGridCatto({
                 <tr key={row}>
                   <td
                     className={cn(
-                      'bg-gray-100 dark:bg-gray-800',
-                      courtNameSizeClasses[size],
+                      "bg-gray-100 dark:bg-gray-800",
+                      courtNameSizeClasses[size]
                     )}
                   >
                     <div className="h-4 bg-gray-200 dark:bg-gray-700 rounded w-20" />
@@ -329,8 +329,8 @@ export function CourtScheduleGridCatto({
                     <td key={i} className="p-1">
                       <div
                         className={cn(
-                          'bg-gray-200 dark:bg-gray-700 rounded',
-                          cellSizeClasses[size],
+                          "bg-gray-200 dark:bg-gray-700 rounded",
+                          cellSizeClasses[size]
                         )}
                       />
                     </td>
@@ -345,17 +345,17 @@ export function CourtScheduleGridCatto({
   }
 
   return (
-    <div className={cn('overflow-x-auto', className)}>
+    <div className={cn("overflow-x-auto", className)}>
       <table className="w-full border-collapse min-w-max">
         <thead>
           <tr>
             {/* Court header cell */}
             <th
               className={cn(
-                'sticky left-0 z-10 text-left font-semibold',
-                'bg-slate-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300',
-                'border-b border-r border-gray-200 dark:border-gray-700',
-                headerSizeClasses[size],
+                "sticky left-0 z-10 text-left font-semibold",
+                "bg-slate-50 dark:bg-gray-800 text-gray-700 dark:text-gray-300",
+                "border-b border-r border-gray-200 dark:border-gray-700",
+                headerSizeClasses[size]
               )}
             >
               {labels.courtHeader}
@@ -365,10 +365,10 @@ export function CourtScheduleGridCatto({
               <th
                 key={slot.time}
                 className={cn(
-                  'text-center font-medium whitespace-nowrap',
-                  'bg-slate-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400',
-                  'border-b border-gray-200 dark:border-gray-700',
-                  headerSizeClasses[size],
+                  "text-center font-medium whitespace-nowrap",
+                  "bg-slate-50 dark:bg-gray-800 text-gray-600 dark:text-gray-400",
+                  "border-b border-gray-200 dark:border-gray-700",
+                  headerSizeClasses[size]
                 )}
               >
                 {slot.label || slot.time}
@@ -382,11 +382,11 @@ export function CourtScheduleGridCatto({
               {/* Court name cell */}
               <td
                 className={cn(
-                  'sticky left-0 z-10 font-medium whitespace-nowrap',
-                  'bg-slate-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100',
-                  'border-b border-r border-gray-200 dark:border-gray-700',
-                  'group-hover:bg-gray-100 dark:group-hover:bg-gray-700/50 transition-colors',
-                  courtNameSizeClasses[size],
+                  "sticky left-0 z-10 font-medium whitespace-nowrap",
+                  "bg-slate-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100",
+                  "border-b border-r border-gray-200 dark:border-gray-700",
+                  "group-hover:bg-gray-100 dark:group-hover:bg-gray-700/50 transition-colors",
+                  courtNameSizeClasses[size]
                 )}
               >
                 {court.name}
@@ -403,7 +403,7 @@ export function CourtScheduleGridCatto({
                   acceptDrop &&
                   (canDrop
                     ? canDrop(court.id, slot.time, slotState)
-                    : state === 'available');
+                    : state === "available");
 
                 return (
                   <td
@@ -427,19 +427,19 @@ export function CourtScheduleGridCatto({
                       }
                       title={slotState?.tooltip}
                       className={cn(
-                        'flex items-center justify-center rounded transition-all',
+                        "flex items-center justify-center rounded transition-all",
                         cellSizeClasses[size],
                         getStateClasses(state),
                         interactive &&
-                          'hover:ring-2 hover:ring-orange-400 dark:hover:ring-orange-500 cursor-pointer',
-                        !interactive && !isDropTarget && 'cursor-default',
+                          "hover:ring-2 hover:ring-orange-400 dark:hover:ring-orange-500 cursor-pointer",
+                        !interactive && !isDropTarget && "cursor-default",
                         // Drag-over visual feedback
                         isDragOver &&
-                          'ring-2 ring-orange-500 dark:ring-orange-400 bg-orange-200 dark:bg-orange-900/50 scale-110',
+                          "ring-2 ring-orange-500 dark:ring-orange-400 bg-orange-200 dark:bg-orange-900/50 scale-110",
                         // Drop target indicator
                         isDropTarget &&
                           !isDragOver &&
-                          'ring-1 ring-dashed ring-orange-300 dark:ring-orange-600',
+                          "ring-1 ring-dashed ring-orange-300 dark:ring-orange-600"
                       )}
                     >
                       {renderCell
@@ -459,8 +459,8 @@ export function CourtScheduleGridCatto({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              'w-4 h-4 rounded flex items-center justify-center',
-              getStateClasses('available'),
+              "w-4 h-4 rounded flex items-center justify-center",
+              getStateClasses("available")
             )}
           >
             {showIcons && <Check className="w-3 h-3" />}
@@ -470,8 +470,8 @@ export function CourtScheduleGridCatto({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              'w-4 h-4 rounded flex items-center justify-center',
-              getStateClasses('booked'),
+              "w-4 h-4 rounded flex items-center justify-center",
+              getStateClasses("booked")
             )}
           >
             {showIcons && <X className="w-3 h-3" />}
@@ -481,8 +481,8 @@ export function CourtScheduleGridCatto({
         <div className="flex items-center gap-1.5">
           <span
             className={cn(
-              'w-4 h-4 rounded flex items-center justify-center',
-              getStateClasses('partial'),
+              "w-4 h-4 rounded flex items-center justify-center",
+              getStateClasses("partial")
             )}
           >
             {showIcons && <span className="text-[10px] font-medium">P</span>}

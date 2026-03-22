@@ -1,19 +1,19 @@
-'use client';
+"use client";
 
-import { forwardRef, useEffect, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from '../../i18n/defaults';
-import { cn } from '../../utils';
+import { forwardRef, useEffect, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from "../../i18n/defaults";
+import { cn } from "../../utils";
 
 export type CalendarTheme =
-  | 'midnightEmber'
-  | 'sunset'
-  | 'ocean'
-  | 'forest'
-  | 'lavender';
+  | "midnightEmber"
+  | "sunset"
+  | "ocean"
+  | "forest"
+  | "lavender";
 
-export type CalendarSize = 'small' | 'medium' | 'large';
-export type CalendarVariant = 'outlined' | 'filled' | 'minimal';
+export type CalendarSize = "small" | "medium" | "large";
+export type CalendarVariant = "outlined" | "filled" | "minimal";
 
 export interface CalendarCattoProps {
   /** Selected date */
@@ -85,16 +85,16 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
     {
       value = new Date(),
       onChange,
-      size = 'medium',
-      theme = 'midnightEmber',
-      className = '',
-      variant = 'outlined',
+      size = "medium",
+      theme = "midnightEmber",
+      className = "",
+      variant = "outlined",
       minDate,
       maxDate,
       labels = {},
       ...props
     },
-    ref,
+    ref
   ) => {
     // Merge with defaults
     const mergedLabels = { ...DEFAULT_CALENDAR_LABELS, ...labels };
@@ -121,33 +121,33 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
     // Size variations
     const sizeClasses = {
       small: {
-        calendar: 'w-64',
-        header: 'text-sm py-2',
-        dayNames: 'text-xs',
-        days: 'text-xs',
-        day: 'h-6 w-6',
+        calendar: "w-64",
+        header: "text-sm py-2",
+        dayNames: "text-xs",
+        days: "text-xs",
+        day: "h-6 w-6",
       },
       medium: {
-        calendar: 'w-80',
-        header: 'text-base py-3',
-        dayNames: 'text-sm',
-        days: 'text-sm',
-        day: 'h-8 w-8',
+        calendar: "w-80",
+        header: "text-base py-3",
+        dayNames: "text-sm",
+        days: "text-sm",
+        day: "h-8 w-8",
       },
       large: {
-        calendar: 'w-96',
-        header: 'text-lg py-4',
-        dayNames: 'text-base',
-        days: 'text-base',
-        day: 'h-10 w-10',
+        calendar: "w-96",
+        header: "text-lg py-4",
+        dayNames: "text-base",
+        days: "text-base",
+        day: "h-10 w-10",
       },
     };
 
     // Variant styles
     const variantClasses = {
-      outlined: 'border rounded-lg',
-      filled: 'border-0 shadow-md rounded-lg',
-      minimal: 'border-0',
+      outlined: "border rounded-lg",
+      filled: "border-0 shadow-md rounded-lg",
+      minimal: "border-0",
     };
 
     // Get days in month
@@ -190,9 +190,9 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
     const currentMonthYear = currentDate.toLocaleDateString(
       mergedLabels.locale,
       {
-        month: 'long',
-        year: 'numeric',
-      },
+        month: "long",
+        year: "numeric",
+      }
     );
 
     const isSelectedDate = (date: Date | null) => {
@@ -213,23 +213,23 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
     };
 
     const getDayClasses = (date: Date | null) => {
-      if (!date) return 'invisible';
+      if (!date) return "invisible";
 
       return cn(
-        'flex items-center justify-center rounded-full cursor-pointer transition-colors duration-150',
+        "flex items-center justify-center rounded-full cursor-pointer transition-colors duration-150",
         sizeClasses[size].day,
-        isSelectedDate(date) && 'bg-theme-secondary text-theme-on-secondary',
+        isSelectedDate(date) && "bg-theme-secondary text-theme-on-secondary",
         !isSelectedDate(date) &&
           isToday(date) &&
-          'border border-theme-secondary',
+          "border border-theme-secondary",
         !isSelectedDate(date) &&
           !isToday(date) &&
           isDisabled(date) &&
-          'opacity-40 cursor-not-allowed',
+          "opacity-40 cursor-not-allowed",
         !isSelectedDate(date) &&
           !isToday(date) &&
           !isDisabled(date) &&
-          'hover:bg-theme-secondary-subtle',
+          "hover:bg-theme-secondary-subtle"
       );
     };
 
@@ -240,8 +240,8 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
           sizeClasses[size].calendar,
           themeClasses[theme],
           variantClasses[variant],
-          'transition-all duration-200',
-          className,
+          "transition-all duration-200",
+          className
         )}
         {...props}
       >
@@ -250,30 +250,30 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
           <button
             onClick={() => navigateMonth(-1)}
             className={cn(
-              'text-theme-secondary focus:outline-none',
-              sizeClasses[size].header,
+              "text-theme-secondary focus:outline-none",
+              sizeClasses[size].header
             )}
             aria-label={mergedLabels.previousMonth}
           >
             <ChevronLeft
-              size={size === 'small' ? 16 : size === 'medium' ? 20 : 24}
+              size={size === "small" ? 16 : size === "medium" ? 20 : 24}
             />
           </button>
 
-          <h2 className={cn('font-medium', sizeClasses[size].header)}>
+          <h2 className={cn("font-medium", sizeClasses[size].header)}>
             {currentMonthYear}
           </h2>
 
           <button
             onClick={() => navigateMonth(1)}
             className={cn(
-              'text-theme-secondary focus:outline-none',
-              sizeClasses[size].header,
+              "text-theme-secondary focus:outline-none",
+              sizeClasses[size].header
             )}
             aria-label={mergedLabels.nextMonth}
           >
             <ChevronRight
-              size={size === 'small' ? 16 : size === 'medium' ? 20 : 24}
+              size={size === "small" ? 16 : size === "medium" ? 20 : 24}
             />
           </button>
         </div>
@@ -281,8 +281,8 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
         {/* Day names */}
         <div
           className={cn(
-            'grid grid-cols-7 gap-1 py-2 text-center',
-            sizeClasses[size].dayNames,
+            "grid grid-cols-7 gap-1 py-2 text-center",
+            sizeClasses[size].dayNames
           )}
         >
           {mergedLabels.dayNames.map((day, index) => (
@@ -294,7 +294,7 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
 
         {/* Calendar grid */}
         <div
-          className={cn('grid grid-cols-7 gap-1 p-2', sizeClasses[size].days)}
+          className={cn("grid grid-cols-7 gap-1 p-2", sizeClasses[size].days)}
         >
           {calendarDays.map((date, index) => (
             <div
@@ -305,15 +305,15 @@ const CalendarCatto = forwardRef<HTMLDivElement, CalendarCattoProps>(
               }
               title={isToday(date) ? mergedLabels.today : undefined}
             >
-              {date ? date.getDate() : ''}
+              {date ? date.getDate() : ""}
             </div>
           ))}
         </div>
       </div>
     );
-  },
+  }
 );
 
-CalendarCatto.displayName = 'CalendarCatto';
+CalendarCatto.displayName = "CalendarCatto";
 
 export default CalendarCatto;

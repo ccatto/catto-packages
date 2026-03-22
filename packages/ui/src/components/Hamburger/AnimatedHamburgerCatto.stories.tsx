@@ -1,20 +1,20 @@
 // Need to import useState for the interactive example
-import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import AnimatedHamburgerCatto from './AnimatedHamburgerCatto';
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import AnimatedHamburgerCatto from "./AnimatedHamburgerCatto";
 
 const meta = {
-  title: 'Components/AnimatedHamburger',
+  title: "Components/AnimatedHamburger",
   component: AnimatedHamburgerCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
   },
   args: {
@@ -40,21 +40,21 @@ export const Open: Story = {
 export const Small: Story = {
   args: {
     isOpen: false,
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
     isOpen: false,
-    size: 'md',
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
     isOpen: false,
-    size: 'lg',
+    size: "lg",
   },
 };
 
@@ -68,7 +68,7 @@ export const Interactive: Story = {
           onClick={() => setIsOpen(!isOpen)}
         />
         <span className="text-sm text-gray-500">
-          Click to toggle: {isOpen ? 'Open' : 'Closed'}
+          Click to toggle: {isOpen ? "Open" : "Closed"}
         </span>
       </div>
     );

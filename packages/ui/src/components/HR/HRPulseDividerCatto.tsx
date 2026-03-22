@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRPulseDividerCattoProps {
   /** Additional CSS classes */
@@ -16,8 +16,8 @@ const HRPulseDividerCatto: React.FC<HRPulseDividerCattoProps> = ({
   return (
     <hr
       className={cn(
-        'w-48 border-t border-dashed border-theme-secondary my-4 mx-auto animate-pulse',
-        className,
+        "w-48 border-t border-dashed border-theme-secondary my-4 mx-auto animate-pulse",
+        className
       )}
     />
   );

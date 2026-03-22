@@ -1,10 +1,10 @@
 // @ccatto/ui - ProductCardCatto Component
 // Product display card for e-commerce and catalog displays
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { cn } from '../../utils';
-import BadgeCatto from '../Badge/BadgeCatto';
+import { useState } from "react";
+import { cn } from "../../utils";
+import BadgeCatto from "../Badge/BadgeCatto";
 
 export interface ProductCardCattoProps {
   /** Product name */
@@ -22,7 +22,7 @@ export interface ProductCardCattoProps {
   /** Badge text (e.g., "Sale", "New", "Sold Out") */
   badge?: string;
   /** Badge variant */
-  badgeVariant?: 'success' | 'error' | 'warning' | 'info' | 'default';
+  badgeVariant?: "success" | "error" | "warning" | "info" | "default";
   /** Product rating (0-5) */
   rating?: number;
   /** Number of reviews */
@@ -46,11 +46,11 @@ export interface ProductCardCattoProps {
   /** Loading state */
   loading?: boolean;
   /** Card orientation */
-  orientation?: 'vertical' | 'horizontal';
+  orientation?: "vertical" | "horizontal";
   /** Additional CSS classes */
   className?: string;
   /** Test ID for testing */
-  'data-testid'?: string;
+  "data-testid"?: string;
 }
 
 /**
@@ -83,23 +83,23 @@ export default function ProductCardCatto({
   image,
   price,
   originalPrice,
-  currency = '$',
+  currency = "$",
   badge,
-  badgeVariant = 'default',
+  badgeVariant = "default",
   rating,
   reviewCount,
   inStock = true,
   category,
-  actionText = 'Add to Cart',
+  actionText = "Add to Cart",
   onActionClick,
   onClick,
   showWishlist = false,
   isWishlisted = false,
   onWishlistToggle,
   loading = false,
-  orientation = 'vertical',
+  orientation = "vertical",
   className,
-  'data-testid': testId,
+  "data-testid": testId,
 }: ProductCardCattoProps) {
   const [imageError, setImageError] = useState(false);
   const hasDiscount = originalPrice && originalPrice > price;
@@ -107,18 +107,18 @@ export default function ProductCardCatto({
     ? Math.round(((originalPrice - price) / originalPrice) * 100)
     : 0;
 
-  const isHorizontal = orientation === 'horizontal';
+  const isHorizontal = orientation === "horizontal";
 
   return (
     <div
       data-testid={testId}
       onClick={onClick}
-      role={onClick ? 'button' : undefined}
+      role={onClick ? "button" : undefined}
       tabIndex={onClick ? 0 : undefined}
       onKeyDown={
         onClick
           ? (e) => {
-              if (e.key === 'Enter' || e.key === ' ') {
+              if (e.key === "Enter" || e.key === " ") {
                 e.preventDefault();
                 onClick();
               }
@@ -126,20 +126,20 @@ export default function ProductCardCatto({
           : undefined
       }
       className={cn(
-        'group relative overflow-hidden rounded-xl bg-theme-surface',
-        'border border-theme-border',
-        'transition-all duration-200',
+        "group relative overflow-hidden rounded-xl bg-theme-surface",
+        "border border-theme-border",
+        "transition-all duration-200",
         onClick &&
-          'cursor-pointer hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600',
-        isHorizontal ? 'flex flex-row' : 'flex flex-col',
-        className,
+          "cursor-pointer hover:shadow-lg hover:border-gray-300 dark:hover:border-gray-600",
+        isHorizontal ? "flex flex-row" : "flex flex-col",
+        className
       )}
     >
       {/* Image Container */}
       <div
         className={cn(
-          'relative overflow-hidden bg-gray-100 dark:bg-gray-700',
-          isHorizontal ? 'w-40 shrink-0' : 'aspect-square w-full',
+          "relative overflow-hidden bg-gray-100 dark:bg-gray-700",
+          isHorizontal ? "w-40 shrink-0" : "aspect-square w-full"
         )}
       >
         {image && !imageError ? (
@@ -185,20 +185,20 @@ export default function ProductCardCatto({
               onWishlistToggle?.();
             }}
             className={cn(
-              'absolute right-2 top-2 rounded-full p-2 transition-colors',
-              'bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800',
-              'focus:outline-none focus:ring-2 focus:ring-theme-secondary',
+              "absolute right-2 top-2 rounded-full p-2 transition-colors",
+              "bg-white/80 hover:bg-white dark:bg-gray-800/80 dark:hover:bg-gray-800",
+              "focus:outline-none focus:ring-2 focus:ring-theme-secondary"
             )}
             aria-label={
-              isWishlisted ? 'Remove from wishlist' : 'Add to wishlist'
+              isWishlisted ? "Remove from wishlist" : "Add to wishlist"
             }
           >
             <svg
               className={cn(
-                'h-5 w-5 transition-colors',
+                "h-5 w-5 transition-colors",
                 isWishlisted
-                  ? 'fill-red-500 text-red-500'
-                  : 'fill-none text-gray-600 dark:text-gray-400',
+                  ? "fill-red-500 text-red-500"
+                  : "fill-none text-gray-600 dark:text-gray-400"
               )}
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -226,8 +226,8 @@ export default function ProductCardCatto({
       {/* Content */}
       <div
         className={cn(
-          'flex flex-1 flex-col p-4',
-          isHorizontal && 'justify-center',
+          "flex flex-1 flex-col p-4",
+          isHorizontal && "justify-center"
         )}
       >
         {/* Category */}
@@ -257,10 +257,10 @@ export default function ProductCardCatto({
                 <svg
                   key={star}
                   className={cn(
-                    'h-4 w-4',
+                    "h-4 w-4",
                     star <= Math.round(rating)
-                      ? 'text-yellow-400'
-                      : 'text-gray-300 dark:text-gray-600',
+                      ? "text-yellow-400"
+                      : "text-gray-300 dark:text-gray-600"
                   )}
                   fill="currentColor"
                   viewBox="0 0 20 20"
@@ -306,11 +306,11 @@ export default function ProductCardCatto({
             }}
             disabled={!inStock || loading}
             className={cn(
-              'mt-4 w-full rounded-lg px-4 py-2 text-sm font-semibold transition-colors',
-              'focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-secondary',
+              "mt-4 w-full rounded-lg px-4 py-2 text-sm font-semibold transition-colors",
+              "focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-secondary",
               inStock
-                ? 'bg-theme-secondary text-theme-on-secondary hover:bg-theme-secondary-hover'
-                : 'bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400',
+                ? "bg-theme-secondary text-theme-on-secondary hover:bg-theme-secondary-hover"
+                : "bg-gray-200 text-gray-500 cursor-not-allowed dark:bg-gray-700 dark:text-gray-400"
             )}
           >
             {loading ? (
@@ -339,7 +339,7 @@ export default function ProductCardCatto({
             ) : inStock ? (
               actionText
             ) : (
-              'Out of Stock'
+              "Out of Stock"
             )}
           </button>
         )}

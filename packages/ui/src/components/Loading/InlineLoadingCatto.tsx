@@ -1,17 +1,17 @@
 // @ccatto/ui - InlineLoadingCatto Component
-'use client';
+"use client";
 
-import React from 'react';
+import React from "react";
 
 export interface InlineLoadingCattoProps {
   /** Optional message to display next to the spinner */
   message?: string;
   /** Size of the spinner */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Padding around the component */
-  padding?: 'sm' | 'md' | 'lg' | 'none';
+  padding?: "sm" | "md" | "lg" | "none";
   /** Layout direction */
-  layout?: 'horizontal' | 'vertical';
+  layout?: "horizontal" | "vertical";
   /** Show Rz logo inside the spinner (requires size lg) */
   showLogo?: boolean;
 }
@@ -69,18 +69,18 @@ const RzLogoSvg: React.FC<{ size: number }> = ({ size }) => (
  */
 const InlineLoadingCatto: React.FC<InlineLoadingCattoProps> = ({
   message,
-  size = 'md',
-  padding = 'md',
-  layout = 'horizontal',
+  size = "md",
+  padding = "md",
+  layout = "horizontal",
   showLogo = false,
 }) => {
   // When showing logo, use larger size
-  const effectiveSize = showLogo ? 'lg' : size;
+  const effectiveSize = showLogo ? "lg" : size;
 
   const sizeClasses = {
-    sm: 'h-5 w-5',
-    md: 'h-8 w-8',
-    lg: 'h-12 w-12',
+    sm: "h-5 w-5",
+    md: "h-8 w-8",
+    lg: "h-12 w-12",
   };
 
   // Logo sizes based on spinner size
@@ -91,14 +91,14 @@ const InlineLoadingCatto: React.FC<InlineLoadingCattoProps> = ({
   };
 
   const paddingClasses = {
-    none: '',
-    sm: 'py-4',
-    md: 'py-8',
-    lg: 'py-12',
+    none: "",
+    sm: "py-4",
+    md: "py-8",
+    lg: "py-12",
   };
 
   const layoutClasses =
-    layout === 'horizontal' ? 'flex-row space-x-3' : 'flex-col space-y-3';
+    layout === "horizontal" ? "flex-row space-x-3" : "flex-col space-y-3";
 
   return (
     <div

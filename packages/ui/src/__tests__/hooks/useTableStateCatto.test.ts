@@ -1,44 +1,44 @@
 // @ccatto/ui - useTableStateCatto Tests
 // Tests for the table state management hook
 
-import { act, renderHook } from '@testing-library/react';
-import { describe, expect, it } from 'vitest';
-import { useTableStateCatto } from '../../hooks/table/useTableStateCatto';
+import { act, renderHook } from "@testing-library/react";
+import { describe, expect, it } from "vitest";
+import { useTableStateCatto } from "../../hooks/table/useTableStateCatto";
 
-describe('useTableStateCatto', () => {
+describe("useTableStateCatto", () => {
   // ============================================
   // Initial State Tests
   // ============================================
 
-  describe('Initial State', () => {
-    it('returns empty sorting state by default', () => {
+  describe("Initial State", () => {
+    it("returns empty sorting state by default", () => {
       const { result } = renderHook(() => useTableStateCatto());
       expect(result.current.sorting).toEqual([]);
     });
 
-    it('returns empty column filters by default', () => {
+    it("returns empty column filters by default", () => {
       const { result } = renderHook(() => useTableStateCatto());
       expect(result.current.columnFilters).toEqual([]);
     });
 
-    it('returns empty column visibility by default', () => {
+    it("returns empty column visibility by default", () => {
       const { result } = renderHook(() => useTableStateCatto());
       expect(result.current.columnVisibility).toEqual({});
     });
 
-    it('returns empty row selection by default', () => {
+    it("returns empty row selection by default", () => {
       const { result } = renderHook(() => useTableStateCatto());
       expect(result.current.rowSelection).toEqual({});
     });
 
-    it('returns empty global filter by default', () => {
+    it("returns empty global filter by default", () => {
       const { result } = renderHook(() => useTableStateCatto());
-      expect(result.current.globalFilter).toBe('');
+      expect(result.current.globalFilter).toBe("");
     });
 
-    it('accepts initial column visibility option', () => {
+    it("accepts initial column visibility option", () => {
       const { result } = renderHook(() =>
-        useTableStateCatto({ initialColumnVisibility: { email: false } }),
+        useTableStateCatto({ initialColumnVisibility: { email: false } })
       );
       expect(result.current.columnVisibility).toEqual({ email: false });
     });
@@ -48,37 +48,37 @@ describe('useTableStateCatto', () => {
   // Sorting State Tests
   // ============================================
 
-  describe('Sorting State', () => {
-    it('updates sorting state', () => {
+  describe("Sorting State", () => {
+    it("updates sorting state", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setSorting([{ id: 'name', desc: false }]);
+        result.current.setSorting([{ id: "name", desc: false }]);
       });
 
-      expect(result.current.sorting).toEqual([{ id: 'name', desc: false }]);
+      expect(result.current.sorting).toEqual([{ id: "name", desc: false }]);
     });
 
-    it('updates sorting with multiple columns', () => {
+    it("updates sorting with multiple columns", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
         result.current.setSorting([
-          { id: 'name', desc: false },
-          { id: 'email', desc: true },
+          { id: "name", desc: false },
+          { id: "email", desc: true },
         ]);
       });
 
       expect(result.current.sorting).toHaveLength(2);
-      expect(result.current.sorting[0]).toEqual({ id: 'name', desc: false });
-      expect(result.current.sorting[1]).toEqual({ id: 'email', desc: true });
+      expect(result.current.sorting[0]).toEqual({ id: "name", desc: false });
+      expect(result.current.sorting[1]).toEqual({ id: "email", desc: true });
     });
 
-    it('clears sorting state', () => {
+    it("clears sorting state", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setSorting([{ id: 'name', desc: false }]);
+        result.current.setSorting([{ id: "name", desc: false }]);
       });
 
       act(() => {
@@ -93,37 +93,37 @@ describe('useTableStateCatto', () => {
   // Column Filters State Tests
   // ============================================
 
-  describe('Column Filters State', () => {
-    it('updates column filters state', () => {
+  describe("Column Filters State", () => {
+    it("updates column filters state", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setColumnFilters([{ id: 'name', value: 'John' }]);
+        result.current.setColumnFilters([{ id: "name", value: "John" }]);
       });
 
       expect(result.current.columnFilters).toEqual([
-        { id: 'name', value: 'John' },
+        { id: "name", value: "John" },
       ]);
     });
 
-    it('updates with multiple column filters', () => {
+    it("updates with multiple column filters", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
         result.current.setColumnFilters([
-          { id: 'name', value: 'John' },
-          { id: 'role', value: 'admin' },
+          { id: "name", value: "John" },
+          { id: "role", value: "admin" },
         ]);
       });
 
       expect(result.current.columnFilters).toHaveLength(2);
     });
 
-    it('clears column filters', () => {
+    it("clears column filters", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setColumnFilters([{ id: 'name', value: 'John' }]);
+        result.current.setColumnFilters([{ id: "name", value: "John" }]);
       });
 
       act(() => {
@@ -138,8 +138,8 @@ describe('useTableStateCatto', () => {
   // Column Visibility State Tests
   // ============================================
 
-  describe('Column Visibility State', () => {
-    it('updates column visibility state', () => {
+  describe("Column Visibility State", () => {
+    it("updates column visibility state", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
@@ -149,7 +149,7 @@ describe('useTableStateCatto', () => {
       expect(result.current.columnVisibility).toEqual({ email: false });
     });
 
-    it('hides multiple columns', () => {
+    it("hides multiple columns", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
@@ -162,9 +162,9 @@ describe('useTableStateCatto', () => {
       });
     });
 
-    it('shows previously hidden columns', () => {
+    it("shows previously hidden columns", () => {
       const { result } = renderHook(() =>
-        useTableStateCatto({ initialColumnVisibility: { email: false } }),
+        useTableStateCatto({ initialColumnVisibility: { email: false } })
       );
 
       act(() => {
@@ -179,22 +179,22 @@ describe('useTableStateCatto', () => {
   // Row Selection State Tests
   // ============================================
 
-  describe('Row Selection State', () => {
-    it('updates row selection state', () => {
+  describe("Row Selection State", () => {
+    it("updates row selection state", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setRowSelection({ '0': true, '1': true });
+        result.current.setRowSelection({ "0": true, "1": true });
       });
 
-      expect(result.current.rowSelection).toEqual({ '0': true, '1': true });
+      expect(result.current.rowSelection).toEqual({ "0": true, "1": true });
     });
 
-    it('clears row selection', () => {
+    it("clears row selection", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setRowSelection({ '0': true });
+        result.current.setRowSelection({ "0": true });
       });
 
       act(() => {
@@ -209,29 +209,29 @@ describe('useTableStateCatto', () => {
   // Global Filter State Tests
   // ============================================
 
-  describe('Global Filter State', () => {
-    it('updates global filter state', () => {
+  describe("Global Filter State", () => {
+    it("updates global filter state", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setGlobalFilter('search term');
+        result.current.setGlobalFilter("search term");
       });
 
-      expect(result.current.globalFilter).toBe('search term');
+      expect(result.current.globalFilter).toBe("search term");
     });
 
-    it('clears global filter', () => {
+    it("clears global filter", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
       act(() => {
-        result.current.setGlobalFilter('search');
+        result.current.setGlobalFilter("search");
       });
 
       act(() => {
-        result.current.setGlobalFilter('');
+        result.current.setGlobalFilter("");
       });
 
-      expect(result.current.globalFilter).toBe('');
+      expect(result.current.globalFilter).toBe("");
     });
   });
 
@@ -239,30 +239,30 @@ describe('useTableStateCatto', () => {
   // Return Type Tests
   // ============================================
 
-  describe('Return Type', () => {
-    it('returns all expected properties', () => {
+  describe("Return Type", () => {
+    it("returns all expected properties", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
-      expect(result.current).toHaveProperty('sorting');
-      expect(result.current).toHaveProperty('setSorting');
-      expect(result.current).toHaveProperty('columnFilters');
-      expect(result.current).toHaveProperty('setColumnFilters');
-      expect(result.current).toHaveProperty('columnVisibility');
-      expect(result.current).toHaveProperty('setColumnVisibility');
-      expect(result.current).toHaveProperty('rowSelection');
-      expect(result.current).toHaveProperty('setRowSelection');
-      expect(result.current).toHaveProperty('globalFilter');
-      expect(result.current).toHaveProperty('setGlobalFilter');
+      expect(result.current).toHaveProperty("sorting");
+      expect(result.current).toHaveProperty("setSorting");
+      expect(result.current).toHaveProperty("columnFilters");
+      expect(result.current).toHaveProperty("setColumnFilters");
+      expect(result.current).toHaveProperty("columnVisibility");
+      expect(result.current).toHaveProperty("setColumnVisibility");
+      expect(result.current).toHaveProperty("rowSelection");
+      expect(result.current).toHaveProperty("setRowSelection");
+      expect(result.current).toHaveProperty("globalFilter");
+      expect(result.current).toHaveProperty("setGlobalFilter");
     });
 
-    it('setters are functions', () => {
+    it("setters are functions", () => {
       const { result } = renderHook(() => useTableStateCatto());
 
-      expect(typeof result.current.setSorting).toBe('function');
-      expect(typeof result.current.setColumnFilters).toBe('function');
-      expect(typeof result.current.setColumnVisibility).toBe('function');
-      expect(typeof result.current.setRowSelection).toBe('function');
-      expect(typeof result.current.setGlobalFilter).toBe('function');
+      expect(typeof result.current.setSorting).toBe("function");
+      expect(typeof result.current.setColumnFilters).toBe("function");
+      expect(typeof result.current.setColumnVisibility).toBe("function");
+      expect(typeof result.current.setRowSelection).toBe("function");
+      expect(typeof result.current.setGlobalFilter).toBe("function");
     });
   });
 });

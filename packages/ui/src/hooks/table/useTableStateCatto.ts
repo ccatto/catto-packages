@@ -1,26 +1,33 @@
 // @ccatto/ui - useTableStateCatto Hook
-'use client';
+"use client";
 
-import { useState } from 'react';
+import { useState } from "react";
 import {
   ColumnFiltersState,
+  PaginationState,
   SortingState,
   VisibilityState,
-} from '@tanstack/react-table';
+} from "@tanstack/react-table";
 
 export interface UseTableStateCattoOptions {
   /** Initial column visibility state (e.g., { searchable: false } to hide a column) */
   initialColumnVisibility?: VisibilityState;
+  /** Initial page size (default: 10) */
+  pageSize?: number;
 }
 
 export function useTableStateCatto(options?: UseTableStateCattoOptions) {
   const [sorting, setSorting] = useState<SortingState>([]);
   const [columnFilters, setColumnFilters] = useState<ColumnFiltersState>([]);
   const [columnVisibility, setColumnVisibility] = useState<VisibilityState>(
-    options?.initialColumnVisibility ?? {},
+    options?.initialColumnVisibility ?? {}
   );
   const [rowSelection, setRowSelection] = useState({});
-  const [globalFilter, setGlobalFilter] = useState('');
+  const [globalFilter, setGlobalFilter] = useState("");
+  const [pagination, setPagination] = useState<PaginationState>({
+    pageIndex: 0,
+    pageSize: options?.pageSize ?? 10,
+  });
 
   return {
     sorting,
@@ -33,5 +40,7 @@ export function useTableStateCatto(options?: UseTableStateCattoOptions) {
     setRowSelection,
     globalFilter,
     setGlobalFilter,
+    pagination,
+    setPagination,
   };
 }

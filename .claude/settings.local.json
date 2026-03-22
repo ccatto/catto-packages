@@ -26,7 +26,12 @@
       "Bash(git pull:*)",
       "Bash(npm publish:*)",
       "Bash(git checkout:*)",
-      "Bash(ls /Users/chriscatto/Documents/GitK8/catto-packages/node_modules/@testing-library/jest-dom/vitest*)"
+      "Bash(ls /Users/chriscatto/Documents/GitK8/catto-packages/node_modules/@testing-library/jest-dom/vitest*)",
+      "Bash(rm:*)",
+      "Bash(for comp:*)",
+      "Bash(do echo:*)",
+      "Read(//Users/chriscatto/Documents/GitK8/catto-packages/**)",
+      "Bash(done)"
     ]
   }
 }

@@ -1,9 +1,9 @@
 // @ccatto/ui - NavLinkGroupCatto Component
 // Grouped navigation links with optional section header
-'use client';
+"use client";
 
-import React from 'react';
-import { cn } from '../../utils';
+import React from "react";
+import { cn } from "../../utils";
 
 // ============================================
 // Types
@@ -38,7 +38,7 @@ export interface NavLinkGroupCattoProps {
     children: React.ReactNode;
   }>;
   /** Variant for title styling */
-  titleVariant?: 'default' | 'accent';
+  titleVariant?: "default" | "accent";
   /** Additional className for the container */
   className?: string;
   /** Additional className for items */
@@ -72,7 +72,7 @@ const NavLinkGroupCatto: React.FC<NavLinkGroupCattoProps> = ({
   titleIcon,
   items,
   LinkComponent,
-  titleVariant = 'default',
+  titleVariant = "default",
   className,
   itemClassName,
 }) => {
@@ -86,11 +86,11 @@ const NavLinkGroupCatto: React.FC<NavLinkGroupCattoProps> = ({
     );
 
     const baseItemClassName = cn(
-      'flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors',
+      "flex w-full items-center gap-3 rounded-lg px-3 py-2.5 text-left transition-colors",
       item.isActive
-        ? 'bg-theme-secondary-subtle text-theme-secondary'
-        : 'text-theme-text-muted hover:bg-theme-surface-secondary',
-      itemClassName,
+        ? "bg-theme-secondary-subtle text-theme-secondary"
+        : "text-theme-text-muted hover:bg-theme-surface-secondary",
+      itemClassName
     );
 
     // If custom Link component provided and href exists, use it
@@ -138,15 +138,15 @@ const NavLinkGroupCatto: React.FC<NavLinkGroupCattoProps> = ({
   };
 
   return (
-    <div className={cn('space-y-1', className)}>
+    <div className={cn("space-y-1", className)}>
       {/* Section Title */}
       {title && (
         <div
           className={cn(
-            'mb-2 flex items-center gap-2 px-3',
-            titleVariant === 'accent'
-              ? 'text-theme-secondary'
-              : 'text-theme-text-subtle',
+            "mb-2 flex items-center gap-2 px-3",
+            titleVariant === "accent"
+              ? "text-theme-secondary"
+              : "text-theme-text-subtle"
           )}
         >
           {titleIcon}

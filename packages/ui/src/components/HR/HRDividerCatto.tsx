@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRDividerCattoProps {
   /** Tailwind width class (e.g., 'w-48', 'w-full') */
@@ -13,15 +13,15 @@ export interface HRDividerCattoProps {
  * Basic dashed divider line
  */
 const HRDividerCatto: React.FC<HRDividerCattoProps> = ({
-  width = 'w-48',
-  className = '',
+  width = "w-48",
+  className = "",
 }) => {
   return (
     <hr
       className={cn(
         width,
-        'border-t border-dashed border-slate-500 dark:border-slate-600 my-2 mx-auto',
-        className,
+        "border-t border-dashed border-slate-500 dark:border-slate-600 my-2 mx-auto",
+        className
       )}
     />
   );

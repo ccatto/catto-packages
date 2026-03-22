@@ -1,10 +1,11 @@
 // @ccatto/ui - LanguageSwitcherCatto Component
 // Headless/presentational language switcher - i18n logic stays in the app
-'use client';
+"use client";
 
-import React, { useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown } from 'lucide-react';
-import { cn } from '../../utils';
+import React, { useEffect, useRef, useState } from "react";
+import { Check, ChevronDown } from "lucide-react";
+import { Z_INDEX } from "../../constants/z-index";
+import { cn } from "../../utils";
 
 // ============================================
 // Types
@@ -19,8 +20,8 @@ export interface LanguageOption {
   flag?: string;
 }
 
-export type LanguageSwitcherVariant = 'dropdown' | 'buttons' | 'compact';
-export type LanguageSwitcherSize = 'sm' | 'md' | 'lg';
+export type LanguageSwitcherVariant = "dropdown" | "buttons" | "compact";
+export type LanguageSwitcherSize = "sm" | "md" | "lg";
 
 export interface LanguageSwitcherCattoProps {
   /** Available languages to choose from */
@@ -40,7 +41,7 @@ export interface LanguageSwitcherCattoProps {
   /** Custom leading icon for dropdown variant (overrides spinning globe) */
   leadingIcon?: React.ReactNode;
   /** Accessible label for the switcher */
-  'aria-label'?: string;
+  "aria-label"?: string;
 }
 
 // ============================================
@@ -52,7 +53,7 @@ export interface LanguageSwitcherCattoProps {
  */
 const SpinningEarthGlobe = ({ size = 24 }: { size?: number }) => {
   const [globeIndex, setGlobeIndex] = useState(0);
-  const globes = ['🌍', '🌎', '🌏'];
+  const globes = ["🌍", "🌎", "🌏"];
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -76,25 +77,25 @@ const SpinningEarthGlobe = ({ size = 24 }: { size?: number }) => {
 // Size configurations
 const sizeConfig = {
   sm: {
-    trigger: 'px-2 py-1.5 text-sm gap-1.5',
-    flag: 'text-lg',
-    icon: 'h-3 w-3',
+    trigger: "px-2 py-1.5 text-sm gap-1.5",
+    flag: "text-lg",
+    icon: "h-3 w-3",
     globe: 20,
-    option: 'px-3 py-2 text-sm gap-2',
+    option: "px-3 py-2 text-sm gap-2",
   },
   md: {
-    trigger: 'px-3 py-2 text-base gap-2',
-    flag: 'text-xl',
-    icon: 'h-4 w-4',
+    trigger: "px-3 py-2 text-base gap-2",
+    flag: "text-xl",
+    icon: "h-4 w-4",
     globe: 24,
-    option: 'px-4 py-2.5 text-base gap-2.5',
+    option: "px-4 py-2.5 text-base gap-2.5",
   },
   lg: {
-    trigger: 'px-4 py-2.5 text-lg gap-2.5',
-    flag: 'text-2xl',
-    icon: 'h-5 w-5',
+    trigger: "px-4 py-2.5 text-lg gap-2.5",
+    flag: "text-2xl",
+    icon: "h-5 w-5",
     globe: 32,
-    option: 'px-4 py-3 text-lg gap-3',
+    option: "px-4 py-3 text-lg gap-3",
   },
 };
 
@@ -117,12 +118,12 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
   languages,
   currentLanguage,
   onChange,
-  variant = 'dropdown',
-  size = 'md',
+  variant = "dropdown",
+  size = "md",
   showFlags = true,
-  className = '',
+  className = "",
   leadingIcon,
-  'aria-label': ariaLabel = 'Select language',
+  "aria-label": ariaLabel = "Select language",
 }) => {
   const [isOpen, setIsOpen] = useState(false);
   const containerRef = useRef<HTMLDivElement>(null);
@@ -141,15 +142,15 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
         setIsOpen(false);
       }
     };
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
 
   // Handle keyboard navigation
   const handleKeyDown = (event: React.KeyboardEvent) => {
-    if (event.key === 'Escape') {
+    if (event.key === "Escape") {
       setIsOpen(false);
-    } else if (event.key === 'Enter' || event.key === ' ') {
+    } else if (event.key === "Enter" || event.key === " ") {
       event.preventDefault();
       setIsOpen(!isOpen);
     }
@@ -158,12 +159,12 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
   // ============================================
   // Buttons Variant
   // ============================================
-  if (variant === 'buttons') {
+  if (variant === "buttons") {
     return (
       <div
         className={cn(
-          'flex flex-wrap items-center justify-center gap-2',
-          className,
+          "flex flex-wrap items-center justify-center gap-2",
+          className
         )}
         role="radiogroup"
         aria-label={ariaLabel}
@@ -175,12 +176,12 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
               key={lang.value}
               onClick={() => onChange(lang.value)}
               className={cn(
-                'rounded-lg font-medium transition-colors',
+                "rounded-lg font-medium transition-colors",
                 // Smaller on mobile, normal on larger screens
-                'px-2 py-1.5 text-xs sm:px-3 sm:py-2 sm:text-sm gap-1.5',
+                "px-2 py-1.5 text-xs sm:px-3 sm:py-2 sm:text-sm gap-1.5",
                 isSelected
-                  ? 'bg-theme-secondary text-theme-on-secondary'
-                  : 'bg-theme-surface-secondary text-theme-text hover:bg-theme-surface-secondary/80',
+                  ? "bg-theme-secondary text-theme-on-secondary"
+                  : "bg-theme-surface-secondary text-theme-text hover:bg-theme-surface-secondary/80"
               )}
               role="radio"
               aria-checked={isSelected}
@@ -200,17 +201,17 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
   // Dropdown / Compact Variants
   // ============================================
   return (
-    <div className={cn('relative', className)} ref={containerRef}>
+    <div className={cn("relative", className)} ref={containerRef}>
       {/* Trigger Button */}
       <button
         onClick={() => setIsOpen(!isOpen)}
         onKeyDown={handleKeyDown}
         className={cn(
-          'flex items-center justify-between rounded-lg border-2 transition-colors',
-          'border-theme-border bg-theme-surface hover:bg-theme-surface-secondary',
+          "flex items-center justify-between rounded-lg border-2 transition-colors",
+          "border-theme-border bg-theme-surface hover:bg-theme-surface-secondary",
           sizes.trigger,
-          isOpen && 'ring-2 ring-theme-primary',
-          variant === 'compact' ? 'min-w-0' : 'w-full',
+          isOpen && "ring-2 ring-theme-primary",
+          variant === "compact" ? "min-w-0" : "w-full"
         )}
         aria-expanded={isOpen}
         aria-haspopup="listbox"
@@ -218,14 +219,14 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
       >
         <span className="flex items-center gap-2 truncate">
           {/* Leading icon - spinning globe or custom */}
-          {variant === 'dropdown' && (
+          {variant === "dropdown" && (
             <span className="shrink-0">
               {leadingIcon || <SpinningEarthGlobe size={sizes.globe} />}
             </span>
           )}
           {/* Flag */}
           {showFlags && currentLang?.flag && (
-            <span className={cn('leading-none', sizes.flag)}>
+            <span className={cn("leading-none", sizes.flag)}>
               {currentLang.flag}
             </span>
           )}
@@ -234,9 +235,9 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
         </span>
         <ChevronDown
           className={cn(
-            'shrink-0 text-theme-text-subtle transition-transform duration-200',
+            "shrink-0 text-theme-text-subtle transition-transform duration-200",
             sizes.icon,
-            isOpen && 'rotate-180',
+            isOpen && "rotate-180"
           )}
         />
       </button>
@@ -246,11 +247,11 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
         <div
           role="listbox"
           className={cn(
-            'absolute z-[1000] mt-1 overflow-hidden rounded-lg border shadow-lg',
-            'border-theme-border bg-theme-surface',
-            variant === 'compact'
-              ? 'right-0 min-w-max'
-              : 'left-0 right-0 w-full',
+            `absolute ${Z_INDEX.dropdown} mt-1 overflow-hidden rounded-lg border shadow-lg`,
+            "border-theme-border bg-theme-surface",
+            variant === "compact"
+              ? "right-0 min-w-max"
+              : "left-0 right-0 w-full"
           )}
         >
           {languages.map((lang) => {
@@ -263,18 +264,18 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
                   setIsOpen(false);
                 }}
                 className={cn(
-                  'flex w-full items-center justify-between text-left transition-colors',
+                  "flex w-full items-center justify-between text-left transition-colors",
                   sizes.option,
                   isSelected
-                    ? 'bg-theme-surface-secondary text-theme-text'
-                    : 'text-theme-text-muted hover:bg-theme-surface-secondary',
+                    ? "bg-theme-surface-secondary text-theme-text"
+                    : "text-theme-text-muted hover:bg-theme-surface-secondary"
                 )}
                 role="option"
                 aria-selected={isSelected}
               >
                 <span className="flex items-center gap-2">
                   {showFlags && lang.flag && (
-                    <span className={cn('leading-none', sizes.flag)}>
+                    <span className={cn("leading-none", sizes.flag)}>
                       {lang.flag}
                     </span>
                   )}
@@ -283,8 +284,8 @@ const LanguageSwitcherCatto: React.FC<LanguageSwitcherCattoProps> = ({
                 {isSelected && (
                   <Check
                     className={cn(
-                      'shrink-0 text-theme-text-subtle',
-                      sizes.icon,
+                      "shrink-0 text-theme-text-subtle",
+                      sizes.icon
                     )}
                   />
                 )}

@@ -1,23 +1,23 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { Eye, EyeOff, Mail, Search } from 'lucide-react';
-import InputCatto from './InputCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { Eye, EyeOff, Mail, Search } from "lucide-react";
+import InputCatto from "./InputCatto";
 
 const meta = {
-  title: 'Components/Input',
+  title: "Components/Input",
   component: InputCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
     variant: {
-      control: 'select',
-      options: ['default', 'filled', 'outline', 'ghost'],
+      control: "select",
+      options: ["default", "filled", "outline", "ghost"],
     },
   },
   args: {
@@ -30,11 +30,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter text...',
+    placeholder: "Enter text...",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -43,13 +43,13 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
   args: {
-    label: 'Email Address',
-    placeholder: 'you@example.com',
-    type: 'email',
+    label: "Email Address",
+    placeholder: "you@example.com",
+    type: "email",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -58,14 +58,14 @@ export const WithLabel: Story = {
 
 export const WithError: Story = {
   args: {
-    label: 'Email',
-    placeholder: 'you@example.com',
-    value: 'invalid-email',
-    error: 'Please enter a valid email address',
+    label: "Email",
+    placeholder: "you@example.com",
+    value: "invalid-email",
+    error: "Please enter a valid email address",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -74,14 +74,14 @@ export const WithError: Story = {
 
 export const WithHelperText: Story = {
   args: {
-    label: 'Password',
-    placeholder: 'Enter password',
-    type: 'password',
-    helperText: 'Must be at least 8 characters',
+    label: "Password",
+    placeholder: "Enter password",
+    type: "password",
+    helperText: "Must be at least 8 characters",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -90,13 +90,13 @@ export const WithHelperText: Story = {
 
 export const Disabled: Story = {
   args: {
-    label: 'Disabled Input',
-    placeholder: 'Cannot type here',
+    label: "Disabled Input",
+    placeholder: "Cannot type here",
     disabled: true,
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -105,13 +105,13 @@ export const Disabled: Story = {
 
 export const Required: Story = {
   args: {
-    label: 'Required Field',
-    placeholder: 'This field is required',
+    label: "Required Field",
+    placeholder: "This field is required",
     required: true,
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -120,12 +120,12 @@ export const Required: Story = {
 
 export const WithLeftIcon: Story = {
   args: {
-    placeholder: 'Search...',
+    placeholder: "Search...",
     leftIcon: <Search className="h-4 w-4" />,
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -134,12 +134,12 @@ export const WithLeftIcon: Story = {
 
 export const WithRightIcon: Story = {
   args: {
-    placeholder: 'Enter email',
+    placeholder: "Enter email",
     rightIcon: <Mail className="h-4 w-4" />,
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -148,12 +148,12 @@ export const WithRightIcon: Story = {
 
 export const SmallSize: Story = {
   args: {
-    placeholder: 'Small input',
-    size: 'sm',
+    placeholder: "Small input",
+    size: "sm",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -162,12 +162,12 @@ export const SmallSize: Story = {
 
 export const LargeSize: Story = {
   args: {
-    placeholder: 'Large input',
-    size: 'lg',
+    placeholder: "Large input",
+    size: "lg",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -176,12 +176,12 @@ export const LargeSize: Story = {
 
 export const FilledVariant: Story = {
   args: {
-    placeholder: 'Filled variant',
-    variant: 'filled',
+    placeholder: "Filled variant",
+    variant: "filled",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),

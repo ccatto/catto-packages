@@ -9,7 +9,7 @@
  */
 
 /* Light Mode (supported but rare use case) */
-[data-theme='neon-pulse'] {
+[data-theme="neon-pulse"] {
   /* Primary = Cyan/Teal */
   --catto-theme-primary: #0891b2; /* cyan-600 */
   --catto-theme-primary-hover: #06b6d4; /* cyan-500 */
@@ -50,8 +50,8 @@
 }
 
 /* Dark Mode (primary mode for NeonPulse) */
-[data-theme='neon-pulse'].dark,
-.dark[data-theme='neon-pulse'] {
+[data-theme="neon-pulse"].dark,
+.dark[data-theme="neon-pulse"] {
   /* Primary = Cyan (main accent, CTAs, links) */
   --catto-theme-primary: #06b6d4; /* cyan-500 */
   --catto-theme-primary-hover: #22d3ee; /* cyan-400 */

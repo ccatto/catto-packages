@@ -1,25 +1,25 @@
 // @ccatto/ui - DatePickerCatto Component
-'use client';
+"use client";
 
-import React, { forwardRef, useEffect, useId, useRef, useState } from 'react';
-import { Calendar, X } from 'lucide-react';
+import React, { forwardRef, useEffect, useId, useRef, useState } from "react";
+import { Calendar, X } from "lucide-react";
 import {
   DEFAULT_DATE_PICKER_LABELS,
   type DatePickerLabels,
-} from '../../i18n/defaults';
-import { cn } from '../../utils';
-import CalendarCatto, { type CalendarTheme } from '../Calendar/CalendarCatto';
+} from "../../i18n/defaults";
+import { cn } from "../../utils";
+import CalendarCatto, { type CalendarTheme } from "../Calendar/CalendarCatto";
 
-export type DatePickerSize = 'small' | 'medium' | 'large';
-export type DatePickerVariant = 'outlined' | 'filled' | 'minimal';
+export type DatePickerSize = "small" | "medium" | "large";
+export type DatePickerVariant = "outlined" | "filled" | "minimal";
 export type DatePickerWidth =
-  | 'auto'
-  | 'full'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl';
+  | "auto"
+  | "full"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl";
 
 export interface DatePickerCattoProps {
   /** Selected date value */
@@ -94,21 +94,21 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
       helperText,
       disabled = false,
       required = false,
-      size = 'medium',
-      variant = 'outlined',
-      width = 'full',
-      calendarTheme = 'midnightEmber',
+      size = "medium",
+      variant = "outlined",
+      width = "full",
+      calendarTheme = "midnightEmber",
       minDate,
       maxDate,
       dateFormat,
       clearable = true,
       labels,
-      className = '',
+      className = "",
       id: providedId,
       name,
       onBlur,
     },
-    ref,
+    ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
     const containerRef = useRef<HTMLDivElement>(null);
@@ -125,12 +125,12 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
 
     // Format date for display
     const formatDate = (date: Date | null | undefined): string => {
-      if (!date) return '';
+      if (!date) return "";
 
       const defaultFormat: Intl.DateTimeFormatOptions = {
-        year: 'numeric',
-        month: '2-digit',
-        day: '2-digit',
+        year: "numeric",
+        month: "2-digit",
+        day: "2-digit",
       };
 
       try {
@@ -151,21 +151,21 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
         }
       };
 
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
       return () =>
-        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     // Handle escape key to close popup
     useEffect(() => {
       const handleEscape = (event: KeyboardEvent) => {
-        if (event.key === 'Escape' && isOpen) {
+        if (event.key === "Escape" && isOpen) {
           setIsOpen(false);
         }
       };
 
-      document.addEventListener('keydown', handleEscape);
-      return () => document.removeEventListener('keydown', handleEscape);
+      document.addEventListener("keydown", handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
     }, [isOpen]);
 
     // Handle date selection from calendar
@@ -189,7 +189,7 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
 
     // Handle keyboard events on the input container
     const handleKeyDown = (event: React.KeyboardEvent) => {
-      if (event.key === 'Enter' || event.key === ' ') {
+      if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         toggleCalendar();
       }
@@ -197,32 +197,32 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
 
     // Size classes
     const sizeClasses = {
-      small: 'h-8 px-2 text-sm',
-      medium: 'h-10 px-3 text-base',
-      large: 'h-12 px-4 text-lg',
+      small: "h-8 px-2 text-sm",
+      medium: "h-10 px-3 text-base",
+      large: "h-12 px-4 text-lg",
     };
 
     const iconSizeClasses = {
-      small: 'h-3.5 w-3.5',
-      medium: 'h-4 w-4',
-      large: 'h-5 w-5',
+      small: "h-3.5 w-3.5",
+      medium: "h-4 w-4",
+      large: "h-5 w-5",
     };
 
     const calendarSizeMap = {
-      small: 'small' as const,
-      medium: 'medium' as const,
-      large: 'large' as const,
+      small: "small" as const,
+      medium: "medium" as const,
+      large: "large" as const,
     };
 
     // Width classes
     const widthClasses = {
-      auto: 'w-auto',
-      full: 'w-full',
-      xs: 'w-20',
-      sm: 'w-32',
-      md: 'w-48',
-      lg: 'w-64',
-      xl: 'w-full md:w-96',
+      auto: "w-auto",
+      full: "w-full",
+      xs: "w-20",
+      sm: "w-32",
+      md: "w-48",
+      lg: "w-64",
+      xl: "w-full md:w-96",
     };
 
     // Error state
@@ -231,31 +231,31 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
     // Variant styles with focus states - explicit Tailwind colors
     const getVariantClasses = () => {
       const focusBorder = hasError
-        ? 'border-red-500 dark:border-red-400'
-        : 'border-theme-secondary';
+        ? "border-red-500 dark:border-red-400"
+        : "border-theme-secondary";
 
       const baseBorder = hasError
-        ? 'border-red-500 dark:border-red-400'
-        : 'border-theme-border';
+        ? "border-red-500 dark:border-red-400"
+        : "border-theme-border";
 
       switch (variant) {
-        case 'outlined':
+        case "outlined":
           return cn(
-            'border bg-theme-surface text-theme-text',
-            isOpen ? focusBorder : baseBorder,
+            "border bg-theme-surface text-theme-text",
+            isOpen ? focusBorder : baseBorder
           );
-        case 'filled':
+        case "filled":
           return cn(
-            'border-0 border-b-2 bg-theme-surface-secondary text-theme-text',
-            isOpen ? focusBorder : baseBorder,
+            "border-0 border-b-2 bg-theme-surface-secondary text-theme-text",
+            isOpen ? focusBorder : baseBorder
           );
-        case 'minimal':
+        case "minimal":
           return cn(
-            'border-0 border-b bg-transparent text-theme-text',
-            isOpen ? focusBorder : baseBorder,
+            "border-0 border-b bg-transparent text-theme-text",
+            isOpen ? focusBorder : baseBorder
           );
         default:
-          return '';
+          return "";
       }
     };
 
@@ -263,15 +263,15 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
     const focusClasses =
       isOpen && !disabled
         ? hasError
-          ? 'ring-4 ring-red-500/20 dark:ring-red-400/20 shadow-lg shadow-red-500/10'
-          : 'ring-4 ring-theme-secondary shadow-lg shadow-theme-secondary'
-        : '';
+          ? "ring-4 ring-red-500/20 dark:ring-red-400/20 shadow-lg shadow-red-500/10"
+          : "ring-4 ring-theme-secondary shadow-lg shadow-theme-secondary"
+        : "";
 
     // Label classes
-    const labelClasses = 'block text-sm font-medium text-theme-text-muted mb-1';
+    const labelClasses = "block text-sm font-medium text-theme-text-muted mb-1";
 
     return (
-      <div ref={ref} className={cn('relative', widthClasses[width], className)}>
+      <div ref={ref} className={cn("relative", widthClasses[width], className)}>
         {/* Label */}
         {label && (
           <label htmlFor={inputId} className={labelClasses}>
@@ -286,13 +286,13 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
         <div
           ref={containerRef}
           className={cn(
-            'relative flex items-center cursor-pointer rounded-md',
-            'transition-all duration-200',
+            "relative flex items-center cursor-pointer rounded-md",
+            "transition-all duration-200",
             sizeClasses[size],
             getVariantClasses(),
             focusClasses,
-            disabled && 'opacity-50 cursor-not-allowed',
-            'hover:border-theme-border-strong',
+            disabled && "opacity-50 cursor-not-allowed",
+            "hover:border-theme-border-strong"
           )}
           onClick={toggleCalendar}
           onKeyDown={handleKeyDown}
@@ -308,22 +308,22 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
             type="hidden"
             id={inputId}
             name={name}
-            value={value ? value.toISOString() : ''}
-            aria-invalid={hasError ? 'true' : undefined}
+            value={value ? value.toISOString() : ""}
+            aria-invalid={hasError ? "true" : undefined}
             aria-describedby={
-              error && typeof error === 'string'
+              error && typeof error === "string"
                 ? `${inputId}-error`
                 : helperText
-                  ? `${inputId}-helper`
-                  : undefined
+                ? `${inputId}-helper`
+                : undefined
             }
           />
 
           {/* Display value or placeholder */}
           <span
             className={cn(
-              'flex-1 truncate select-none',
-              !value && 'text-theme-text-muted',
+              "flex-1 truncate select-none",
+              !value && "text-theme-text-muted"
             )}
           >
             {value ? formatDate(value) : resolvedPlaceholder}
@@ -335,10 +335,10 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
               type="button"
               onClick={handleClear}
               className={cn(
-                'p-1 rounded-full hover:bg-theme-surface-secondary',
-                'text-theme-text-muted hover:text-theme-text',
-                'transition-colors duration-150',
-                'focus:outline-none focus:ring-2 focus:ring-theme-secondary',
+                "p-1 rounded-full hover:bg-theme-surface-secondary",
+                "text-theme-text-muted hover:text-theme-text",
+                "transition-colors duration-150",
+                "focus:outline-none focus:ring-2 focus:ring-theme-secondary"
               )}
               aria-label={resolvedLabels.clearButton}
             >
@@ -354,10 +354,10 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
               toggleCalendar();
             }}
             className={cn(
-              'p-1 ml-1 rounded-full',
-              'text-theme-text-muted hover:text-theme-text',
-              'transition-colors duration-150',
-              'focus:outline-none focus:ring-2 focus:ring-theme-secondary',
+              "p-1 ml-1 rounded-full",
+              "text-theme-text-muted hover:text-theme-text",
+              "transition-colors duration-150",
+              "focus:outline-none focus:ring-2 focus:ring-theme-secondary"
             )}
             aria-label={resolvedLabels.calendarButton}
             disabled={disabled}
@@ -373,10 +373,10 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
               aria-modal="true"
               aria-label="Choose date"
               className={cn(
-                'absolute z-50 mt-1 top-full left-0',
-                'shadow-xl rounded-lg',
+                "absolute z-50 mt-1 top-full left-0",
+                "shadow-xl rounded-lg",
                 // Ensure calendar is visible on mobile
-                'max-sm:fixed max-sm:left-2 max-sm:right-2 max-sm:w-auto',
+                "max-sm:fixed max-sm:left-2 max-sm:right-2 max-sm:w-auto"
               )}
               onClick={(e) => e.stopPropagation()}
             >
@@ -394,7 +394,7 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
         </div>
 
         {/* Error message */}
-        {error && typeof error === 'string' && (
+        {error && typeof error === "string" && (
           <p
             id={`${inputId}-error`}
             className="mt-1 text-sm text-red-600 dark:text-red-400"
@@ -405,7 +405,7 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
         )}
 
         {/* Helper text (only shown when no error message) */}
-        {helperText && !(error && typeof error === 'string') && (
+        {helperText && !(error && typeof error === "string") && (
           <p
             id={`${inputId}-helper`}
             className="mt-1 text-sm text-theme-text-muted"
@@ -415,9 +415,9 @@ const DatePickerCatto = forwardRef<HTMLDivElement, DatePickerCattoProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
-DatePickerCatto.displayName = 'DatePickerCatto';
+DatePickerCatto.displayName = "DatePickerCatto";
 
 export default DatePickerCatto;

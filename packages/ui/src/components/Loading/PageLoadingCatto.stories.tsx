@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import PageLoadingCatto from './PageLoadingCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import PageLoadingCatto from "./PageLoadingCatto";
 
 const meta = {
-  title: 'Components/Loading/PageLoading',
+  title: "Components/Loading/PageLoading",
   component: PageLoadingCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } satisfies Meta<typeof PageLoadingCatto>;
 
@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <div style={{ height: '400px', position: 'relative' }}>
+      <div style={{ height: "400px", position: "relative" }}>
         <Story />
       </div>
     ),
@@ -26,11 +26,11 @@ export const Default: Story = {
 
 export const WithMessage: Story = {
   args: {
-    message: 'Loading your data...',
+    message: "Loading your data...",
   },
   decorators: [
     (Story) => (
-      <div style={{ height: '400px', position: 'relative' }}>
+      <div style={{ height: "400px", position: "relative" }}>
         <Story />
       </div>
     ),
@@ -39,11 +39,11 @@ export const WithMessage: Story = {
 
 export const FullHeight: Story = {
   args: {
-    minHeight: 'full',
+    minHeight: "full",
   },
   decorators: [
     (Story) => (
-      <div style={{ height: '600px', position: 'relative' }}>
+      <div style={{ height: "600px", position: "relative" }}>
         <Story />
       </div>
     ),

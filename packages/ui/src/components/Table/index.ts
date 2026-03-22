@@ -1,27 +1,27 @@
 // @ccatto/ui - Table Components barrel export
 
 // Main Table Component
-export { TableCatto } from './TableCatto';
-export type { TableCattoProps } from './TableCatto';
+export { TableCatto } from "./TableCatto";
+export type { TableCattoProps } from "./TableCatto";
 
 // Core Table Component (without wrapper)
-export { TableCoreCatto } from './TableCoreCatto';
-export type { TableCoreCattoProps } from './TableCoreCatto';
+export { TableCoreCatto } from "./TableCoreCatto";
+export type { TableCoreCattoProps, TableDensity } from "./TableCoreCatto";
 
 // Table Controls (filter + pagination)
-export { TableControlsCatto } from './TableControlsCatto';
-export type { TableControlsCattoProps } from './TableControlsCatto';
+export { TableControlsCatto } from "./TableControlsCatto";
+export type { TableControlsCattoProps } from "./TableControlsCatto";
 
 // Pagination Buttons
-export { TablePrevNextButtonsCatto } from './TablePrevNextButtonsCatto';
-export type { TablePrevNextButtonsCattoProps } from './TablePrevNextButtonsCatto';
+export { TablePrevNextButtonsCatto } from "./TablePrevNextButtonsCatto";
+export type { TablePrevNextButtonsCattoProps } from "./TablePrevNextButtonsCatto";
 
 // Selection Column
-export { createSelectColumn } from './TableSelectColumnCatto';
+export { createSelectColumn } from "./TableSelectColumnCatto";
 
 // Sortable Header
-export { SortableHeaderCatto } from './SortableHeaderCatto';
-export type { SortableHeaderCattoProps } from './SortableHeaderCatto';
+export { SortableHeaderCatto } from "./SortableHeaderCatto";
+export type { SortableHeaderCattoProps } from "./SortableHeaderCatto";
 
 // Table Primitives
 export {
@@ -33,4 +33,4 @@ export {
   TableRow,
   TableCell,
   TableCaption,
-} from './TablePrimitives';
+} from "./TablePrimitives";

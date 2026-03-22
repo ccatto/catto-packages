@@ -1,8 +1,8 @@
 // @ccatto/ui - LoadingMessageAndCircleCatto Component
-'use client';
+"use client";
 
-import React from 'react';
-import LoadingCircleOrangeFancyCatto from './LoadingCircleOrangeFancyCatto';
+import React from "react";
+import LoadingCircleOrangeFancyCatto from "./LoadingCircleOrangeFancyCatto";
 
 export interface LoadingMessageAndCircleCattoProps {
   message?: string;
@@ -10,7 +10,7 @@ export interface LoadingMessageAndCircleCattoProps {
 
 const LoadingMessageAndCircleCatto: React.FC<
   LoadingMessageAndCircleCattoProps
-> = ({ message = 'Processing your request...' }) => {
+> = ({ message = "Processing your request..." }) => {
   return (
     <div className="relative flex h-40 flex-col items-center bg-theme-surface-secondary p-4 text-theme-secondary">
       <p className="text-lg font-semibold">{message}</p>

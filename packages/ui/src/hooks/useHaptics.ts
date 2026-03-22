@@ -1,5 +1,5 @@
 // @ccatto/ui - Haptic feedback hook
-'use client';
+"use client";
 
 /**
  * useHaptics - Native haptic feedback hook for iOS/Android
@@ -17,22 +17,22 @@
  *   notification('success');
  *   notification('error');
  */
-import { useCallback, useMemo } from 'react';
+import { useCallback, useMemo } from "react";
 
-type ImpactWeight = 'light' | 'medium' | 'heavy';
-type NotificationStyle = 'success' | 'warning' | 'error';
+type ImpactWeight = "light" | "medium" | "heavy";
+type NotificationStyle = "success" | "warning" | "error";
 
 // Dynamically check for Capacitor availability
 function getCapacitorModules() {
   try {
     // eslint-disable-next-line @typescript-eslint/no-require-imports
-    const { Capacitor } = require('@capacitor/core');
+    const { Capacitor } = require("@capacitor/core");
     // eslint-disable-next-line @typescript-eslint/no-require-imports
     const {
       Haptics,
       ImpactStyle,
       NotificationType,
-    } = require('@capacitor/haptics');
+    } = require("@capacitor/haptics");
     return { Capacitor, Haptics, ImpactStyle, NotificationType };
   } catch {
     return null;
@@ -52,7 +52,7 @@ export function useHaptics() {
    * @param weight - 'light' (default), 'medium', or 'heavy'
    */
   const impact = useCallback(
-    async (weight: ImpactWeight = 'light') => {
+    async (weight: ImpactWeight = "light") => {
       if (!isNative || !capacitorModules) return;
 
       const { Haptics, ImpactStyle } = capacitorModules;
@@ -68,7 +68,7 @@ export function useHaptics() {
         // Silently fail - haptics may not be available
       }
     },
-    [isNative, capacitorModules],
+    [isNative, capacitorModules]
   );
 
   /**
@@ -76,7 +76,7 @@ export function useHaptics() {
    * @param type - 'success', 'warning', or 'error'
    */
   const notification = useCallback(
-    async (type: NotificationStyle = 'success') => {
+    async (type: NotificationStyle = "success") => {
       if (!isNative || !capacitorModules) return;
 
       const { Haptics, NotificationType } = capacitorModules;
@@ -95,7 +95,7 @@ export function useHaptics() {
         // Silently fail
       }
     },
-    [isNative, capacitorModules],
+    [isNative, capacitorModules]
   );
 
   /**
@@ -123,7 +123,7 @@ export function useHaptics() {
         // Silently fail
       }
     },
-    [isNative, capacitorModules],
+    [isNative, capacitorModules]
   );
 
   return {

@@ -1,10 +1,10 @@
 // @ccatto/ui - TablePrevNextButtonsCatto
 // Table pagination buttons - Previous and Next arrows
-'use client';
+"use client";
 
-import { Table as TableType } from '@tanstack/react-table';
-import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { cn } from '../../utils';
+import { Table as TableType } from "@tanstack/react-table";
+import { ArrowLeft, ArrowRight } from "lucide-react";
+import { cn } from "../../utils";
 
 export interface TablePrevNextButtonsCattoProps<TData> {
   /** TanStack table instance */
@@ -17,6 +17,8 @@ export function TablePrevNextButtonsCatto<TData>({
   table,
   className,
 }: TablePrevNextButtonsCattoProps<TData>) {
+  // Opt out of React Compiler — table prop is a mutable ref (see TableCoreCatto)
+  "use no memo";
   const canGoPrevious = table.getCanPreviousPage();
   const canGoNext = table.getCanNextPage();
 
@@ -26,7 +28,7 @@ export function TablePrevNextButtonsCatto<TData>({
   }
 
   return (
-    <div className={cn('flex h-10 w-full max-w-16 space-x-2', className)}>
+    <div className={cn("flex h-10 w-full max-w-16 space-x-2", className)}>
       {/* Only show previous button if not on first page */}
       {canGoPrevious && (
         <button

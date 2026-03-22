@@ -1,11 +1,11 @@
-'use client';
+"use client";
 
-import React, { useEffect, useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from '../../i18n/defaults';
-import { cn } from '../../utils';
-import CalendarEventCard from './CalendarEventCard';
-import { CalendarEventItem, EventCalendarTheme } from './types';
+import React, { useEffect, useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from "../../i18n/defaults";
+import { cn } from "../../utils";
+import CalendarEventCard from "./CalendarEventCard";
+import { CalendarEventItem, EventCalendarTheme } from "./types";
 
 export interface WeekViewLabels extends CalendarLabels {
   /** Text for "Today" button */
@@ -20,10 +20,10 @@ export interface WeekViewLabels extends CalendarLabels {
 
 export const DEFAULT_WEEK_VIEW_LABELS: Required<WeekViewLabels> = {
   ...DEFAULT_CALENDAR_LABELS,
-  todayButton: 'Today',
-  previousWeek: 'Previous week',
-  nextWeek: 'Next week',
-  allDay: 'All day',
+  todayButton: "Today",
+  previousWeek: "Previous week",
+  nextWeek: "Next week",
+  allDay: "All day",
 };
 
 export interface WeekViewCattoProps {
@@ -55,11 +55,11 @@ export interface WeekViewCattoProps {
 
 // Theme classes
 const themeClasses: Record<EventCalendarTheme, string> = {
-  midnightEmber: 'bg-slate-800 text-slate-50 dark:bg-slate-900',
-  sunset: 'bg-amber-50 text-amber-900 dark:bg-amber-900 dark:text-amber-100',
-  ocean: 'bg-blue-50 text-blue-900 dark:bg-blue-900 dark:text-blue-100',
-  forest: 'bg-green-50 text-green-900 dark:bg-green-900 dark:text-green-100',
-  lavender: 'bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100',
+  midnightEmber: "bg-slate-800 text-slate-50 dark:bg-slate-900",
+  sunset: "bg-amber-50 text-amber-900 dark:bg-amber-900 dark:text-amber-100",
+  ocean: "bg-blue-50 text-blue-900 dark:bg-blue-900 dark:text-blue-100",
+  forest: "bg-green-50 text-green-900 dark:bg-green-900 dark:text-green-100",
+  lavender: "bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100",
 };
 
 /**
@@ -79,13 +79,13 @@ const getWeekStart = (date: Date): Date => {
 const generateTimeSlots = (
   startHour: number,
   endHour: number,
-  slotDuration: 30 | 60,
+  slotDuration: 30 | 60
 ): string[] => {
   const slots: string[] = [];
   for (let hour = startHour; hour < endHour; hour++) {
-    slots.push(`${hour.toString().padStart(2, '0')}:00`);
+    slots.push(`${hour.toString().padStart(2, "0")}:00`);
     if (slotDuration === 30) {
-      slots.push(`${hour.toString().padStart(2, '0')}:30`);
+      slots.push(`${hour.toString().padStart(2, "0")}:30`);
     }
   }
   return slots;
@@ -95,13 +95,13 @@ const generateTimeSlots = (
  * Format time to display format (e.g., "9 AM", "2:30 PM")
  */
 const formatTimeDisplay = (time: string): string => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const period = hours >= 12 ? 'PM' : 'AM';
+  const [hours, minutes] = time.split(":").map(Number);
+  const period = hours >= 12 ? "PM" : "AM";
   const displayHours = hours % 12 || 12;
   if (minutes === 0) {
     return `${displayHours} ${period}`;
   }
-  return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+  return `${displayHours}:${minutes.toString().padStart(2, "0")} ${period}`;
 };
 
 /**
@@ -111,10 +111,10 @@ const getEventsForSlot = (
   events: CalendarEventItem[],
   date: Date,
   slotTime: string,
-  slotDuration: number,
+  slotDuration: number
 ): CalendarEventItem[] => {
   const dateStr = date.toDateString();
-  const slotStart = parseInt(slotTime.replace(':', ''), 10);
+  const slotStart = parseInt(slotTime.replace(":", ""), 10);
   const slotEnd = slotStart + (slotDuration === 30 ? 30 : 100);
 
   return events.filter((event) => {
@@ -128,7 +128,7 @@ const getEventsForSlot = (
     } catch {
       // Handle HH:mm format
       if (/^\d{2}:\d{2}$/.test(event.startTime)) {
-        const eventTime = parseInt(event.startTime.replace(':', ''), 10);
+        const eventTime = parseInt(event.startTime.replace(":", ""), 10);
         return eventTime >= slotStart && eventTime < slotEnd;
       }
       return false;
@@ -141,7 +141,7 @@ const getEventsForSlot = (
  */
 const getAllDayEvents = (
   events: CalendarEventItem[],
-  date: Date,
+  date: Date
 ): CalendarEventItem[] => {
   const dateStr = date.toDateString();
   return events.filter((event) => {
@@ -173,7 +173,7 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
   startHour = 6,
   endHour = 22,
   slotDuration = 60,
-  theme = 'midnightEmber',
+  theme = "midnightEmber",
   labels = {},
   showTodayButton = true,
   className,
@@ -181,7 +181,7 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
   const mergedLabels = { ...DEFAULT_WEEK_VIEW_LABELS, ...labels };
 
   const [weekStart, setWeekStart] = useState(() =>
-    getWeekStart(initialWeekStart || new Date()),
+    getWeekStart(initialWeekStart || new Date())
   );
   const [mounted, setMounted] = useState(false);
 
@@ -203,7 +203,7 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
   // Generate time slots
   const timeSlots = useMemo(
     () => generateTimeSlots(startHour, endHour, slotDuration),
-    [startHour, endHour, slotDuration],
+    [startHour, endHour, slotDuration]
   );
 
   // Navigation
@@ -231,10 +231,10 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
     endOfWeek.setDate(weekStart.getDate() + 6);
 
     const startMonth = weekStart.toLocaleDateString(mergedLabels.locale, {
-      month: 'short',
+      month: "short",
     });
     const endMonth = endOfWeek.toLocaleDateString(mergedLabels.locale, {
-      month: 'short',
+      month: "short",
     });
     const year = weekStart.getFullYear();
 
@@ -247,10 +247,10 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
   return (
     <div
       className={cn(
-        'w-full',
+        "w-full",
         themeClasses[theme],
-        'rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden',
-        className,
+        "rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden",
+        className
       )}
     >
       {/* Header */}
@@ -295,19 +295,19 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
           <div
             key={index}
             className={cn(
-              'p-2 text-center border-r last:border-r-0 dark:border-gray-700',
-              isToday(day) && 'bg-orange-50 dark:bg-orange-900/20',
+              "p-2 text-center border-r last:border-r-0 dark:border-gray-700",
+              isToday(day) && "bg-orange-50 dark:bg-orange-900/20"
             )}
           >
             <div className="text-xs text-gray-500 dark:text-gray-400">
               {day.toLocaleDateString(mergedLabels.locale, {
-                weekday: 'short',
+                weekday: "short",
               })}
             </div>
             <div
               className={cn(
-                'text-lg font-semibold',
-                isToday(day) && 'text-orange-500',
+                "text-lg font-semibold",
+                isToday(day) && "text-orange-500"
               )}
             >
               {day.getDate()}
@@ -327,8 +327,8 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
             <div
               key={index}
               className={cn(
-                'p-1 border-r last:border-r-0 dark:border-gray-700',
-                isToday(day) && 'bg-orange-50/50 dark:bg-orange-900/10',
+                "p-1 border-r last:border-r-0 dark:border-gray-700",
+                isToday(day) && "bg-orange-50/50 dark:bg-orange-900/10"
               )}
             >
               {allDayEvents.map((event) => (
@@ -364,16 +364,16 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
                 events,
                 day,
                 time,
-                slotDuration,
+                slotDuration
               );
 
               return (
                 <div
                   key={dayIndex}
                   className={cn(
-                    'min-h-12 p-0.5 border-r last:border-r-0 dark:border-gray-700',
-                    'cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50',
-                    isToday(day) && 'bg-orange-50/30 dark:bg-orange-900/10',
+                    "min-h-12 p-0.5 border-r last:border-r-0 dark:border-gray-700",
+                    "cursor-pointer hover:bg-gray-50 dark:hover:bg-gray-800/50",
+                    isToday(day) && "bg-orange-50/30 dark:bg-orange-900/10"
                   )}
                   onClick={() => onSlotClick?.(day, time)}
                 >
@@ -397,6 +397,6 @@ const WeekViewCatto: React.FC<WeekViewCattoProps> = ({
   );
 };
 
-WeekViewCatto.displayName = 'WeekViewCatto';
+WeekViewCatto.displayName = "WeekViewCatto";
 
 export default WeekViewCatto;

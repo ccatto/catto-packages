@@ -1,5 +1,5 @@
 // @ccatto/ui - CardCatto Component
-'use client';
+"use client";
 
 import React, {
   lazy,
@@ -8,79 +8,79 @@ import React, {
   useCallback,
   useEffect,
   useState,
-} from 'react';
-import { cva, type VariantProps } from 'class-variance-authority';
-import { ChevronDown, ChevronUp } from 'lucide-react';
-import type { StyleWidth } from '../../types';
+} from "react";
+import { cva, type VariantProps } from "class-variance-authority";
+import { ChevronDown, ChevronUp } from "lucide-react";
+import type { StyleWidth } from "../../types";
 
 const LazyContent = lazy(() =>
   Promise.resolve({
     default: ({ children }: { children: ReactNode }) => <>{children}</>,
-  }),
+  })
 );
 
 // Define padding variants
 const paddingVariants = {
-  none: '',
-  xs: 'p-1',
-  sm: 'p-2',
-  md: 'p-4',
-  lg: 'p-6',
-  xl: 'p-8',
+  none: "",
+  xs: "p-1",
+  sm: "p-2",
+  md: "p-4",
+  lg: "p-6",
+  xl: "p-8",
 } as const;
 
 type Variant =
-  | 'default'
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'danger'
-  | 'info'
-  | 'midnightEmber'
-  | 'glass'
-  | 'gradient';
+  | "default"
+  | "primary"
+  | "success"
+  | "warning"
+  | "danger"
+  | "info"
+  | "midnightEmber"
+  | "glass"
+  | "gradient";
 
-const cardVariants = cva('rounded-lg transition-all duration-200', {
+const cardVariants = cva("rounded-lg transition-all duration-200", {
   variants: {
     variant: {
       // Default - themed surface with secondary brand border
-      default: 'bg-theme-surface text-theme-text border-theme-secondary',
+      default: "bg-theme-surface text-theme-text border-theme-secondary",
       // Primary variant - subtle primary tint
-      primary: 'bg-theme-primary-subtle text-theme-text border-theme-primary',
+      primary: "bg-theme-primary-subtle text-theme-text border-theme-primary",
       // Status variants - fixed colors for consistency
       success:
-        'bg-green-900/20 text-green-100 border-green-500 dark:bg-green-900/20 dark:text-green-100',
+        "bg-green-900/20 text-green-100 border-green-500 dark:bg-green-900/20 dark:text-green-100",
       warning:
-        'bg-yellow-900/20 text-yellow-100 border-yellow-500 dark:bg-yellow-900/20 dark:text-yellow-100',
+        "bg-yellow-900/20 text-yellow-100 border-yellow-500 dark:bg-yellow-900/20 dark:text-yellow-100",
       danger:
-        'bg-red-900/20 text-red-100 border-red-500 dark:bg-red-900/20 dark:text-red-100',
-      info: 'bg-blue-900/20 text-blue-100 border-blue-500 dark:bg-blue-900/20 dark:text-blue-100',
+        "bg-red-900/20 text-red-100 border-red-500 dark:bg-red-900/20 dark:text-red-100",
+      info: "bg-blue-900/20 text-blue-100 border-blue-500 dark:bg-blue-900/20 dark:text-blue-100",
       // Special variants
-      midnightEmber: '',
+      midnightEmber: "",
       glass:
-        'backdrop-blur-xs bg-theme-surface/30 text-theme-text border-theme-border',
+        "backdrop-blur-xs bg-theme-surface/30 text-theme-text border-theme-border",
       gradient:
-        'bg-gradient-to-br from-[var(--catto-theme-primary)] to-[var(--catto-theme-secondary)] text-theme-on-primary border-theme-secondary',
+        "bg-gradient-to-br from-[var(--catto-theme-primary)] to-[var(--catto-theme-secondary)] text-theme-on-primary border-theme-secondary",
     },
     size: {
-      sm: '',
-      md: '',
-      lg: '',
-      xl: '',
+      sm: "",
+      md: "",
+      lg: "",
+      xl: "",
     },
     padding: paddingVariants,
     elevation: {
-      none: '',
-      sm: 'shadow-sm',
-      md: 'shadow-md',
-      lg: 'shadow-lg',
+      none: "",
+      sm: "shadow-sm",
+      md: "shadow-md",
+      lg: "shadow-lg",
     },
   },
   defaultVariants: {
-    variant: 'default',
-    size: 'md',
-    padding: 'none',
-    elevation: 'md',
+    variant: "default",
+    size: "md",
+    padding: "none",
+    elevation: "md",
   },
 });
 
@@ -132,20 +132,20 @@ const CardCatto = React.memo(
     title,
     description,
     children,
-    className = '',
-    headerClassName = '',
-    bodyClassName = '',
+    className = "",
+    headerClassName = "",
+    bodyClassName = "",
     isLoading = false,
     headerComponent,
     bodyComponent,
     loadingComponent,
     onClick,
-    variant = 'default',
-    size = 'md',
-    padding = 'none',
-    elevation = 'md',
+    variant = "default",
+    size = "md",
+    padding = "none",
+    elevation = "md",
     interactive = false,
-    width = 'md',
+    width = "md",
     center = true,
     showBorder = true,
     disabled = false,
@@ -158,18 +158,18 @@ const CardCatto = React.memo(
     onCollapseChange,
     animate,
     badge,
-    headerPadding = 'md',
-    bodyPadding = 'md',
+    headerPadding = "md",
+    bodyPadding = "md",
     withOuterPadding = true,
   }: CardCattoProps) => {
     // Initialize collapsed state from localStorage if storageKey provided
     const [isCollapsed, setIsCollapsed] = useState(() => {
-      if (typeof window === 'undefined') return defaultCollapsed;
+      if (typeof window === "undefined") return defaultCollapsed;
       if (!collapsible || !storageKey) return defaultCollapsed;
       try {
         const stored = localStorage.getItem(`card-${storageKey}`);
         if (stored !== null) {
-          return stored === 'collapsed';
+          return stored === "collapsed";
         }
       } catch {
         // localStorage not available
@@ -183,7 +183,7 @@ const CardCatto = React.memo(
       try {
         localStorage.setItem(
           `card-${storageKey}`,
-          isCollapsed ? 'collapsed' : 'expanded',
+          isCollapsed ? "collapsed" : "expanded"
         );
       } catch {
         // localStorage not available
@@ -203,29 +203,29 @@ const CardCatto = React.memo(
     const handleKeyDown = useCallback(
       (e: React.KeyboardEvent) => {
         if (collapsible && !disabled) {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             handleCollapse();
           }
         }
       },
-      [collapsible, disabled, handleCollapse],
+      [collapsible, disabled, handleCollapse]
     );
 
     const widthClasses = {
-      xs: 'w-full md:max-w-xs',
-      sm: 'w-full md:max-w-sm',
-      md: 'w-full md:max-w-md',
-      lg: 'w-full md:max-w-lg',
-      xl: 'w-full md:max-w-xl',
-      '2xl': 'w-full md:max-w-2xl',
-      '3xl': 'w-full md:max-w-3xl',
-      '4xl': 'w-full md:max-w-4xl',
-      '5xl': 'w-full md:max-w-5xl',
-      '6xl': 'w-full md:max-w-6xl',
-      '7xl': 'w-full md:max-w-7xl',
-      full: 'w-full',
-      auto: 'w-auto',
+      xs: "w-full md:max-w-xs",
+      sm: "w-full md:max-w-sm",
+      md: "w-full md:max-w-md",
+      lg: "w-full md:max-w-lg",
+      xl: "w-full md:max-w-xl",
+      "2xl": "w-full md:max-w-2xl",
+      "3xl": "w-full md:max-w-3xl",
+      "4xl": "w-full md:max-w-4xl",
+      "5xl": "w-full md:max-w-5xl",
+      "6xl": "w-full md:max-w-6xl",
+      "7xl": "w-full md:max-w-7xl",
+      full: "w-full",
+      auto: "w-auto",
     };
 
     const baseClasses = cardVariants({ variant, size, padding, elevation });
@@ -241,16 +241,22 @@ const CardCatto = React.memo(
     );
 
     return (
-      <div className={withOuterPadding ? 'w-full px-1 md:px-10' : 'w-full'}>
+      <div
+        className={
+          withOuterPadding
+            ? "w-full max-w-full px-1 md:px-10 overflow-hidden"
+            : "w-full max-w-full overflow-hidden"
+        }
+      >
         <div
           role="article"
           onClick={disabled ? undefined : onClick}
-          className={`${baseClasses} ${widthClasses[width]} ${
-            center ? 'mx-auto' : ''
-          } ${onClick && !disabled ? 'cursor-pointer' : ''} ${
-            interactive && !disabled ? 'transform hover:-translate-y-1' : ''
-          } ${showBorder ? 'border' : ''} ${
-            disabled ? 'cursor-not-allowed opacity-60' : ''
+          className={`${baseClasses} ${widthClasses[width]} min-w-0 ${
+            center ? "mx-auto" : ""
+          } ${onClick && !disabled ? "cursor-pointer" : ""} ${
+            interactive && !disabled ? "transform hover:-translate-y-1" : ""
+          } ${showBorder ? "border" : ""} ${
+            disabled ? "cursor-not-allowed opacity-60" : ""
           } ${className}`}
           {...(animate && {
             initial: animate.initial,
@@ -266,8 +272,8 @@ const CardCatto = React.memo(
             >
               <span
                 className={`rounded-full px-2 py-1 text-xs ${
-                  variant === 'default'
-                    ? 'bg-gray-600 text-slate-50'
+                  variant === "default"
+                    ? "bg-gray-600 text-slate-50"
                     : `bg-${badge.variant || variant}-600 text-slate-50`
                 }`}
               >
@@ -287,17 +293,17 @@ const CardCatto = React.memo(
           ) : (
             (title || description) && (
               <div
-                role={collapsible ? 'button' : 'heading'}
+                role={collapsible ? "button" : "heading"}
                 aria-level={collapsible ? undefined : 2}
                 aria-expanded={collapsible ? !isCollapsed : undefined}
                 tabIndex={collapsible ? 0 : undefined}
                 onKeyDown={handleKeyDown}
                 className={`${paddingVariants[headerPadding]} ${
-                  showBorder ? 'border-b border-theme-border' : ''
+                  showBorder ? "border-b border-theme-border" : ""
                 } flex items-center justify-between ${headerClassName} ${
                   collapsible
-                    ? 'cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-secondary'
-                    : ''
+                    ? "cursor-pointer focus:outline-none focus:ring-2 focus:ring-inset focus:ring-theme-secondary"
+                    : ""
                 }`}
                 onClick={handleCollapse}
               >
@@ -324,7 +330,7 @@ const CardCatto = React.memo(
                   <button
                     className="rounded-md p-1.5 hover:bg-theme-surface-secondary focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-theme-secondary transition-colors"
                     aria-label={
-                      isCollapsed ? 'Expand content' : 'Collapse content'
+                      isCollapsed ? "Expand content" : "Collapse content"
                     }
                   >
                     {isCollapsed ? (
@@ -341,7 +347,7 @@ const CardCatto = React.memo(
           {/* Collapsible content wrapper with smooth animation */}
           <div
             className={`transition-all duration-300 ease-in-out overflow-hidden ${
-              isCollapsed ? 'max-h-0 opacity-0' : 'max-h-[5000px] opacity-100'
+              isCollapsed ? "max-h-0 opacity-0" : "max-h-[5000px] opacity-100"
             }`}
           >
             <div
@@ -370,7 +376,7 @@ const CardCatto = React.memo(
             {footer && (
               <div
                 className={`${paddingVariants[bodyPadding]} ${
-                  showBorder ? 'border-t border-theme-border' : ''
+                  showBorder ? "border-t border-theme-border" : ""
                 }`}
                 role="contentinfo"
               >
@@ -381,9 +387,9 @@ const CardCatto = React.memo(
         </div>
       </div>
     );
-  },
+  }
 );
 
-CardCatto.displayName = 'CardCatto';
+CardCatto.displayName = "CardCatto";
 
 export default CardCatto;

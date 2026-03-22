@@ -10,7 +10,7 @@
  */
 
 /* Light Mode */
-[data-theme='royal-crown'] {
+[data-theme="royal-crown"] {
   /* Primary = Violet */
   --catto-theme-primary: #7c3aed; /* violet-600 */
   --catto-theme-primary-hover: #6d28d9; /* violet-700 */
@@ -51,8 +51,8 @@
 }
 
 /* Dark Mode */
-[data-theme='royal-crown'].dark,
-.dark[data-theme='royal-crown'] {
+[data-theme="royal-crown"].dark,
+.dark[data-theme="royal-crown"] {
   /* Primary = Lighter violet for dark mode readability */
   --catto-theme-primary: #8b5cf6; /* violet-500 */
   --catto-theme-primary-hover: #a78bfa; /* violet-400 */

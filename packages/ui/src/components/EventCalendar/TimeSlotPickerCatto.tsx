@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
-import React, { useMemo } from 'react';
-import { Check, Clock } from 'lucide-react';
-import { cn } from '../../utils';
-import { EventCalendarTheme, TimeSlot } from './types';
+import React, { useMemo } from "react";
+import { Check, Clock } from "lucide-react";
+import { cn } from "../../utils";
+import { EventCalendarTheme, TimeSlot } from "./types";
 
 export interface TimeSlotPickerLabels {
   /** Header text (default: "Select a time") */
@@ -17,10 +17,10 @@ export interface TimeSlotPickerLabels {
 }
 
 export const DEFAULT_TIME_SLOT_PICKER_LABELS: Required<TimeSlotPickerLabels> = {
-  header: 'Select a time',
-  noSlots: 'No available times',
-  booked: 'Booked',
-  selected: 'Selected',
+  header: "Select a time",
+  noSlots: "No available times",
+  booked: "Booked",
+  selected: "Selected",
 };
 
 export interface TimeSlotPickerCattoProps {
@@ -52,21 +52,21 @@ export interface TimeSlotPickerCattoProps {
 
 // Theme classes
 const themeClasses: Record<EventCalendarTheme, string> = {
-  midnightEmber: 'bg-slate-800 text-slate-50 dark:bg-slate-900',
-  sunset: 'bg-amber-50 text-amber-900 dark:bg-amber-900 dark:text-amber-100',
-  ocean: 'bg-blue-50 text-blue-900 dark:bg-blue-900 dark:text-blue-100',
-  forest: 'bg-green-50 text-green-900 dark:bg-green-900 dark:text-green-100',
-  lavender: 'bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100',
+  midnightEmber: "bg-slate-800 text-slate-50 dark:bg-slate-900",
+  sunset: "bg-amber-50 text-amber-900 dark:bg-amber-900 dark:text-amber-100",
+  ocean: "bg-blue-50 text-blue-900 dark:bg-blue-900 dark:text-blue-100",
+  forest: "bg-green-50 text-green-900 dark:bg-green-900 dark:text-green-100",
+  lavender: "bg-slate-50 text-slate-900 dark:bg-slate-900 dark:text-slate-100",
 };
 
 /**
  * Format time from HH:mm to display format
  */
 const formatTimeDisplay = (time: string): string => {
-  const [hours, minutes] = time.split(':').map(Number);
-  const period = hours >= 12 ? 'PM' : 'AM';
+  const [hours, minutes] = time.split(":").map(Number);
+  const period = hours >= 12 ? "PM" : "AM";
   const displayHours = hours % 12 || 12;
-  return `${displayHours}:${minutes.toString().padStart(2, '0')} ${period}`;
+  return `${displayHours}:${minutes.toString().padStart(2, "0")} ${period}`;
 };
 
 /**
@@ -82,7 +82,7 @@ const slotsMatch = (a: TimeSlot | undefined, b: TimeSlot): boolean => {
  */
 const isSlotBooked = (slot: TimeSlot, bookedSlots: TimeSlot[]): boolean => {
   return bookedSlots.some(
-    (booked) => booked.start === slot.start && booked.end === slot.end,
+    (booked) => booked.start === slot.start && booked.end === slot.end
   );
 };
 
@@ -103,7 +103,7 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
   onSlotSelect,
   date,
   slotDuration,
-  theme = 'midnightEmber',
+  theme = "midnightEmber",
   labels = {},
   columns = 3,
   showDuration = false,
@@ -115,25 +115,25 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
   // Sort slots by start time
   const sortedSlots = useMemo(() => {
     return [...availableSlots].sort((a, b) => {
-      const aTime = parseInt(a.start.replace(':', ''), 10);
-      const bTime = parseInt(b.start.replace(':', ''), 10);
+      const aTime = parseInt(a.start.replace(":", ""), 10);
+      const bTime = parseInt(b.start.replace(":", ""), 10);
       return aTime - bTime;
     });
   }, [availableSlots]);
 
   // Column classes
   const columnClasses = {
-    2: 'grid-cols-2',
-    3: 'grid-cols-2 sm:grid-cols-3',
-    4: 'grid-cols-2 sm:grid-cols-3 md:grid-cols-4',
+    2: "grid-cols-2",
+    3: "grid-cols-2 sm:grid-cols-3",
+    4: "grid-cols-2 sm:grid-cols-3 md:grid-cols-4",
   };
 
   // Format date header
   const dateHeader = date
-    ? date.toLocaleDateString('en-US', {
-        weekday: 'long',
-        month: 'long',
-        day: 'numeric',
+    ? date.toLocaleDateString("en-US", {
+        weekday: "long",
+        month: "long",
+        day: "numeric",
       })
     : null;
 
@@ -141,15 +141,15 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
     return (
       <div
         className={cn(
-          'w-full',
+          "w-full",
           themeClasses[theme],
-          'rounded-lg border border-gray-200 dark:border-gray-700 p-4',
-          className,
+          "rounded-lg border border-gray-200 dark:border-gray-700 p-4",
+          className
         )}
       >
         <div className="animate-pulse space-y-3">
           <div className="h-6 bg-gray-200 dark:bg-gray-700 rounded w-1/3" />
-          <div className={cn('grid gap-2', columnClasses[columns])}>
+          <div className={cn("grid gap-2", columnClasses[columns])}>
             {[1, 2, 3, 4, 5, 6].map((i) => (
               <div
                 key={i}
@@ -165,10 +165,10 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
   return (
     <div
       className={cn(
-        'w-full',
+        "w-full",
         themeClasses[theme],
-        'rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden',
-        className,
+        "rounded-lg border border-gray-200 dark:border-gray-700 overflow-hidden",
+        className
       )}
     >
       {/* Header */}
@@ -191,7 +191,7 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
             {mergedLabels.noSlots}
           </div>
         ) : (
-          <div className={cn('grid gap-2', columnClasses[columns])}>
+          <div className={cn("grid gap-2", columnClasses[columns])}>
             {sortedSlots.map((slot) => {
               const isBooked = isSlotBooked(slot, bookedSlots);
               const isSelected = slotsMatch(selectedSlot, slot);
@@ -203,29 +203,29 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
                   onClick={() => !isBooked && onSlotSelect(slot)}
                   disabled={isBooked}
                   className={cn(
-                    'relative p-3 rounded-lg border-2 transition-all duration-150',
-                    'focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2',
+                    "relative p-3 rounded-lg border-2 transition-all duration-150",
+                    "focus:outline-none focus:ring-2 focus:ring-orange-500 focus:ring-offset-2",
                     // Selected state
                     isSelected && [
-                      'border-orange-500 bg-orange-50 dark:bg-orange-900/30',
-                      'text-orange-700 dark:text-orange-200',
+                      "border-orange-500 bg-orange-50 dark:bg-orange-900/30",
+                      "text-orange-700 dark:text-orange-200",
                     ],
                     // Booked state
                     isBooked && [
-                      'border-gray-200 dark:border-gray-700',
-                      'bg-gray-100 dark:bg-gray-800',
-                      'text-gray-400 dark:text-gray-500',
-                      'cursor-not-allowed',
-                      'line-through',
+                      "border-gray-200 dark:border-gray-700",
+                      "bg-gray-100 dark:bg-gray-800",
+                      "text-gray-400 dark:text-gray-500",
+                      "cursor-not-allowed",
+                      "line-through",
                     ],
                     // Available state (not selected, not booked)
                     !isSelected &&
                       !isBooked && [
-                        'border-gray-200 dark:border-gray-700',
-                        'hover:border-orange-300 dark:hover:border-orange-600',
-                        'hover:bg-orange-50 dark:hover:bg-orange-900/20',
-                        'cursor-pointer',
-                      ],
+                        "border-gray-200 dark:border-gray-700",
+                        "hover:border-orange-300 dark:hover:border-orange-600",
+                        "hover:bg-orange-50 dark:hover:bg-orange-900/20",
+                        "cursor-pointer",
+                      ]
                   )}
                 >
                   {/* Selected indicator */}
@@ -285,6 +285,6 @@ const TimeSlotPickerCatto: React.FC<TimeSlotPickerCattoProps> = ({
   );
 };
 
-TimeSlotPickerCatto.displayName = 'TimeSlotPickerCatto';
+TimeSlotPickerCatto.displayName = "TimeSlotPickerCatto";
 
 export default TimeSlotPickerCatto;

@@ -1,24 +1,24 @@
 // Card skeleton component for loading states
 
-'use client';
+"use client";
 
-import { cn } from '../../utils';
-import SkeletonBaseCatto from './SkeletonBaseCatto';
+import { cn } from "../../utils";
+import SkeletonBaseCatto from "./SkeletonBaseCatto";
 
 export type CardSkeletonWidth =
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl'
-  | '6xl'
-  | '7xl'
-  | 'full'
-  | 'auto';
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl"
+  | "6xl"
+  | "7xl"
+  | "full"
+  | "auto";
 
 export interface CardSkeletonCattoProps {
   /** Show title skeleton */
@@ -34,7 +34,7 @@ export interface CardSkeletonCattoProps {
   /** Card width preset */
   width?: CardSkeletonWidth;
   /** Skeleton variant for different use cases */
-  variant?: 'default' | 'compact' | 'detailed';
+  variant?: "default" | "compact" | "detailed";
   /** Additional CSS classes */
   className?: string;
 }
@@ -45,39 +45,39 @@ const CardSkeletonCatto = ({
   contentLines = 3,
   showFooter = false,
   showIcon = false,
-  width = 'full',
-  variant = 'default',
-  className = '',
+  width = "full",
+  variant = "default",
+  className = "",
 }: CardSkeletonCattoProps) => {
   // Width mapping
   const widthClasses: Record<CardSkeletonWidth, string> = {
-    xs: 'max-w-xs',
-    sm: 'max-w-sm',
-    md: 'max-w-md',
-    lg: 'max-w-lg',
-    xl: 'max-w-xl',
-    '2xl': 'max-w-2xl',
-    '3xl': 'max-w-3xl',
-    '4xl': 'max-w-4xl',
-    '5xl': 'max-w-5xl',
-    '6xl': 'max-w-6xl',
-    '7xl': 'max-w-7xl',
-    full: 'w-full',
-    auto: 'w-auto',
+    xs: "max-w-xs",
+    sm: "max-w-sm",
+    md: "max-w-md",
+    lg: "max-w-lg",
+    xl: "max-w-xl",
+    "2xl": "max-w-2xl",
+    "3xl": "max-w-3xl",
+    "4xl": "max-w-4xl",
+    "5xl": "max-w-5xl",
+    "6xl": "max-w-6xl",
+    "7xl": "max-w-7xl",
+    full: "w-full",
+    auto: "w-auto",
   };
 
   // Adjust content based on variant
   const adjustedContentLines =
-    variant === 'compact' ? Math.min(contentLines, 2) : contentLines;
-  const shouldShowDescription = variant === 'compact' ? false : showDescription;
+    variant === "compact" ? Math.min(contentLines, 2) : contentLines;
+  const shouldShowDescription = variant === "compact" ? false : showDescription;
 
   return (
     <div
       className={cn(
-        'rounded-lg border border-theme-secondary bg-theme-surface p-4 shadow-md',
+        "rounded-lg border border-theme-secondary bg-theme-surface p-4 shadow-md",
         widthClasses[width],
-        width !== 'full' && 'mx-auto',
-        className,
+        width !== "full" && "mx-auto",
+        className
       )}
       aria-busy="true"
       aria-live="polite"
@@ -86,9 +86,9 @@ const CardSkeletonCatto = ({
       {(showTitle || shouldShowDescription || showIcon) && (
         <div
           className={cn(
-            'flex items-start gap-3',
+            "flex items-start gap-3",
             (showTitle || shouldShowDescription) &&
-              'mb-4 border-b border-theme-border pb-4',
+              "mb-4 border-b border-theme-border pb-4"
           )}
         >
           {/* Icon placeholder */}
@@ -112,7 +112,7 @@ const CardSkeletonCatto = ({
           {Array.from({ length: adjustedContentLines }).map((_, i) => (
             <SkeletonBaseCatto
               key={i}
-              width={i === adjustedContentLines - 1 ? '3/4' : 'full'}
+              width={i === adjustedContentLines - 1 ? "3/4" : "full"}
               height="sm"
             />
           ))}

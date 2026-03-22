@@ -1,13 +1,13 @@
 // @ccatto/ui - MobileScrollIndicatorWrapperCatto Stories
-import type { Meta, StoryObj } from '@storybook/react';
-import { MobileScrollIndicatorWrapperCatto } from './index';
+import type { Meta, StoryObj } from "@storybook/react";
+import { MobileScrollIndicatorWrapperCatto } from "./index";
 
 const meta = {
-  title: 'Components/MobileScrollIndicatorWrapperCatto',
+  title: "Components/MobileScrollIndicatorWrapperCatto",
   component: MobileScrollIndicatorWrapperCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof MobileScrollIndicatorWrapperCatto>;
 
@@ -58,11 +58,11 @@ export const WithCards: Story = {
       <MobileScrollIndicatorWrapperCatto>
         <div className="flex gap-4 overflow-x-auto p-4">
           {[
-            'Product A',
-            'Product B',
-            'Product C',
-            'Product D',
-            'Product E',
+            "Product A",
+            "Product B",
+            "Product C",
+            "Product D",
+            "Product E",
           ].map((name, i) => (
             <div
               key={i}

@@ -1,21 +1,21 @@
 // @ccatto/ui - useBreakpoint Hook
 // Returns the current Tailwind CSS breakpoint name based on window width
 // SSR-safe: defaults to 'md' during server rendering
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
+import { useEffect, useState } from "react";
 
-export type Breakpoint = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
+export type Breakpoint = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
 
 const BREAKPOINTS: { name: Breakpoint; minWidth: number }[] = [
-  { name: '2xl', minWidth: 1536 },
-  { name: 'xl', minWidth: 1280 },
-  { name: 'lg', minWidth: 1024 },
-  { name: 'md', minWidth: 768 },
-  { name: 'sm', minWidth: 640 },
+  { name: "2xl", minWidth: 1536 },
+  { name: "xl", minWidth: 1280 },
+  { name: "lg", minWidth: 1024 },
+  { name: "md", minWidth: 768 },
+  { name: "sm", minWidth: 640 },
 ];
 
-const BREAKPOINT_ORDER: Breakpoint[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
+const BREAKPOINT_ORDER: Breakpoint[] = ["xs", "sm", "md", "lg", "xl", "2xl"];
 
 /**
  * Returns the current Tailwind CSS breakpoint.
@@ -23,10 +23,10 @@ const BREAKPOINT_ORDER: Breakpoint[] = ['xs', 'sm', 'md', 'lg', 'xl', '2xl'];
  * (desktop-first assumption for initial render).
  */
 export function useBreakpoint(): Breakpoint {
-  const [breakpoint, setBreakpoint] = useState<Breakpoint>('md');
+  const [breakpoint, setBreakpoint] = useState<Breakpoint>("md");
 
   useEffect(() => {
-    if (typeof window === 'undefined') return;
+    if (typeof window === "undefined") return;
 
     const mediaQueries = BREAKPOINTS.map(({ name, minWidth }) => ({
       name,
@@ -40,20 +40,20 @@ export function useBreakpoint(): Breakpoint {
           return;
         }
       }
-      setBreakpoint('xs');
+      setBreakpoint("xs");
     };
 
     determine();
 
     const handlers = mediaQueries.map(({ mql }) => {
       const handler = () => determine();
-      mql.addEventListener('change', handler);
+      mql.addEventListener("change", handler);
       return { mql, handler };
     });
 
     return () => {
       handlers.forEach(({ mql, handler }) =>
-        mql.removeEventListener('change', handler),
+        mql.removeEventListener("change", handler)
       );
     };
   }, []);

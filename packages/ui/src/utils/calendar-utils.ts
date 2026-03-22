@@ -1,5 +1,5 @@
 // @ccatto/ui - Calendar utilities for iCal (.ics) and Google Calendar export
-'use client';
+"use client";
 
 // ============================================================================
 // TYPES
@@ -30,11 +30,11 @@ export interface CalendarEvent {
 function toCalendarDate(isoDate: string): string {
   const date = new Date(isoDate);
   const year = date.getUTCFullYear();
-  const month = String(date.getUTCMonth() + 1).padStart(2, '0');
-  const day = String(date.getUTCDate()).padStart(2, '0');
-  const hours = String(date.getUTCHours()).padStart(2, '0');
-  const minutes = String(date.getUTCMinutes()).padStart(2, '0');
-  const seconds = String(date.getUTCSeconds()).padStart(2, '0');
+  const month = String(date.getUTCMonth() + 1).padStart(2, "0");
+  const day = String(date.getUTCDate()).padStart(2, "0");
+  const hours = String(date.getUTCHours()).padStart(2, "0");
+  const minutes = String(date.getUTCMinutes()).padStart(2, "0");
+  const seconds = String(date.getUTCSeconds()).padStart(2, "0");
   return `${year}${month}${day}T${hours}${minutes}${seconds}Z`;
 }
 
@@ -56,10 +56,10 @@ function addHours(isoDate: string, hours: number): string {
  */
 function escapeICalText(text: string): string {
   return text
-    .replace(/\\/g, '\\\\')
-    .replace(/;/g, '\\;')
-    .replace(/,/g, '\\,')
-    .replace(/\n/g, '\\n');
+    .replace(/\\/g, "\\\\")
+    .replace(/;/g, "\\;")
+    .replace(/,/g, "\\,")
+    .replace(/\n/g, "\\n");
 }
 
 /**
@@ -72,17 +72,17 @@ export function generateICSContent(event: CalendarEvent): string {
     : toCalendarDate(addHours(event.startTime, 2));
 
   const lines = [
-    'BEGIN:VCALENDAR',
-    'VERSION:2.0',
-    'PRODID:-//CattoUI//EN',
-    'CALSCALE:GREGORIAN',
-    'METHOD:PUBLISH',
-    'BEGIN:VEVENT',
+    "BEGIN:VCALENDAR",
+    "VERSION:2.0",
+    "PRODID:-//CattoUI//EN",
+    "CALSCALE:GREGORIAN",
+    "METHOD:PUBLISH",
+    "BEGIN:VEVENT",
     `DTSTART:${start}`,
     `DTEND:${end}`,
     `SUMMARY:${escapeICalText(event.title)}`,
     `UID:${event.id}@catto-ui`,
-    'STATUS:CONFIRMED',
+    "STATUS:CONFIRMED",
   ];
 
   if (event.location) {
@@ -92,9 +92,9 @@ export function generateICSContent(event: CalendarEvent): string {
     lines.push(`DESCRIPTION:${escapeICalText(event.description)}`);
   }
 
-  lines.push('END:VEVENT', 'END:VCALENDAR');
+  lines.push("END:VEVENT", "END:VCALENDAR");
 
-  return lines.join('\r\n');
+  return lines.join("\r\n");
 }
 
 /**
@@ -102,14 +102,14 @@ export function generateICSContent(event: CalendarEvent): string {
  */
 export function downloadICSFile(event: CalendarEvent): void {
   const content = generateICSContent(event);
-  const blob = new Blob([content], { type: 'text/calendar;charset=utf-8' });
+  const blob = new Blob([content], { type: "text/calendar;charset=utf-8" });
   const url = URL.createObjectURL(blob);
 
-  const link = document.createElement('a');
+  const link = document.createElement("a");
   link.href = url;
   link.download = `${event.title
-    .replace(/[^a-zA-Z0-9 ]/g, '')
-    .replace(/\s+/g, '-')
+    .replace(/[^a-zA-Z0-9 ]/g, "")
+    .replace(/\s+/g, "-")
     .toLowerCase()}.ics`;
   document.body.appendChild(link);
   link.click();
@@ -131,16 +131,16 @@ export function generateGoogleCalendarURL(event: CalendarEvent): string {
     : toCalendarDate(addHours(event.startTime, 2));
 
   const params = new URLSearchParams({
-    action: 'TEMPLATE',
+    action: "TEMPLATE",
     text: event.title,
     dates: `${start}/${end}`,
   });
 
   if (event.location) {
-    params.set('location', event.location);
+    params.set("location", event.location);
   }
   if (event.description) {
-    params.set('details', event.description);
+    params.set("details", event.description);
   }
 
   return `https://calendar.google.com/calendar/render?${params.toString()}`;

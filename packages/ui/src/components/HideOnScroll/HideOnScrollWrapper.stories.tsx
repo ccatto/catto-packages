@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import HideOnScrollWrapper from './HideOnScrollWrapper';
+import type { Meta, StoryObj } from "@storybook/react";
+import HideOnScrollWrapper from "./HideOnScrollWrapper";
 
 const meta = {
-  title: 'Components/HideOnScroll',
+  title: "Components/HideOnScroll",
   component: HideOnScrollWrapper,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
 } satisfies Meta<typeof HideOnScrollWrapper>;
 

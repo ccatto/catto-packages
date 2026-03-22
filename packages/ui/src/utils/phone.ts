@@ -6,7 +6,7 @@
  */
 export interface PhoneFormatOptions {
   /** Output format style (default: 'national') */
-  format?: 'national' | 'international' | 'e164' | 'raw';
+  format?: "national" | "international" | "e164" | "raw";
   /** Default country code for parsing (default: 'US') */
   defaultCountry?: string;
   /** Custom formatter function (for libphonenumber-js integration) */
@@ -25,11 +25,11 @@ export interface PhoneFormatOptions {
  * extractPhoneDigits('+1 555-123-4567') // '+15551234567'
  */
 export function extractPhoneDigits(phone: string | null | undefined): string {
-  if (!phone) return '';
+  if (!phone) return "";
 
   // Preserve leading + for international, then extract digits
-  const hasPlus = phone.startsWith('+');
-  const digits = phone.replace(/\D/g, '');
+  const hasPlus = phone.startsWith("+");
+  const digits = phone.replace(/\D/g, "");
 
   return hasPlus ? `+${digits}` : digits;
 }
@@ -50,13 +50,13 @@ export function extractPhoneDigits(phone: string | null | undefined): string {
  */
 export function formatPhoneNumber(
   phone: string | null | undefined,
-  options: PhoneFormatOptions = {},
+  options: PhoneFormatOptions = {}
 ): string {
-  if (!phone) return '';
+  if (!phone) return "";
 
   const {
-    format = 'national',
-    defaultCountry = 'US',
+    format = "national",
+    defaultCountry = "US",
     customFormatter,
   } = options;
 
@@ -66,13 +66,13 @@ export function formatPhoneNumber(
   }
 
   // Extract digits only
-  const digits = phone.replace(/\D/g, '');
+  const digits = phone.replace(/\D/g, "");
 
   // Handle empty or invalid
-  if (!digits) return '';
+  if (!digits) return "";
 
   // Determine if has country code (starts with 1 and has 11 digits)
-  const hasCountryCode = digits.length === 11 && digits.startsWith('1');
+  const hasCountryCode = digits.length === 11 && digits.startsWith("1");
   const nationalDigits = hasCountryCode ? digits.slice(1) : digits;
 
   // For complete US numbers (10 digits)
@@ -82,13 +82,13 @@ export function formatPhoneNumber(
     const subscriber = nationalDigits.slice(6, 10);
 
     switch (format) {
-      case 'e164':
+      case "e164":
         return `+1${nationalDigits}`;
-      case 'international':
+      case "international":
         return `+1 (${areaCode}) ${exchange}-${subscriber}`;
-      case 'raw':
+      case "raw":
         return nationalDigits;
-      case 'national':
+      case "national":
       default:
         return `(${areaCode}) ${exchange}-${subscriber}`;
     }
@@ -97,7 +97,7 @@ export function formatPhoneNumber(
   // For partial numbers during typing - format progressively
   if (nationalDigits.length < 10) {
     if (nationalDigits.length === 0) {
-      return '';
+      return "";
     }
     if (nationalDigits.length <= 3) {
       return `(${nationalDigits}`;
@@ -107,7 +107,7 @@ export function formatPhoneNumber(
     }
     return `(${nationalDigits.slice(0, 3)}) ${nationalDigits.slice(
       3,
-      6,
+      6
     )}-${nationalDigits.slice(6)}`;
   }
 
@@ -130,22 +130,22 @@ export function formatPhoneNumber(
  */
 export function formatPhoneAsYouType(
   current: string,
-  previous: string = '',
+  previous: string = ""
 ): string {
   // Extract digits from current input
-  const currentDigits = current.replace(/\D/g, '');
-  const previousDigits = previous.replace(/\D/g, '');
+  const currentDigits = current.replace(/\D/g, "");
+  const previousDigits = previous.replace(/\D/g, "");
 
   // Detect backspace (current has fewer digits than previous)
   const isDeleting = currentDigits.length < previousDigits.length;
 
   if (isDeleting) {
     // On backspace, just format what's left
-    return formatPhoneNumber(currentDigits, { format: 'national' });
+    return formatPhoneNumber(currentDigits, { format: "national" });
   }
 
   // On typing, format progressively
-  return formatPhoneNumber(currentDigits, { format: 'national' });
+  return formatPhoneNumber(currentDigits, { format: "national" });
 }
 
 /**
@@ -165,19 +165,19 @@ export function isValidPhoneNumber(phone: string | null | undefined): boolean {
   if (!phone) return false;
 
   // Extract digits only
-  const digits = phone.replace(/\D/g, '');
+  const digits = phone.replace(/\D/g, "");
 
   // Valid: 10 digits (US national) or 11 digits starting with 1 (US with country code)
   if (digits.length === 10) {
     // Basic check: area code can't start with 0 or 1
     const areaCode = digits.slice(0, 3);
-    return !areaCode.startsWith('0') && !areaCode.startsWith('1');
+    return !areaCode.startsWith("0") && !areaCode.startsWith("1");
   }
 
-  if (digits.length === 11 && digits.startsWith('1')) {
+  if (digits.length === 11 && digits.startsWith("1")) {
     // With country code - same area code check
     const areaCode = digits.slice(1, 4);
-    return !areaCode.startsWith('0') && !areaCode.startsWith('1');
+    return !areaCode.startsWith("0") && !areaCode.startsWith("1");
   }
 
   return false;
@@ -194,6 +194,6 @@ export function isValidPhoneNumber(phone: string | null | undefined): boolean {
  * parsePhoneInput('(555) 123-4567') // '5551234567'
  */
 export function parsePhoneInput(phone: string | null | undefined): string {
-  if (!phone) return '';
-  return phone.replace(/\D/g, '');
+  if (!phone) return "";
+  return phone.replace(/\D/g, "");
 }

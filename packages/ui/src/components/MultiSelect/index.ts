@@ -1,5 +1,5 @@
-export { default as MultiSelectCatto } from './MultiSelectCatto';
+export { default as MultiSelectCatto } from "./MultiSelectCatto";
 export type {
   MultiSelectCattoProps,
   MultiSelectOption,
-} from './MultiSelectCatto';
+} from "./MultiSelectCatto";

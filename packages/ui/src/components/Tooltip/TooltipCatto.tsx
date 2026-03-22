@@ -1,10 +1,10 @@
-'use client';
+"use client";
 
-import React, { ReactNode, useState } from 'react';
-import { cn } from '../../utils';
+import React, { ReactNode, useState } from "react";
+import { cn } from "../../utils";
 
-export type TooltipPosition = 'top' | 'bottom' | 'left' | 'right';
-export type TooltipVariant = 'default' | 'orange' | 'navy' | 'dark' | 'light';
+export type TooltipPosition = "top" | "bottom" | "left" | "right";
+export type TooltipVariant = "default" | "orange" | "navy" | "dark" | "light";
 
 export interface TooltipCattoProps {
   /** The content to show in the tooltip */
@@ -45,56 +45,57 @@ export interface TooltipCattoProps {
 const TooltipCatto = ({
   content,
   children,
-  position = 'top',
-  variant = 'default',
+  position = "top",
+  variant = "default",
   className,
   tooltipClassName,
   delay = 200,
-  maxWidth = '220px',
+  maxWidth = "220px",
   offset = 0,
 }: TooltipCattoProps) => {
   // Position-specific classes for tooltip placement
   const positionClasses: Record<TooltipPosition, string> = {
-    top: 'bottom-full left-1/2 -translate-x-1/2',
-    bottom: 'top-full left-1/2 -translate-x-1/2',
-    left: 'right-full top-1/2 -translate-y-1/2',
-    right: 'left-full top-1/2 -translate-y-1/2',
+    top: "bottom-full left-1/2 -translate-x-1/2",
+    bottom: "top-full left-1/2 -translate-x-1/2",
+    left: "right-full top-1/2 -translate-y-1/2",
+    right: "left-full top-1/2 -translate-y-1/2",
   };
 
   // Calculate offset styles based on position
+  // Base offset (8px = Tailwind's `2` / 0.5rem) provides default gap between trigger and tooltip
   const getOffsetStyle = (): React.CSSProperties => {
-    const baseOffset = 8;
-    const totalOffset = baseOffset + offset;
+    const TOOLTIP_BASE_OFFSET_PX = 8;
+    const totalOffset = TOOLTIP_BASE_OFFSET_PX + offset;
     switch (position) {
-      case 'top':
+      case "top":
         return { marginBottom: `${totalOffset}px` };
-      case 'bottom':
+      case "bottom":
         return { marginTop: `${totalOffset}px` };
-      case 'left':
+      case "left":
         return { marginRight: `${totalOffset}px` };
-      case 'right':
+      case "right":
         return { marginLeft: `${totalOffset}px` };
     }
   };
 
   // Variant-specific background and text colors
   const variantClasses: Record<TooltipVariant, string> = {
-    default: 'bg-gray-800 text-gray-50 dark:bg-gray-700 dark:text-gray-100',
-    orange: 'bg-theme-secondary text-theme-on-secondary',
-    navy: 'bg-theme-primary text-theme-on-primary',
-    dark: 'bg-gray-900 text-gray-50',
-    light: 'bg-gray-50 text-gray-900 border border-gray-200',
+    default: "bg-gray-800 text-gray-50 dark:bg-gray-700 dark:text-gray-100",
+    orange: "bg-theme-secondary text-theme-on-secondary",
+    navy: "bg-theme-primary text-theme-on-primary",
+    dark: "bg-gray-900 text-gray-50",
+    light: "bg-gray-50 text-gray-900 border border-gray-200",
   };
 
   // Arrow colors per variant and position
   const getArrowClasses = (pos: TooltipPosition, v: TooltipVariant): string => {
     const baseArrow: Record<TooltipPosition, string> = {
-      top: 'top-full left-1/2 -translate-x-1/2 border-x-transparent border-b-transparent',
+      top: "top-full left-1/2 -translate-x-1/2 border-x-transparent border-b-transparent",
       bottom:
-        'bottom-full left-1/2 -translate-x-1/2 border-x-transparent border-t-transparent',
-      left: 'left-full top-1/2 -translate-y-1/2 border-y-transparent border-r-transparent',
+        "bottom-full left-1/2 -translate-x-1/2 border-x-transparent border-t-transparent",
+      left: "left-full top-1/2 -translate-y-1/2 border-y-transparent border-r-transparent",
       right:
-        'right-full top-1/2 -translate-y-1/2 border-y-transparent border-l-transparent',
+        "right-full top-1/2 -translate-y-1/2 border-y-transparent border-l-transparent",
     };
 
     const arrowColors: Record<
@@ -102,34 +103,34 @@ const TooltipCatto = ({
       Record<TooltipPosition, string>
     > = {
       default: {
-        top: 'border-t-gray-800 dark:border-t-gray-700',
-        bottom: 'border-b-gray-800 dark:border-b-gray-700',
-        left: 'border-l-gray-800 dark:border-l-gray-700',
-        right: 'border-r-gray-800 dark:border-r-gray-700',
+        top: "border-t-gray-800 dark:border-t-gray-700",
+        bottom: "border-b-gray-800 dark:border-b-gray-700",
+        left: "border-l-gray-800 dark:border-l-gray-700",
+        right: "border-r-gray-800 dark:border-r-gray-700",
       },
       orange: {
-        top: 'border-t-theme-secondary',
-        bottom: 'border-b-theme-secondary',
-        left: 'border-l-theme-secondary',
-        right: 'border-r-theme-secondary',
+        top: "border-t-theme-secondary",
+        bottom: "border-b-theme-secondary",
+        left: "border-l-theme-secondary",
+        right: "border-r-theme-secondary",
       },
       navy: {
-        top: 'border-t-theme-primary',
-        bottom: 'border-b-theme-primary',
-        left: 'border-l-theme-primary',
-        right: 'border-r-theme-primary',
+        top: "border-t-theme-primary",
+        bottom: "border-b-theme-primary",
+        left: "border-l-theme-primary",
+        right: "border-r-theme-primary",
       },
       dark: {
-        top: 'border-t-gray-900',
-        bottom: 'border-b-gray-900',
-        left: 'border-l-gray-900',
-        right: 'border-r-gray-900',
+        top: "border-t-gray-900",
+        bottom: "border-b-gray-900",
+        left: "border-l-gray-900",
+        right: "border-r-gray-900",
       },
       light: {
-        top: 'border-t-gray-50',
-        bottom: 'border-b-gray-50',
-        left: 'border-l-gray-50',
-        right: 'border-r-gray-50',
+        top: "border-t-gray-50",
+        bottom: "border-b-gray-50",
+        left: "border-l-gray-50",
+        right: "border-r-gray-50",
       },
     };
 
@@ -141,7 +142,7 @@ const TooltipCatto = ({
 
   return (
     <div
-      className={cn('group/tooltip relative inline-block', className)}
+      className={cn("group/tooltip relative inline-block", className)}
       onClick={() => setClicked(true)}
       onMouseEnter={() => setClicked(false)}
     >
@@ -150,19 +151,19 @@ const TooltipCatto = ({
       {/* Tooltip - uses CSS group-hover instead of JS state */}
       <div
         className={cn(
-          'absolute z-50 pointer-events-none whitespace-normal',
-          'px-3 py-2 text-sm font-medium',
-          'rounded-lg',
-          'shadow-xl shadow-black/25 dark:shadow-black/40',
-          'transition-all duration-200',
-          'opacity-0 scale-95',
+          "absolute z-50 pointer-events-none whitespace-normal",
+          "px-3 py-2 text-sm font-medium",
+          "rounded-lg",
+          "shadow-xl shadow-black/25 dark:shadow-black/40",
+          "transition-all duration-200",
+          "opacity-0 scale-95",
           !clicked &&
-            'group-hover/tooltip:opacity-100 group-hover/tooltip:scale-100',
+            "group-hover/tooltip:opacity-100 group-hover/tooltip:scale-100",
           !clicked &&
-            'group-focus-within/tooltip:opacity-100 group-focus-within/tooltip:scale-100',
+            "group-focus-within/tooltip:opacity-100 group-focus-within/tooltip:scale-100",
           positionClasses[position],
           variantClasses[variant],
-          tooltipClassName,
+          tooltipClassName
         )}
         style={{
           maxWidth,
@@ -176,8 +177,8 @@ const TooltipCatto = ({
         {/* Arrow */}
         <div
           className={cn(
-            'absolute w-0 h-0 border-4',
-            getArrowClasses(position, variant),
+            "absolute w-0 h-0 border-4",
+            getArrowClasses(position, variant)
           )}
         />
       </div>

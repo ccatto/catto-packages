@@ -1,15 +1,16 @@
 // @ccatto/ui - CheckboxCatto Component
-'use client';
+"use client";
 
-import React, { forwardRef } from 'react';
-import { cn } from '../../utils';
+import React, { forwardRef } from "react";
+import { cn } from "../../utils";
 
-type CheckboxSize = 'md' | 'lg' | 'xl' | 'xxl';
+type CheckboxSize = "md" | "lg" | "xl" | "xxl";
 
-export interface CheckboxCattoProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'onChange'
-> {
+export interface CheckboxCattoProps
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "size" | "onChange"
+  > {
   id: string;
   checked: boolean;
   onChange: (checked: boolean) => void;
@@ -18,14 +19,14 @@ export interface CheckboxCattoProps extends Omit<
   /** Visible label text displayed next to the checkbox */
   label?: string;
   /** Screen reader only label when no visible label is provided */
-  'aria-label'?: string;
+  "aria-label"?: string;
 }
 
 const sizeMap: Record<CheckboxSize, string> = {
-  md: 'w-5 h-5',
-  lg: 'w-6 h-6',
-  xl: 'w-8 h-8',
-  xxl: 'w-10 h-10',
+  md: "w-5 h-5",
+  lg: "w-6 h-6",
+  xl: "w-8 h-8",
+  xxl: "w-10 h-10",
 };
 
 const CheckboxCatto = forwardRef<HTMLInputElement, CheckboxCattoProps>(
@@ -35,20 +36,20 @@ const CheckboxCatto = forwardRef<HTMLInputElement, CheckboxCattoProps>(
       checked,
       onChange,
       disabled = false,
-      checkboxSize = 'md',
+      checkboxSize = "md",
       className,
       label,
-      'aria-label': ariaLabel,
+      "aria-label": ariaLabel,
       ...rest
     },
-    ref,
+    ref
   ) => {
     return (
       <label
         htmlFor={id}
         className={cn(
-          'relative inline-flex items-center cursor-pointer group',
-          label && 'gap-2',
+          "relative inline-flex items-center cursor-pointer group",
+          label && "gap-2"
         )}
       >
         <input
@@ -64,14 +65,14 @@ const CheckboxCatto = forwardRef<HTMLInputElement, CheckboxCattoProps>(
         />
         <div
           className={cn(
-            'flex items-center justify-center border-2 rounded transition-colors',
-            'group-focus-within:ring-2 group-focus-within:ring-theme-primary',
+            "flex items-center justify-center border-2 rounded transition-colors",
+            "group-focus-within:ring-2 group-focus-within:ring-theme-primary",
             checked
-              ? 'bg-theme-secondary border-theme-secondary'
-              : 'bg-transparent border-theme-primary',
-            disabled && 'opacity-50 cursor-not-allowed',
+              ? "bg-theme-secondary border-theme-secondary"
+              : "bg-transparent border-theme-primary",
+            disabled && "opacity-50 cursor-not-allowed",
             sizeMap[checkboxSize],
-            className,
+            className
           )}
           aria-hidden="true"
         >
@@ -90,8 +91,8 @@ const CheckboxCatto = forwardRef<HTMLInputElement, CheckboxCattoProps>(
         {label && (
           <span
             className={cn(
-              'text-theme-text select-none',
-              disabled && 'opacity-50',
+              "text-theme-text select-none",
+              disabled && "opacity-50"
             )}
           >
             {label}
@@ -99,9 +100,9 @@ const CheckboxCatto = forwardRef<HTMLInputElement, CheckboxCattoProps>(
         )}
       </label>
     );
-  },
+  }
 );
 
-CheckboxCatto.displayName = 'CheckboxCatto';
+CheckboxCatto.displayName = "CheckboxCatto";
 
 export default CheckboxCatto;

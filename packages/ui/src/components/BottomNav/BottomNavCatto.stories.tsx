@@ -1,14 +1,14 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import { Bell, Home, Search, Settings, User } from 'lucide-react';
-import BottomNavCatto from './BottomNavCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import { Bell, Home, Search, Settings, User } from "lucide-react";
+import BottomNavCatto from "./BottomNavCatto";
 
 const meta = {
-  title: 'Components/BottomNav',
+  title: "Components/BottomNav",
   component: BottomNavCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
   args: {
     onItemClick: fn(),
@@ -19,28 +19,28 @@ export default meta;
 type Story = StoryObj<typeof meta>;
 
 const threeItems = [
-  { id: 'home', label: 'Home', icon: <Home className="h-5 w-5" /> },
-  { id: 'search', label: 'Search', icon: <Search className="h-5 w-5" /> },
-  { id: 'profile', label: 'Profile', icon: <User className="h-5 w-5" /> },
+  { id: "home", label: "Home", icon: <Home className="h-5 w-5" /> },
+  { id: "search", label: "Search", icon: <Search className="h-5 w-5" /> },
+  { id: "profile", label: "Profile", icon: <User className="h-5 w-5" /> },
 ];
 
 const fiveItems = [
-  { id: 'home', label: 'Home', icon: <Home className="h-5 w-5" /> },
-  { id: 'search', label: 'Search', icon: <Search className="h-5 w-5" /> },
+  { id: "home", label: "Home", icon: <Home className="h-5 w-5" /> },
+  { id: "search", label: "Search", icon: <Search className="h-5 w-5" /> },
   {
-    id: 'notifications',
-    label: 'Alerts',
+    id: "notifications",
+    label: "Alerts",
     icon: <Bell className="h-5 w-5" />,
     badge: 3,
   },
-  { id: 'settings', label: 'Settings', icon: <Settings className="h-5 w-5" /> },
-  { id: 'profile', label: 'Profile', icon: <User className="h-5 w-5" /> },
+  { id: "settings", label: "Settings", icon: <Settings className="h-5 w-5" /> },
+  { id: "profile", label: "Profile", icon: <User className="h-5 w-5" /> },
 ];
 
 export const ThreeItems: Story = {
   args: {
     items: threeItems,
-    activeId: 'home',
+    activeId: "home",
   },
   decorators: [
     (Story) => (
@@ -59,7 +59,7 @@ export const ThreeItems: Story = {
 export const FiveItems: Story = {
   args: {
     items: fiveItems,
-    activeId: 'home',
+    activeId: "home",
   },
   decorators: [
     (Story) => (
@@ -78,7 +78,7 @@ export const FiveItems: Story = {
 export const WithBadge: Story = {
   args: {
     items: fiveItems,
-    activeId: 'notifications',
+    activeId: "notifications",
   },
   decorators: [
     (Story) => (
@@ -97,7 +97,7 @@ export const WithBadge: Story = {
 export const SearchActive: Story = {
   args: {
     items: threeItems,
-    activeId: 'search',
+    activeId: "search",
   },
   decorators: [
     (Story) => (
