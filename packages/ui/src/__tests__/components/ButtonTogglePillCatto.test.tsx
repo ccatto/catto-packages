@@ -1,4 +1,4 @@
-// @catto/ui - ButtonTogglePillCatto Tests
+// @ccatto/ui - ButtonTogglePillCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import ButtonTogglePillCatto from '../../components/ButtonTogglePill/ButtonTogglePillCatto';
 import { fireEvent, render, screen } from '../test-utils';

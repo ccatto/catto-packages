@@ -1,4 +1,4 @@
-// @catto/ui - CourtScheduleGridCatto Component
+// @ccatto/ui - CourtScheduleGridCatto Component
 'use client';
 
 import { ReactNode, useCallback, useMemo, useState } from 'react';

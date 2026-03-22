@@ -1,4 +1,4 @@
-// @catto/ui - TableControlsCatto
+// @ccatto/ui - TableControlsCatto
 // Filter input and pagination controls for TableCatto
 'use client';
 

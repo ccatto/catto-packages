@@ -1,4 +1,4 @@
-// @catto/ui - Phone Number Utilities
+// @ccatto/ui - Phone Number Utilities
 // US-focused formatting with optional libphonenumber-js integration path
 
 /**

@@ -1,4 +1,4 @@
-// @catto/ui - AnimatedHamburgerCatto Component
+// @ccatto/ui - AnimatedHamburgerCatto Component
 // Animated 3-bar hamburger that transforms to X when open
 'use client';
 

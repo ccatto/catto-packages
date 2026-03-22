@@ -1,4 +1,4 @@
-// @catto/ui - SearchableSelectCatto Stories
+// @ccatto/ui - SearchableSelectCatto Stories
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import SearchableSelectCatto from './SearchableSelectCatto';

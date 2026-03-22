@@ -1,4 +1,4 @@
-// @catto/ui - useDragDropList Tests
+// @ccatto/ui - useDragDropList Tests
 // Tests for the drag and drop list reordering hook
 
 import { act, renderHook } from '@testing-library/react';

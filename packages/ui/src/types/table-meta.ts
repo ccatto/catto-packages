@@ -1,4 +1,4 @@
-// @catto/ui - TanStack Table Column Meta Type Augmentation
+// @ccatto/ui - TanStack Table Column Meta Type Augmentation
 // Extends ColumnMeta to support responsive column hiding
 import type { RowData } from '@tanstack/react-table';
 import type { Breakpoint } from '../hooks/useBreakpoint';

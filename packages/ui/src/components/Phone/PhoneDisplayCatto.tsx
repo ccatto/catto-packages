@@ -1,4 +1,4 @@
-// @catto/ui - PhoneDisplayCatto Component
+// @ccatto/ui - PhoneDisplayCatto Component
 // Display-only component for formatted phone numbers
 'use client';
 

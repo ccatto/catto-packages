@@ -1,4 +1,4 @@
-// @catto/ui - RatingStarsCatto Component
+// @ccatto/ui - RatingStarsCatto Component
 // Star rating display and input
 'use client';
 

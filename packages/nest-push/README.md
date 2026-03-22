@@ -1,13 +1,13 @@
-# @catto/nest-push
+# @ccatto/nest-push
 
 Catto Push - NestJS Firebase Cloud Messaging (FCM) push notification service.
 
 ## Install
 
 ```bash
-npm install @catto/nest-push
+npm install @ccatto/nest-push
 # or
-yarn add @catto/nest-push
+yarn add @ccatto/nest-push
 ```
 
 > **Note:** This package has a direct dependency on `firebase-admin`, which is installed automatically.
@@ -15,7 +15,7 @@ yarn add @catto/nest-push
 ## Quick Start
 
 ```typescript
-import { CattoPushModule, CattoPushService } from '@catto/nest-push';
+import { CattoPushModule, CattoPushService } from '@ccatto/nest-push';
 
 @Module({
   imports: [

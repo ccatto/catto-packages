@@ -1,13 +1,13 @@
-# @catto/shared
+# @ccatto/shared
 
 Reusable TypeScript utilities for profanity filtering, geolocation, and color manipulation.
 
 ## Install
 
 ```bash
-npm install @catto/shared
+npm install @ccatto/shared
 # or
-yarn add @catto/shared
+yarn add @ccatto/shared
 ```
 
 ## Quick Start
@@ -20,9 +20,9 @@ import {
   formatDistance,
   deriveThemeColors,
   hexToRgb,
-} from '@catto/shared';
+} from '@ccatto/shared';
 
-// Profanity filter (re-exported from @catto/profanity)
+// Profanity filter (re-exported from @ccatto/profanity)
 isProfane('hello');  // false
 
 // Geo utilities

@@ -1,4 +1,4 @@
-// @catto/ui - PricingCardCatto Tests
+// @ccatto/ui - PricingCardCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import PricingCardCatto from '../../components/PricingCard/PricingCardCatto';
 import { fireEvent, render, screen } from '../test-utils';

@@ -1,4 +1,4 @@
-// @catto/ui - ButtonTogglePillCatto Stories
+// @ccatto/ui - ButtonTogglePillCatto Stories
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import ButtonTogglePillCatto from './ButtonTogglePillCatto';

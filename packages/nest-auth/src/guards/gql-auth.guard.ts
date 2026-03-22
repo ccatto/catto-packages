@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - GraphQL Auth Guard (Dual Auth)
+ * @ccatto/nest-auth - GraphQL Auth Guard (Dual Auth)
  *
  * Supports two authentication methods:
  * 1. JWT token in Authorization header (mobile/email login)

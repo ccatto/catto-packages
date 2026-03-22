@@ -1,4 +1,4 @@
-// @catto/ui - ToastCatto Tests
+// @ccatto/ui - ToastCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import ToastCatto from '../../components/Toast/ToastCatto';
 import { fireEvent, render, screen } from '../test-utils';

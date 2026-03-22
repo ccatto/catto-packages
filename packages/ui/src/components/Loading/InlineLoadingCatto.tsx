@@ -1,4 +1,4 @@
-// @catto/ui - InlineLoadingCatto Component
+// @ccatto/ui - InlineLoadingCatto Component
 'use client';
 
 import React from 'react';

@@ -1,4 +1,4 @@
-// @catto/ui - DatePickerCatto Unit Tests
+// @ccatto/ui - DatePickerCatto Unit Tests
 import { describe, expect, it, vi } from 'vitest';
 import DatePickerCatto from '../../components/DatePicker/DatePickerCatto';
 import { fireEvent, render, screen } from '../test-utils';

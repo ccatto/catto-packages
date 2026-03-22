@@ -1,4 +1,4 @@
-// @catto/ui - CalendarCatto Tests
+// @ccatto/ui - CalendarCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import CalendarCatto from '../../components/Calendar/CalendarCatto';
 import { fireEvent, render, screen } from '../test-utils';

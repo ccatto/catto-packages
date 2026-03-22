@@ -1,13 +1,13 @@
-// @catto/ui - French Labels
+// @ccatto/ui - French Labels
 // Français - fr
 
 import type { CattoUILabels } from '../defaults';
 
 /**
- * French translations for all @catto/ui components
+ * French translations for all @ccatto/ui components
  *
  * @example
- * import { frenchLabels } from '@catto/ui';
+ * import { frenchLabels } from '@ccatto/ui';
  *
  * // Use with a specific component
  * <SelectCatto labels={frenchLabels.select} />

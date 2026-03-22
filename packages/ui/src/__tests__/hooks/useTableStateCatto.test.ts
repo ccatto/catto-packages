@@ -1,4 +1,4 @@
-// @catto/ui - useTableStateCatto Tests
+// @ccatto/ui - useTableStateCatto Tests
 // Tests for the table state management hook
 
 import { act, renderHook } from '@testing-library/react';

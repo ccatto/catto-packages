@@ -1,4 +1,4 @@
-// @catto/ui - EmptyStateCatto Tests
+// @ccatto/ui - EmptyStateCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import EmptyStateCatto from '../../components/EmptyState/EmptyStateCatto';
 import { fireEvent, render, screen } from '../test-utils';

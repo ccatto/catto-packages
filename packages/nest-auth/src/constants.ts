@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Injection Tokens
+ * @ccatto/nest-auth - Injection Tokens
  *
  * Constants used for NestJS dependency injection.
  */

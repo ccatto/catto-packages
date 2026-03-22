@@ -1,4 +1,4 @@
-// @catto/ui - ButtonCatto Tests
+// @ccatto/ui - ButtonCatto Tests
 import { Check, ChevronRight } from 'lucide-react';
 import { describe, expect, it, vi } from 'vitest';
 import ButtonCatto from '../../components/Button/ButtonCatto';

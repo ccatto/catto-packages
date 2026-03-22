@@ -1,4 +1,4 @@
-// @catto/ui - Table Components barrel export
+// @ccatto/ui - Table Components barrel export
 
 // Main Table Component
 export { TableCatto } from './TableCatto';

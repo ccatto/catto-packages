@@ -1,12 +1,12 @@
 /**
- * @catto/nest-recaptcha - CattoRecaptchaModule
+ * @ccatto/nest-recaptcha - CattoRecaptchaModule
  *
  * Dynamic NestJS module providing Google reCAPTCHA v3 verification.
  *
  * ## Usage
  *
  * ```typescript
- * import { CattoRecaptchaModule } from '@catto/nest-recaptcha';
+ * import { CattoRecaptchaModule } from '@ccatto/nest-recaptcha';
  *
  * @Module({
  *   imports: [

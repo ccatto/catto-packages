@@ -1,4 +1,4 @@
-// @catto/ui - useTableStateCatto Hook
+// @ccatto/ui - useTableStateCatto Hook
 'use client';
 
 import { useState } from 'react';

@@ -1,4 +1,4 @@
-// @catto/ui - OtpInputCatto Stories
+// @ccatto/ui - OtpInputCatto Stories
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import OtpInputCatto from './OtpInputCatto';

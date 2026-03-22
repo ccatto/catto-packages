@@ -1,4 +1,4 @@
-// @catto/ui - NavLinkGroupCatto Tests
+// @ccatto/ui - NavLinkGroupCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import NavLinkGroupCatto, {
   type NavLinkItem,

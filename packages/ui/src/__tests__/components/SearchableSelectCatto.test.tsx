@@ -1,4 +1,4 @@
-// @catto/ui - SearchableSelectCatto Tests
+// @ccatto/ui - SearchableSelectCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import SearchableSelectCatto from '../../components/SearchableSelect/SearchableSelectCatto';
 import { fireEvent, render, screen } from '../test-utils';

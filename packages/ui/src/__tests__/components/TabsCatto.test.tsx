@@ -1,4 +1,4 @@
-// @catto/ui - TabsCatto Tests
+// @ccatto/ui - TabsCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import TabsCatto from '../../components/Tabs/TabsCatto';
 import { fireEvent, render, screen } from '../test-utils';

@@ -1,11 +1,11 @@
 # npm Publishing Setup
 
-All `@catto/*` packages are published to [npmjs.com](https://www.npmjs.com/settings/ccatto/packages) under the `catto` organization.
+All `@ccatto/*` packages are published to [npmjs.com](https://www.npmjs.com/settings/ccatto/packages) under the `catto` organization.
 
 ## npm Account
 
 - **Username:** ccatto
-- **Org:** catto (owns the `@catto` scope)
+- **Scope:** `@ccatto` (tied to npm username `ccatto`)
 - **Packages page:** https://www.npmjs.com/settings/ccatto/packages
 
 ## NPM_TOKEN (Granular Access Token)
@@ -17,7 +17,7 @@ The GitHub Actions publish workflow uses an `NPM_TOKEN` secret to authenticate w
 | Setting | Value |
 |---------|-------|
 | **Token name** | `NPM_TOKEN` |
-| **Description** | Automation token for publishing @catto/* packages to npmjs.com |
+| **Description** | Automation token for publishing @ccatto/* packages to npmjs.com |
 | **Expiration** | 90 days (maximum for granular tokens) |
 | **Packages and scopes** | Read and write |
 | **Organizations** | No access |
@@ -78,7 +78,7 @@ npm publish
 Since packages are on the public npm registry, consumers just install normally:
 
 ```bash
-npm install @catto/nest-auth
+npm install @ccatto/nest-auth
 ```
 
 No `.npmrc` configuration or special auth needed.

@@ -1,4 +1,4 @@
-// @catto/ui - TableCatto
+// @ccatto/ui - TableCatto
 // Full-featured data table with filtering, pagination, selection, and loading states
 'use client';
 

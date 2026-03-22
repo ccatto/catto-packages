@@ -1,19 +1,19 @@
-# @catto/react-contact
+# @ccatto/react-contact
 
 React hooks and Zod schema factory for contact forms. Wraps React Hook Form + Zod validation + optional reCAPTCHA v3 into a single `useContactForm` hook.
 
 ## Install
 
 ```bash
-npm install @catto/react-contact
+npm install @ccatto/react-contact
 # or
-yarn add @catto/react-contact
+yarn add @ccatto/react-contact
 ```
 
 ## Quick Start
 
 ```tsx
-import { useContactForm, createContactSchema } from '@catto/react-contact';
+import { useContactForm, createContactSchema } from '@ccatto/react-contact';
 
 function ContactPage() {
   const { register, handleSubmit, errors, isSubmitting, isSuccess } =
@@ -48,7 +48,7 @@ function ContactPage() {
 | `react` | `>=18.0.0` | Yes |
 | `react-hook-form` | `>=7.0.0` | Yes |
 | `zod` | `>=3.0.0` | Yes |
-| `@catto/profanity` | `*` | No |
+| `@ccatto/profanity` | `*` | No |
 
 ## License
 

@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - HTTP Roles Guard
+ * @ccatto/nest-auth - HTTP Roles Guard
  *
  * Checks that the authenticated user has one of the required roles.
  * Works with the @Roles() decorator for REST controllers.

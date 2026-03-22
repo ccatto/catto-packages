@@ -1,7 +1,7 @@
-// @catto/logger — TypeScript types
+// @ccatto/logger — TypeScript types
 
 /**
- * Shared logger interface for all @catto/* packages.
+ * Shared logger interface for all @ccatto/* packages.
  *
  * This is the canonical definition. Individual packages (react-mobile,
  * react-contact, etc.) should re-export this type rather than defining

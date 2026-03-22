@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Roles Decorator
+ * @ccatto/nest-auth - Roles Decorator
  *
  * Sets required roles metadata on handlers for use with RolesGuard / GqlRolesGuard.
  */

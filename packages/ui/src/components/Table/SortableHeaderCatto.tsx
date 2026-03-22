@@ -1,4 +1,4 @@
-// @catto/ui - SortableHeaderCatto Component
+// @ccatto/ui - SortableHeaderCatto Component
 // Performance: Memoized to prevent re-renders when other columns change
 'use client';
 

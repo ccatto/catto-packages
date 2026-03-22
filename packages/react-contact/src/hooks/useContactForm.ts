@@ -1,4 +1,4 @@
-// @catto/react-contact — Main contact form hook
+// @ccatto/react-contact — Main contact form hook
 
 import { useCallback, useState } from 'react';
 import { useForm } from 'react-hook-form';

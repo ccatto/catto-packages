@@ -1,5 +1,5 @@
 {
-  "name": "@catto/nest-recaptcha",
+  "name": "@ccatto/nest-recaptcha",
   "version": "1.0.0",
   "description": "Catto reCAPTCHA - NestJS Google reCAPTCHA v3 verification",
   "license": "MIT",

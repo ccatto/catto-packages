@@ -1,4 +1,4 @@
-// @catto/ui - BottomNavCatto Tests
+// @ccatto/ui - BottomNavCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import BottomNavCatto, {
   type BottomNavItem,

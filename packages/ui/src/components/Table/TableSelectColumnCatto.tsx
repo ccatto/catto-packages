@@ -1,4 +1,4 @@
-// @catto/ui - TableSelectColumnCatto
+// @ccatto/ui - TableSelectColumnCatto
 // Creates a checkbox selection column for TableCatto
 // Gmail-style row selection - hidden by default, shown when showSelection={true}
 'use client';

@@ -1,4 +1,4 @@
-// @catto/react-contact - React hooks and schema factory for contact forms
+// @ccatto/react-contact - React hooks and schema factory for contact forms
 
 // Logger
 export { configureContactLogger, getLogger } from './logger';

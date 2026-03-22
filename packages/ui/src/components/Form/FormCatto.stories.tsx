@@ -1,4 +1,4 @@
-// @catto/ui - FormCatto Stories
+// @ccatto/ui - FormCatto Stories
 import type { Meta, StoryObj } from '@storybook/react';
 import { z } from 'zod';
 import FormCatto from './FormCatto';

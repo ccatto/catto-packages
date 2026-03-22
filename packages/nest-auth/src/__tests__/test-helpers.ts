@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Test Helpers
+ * @ccatto/nest-auth - Test Helpers
  *
  * Shared mock factories for guard, strategy, and module tests.
  */

@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Storage
+ * @ccatto/react-auth - Storage
  *
  * Token storage abstraction for web and mobile (Capacitor) platforms.
  */

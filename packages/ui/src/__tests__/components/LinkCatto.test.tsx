@@ -1,4 +1,4 @@
-// @catto/ui - LinkCatto Tests
+// @ccatto/ui - LinkCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import LinkCatto from '../../components/Link/LinkCatto';
 import { fireEvent, render, screen } from '../test-utils';

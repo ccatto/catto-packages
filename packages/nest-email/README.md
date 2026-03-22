@@ -1,19 +1,19 @@
-# @catto/nest-email
+# @ccatto/nest-email
 
 Catto Email - NestJS email service with SendGrid integration.
 
 ## Install
 
 ```bash
-npm install @catto/nest-email
+npm install @ccatto/nest-email
 # or
-yarn add @catto/nest-email
+yarn add @ccatto/nest-email
 ```
 
 ## Quick Start
 
 ```typescript
-import { CattoEmailModule, CattoEmailService } from '@catto/nest-email';
+import { CattoEmailModule, CattoEmailService } from '@ccatto/nest-email';
 
 @Module({
   imports: [

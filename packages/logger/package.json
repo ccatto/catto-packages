@@ -1,5 +1,5 @@
 {
-  "name": "@catto/logger",
+  "name": "@ccatto/logger",
   "version": "1.0.0",
   "description": "Catto Logger - Shared logger interface and Pino factories for browser and Node.js",
   "license": "MIT",

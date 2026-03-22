@@ -1,5 +1,5 @@
 {
-  "name": "@catto/nest-payments",
+  "name": "@ccatto/nest-payments",
   "version": "1.0.0",
   "description": "Catto Payments - NestJS Stripe SDK wrapper (PaymentIntent, Checkout, Webhooks)",
   "license": "MIT",

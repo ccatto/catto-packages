@@ -1,12 +1,12 @@
 /**
- * @catto/nest-sms - CattoSmsModule
+ * @ccatto/nest-sms - CattoSmsModule
  *
  * Dynamic NestJS module providing SMS sending via Telnyx.
  *
  * ## Usage
  *
  * ```typescript
- * import { CattoSmsModule } from '@catto/nest-sms';
+ * import { CattoSmsModule } from '@ccatto/nest-sms';
  *
  * @Module({
  *   imports: [
@@ -37,7 +37,7 @@ export class CattoSmsModule {
   static forRoot(options: CattoSmsConfig): DynamicModule {
     if (!options.provider) {
       throw new Error(
-        '@catto/nest-sms: provider is required in CattoSmsModule.forRoot()',
+        '@ccatto/nest-sms: provider is required in CattoSmsModule.forRoot()',
       );
     }
 

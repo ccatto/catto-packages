@@ -1,4 +1,4 @@
-// @catto/ui - Calendar utilities for iCal (.ics) and Google Calendar export
+// @ccatto/ui - Calendar utilities for iCal (.ics) and Google Calendar export
 'use client';
 
 // ============================================================================

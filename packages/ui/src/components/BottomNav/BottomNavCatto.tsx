@@ -1,4 +1,4 @@
-// @catto/ui - BottomNavCatto Component
+// @ccatto/ui - BottomNavCatto Component
 // Mobile bottom navigation bar with hide-on-scroll support
 'use client';
 

@@ -1,4 +1,4 @@
-// @catto/ui - PricingCardCatto Component
+// @ccatto/ui - PricingCardCatto Component
 // Pricing tier card for subscription/plan displays
 'use client';
 

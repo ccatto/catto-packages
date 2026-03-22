@@ -1,4 +1,4 @@
-// @catto/ui - ThemeToggleCatto Stories
+// @ccatto/ui - ThemeToggleCatto Stories
 import type { Meta, StoryObj } from '@storybook/react';
 import ThemeToggleCatto from './ThemeToggleCatto';
 

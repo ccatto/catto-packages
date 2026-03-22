@@ -1,4 +1,4 @@
-// @catto/ui - MobileScrollIndicatorWrapperCatto
+// @ccatto/ui - MobileScrollIndicatorWrapperCatto
 // Horizontal scroll wrapper with gradient indicators and navigation buttons
 'use client';
 

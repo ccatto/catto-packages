@@ -1,4 +1,4 @@
-// @catto/logger — Smart error extraction
+// @ccatto/logger — Smart error extraction
 
 /**
  * Result of extracting an Error from log data.

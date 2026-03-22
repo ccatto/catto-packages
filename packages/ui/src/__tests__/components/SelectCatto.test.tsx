@@ -1,4 +1,4 @@
-// @catto/ui - SelectCatto Tests
+// @ccatto/ui - SelectCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import SelectCatto from '../../components/Select/SelectCatto';
 import { fireEvent, render, screen } from '../test-utils';

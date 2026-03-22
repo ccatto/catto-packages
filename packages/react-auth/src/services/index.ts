@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Services
+ * @ccatto/react-auth - Services
  *
  * Platform-agnostic auth services with pluggable API and storage layers.
  */

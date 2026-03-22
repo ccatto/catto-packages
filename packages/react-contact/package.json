@@ -1,5 +1,5 @@
 {
-  "name": "@catto/react-contact",
+  "name": "@ccatto/react-contact",
   "version": "1.0.0",
   "description": "Catto Contact - React hooks and schema factory for contact forms",
   "license": "MIT",
@@ -45,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@catto/logger": "^1.0.0"
+    "@ccatto/logger": "^1.0.0"
   },
   "devDependencies": {
     "@hookform/resolvers": "^4.0.0",
@@ -64,13 +64,13 @@
   },
   "peerDependencies": {
     "@hookform/resolvers": ">=3.0.0",
-    "@catto/profanity": ">=1.0.0",
+    "@ccatto/profanity": ">=1.0.0",
     "react": ">=18.0.0",
     "react-hook-form": ">=7.0.0",
     "zod": ">=3.0.0"
   },
   "peerDependenciesMeta": {
-    "@catto/profanity": {
+    "@ccatto/profanity": {
       "optional": true
     }
   }

@@ -1,12 +1,12 @@
 /**
- * @catto/nest-email - CattoEmailModule
+ * @ccatto/nest-email - CattoEmailModule
  *
  * Dynamic NestJS module providing email sending via SendGrid.
  *
  * ## Usage
  *
  * ```typescript
- * import { CattoEmailModule } from '@catto/nest-email';
+ * import { CattoEmailModule } from '@ccatto/nest-email';
  *
  * @Module({
  *   imports: [
@@ -48,7 +48,7 @@ export class CattoEmailModule {
   static forRoot(options: CattoEmailConfig): DynamicModule {
     if (!options.fromEmail) {
       throw new Error(
-        '@catto/nest-email: fromEmail is required in CattoEmailModule.forRoot()',
+        '@ccatto/nest-email: fromEmail is required in CattoEmailModule.forRoot()',
       );
     }
 

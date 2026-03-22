@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Configuration Types
+ * @ccatto/react-auth - Configuration Types
  *
  * Interfaces for configuring the auth system.
  * Consumer apps pass these configs to factory functions.

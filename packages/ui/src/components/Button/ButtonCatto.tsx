@@ -1,4 +1,4 @@
-// @catto/ui - ButtonCatto Component
+// @ccatto/ui - ButtonCatto Component
 'use client';
 
 import { forwardRef, ReactNode, useState } from 'react';

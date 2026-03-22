@@ -1,4 +1,4 @@
-// @catto/ui - ProgressStepperCatto and DetailedStepperCatto Tests
+// @ccatto/ui - ProgressStepperCatto and DetailedStepperCatto Tests
 import { describe, expect, it } from 'vitest';
 import DetailedStepperCatto from '../../components/Stepper/DetailedStepperCatto';
 import ProgressStepperCatto from '../../components/Stepper/ProgressStepperCatto';

@@ -1,4 +1,4 @@
-// @catto/ui - AvatarCatto Tests
+// @ccatto/ui - AvatarCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import AvatarCatto from '../../components/Avatar/AvatarCatto';
 import { fireEvent, render, screen } from '../test-utils';

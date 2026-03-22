@@ -1,5 +1,5 @@
 /**
- * Configuration for @catto/nest-email
+ * Configuration for @ccatto/nest-email
  */
 export interface CattoEmailConfig {
   /** SendGrid API key. If undefined, email sending is disabled (log-only mode). */

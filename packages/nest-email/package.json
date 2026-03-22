@@ -1,5 +1,5 @@
 {
-  "name": "@catto/nest-email",
+  "name": "@ccatto/nest-email",
   "version": "1.0.0",
   "description": "Catto Email - NestJS email service with SendGrid integration",
   "license": "MIT",

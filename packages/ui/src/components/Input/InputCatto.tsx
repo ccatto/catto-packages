@@ -1,4 +1,4 @@
-// @catto/ui - InputCatto Component
+// @ccatto/ui - InputCatto Component
 'use client';
 
 import React, { forwardRef, useId, useRef, useState } from 'react';

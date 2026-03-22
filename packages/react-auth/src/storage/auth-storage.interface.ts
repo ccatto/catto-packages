@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Auth Storage Interface
+ * @ccatto/react-auth - Auth Storage Interface
  *
  * Platform-agnostic interface for auth token storage.
  * Implementations handle platform-specific storage (web vs mobile).

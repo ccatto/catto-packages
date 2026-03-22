@@ -1,4 +1,4 @@
-// @catto/logger - Shared logger interface and Pino factories
+// @ccatto/logger - Shared logger interface and Pino factories
 
 // Types
 export type {

@@ -1,4 +1,4 @@
-// @catto/ui - ProductCardCatto Component
+// @ccatto/ui - ProductCardCatto Component
 // Product display card for e-commerce and catalog displays
 'use client';
 

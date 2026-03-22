@@ -1,4 +1,4 @@
-// @catto/ui - InlineLoadingCatto Tests
+// @ccatto/ui - InlineLoadingCatto Tests
 import { describe, expect, it } from 'vitest';
 import InlineLoadingCatto from '../../components/Loading/InlineLoadingCatto';
 import { render, screen } from '../test-utils';

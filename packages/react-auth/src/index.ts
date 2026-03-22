@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth
+ * @ccatto/react-auth
  *
  * Catto Auth - React/Next.js authentication package.
  * Provides Better Auth integration, JWT auth, session management,
@@ -7,17 +7,17 @@
  *
  * ## Entry Points
  *
- * - `@catto/react-auth` - Client-side hooks, providers, types
- * - `@catto/react-auth/server` - Server-side auth config, session enrichment
+ * - `@ccatto/react-auth` - Client-side hooks, providers, types
+ * - `@ccatto/react-auth/server` - Server-side auth config, session enrichment
  *
  * ## Quick Start
  *
  * ```tsx
  * // Client-side
- * import { useSession, signIn, signOut } from '@catto/react-auth';
+ * import { useSession, signIn, signOut } from '@ccatto/react-auth';
  *
  * // Server-side
- * import { createCattoAuth } from '@catto/react-auth/server';
+ * import { createCattoAuth } from '@ccatto/react-auth/server';
  * ```
  */
 

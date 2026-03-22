@@ -1,4 +1,4 @@
-// @catto/ui - Component Accessibility Tests
+// @ccatto/ui - Component Accessibility Tests
 import { describe, expect, it } from 'vitest';
 import ButtonCatto from '../../components/Button/ButtonCatto';
 import CardCatto from '../../components/Card/CardCatto';

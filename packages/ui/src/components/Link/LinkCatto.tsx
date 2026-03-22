@@ -1,4 +1,4 @@
-// @catto/ui - LinkCatto Component
+// @ccatto/ui - LinkCatto Component
 'use client';
 
 import React, { forwardRef } from 'react';

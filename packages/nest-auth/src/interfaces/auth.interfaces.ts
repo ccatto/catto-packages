@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Auth Interfaces
+ * @ccatto/nest-auth - Auth Interfaces
  *
  * Core authentication types used across guards, strategies, and services.
  */

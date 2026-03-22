@@ -1,13 +1,13 @@
-// @catto/ui - Hindi Labels
+// @ccatto/ui - Hindi Labels
 // हिन्दी - hi
 
 import type { CattoUILabels } from '../defaults';
 
 /**
- * Hindi translations for all @catto/ui components
+ * Hindi translations for all @ccatto/ui components
  *
  * @example
- * import { hindiLabels } from '@catto/ui';
+ * import { hindiLabels } from '@ccatto/ui';
  *
  * // Use with a specific component
  * <SelectCatto labels={hindiLabels.select} />

@@ -1,4 +1,4 @@
-// @catto/ui - TableCatto Tests
+// @ccatto/ui - TableCatto Tests
 // Comprehensive test suite for TableCatto and subcomponents
 import { ColumnDef } from '@tanstack/react-table';
 import { describe, expect, it, vi } from 'vitest';

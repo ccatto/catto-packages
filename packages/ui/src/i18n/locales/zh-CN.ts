@@ -1,13 +1,13 @@
-// @catto/ui - Chinese Simplified Labels
+// @ccatto/ui - Chinese Simplified Labels
 // 简体中文 - zh-CN
 
 import type { CattoUILabels } from '../defaults';
 
 /**
- * Chinese Simplified translations for all @catto/ui components
+ * Chinese Simplified translations for all @ccatto/ui components
  *
  * @example
- * import { chineseSimplifiedLabels } from '@catto/ui';
+ * import { chineseSimplifiedLabels } from '@ccatto/ui';
  *
  * // Use with a specific component
  * <SelectCatto labels={chineseSimplifiedLabels.select} />

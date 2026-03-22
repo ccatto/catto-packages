@@ -1,4 +1,4 @@
-// @catto/ui - TooltipCatto Tests
+// @ccatto/ui - TooltipCatto Tests
 // Tests for the CSS-based tooltip (uses group-hover, no JS state)
 import { fireEvent } from '@testing-library/react';
 import { describe, expect, it } from 'vitest';

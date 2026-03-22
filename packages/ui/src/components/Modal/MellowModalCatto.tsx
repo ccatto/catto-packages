@@ -1,4 +1,4 @@
-// @catto/ui - MellowModalCatto Component
+// @ccatto/ui - MellowModalCatto Component
 'use client';
 
 import { Suspense, useCallback, useEffect, useState } from 'react';

@@ -1,4 +1,4 @@
-// @catto/ui - SkeletonBaseCatto Tests
+// @ccatto/ui - SkeletonBaseCatto Tests
 import { describe, expect, it } from 'vitest';
 import SkeletonBaseCatto from '../../components/Skeleton/SkeletonBaseCatto';
 import { render } from '../test-utils';

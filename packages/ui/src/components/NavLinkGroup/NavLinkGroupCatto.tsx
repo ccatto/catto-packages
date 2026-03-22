@@ -1,4 +1,4 @@
-// @catto/ui - NavLinkGroupCatto Component
+// @ccatto/ui - NavLinkGroupCatto Component
 // Grouped navigation links with optional section header
 'use client';
 

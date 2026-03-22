@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Auth DTOs
+ * @ccatto/nest-auth - Auth DTOs
  *
  * Data transfer objects for authentication endpoints.
  */

@@ -1,4 +1,4 @@
-// @catto/ui - PageLoadingCatto Tests
+// @ccatto/ui - PageLoadingCatto Tests
 import { describe, expect, it } from 'vitest';
 import PageLoadingCatto from '../../components/Loading/PageLoadingCatto';
 import { render, screen } from '../test-utils';

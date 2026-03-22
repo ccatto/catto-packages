@@ -1,4 +1,4 @@
-// @catto/react-contact — TypeScript types
+// @ccatto/react-contact — TypeScript types
 
 import type { UseFormReturn } from 'react-hook-form';
 

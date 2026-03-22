@@ -1,4 +1,4 @@
-// @catto/ui - Locale Translations
+// @ccatto/ui - Locale Translations
 // Pre-made translations for common languages
 
 export { portugueseLabels } from './pt';

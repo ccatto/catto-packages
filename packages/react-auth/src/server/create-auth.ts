@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth/server - createCattoAuth Factory
+ * @ccatto/react-auth/server - createCattoAuth Factory
  *
  * Creates a configured Better Auth instance with sensible defaults,
  * automatic email normalization, and pluggable hooks for
@@ -7,7 +7,7 @@
  *
  * @example
  * ```typescript
- * import { createCattoAuth } from '@catto/react-auth/server';
+ * import { createCattoAuth } from '@ccatto/react-auth/server';
  * import { prisma } from '@myapp/database';
  *
  * export const { auth, getEnrichedSession } = createCattoAuth({

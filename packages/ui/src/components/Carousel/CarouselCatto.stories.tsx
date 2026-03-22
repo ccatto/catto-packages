@@ -1,4 +1,4 @@
-// @catto/ui - CarouselCatto Stories
+// @ccatto/ui - CarouselCatto Stories
 import type { Meta, StoryObj } from '@storybook/react';
 import CarouselCatto from './CarouselCatto';
 

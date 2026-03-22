@@ -1,4 +1,4 @@
-// @catto/ui - ViewToggleCatto Component
+// @ccatto/ui - ViewToggleCatto Component
 'use client';
 
 import { ReactNode } from 'react';

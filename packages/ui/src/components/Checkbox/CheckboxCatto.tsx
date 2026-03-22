@@ -1,4 +1,4 @@
-// @catto/ui - CheckboxCatto Component
+// @ccatto/ui - CheckboxCatto Component
 'use client';
 
 import React, { forwardRef } from 'react';

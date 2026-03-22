@@ -21,7 +21,8 @@
       "Bash(yarn test:*)",
       "Bash(git stash:*)",
       "Bash(npx vitest:*)",
-      "Bash(ls packages/ui/vitest.config.*)"
+      "Bash(ls packages/ui/vitest.config.*)",
+      "Bash(find:*)"
     ]
   }
 }

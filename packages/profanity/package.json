@@ -1,5 +1,5 @@
 {
-  "name": "@catto/profanity",
+  "name": "@ccatto/profanity",
   "version": "1.0.0",
   "description": "Catto Profanity - Multi-language profanity filter with Zod and NestJS support",
   "license": "MIT",

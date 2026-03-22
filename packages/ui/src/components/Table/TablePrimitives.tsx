@@ -1,4 +1,4 @@
-// @catto/ui - Table Primitives
+// @ccatto/ui - Table Primitives
 // Base table components for building data tables
 // Performance: Row-related components use React.memo to prevent unnecessary re-renders
 'use client';

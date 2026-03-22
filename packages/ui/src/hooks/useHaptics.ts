@@ -1,4 +1,4 @@
-// @catto/ui - Haptic feedback hook
+// @ccatto/ui - Haptic feedback hook
 'use client';
 
 /**

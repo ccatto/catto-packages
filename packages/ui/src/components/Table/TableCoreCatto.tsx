@@ -1,4 +1,4 @@
-// @catto/ui - TableCoreCatto
+// @ccatto/ui - TableCoreCatto
 // Core table rendering component with alternating row colors
 'use client';
 

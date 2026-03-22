@@ -1,12 +1,12 @@
 /**
- * @catto/nest-push - CattoPushModule
+ * @ccatto/nest-push - CattoPushModule
  *
  * Dynamic NestJS module providing Firebase Cloud Messaging (FCM) push notifications.
  *
  * ## Usage
  *
  * ```typescript
- * import { CattoPushModule } from '@catto/nest-push';
+ * import { CattoPushModule } from '@ccatto/nest-push';
  *
  * @Module({
  *   imports: [

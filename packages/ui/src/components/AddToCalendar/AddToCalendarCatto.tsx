@@ -1,4 +1,4 @@
-// @catto/ui - AddToCalendarCatto Component
+// @ccatto/ui - AddToCalendarCatto Component
 // Dropdown button to add an event to Google Calendar or download .ics file
 'use client';
 

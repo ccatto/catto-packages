@@ -1,4 +1,4 @@
-// @catto/ui - FormCatto
+// @ccatto/ui - FormCatto
 // Reusable form component built on react-hook-form with Zod validation
 'use client';
 

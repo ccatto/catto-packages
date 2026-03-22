@@ -1,4 +1,4 @@
-// @catto/ui - PhoneInputCatto Tests
+// @ccatto/ui - PhoneInputCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import PhoneInputCatto from '../../components/Phone/PhoneInputCatto';
 import { fireEvent, render, screen } from '../test-utils';

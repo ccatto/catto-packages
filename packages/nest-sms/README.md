@@ -1,19 +1,19 @@
-# @catto/nest-sms
+# @ccatto/nest-sms
 
 Catto SMS - NestJS SMS service with Telnyx integration.
 
 ## Install
 
 ```bash
-npm install @catto/nest-sms
+npm install @ccatto/nest-sms
 # or
-yarn add @catto/nest-sms
+yarn add @ccatto/nest-sms
 ```
 
 ## Quick Start
 
 ```typescript
-import { CattoSmsModule, CattoSmsService } from '@catto/nest-sms';
+import { CattoSmsModule, CattoSmsService } from '@ccatto/nest-sms';
 
 @Module({
   imports: [

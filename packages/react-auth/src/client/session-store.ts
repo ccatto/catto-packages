@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Session Store
+ * @ccatto/react-auth - Session Store
  *
  * Synchronous session state store for sharing auth session with Apollo Client.
  * Avoids network calls in Apollo's authLink.

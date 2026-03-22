@@ -1,15 +1,15 @@
-// @catto/ui - Spanish Labels Example
+// @ccatto/ui - Spanish Labels Example
 // Copy and customize this file for your app's Spanish translations
 // Import and use with the labels prop on each component
 
 import type { CattoUILabels } from './defaults';
 
 /**
- * Complete Spanish translations for @catto/ui components
+ * Complete Spanish translations for @ccatto/ui components
  *
  * Usage:
  * ```tsx
- * import { spanishLabels } from '@catto/ui/i18n/es.example';
+ * import { spanishLabels } from '@ccatto/ui/i18n/es.example';
  *
  * // Pass to individual components
  * <CalendarCatto labels={spanishLabels.calendar} />

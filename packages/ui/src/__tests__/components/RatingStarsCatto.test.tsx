@@ -1,4 +1,4 @@
-// @catto/ui - RatingStarsCatto Tests
+// @ccatto/ui - RatingStarsCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import RatingStarsCatto from '../../components/RatingStars/RatingStarsCatto';
 import { fireEvent, render, screen } from '../test-utils';

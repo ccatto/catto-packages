@@ -1,4 +1,4 @@
-// @catto/ui - CheckboxCatto Tests
+// @ccatto/ui - CheckboxCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import CheckboxCatto from '../../components/Checkbox/CheckboxCatto';
 import { fireEvent, render, screen } from '../test-utils';

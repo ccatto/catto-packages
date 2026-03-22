@@ -1,4 +1,4 @@
-// @catto/ui - CalendarCatto Stories
+// @ccatto/ui - CalendarCatto Stories
 import { useState } from 'react';
 import type { Meta, StoryObj } from '@storybook/react';
 import CalendarCatto from './CalendarCatto';

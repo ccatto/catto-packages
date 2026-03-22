@@ -1,27 +1,27 @@
-# @catto/profanity
+# @ccatto/profanity
 
 Multi-language profanity filter with Zod and NestJS support. Covers 12 languages (Arabic, Chinese, English, French, German, Hindi, Italian, Japanese, Korean, Portuguese, Russian, Spanish) with built-in false-positive whitelisting.
 
 ## Install
 
 ```bash
-npm install @catto/profanity
+npm install @ccatto/profanity
 # or
-yarn add @catto/profanity
+yarn add @ccatto/profanity
 ```
 
 ## Quick Start
 
 ```typescript
 // Core usage
-import { isProfane, censorText } from '@catto/profanity';
+import { isProfane, censorText } from '@ccatto/profanity';
 
 isProfane('hello');       // false
 isProfane('badword');     // true
 censorText('some text');  // censors profane words with asterisks
 
 // Zod integration
-import { noProfanityCheck, noProfanityMessage } from '@catto/profanity/zod';
+import { noProfanityCheck, noProfanityMessage } from '@ccatto/profanity/zod';
 import { z } from 'zod';
 
 const schema = z.object({
@@ -29,7 +29,7 @@ const schema = z.object({
 });
 
 // NestJS class-validator decorator
-import { NoProfanity } from '@catto/profanity/nest';
+import { NoProfanity } from '@ccatto/profanity/nest';
 
 class CreateUserDto {
   @NoProfanity()
@@ -41,9 +41,9 @@ class CreateUserDto {
 
 | Entry Point | Description |
 | --- | --- |
-| `@catto/profanity` | Core filter + Zod + NestJS (all-in-one) |
-| `@catto/profanity/zod` | Zod helpers only |
-| `@catto/profanity/nest` | NestJS decorator only |
+| `@ccatto/profanity` | Core filter + Zod + NestJS (all-in-one) |
+| `@ccatto/profanity/zod` | Zod helpers only |
+| `@ccatto/profanity/nest` | NestJS decorator only |
 
 ## Peer Dependencies
 

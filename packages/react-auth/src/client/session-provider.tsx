@@ -1,5 +1,5 @@
 /**
- * @catto/react-auth - Session Provider
+ * @ccatto/react-auth - Session Provider
  *
  * React Context provider for sharing enriched auth session.
  * Will be populated when extracted from the app.

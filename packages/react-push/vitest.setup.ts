@@ -1,4 +1,4 @@
-// @catto/react-push - Vitest setup with Capacitor mocks
+// @ccatto/react-push - Vitest setup with Capacitor mocks
 
 import '@testing-library/jest-dom';
 

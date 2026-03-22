@@ -1,13 +1,13 @@
-# @catto/react-mobile
+# @ccatto/react-mobile
 
 React hooks for Capacitor mobile apps. Provides haptic feedback, pull-to-refresh, keyboard management, deep links, network status, sharing, QR scanning, and geolocation. All hooks silently no-op on web to avoid errors.
 
 ## Install
 
 ```bash
-npm install @catto/react-mobile
+npm install @ccatto/react-mobile
 # or
-yarn add @catto/react-mobile
+yarn add @ccatto/react-mobile
 ```
 
 ## Quick Start
@@ -17,7 +17,7 @@ import {
   useHaptics,
   useNetworkStatus,
   usePullToRefresh,
-} from '@catto/react-mobile';
+} from '@ccatto/react-mobile';
 
 function App() {
   const { impact, notification } = useHaptics();

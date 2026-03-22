@@ -1,19 +1,19 @@
-# @catto/nest-auth
+# @ccatto/nest-auth
 
 Catto Auth - NestJS authentication module with JWT, WebAuthn, guards, and decorators.
 
 ## Install
 
 ```bash
-npm install @catto/nest-auth
+npm install @ccatto/nest-auth
 # or
-yarn add @catto/nest-auth
+yarn add @ccatto/nest-auth
 ```
 
 ## Quick Start
 
 ```typescript
-import { CattoAuthModule, GqlAuthGuard, CurrentUser } from '@catto/nest-auth';
+import { CattoAuthModule, GqlAuthGuard, CurrentUser } from '@ccatto/nest-auth';
 
 @Module({
   imports: [

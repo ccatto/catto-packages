@@ -1,4 +1,4 @@
-// @catto/ui - Type definitions
+// @ccatto/ui - Type definitions
 import type React from 'react';
 
 export type StyleWidth =

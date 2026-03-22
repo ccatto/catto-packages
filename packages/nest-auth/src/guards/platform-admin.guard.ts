@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth - Platform Admin Guard
+ * @ccatto/nest-auth - Platform Admin Guard
  *
  * Restricts access to platform administrators.
  * Uses configurable role name from CATTO_AUTH_CONFIG (default: 'platform_admin').

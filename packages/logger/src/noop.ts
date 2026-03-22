@@ -1,4 +1,4 @@
-// @catto/logger — Noop logger
+// @ccatto/logger — Noop logger
 
 import type { CattoLogger } from './types';
 

@@ -1,5 +1,5 @@
 /**
- * @catto/nest-auth
+ * @ccatto/nest-auth
  *
  * Catto Auth - NestJS authentication module.
  * Provides JWT authentication, WebAuthn/passkey support,
@@ -8,7 +8,7 @@
  * ## Quick Start
  *
  * ```typescript
- * import { CattoAuthModule, GqlAuthGuard, CurrentUser } from '@catto/nest-auth';
+ * import { CattoAuthModule, GqlAuthGuard, CurrentUser } from '@ccatto/nest-auth';
  *
  * @Module({
  *   imports: [

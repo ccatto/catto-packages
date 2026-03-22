@@ -1,4 +1,4 @@
-// @catto/ui - MobileScrollIndicatorWrapperCatto Stories
+// @ccatto/ui - MobileScrollIndicatorWrapperCatto Stories
 import type { Meta, StoryObj } from '@storybook/react';
 import { MobileScrollIndicatorWrapperCatto } from './index';
 

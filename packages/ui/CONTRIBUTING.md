@@ -1,6 +1,6 @@
-# Contributing to @catto/ui
+# Contributing to @ccatto/ui
 
-Thank you for your interest in contributing to @catto/ui! This document provides guidelines and instructions for contributing.
+Thank you for your interest in contributing to @ccatto/ui! This document provides guidelines and instructions for contributing.
 
 ## Table of Contents
 
@@ -32,29 +32,29 @@ cd rleaguez
 yarn install
 
 # Build the UI package
-yarn workspace @catto/ui build
+yarn workspace @ccatto/ui build
 
 # Run tests
-yarn workspace @catto/ui test
+yarn workspace @ccatto/ui test
 ```
 
 ### Development Commands
 
 ```bash
 # Run tests in watch mode
-yarn workspace @catto/ui test
+yarn workspace @ccatto/ui test
 
 # Run tests once
-yarn workspace @catto/ui test:run
+yarn workspace @ccatto/ui test:run
 
 # Run tests with coverage
-yarn workspace @catto/ui test:coverage
+yarn workspace @ccatto/ui test:coverage
 
 # Type check
-yarn workspace @catto/ui typecheck
+yarn workspace @ccatto/ui typecheck
 
 # Build
-yarn workspace @catto/ui build
+yarn workspace @ccatto/ui build
 ```
 
 ---
@@ -103,7 +103,7 @@ components/
 ### Component Template
 
 ```tsx
-// @catto/ui - ComponentNameCatto Component
+// @ccatto/ui - ComponentNameCatto Component
 'use client';
 
 import React from 'react';
@@ -190,7 +190,7 @@ src/__tests__/components/ComponentNameCatto.test.tsx
 ### Test Template
 
 ```tsx
-// @catto/ui - ComponentNameCatto Tests
+// @ccatto/ui - ComponentNameCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import ComponentNameCatto from '../../components/ComponentName/ComponentNameCatto';
 import { fireEvent, render, screen } from '../test-utils';
@@ -233,13 +233,13 @@ describe('ComponentNameCatto', () => {
 
 ```bash
 # Run all tests
-yarn workspace @catto/ui test:run
+yarn workspace @ccatto/ui test:run
 
 # Run specific test file
-yarn workspace @catto/ui test:run ComponentNameCatto
+yarn workspace @ccatto/ui test:run ComponentNameCatto
 
 # Run with coverage
-yarn workspace @catto/ui test:coverage
+yarn workspace @ccatto/ui test:coverage
 ```
 
 ---
@@ -274,8 +274,8 @@ import type { SomeType } from './types';
 
 ### Before Submitting
 
-1. [ ] Code compiles without errors (`yarn workspace @catto/ui typecheck`)
-2. [ ] All tests pass (`yarn workspace @catto/ui test:run`)
+1. [ ] Code compiles without errors (`yarn workspace @ccatto/ui typecheck`)
+2. [ ] All tests pass (`yarn workspace @ccatto/ui test:run`)
 3. [ ] Code is formatted (`yarn prettier`)
 4. [ ] Linting passes (`yarn lint`)
 5. [ ] New features have tests (80% coverage target)
@@ -325,4 +325,4 @@ If you have questions about contributing, please:
 2. Open a new issue with the `question` label
 3. Tag maintainers for urgent matters
 
-Thank you for contributing to @catto/ui!
+Thank you for contributing to @ccatto/ui!

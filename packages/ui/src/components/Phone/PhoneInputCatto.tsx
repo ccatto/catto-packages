@@ -1,4 +1,4 @@
-// @catto/ui - PhoneInputCatto Component
+// @ccatto/ui - PhoneInputCatto Component
 // Phone number input with automatic formatting
 'use client';
 

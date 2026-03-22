@@ -1,4 +1,4 @@
-// @catto/ui - MellowModalCatto Tests
+// @ccatto/ui - MellowModalCatto Tests
 import { describe, expect, it, vi } from 'vitest';
 import MellowModalCatto from '../../components/Modal/MellowModalCatto';
 import { fireEvent, render, screen } from '../test-utils';

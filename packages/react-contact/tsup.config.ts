@@ -17,8 +17,8 @@ export default defineConfig({
     '@hookform/resolvers',
     '@hookform/resolvers/zod',
     'zod',
-    '@catto/profanity',
-    '@catto/profanity/zod',
+    '@ccatto/profanity',
+    '@ccatto/profanity/zod',
   ],
   async onSuccess() {
     const jsFiles = await glob('dist/**/*.{js,cjs}');
