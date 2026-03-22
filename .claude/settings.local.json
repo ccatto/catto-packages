@@ -23,7 +23,8 @@
       "Bash(npx vitest:*)",
       "Bash(ls packages/ui/vitest.config.*)",
       "Bash(find:*)",
-      "Bash(git pull:*)"
+      "Bash(git pull:*)",
+      "Bash(npm publish:*)"
     ]
   }
 }
