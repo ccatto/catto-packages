@@ -114,7 +114,7 @@ describe('CalendarCatto', () => {
 
       // The selected date (15) should have orange background
       const day15 = screen.getByText('15');
-      expect(day15.className).toContain('bg-orange-500');
+      expect(day15.className).toContain('bg-theme-secondary');
     });
   });
 

@@ -19,7 +19,9 @@
       "Bash(gh run:*)",
       "Bash(yarn workspace:*)",
       "Bash(yarn test:*)",
-      "Bash(git stash:*)"
+      "Bash(git stash:*)",
+      "Bash(npx vitest:*)",
+      "Bash(ls packages/ui/vitest.config.*)"
     ]
   }
 }

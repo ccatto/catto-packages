@@ -189,7 +189,7 @@ describe('PricingCardCatto', () => {
         />,
       );
       const card = screen.getByTestId('card');
-      expect(card.className).toContain('border-orange-500');
+      expect(card.className).toContain('border-theme-secondary');
     });
 
     it('applies enterprise variant styles', () => {

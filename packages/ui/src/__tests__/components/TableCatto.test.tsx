@@ -459,8 +459,8 @@ describe('TableCoreCatto', () => {
       render(<TableWithHook data={testData} columns={testColumns} />);
 
       const rows = screen.getAllByRole('row').slice(1); // Skip header
-      expect(rows[0]).toHaveClass('bg-catto-table-row');
-      expect(rows[1]).toHaveClass('bg-catto-table-row-odd');
+      expect(rows[0]).toHaveClass('bg-theme-surface');
+      expect(rows[1]).toHaveClass('bg-theme-surface-secondary');
     });
 
     it('applies header styling', () => {
@@ -469,7 +469,7 @@ describe('TableCoreCatto', () => {
       );
 
       const header = container.querySelector('thead');
-      expect(header).toHaveClass('bg-catto-table-header');
+      expect(header).toHaveClass('bg-theme-primary-subtle');
     });
   });
 });

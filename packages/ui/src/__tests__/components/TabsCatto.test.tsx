@@ -211,7 +211,7 @@ describe('TabsCatto', () => {
 
       const activeTab = screen.getByRole('tab', { name: 'Tab 1' });
       expect(activeTab.className).toContain('border-b-2');
-      expect(activeTab.className).toContain('border-orange-500');
+      expect(activeTab.className).toContain('border-theme-secondary');
     });
 
     it('applies pills variant styles', () => {
@@ -219,7 +219,7 @@ describe('TabsCatto', () => {
 
       const activeTab = screen.getByRole('tab', { name: 'Tab 1' });
       expect(activeTab.className).toContain('rounded-full');
-      expect(activeTab.className).toContain('bg-orange-500');
+      expect(activeTab.className).toContain('bg-theme-secondary');
     });
 
     it('applies bordered variant styles', () => {

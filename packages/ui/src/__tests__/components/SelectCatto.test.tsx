@@ -294,7 +294,7 @@ describe('SelectCatto', () => {
       );
 
       // Uses explicit Tailwind colors
-      const selectButton = container.querySelector('.bg-slate-800');
+      const selectButton = container.querySelector('.bg-theme-surface');
       expect(selectButton).toBeInTheDocument();
     });
 
@@ -310,7 +310,7 @@ describe('SelectCatto', () => {
       );
 
       // Uses explicit Tailwind colors
-      const selectButton = container.querySelector('.text-blue-300');
+      const selectButton = container.querySelector('.text-theme-primary');
       expect(selectButton).toBeInTheDocument();
     });
 

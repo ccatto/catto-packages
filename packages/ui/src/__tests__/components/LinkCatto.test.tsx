@@ -144,7 +144,7 @@ describe('LinkCatto', () => {
 
       const link = screen.getByRole('link');
       // Uses explicit Tailwind colors
-      expect(link.className).toContain('text-blue-600');
+      expect(link.className).toContain('text-theme-primary');
     });
 
     it('applies subtle variant styles', () => {
@@ -168,7 +168,7 @@ describe('LinkCatto', () => {
 
       const link = screen.getByRole('link');
       // Uses explicit Tailwind colors
-      expect(link.className).toContain('bg-blue-600');
+      expect(link.className).toContain('bg-theme-primary');
       expect(link.className).toContain('rounded-md');
     });
 
@@ -182,7 +182,7 @@ describe('LinkCatto', () => {
       const link = screen.getByRole('link');
       expect(link.className).toContain('border');
       // Uses explicit Tailwind colors
-      expect(link.className).toContain('border-blue-600');
+      expect(link.className).toContain('border-theme-primary');
     });
 
     it('applies ghost variant styles', () => {
@@ -216,7 +216,7 @@ describe('LinkCatto', () => {
 
       const link = screen.getByRole('link');
       // Uses explicit Tailwind colors
-      expect(link.className).toContain('text-orange-500');
+      expect(link.className).toContain('text-theme-secondary');
     });
   });
 
@@ -308,7 +308,7 @@ describe('LinkCatto', () => {
 
       const link = screen.getByRole('link');
       expect(link.className).toContain('my-custom-class');
-      expect(link.className).toContain('text-blue-600');
+      expect(link.className).toContain('text-theme-primary');
     });
   });
 });

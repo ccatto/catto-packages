@@ -15,7 +15,7 @@ describe('InlineLoadingCatto', () => {
     it('renders with orange color', () => {
       const { container } = render(<InlineLoadingCatto />);
 
-      const svg = container.querySelector('svg.text-orange-500');
+      const svg = container.querySelector('svg.text-theme-secondary');
       expect(svg).toBeInTheDocument();
     });
 

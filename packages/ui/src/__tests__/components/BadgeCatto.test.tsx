@@ -36,7 +36,7 @@ describe('BadgeCatto', () => {
     it('applies primary variant styles', () => {
       render(<BadgeCatto variant="primary">Primary</BadgeCatto>);
       const badge = screen.getByText('Primary');
-      expect(badge.className).toContain('bg-blue-100');
+      expect(badge.className).toContain('bg-theme-primary-subtle');
     });
 
     it('applies success variant styles', () => {

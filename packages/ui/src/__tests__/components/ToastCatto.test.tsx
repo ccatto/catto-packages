@@ -117,7 +117,7 @@ describe('ToastCatto', () => {
       render(<ToastCatto body="Message" variant="primary" />);
 
       const alert = screen.getByRole('alert');
-      expect(alert.className).toContain('bg-blue-500');
+      expect(alert.className).toContain('bg-theme-primary');
     });
 
     it('applies success variant styles', () => {
