@@ -1,6 +1,6 @@
 # @ccatto/nest-auth
 
-Catto Auth - NestJS authentication module with JWT, WebAuthn, guards, and decorators.
+> Catto Auth - NestJS authentication module with JWT, WebAuthn, guards, and decorators.
 
 ## Install
 
