@@ -42,6 +42,23 @@ Granular access tokens expire after **90 days** (max). Set a calendar reminder t
 4. Update the `NPM_TOKEN` secret with the new token value
 5. Delete the old token from npm
 
+## GitHub Actions & Workflows
+
+**GitHub Actions** is GitHub's built-in CI/CD platform — it runs automation in response to repository events (pushes, PRs, schedules, etc.).
+
+A **workflow** is a single automation defined as a `.yml` file in `.github/workflows/`. Each workflow contains **jobs**, and each job contains **steps**. Think of Actions as the engine, and workflows as the programs that run on it.
+
+### Our workflows
+
+We have two workflows:
+
+| Workflow | File | Trigger | Purpose |
+|----------|------|---------|---------|
+| **CI** | `.github/workflows/ci.yml` | Pull requests to `main` | Builds all packages and runs tests. Validates code before merge. |
+| **Publish Packages** | `.github/workflows/publish.yml` | Push to `main` (when `packages/**` changes) | Builds all packages, then publishes any with unpublished versions to npm. |
+
+**Flow:** Open PR → CI runs (build + test) → Merge to main → Publish Packages runs → new versions go live on npm.
+
 ## How publishing works
 
 The `.github/workflows/publish.yml` workflow:
