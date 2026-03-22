@@ -4,6 +4,21 @@
   "description": "Catto Shared - Reusable TypeScript utilities (profanity filter, geo, color)",
   "license": "MIT",
   "author": "Chris Catto",
+  "keywords": [
+    "utilities",
+    "typescript",
+    "shared",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/catto-shared",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/catto-shared"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -19,7 +34,7 @@
     "test:watch": "jest --watch"
   },
   "dependencies": {
-    "@catto/profanity": "*"
+    "@catto/profanity": "^1.0.0"
   },
   "devDependencies": {
     "@types/jest": "^29.5.0",

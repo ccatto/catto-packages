@@ -4,6 +4,23 @@
   "description": "Catto Mobile - React hooks for Capacitor mobile apps",
   "license": "MIT",
   "author": "Chris Catto",
+  "keywords": [
+    "react",
+    "capacitor",
+    "mobile",
+    "hooks",
+    "typescript",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/react-mobile",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/react-mobile"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {
@@ -28,7 +45,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@catto/logger": "*"
+    "@catto/logger": "^1.0.0"
   },
   "devDependencies": {
     "@capacitor/app": "^8.0.0",
@@ -55,7 +72,7 @@
     "@capacitor/keyboard": ">=5.0.0",
     "@capacitor/network": ">=5.0.0",
     "@capacitor/share": ">=5.0.0",
-    "react": ">=18.0.0 || >=19.0.0"
+    "react": ">=18.0.0"
   },
   "peerDependenciesMeta": {
     "@capacitor/app": {

@@ -4,6 +4,26 @@
   "description": "Catto Auth - NestJS authentication module with JWT, WebAuthn, guards, and decorators",
   "license": "MIT",
   "author": "Chris Catto",
+  "keywords": [
+    "nestjs",
+    "authentication",
+    "jwt",
+    "webauthn",
+    "passkey",
+    "guards",
+    "graphql",
+    "typescript",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/nest-auth",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/nest-auth"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -57,6 +77,9 @@
     "reflect-metadata": ">=0.1.0"
   },
   "peerDependenciesMeta": {
+    "@nestjs/graphql": {
+      "optional": true
+    },
     "@nestjs/throttler": {
       "optional": true
     },

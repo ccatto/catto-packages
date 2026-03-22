@@ -4,6 +4,23 @@
   "description": "Catto Logger - Shared logger interface and Pino factories for browser and Node.js",
   "license": "MIT",
   "author": "Chris Catto",
+  "keywords": [
+    "logger",
+    "pino",
+    "typescript",
+    "browser",
+    "nodejs",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/logger",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/logger"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "type": "module",
   "exports": {
     ".": {

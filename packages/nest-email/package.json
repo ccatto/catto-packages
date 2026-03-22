@@ -4,6 +4,22 @@
   "description": "Catto Email - NestJS email service with SendGrid integration",
   "license": "MIT",
   "author": "Chris Catto",
+  "keywords": [
+    "nestjs",
+    "email",
+    "sendgrid",
+    "typescript",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/nest-email",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/nest-email"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
