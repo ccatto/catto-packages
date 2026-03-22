@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import InlineLoadingCatto from './InlineLoadingCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import InlineLoadingCatto from "./InlineLoadingCatto";
 
 const meta = {
-  title: 'Components/Loading/InlineLoading',
+  title: "Components/Loading/InlineLoading",
   component: InlineLoadingCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof InlineLoadingCatto>;
 

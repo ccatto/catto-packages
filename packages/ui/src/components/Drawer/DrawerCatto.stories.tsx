@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import DrawerCatto from './DrawerCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import DrawerCatto from "./DrawerCatto";
 
 const meta = {
-  title: 'Components/Drawer',
+  title: "Components/Drawer",
   component: DrawerCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'fullscreen',
+    layout: "fullscreen",
   },
   argTypes: {
     position: {
-      control: 'select',
-      options: ['left', 'right'],
+      control: "select",
+      options: ["left", "right"],
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg', 'xl', 'full'],
+      control: "select",
+      options: ["sm", "md", "lg", "xl", "full"],
     },
   },
   args: {
@@ -30,8 +30,8 @@ type Story = StoryObj<typeof meta>;
 export const Left: Story = {
   args: {
     isOpen: true,
-    position: 'left',
-    title: 'Navigation',
+    position: "left",
+    title: "Navigation",
     children: (
       <div className="p-4">
         <nav className="space-y-2">
@@ -68,8 +68,8 @@ export const Left: Story = {
 export const Right: Story = {
   args: {
     isOpen: true,
-    position: 'right',
-    title: 'Settings',
+    position: "right",
+    title: "Settings",
     children: (
       <div className="p-4">
         <div className="space-y-4">
@@ -97,9 +97,9 @@ export const Right: Story = {
 export const Small: Story = {
   args: {
     isOpen: true,
-    position: 'right',
-    size: 'sm',
-    title: 'Small Drawer',
+    position: "right",
+    size: "sm",
+    title: "Small Drawer",
     children: (
       <div className="p-4">
         <p className="text-gray-600 dark:text-gray-300">
@@ -113,9 +113,9 @@ export const Small: Story = {
 export const Large: Story = {
   args: {
     isOpen: true,
-    position: 'right',
-    size: 'lg',
-    title: 'Large Drawer',
+    position: "right",
+    size: "lg",
+    title: "Large Drawer",
     children: (
       <div className="p-4">
         <p className="text-gray-600 dark:text-gray-300">
@@ -129,9 +129,9 @@ export const Large: Story = {
 export const FullWidth: Story = {
   args: {
     isOpen: true,
-    position: 'right',
-    size: 'full',
-    title: 'Full Width Drawer',
+    position: "right",
+    size: "full",
+    title: "Full Width Drawer",
     children: (
       <div className="p-4">
         <p className="text-gray-600 dark:text-gray-300">
@@ -145,7 +145,7 @@ export const FullWidth: Story = {
 export const WithoutTitle: Story = {
   args: {
     isOpen: true,
-    position: 'left',
+    position: "left",
     children: (
       <div className="p-4">
         <nav className="space-y-2">

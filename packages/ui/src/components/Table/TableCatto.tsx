@@ -1,18 +1,18 @@
 // @ccatto/ui - TableCatto
 // Full-featured data table with filtering, pagination, selection, and loading states
-'use client';
+"use client";
 
-import { ReactNode, useEffect, useMemo } from 'react';
-import { ColumnDef } from '@tanstack/react-table';
-import { useTableInstanceCatto } from '../../hooks/table/useTableInstanceCatto';
-import { isBelow, useBreakpoint } from '../../hooks/useBreakpoint';
-import '../../types/table-meta';
-import { cn } from '../../utils';
-import { MobileScrollIndicatorWrapperCatto } from '../MobileScroll';
-import { TableSkeletonCatto } from '../Skeleton';
-import { TableControlsCatto } from './TableControlsCatto';
-import { TableCoreCatto } from './TableCoreCatto';
-import { createSelectColumn } from './TableSelectColumnCatto';
+import { ReactNode, useEffect, useMemo } from "react";
+import { ColumnDef } from "@tanstack/react-table";
+import { useTableInstanceCatto } from "../../hooks/table/useTableInstanceCatto";
+import { isBelow, useBreakpoint } from "../../hooks/useBreakpoint";
+import "../../types/table-meta";
+import { cn } from "../../utils";
+import { MobileScrollIndicatorWrapperCatto } from "../MobileScroll";
+import { TableSkeletonCatto } from "../Skeleton";
+import { TableControlsCatto } from "./TableControlsCatto";
+import { TableCoreCatto, TableDensity } from "./TableCoreCatto";
+import { createSelectColumn } from "./TableSelectColumnCatto";
 
 export interface TableCattoProps<TData, TValue> {
   /** Column definitions for the table */
@@ -24,7 +24,7 @@ export interface TableCattoProps<TData, TValue> {
   /** Placeholder text for the filter input */
   filterText: string;
   /** Filter mode: 'column' filters single column, 'global' searches all columns (default: 'column') */
-  filterMode?: 'column' | 'global';
+  filterMode?: "column" | "global";
   /** Show skeleton loading state instead of table */
   isLoading?: boolean;
   /** Number of skeleton rows to display (default: 5) */
@@ -34,7 +34,7 @@ export interface TableCattoProps<TData, TValue> {
   /** Show checkbox selection column as first column (default: false) */
   showSelection?: boolean;
   /** Accent color for scroll indicators (default: 'orange') */
-  accentColor?: 'orange' | 'blue' | 'default';
+  accentColor?: "orange" | "blue" | "default";
   /** Custom empty state title (default: "No matching results found.") */
   emptyTitle?: string;
   /** Custom empty state description (default: "Try adjusting your search or filter criteria.") */
@@ -53,6 +53,8 @@ export interface TableCattoProps<TData, TValue> {
   pageSize?: number;
   /** Make the table header sticky when scrolling (default: false) */
   stickyHeader?: boolean;
+  /** Row density: compact (tight rows), default, or comfortable (spacious rows) */
+  density?: TableDensity;
 }
 
 export function TableCatto<TData, TValue>({
@@ -60,12 +62,12 @@ export function TableCatto<TData, TValue>({
   data,
   filterVal,
   filterText,
-  filterMode = 'column',
+  filterMode = "column",
   isLoading = false,
   skeletonRows = 5,
   onRowClick,
   showSelection = false,
-  accentColor = 'orange',
+  accentColor = "orange",
   emptyTitle,
   emptyDescription,
   emptyState,
@@ -75,7 +77,10 @@ export function TableCatto<TData, TValue>({
   showTutorial = true,
   pageSize,
   stickyHeader,
+  density = "default",
 }: TableCattoProps<TData, TValue>) {
+  // Opt out of React Compiler — table prop is a mutable ref (see TableCoreCatto)
+  "use no memo";
   const breakpoint = useBreakpoint();
 
   // Prepend selection column when enabled
@@ -89,13 +94,10 @@ export function TableCatto<TData, TValue>({
 
   // Convert hiddenColumns array to visibility state object
   const initialColumnVisibility = useMemo(() => {
-    return hiddenColumns.reduce(
-      (acc, colId) => {
-        acc[colId] = false;
-        return acc;
-      },
-      {} as Record<string, boolean>,
-    );
+    return hiddenColumns.reduce((acc, colId) => {
+      acc[colId] = false;
+      return acc;
+    }, {} as Record<string, boolean>);
   }, [hiddenColumns]);
 
   const table = useTableInstanceCatto(data, columnsWithSelection, {
@@ -112,7 +114,7 @@ export function TableCatto<TData, TValue>({
       if (meta?.responsiveHide) {
         responsiveVisibility[column.id] = !isBelow(
           breakpoint,
-          meta.responsiveHide,
+          meta.responsiveHide
         );
       }
     }
@@ -138,14 +140,18 @@ export function TableCatto<TData, TValue>({
     );
   }
 
-  const tableContent = (
+  // Filter controls stay outside the scroll wrapper so input is always interactive on mobile
+  const filterControls = (
+    <TableControlsCatto
+      table={table}
+      filterVal={filterVal}
+      filterText={filterText}
+      filterMode={filterMode}
+    />
+  );
+
+  const tableBody = (
     <div className="min-w-max">
-      <TableControlsCatto
-        table={table}
-        filterVal={filterVal}
-        filterText={filterText}
-        filterMode={filterMode}
-      />
       <TableCoreCatto
         table={table}
         columnsLength={columnsWithSelection.length}
@@ -154,25 +160,32 @@ export function TableCatto<TData, TValue>({
         emptyDescription={emptyDescription}
         emptyState={emptyState}
         stickyHeader={stickyHeader}
+        density={density}
       />
     </div>
   );
 
   if (!showScrollWrapper) {
     return (
-      <div className={cn('relative w-full', className)}>{tableContent}</div>
+      <div className={cn("relative w-full", className)}>
+        {filterControls}
+        <div className="overflow-x-auto">{tableBody}</div>
+      </div>
     );
   }
 
   return (
-    <MobileScrollIndicatorWrapperCatto
-      showScrollButtons
-      accentColor={accentColor}
-      className={cn('relative w-full', className)}
-      showTutorial={showTutorial}
-    >
-      {tableContent}
-    </MobileScrollIndicatorWrapperCatto>
+    <div className={cn("relative w-full", className)}>
+      {filterControls}
+      <MobileScrollIndicatorWrapperCatto
+        showScrollButtons
+        accentColor={accentColor}
+        className="relative w-full"
+        showTutorial={showTutorial}
+      >
+        {tableBody}
+      </MobileScrollIndicatorWrapperCatto>
+    </div>
   );
 }
 

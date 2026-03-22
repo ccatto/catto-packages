@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRCircleCattoProps {
   /** Additional CSS classes */
@@ -14,8 +14,8 @@ const HRCircleCatto: React.FC<HRCircleCattoProps> = ({ className }) => {
   return (
     <div
       className={cn(
-        'w-3 h-3 bg-theme-secondary rounded-full mx-auto my-4',
-        className,
+        "w-3 h-3 bg-theme-secondary rounded-full mx-auto my-4",
+        className
       )}
     />
   );

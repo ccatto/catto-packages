@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import CheckboxCatto from './CheckboxCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import CheckboxCatto from "./CheckboxCatto";
 
 const meta = {
-  title: 'Components/Checkbox',
+  title: "Components/Checkbox",
   component: CheckboxCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
   },
   args: {
@@ -25,41 +25,41 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    label: 'Accept terms and conditions',
+    label: "Accept terms and conditions",
   },
 };
 
 export const Checked: Story = {
   args: {
-    label: 'Checked checkbox',
+    label: "Checked checkbox",
     checked: true,
   },
 };
 
 export const Unchecked: Story = {
   args: {
-    label: 'Unchecked checkbox',
+    label: "Unchecked checkbox",
     checked: false,
   },
 };
 
 export const Indeterminate: Story = {
   args: {
-    label: 'Indeterminate checkbox',
+    label: "Indeterminate checkbox",
     indeterminate: true,
   },
 };
 
 export const Disabled: Story = {
   args: {
-    label: 'Disabled checkbox',
+    label: "Disabled checkbox",
     disabled: true,
   },
 };
 
 export const DisabledChecked: Story = {
   args: {
-    label: 'Disabled and checked',
+    label: "Disabled and checked",
     checked: true,
     disabled: true,
   },
@@ -67,36 +67,36 @@ export const DisabledChecked: Story = {
 
 export const WithDescription: Story = {
   args: {
-    label: 'Newsletter',
-    description: 'Receive updates about new features and promotions.',
+    label: "Newsletter",
+    description: "Receive updates about new features and promotions.",
   },
 };
 
 export const Required: Story = {
   args: {
-    label: 'I agree to the terms',
+    label: "I agree to the terms",
     required: true,
   },
 };
 
 export const Small: Story = {
   args: {
-    label: 'Small checkbox',
-    size: 'sm',
+    label: "Small checkbox",
+    size: "sm",
   },
 };
 
 export const Large: Story = {
   args: {
-    label: 'Large checkbox',
-    size: 'lg',
+    label: "Large checkbox",
+    size: "lg",
   },
 };
 
 export const WithError: Story = {
   args: {
-    label: 'Accept terms',
-    error: 'You must accept the terms to continue',
+    label: "Accept terms",
+    error: "You must accept the terms to continue",
   },
 };
 

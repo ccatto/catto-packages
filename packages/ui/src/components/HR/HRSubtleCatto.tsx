@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRSubtleCattoProps {
   /** Additional CSS classes */
@@ -14,8 +14,8 @@ const HRSubtleCatto: React.FC<HRSubtleCattoProps> = ({ className }) => {
   return (
     <hr
       className={cn(
-        'w-32 border-t border-slate-300 dark:border-slate-700 my-2 mx-auto opacity-50',
-        className,
+        "w-32 border-t border-slate-300 dark:border-slate-700 my-2 mx-auto opacity-50",
+        className
       )}
     />
   );

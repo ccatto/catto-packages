@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /**
  * @ccatto/ui ThemeProvider
@@ -25,8 +25,16 @@ import {
   useEffect,
   useState,
   type ReactNode,
-} from 'react';
-import { isValidTheme, THEMES, type ThemeName } from '../themes';
+} from "react";
+import {
+  isValidTheme,
+  THEMES,
+  type ThemeName,
+  type ThemeSpacing,
+} from "../themes";
+
+/** Valid spacing values for runtime validation */
+const VALID_SPACINGS: ThemeSpacing[] = ["compact", "default", "comfortable"];
 
 interface ThemeContextValue {
   /** Current active theme name */
@@ -37,6 +45,10 @@ interface ThemeContextValue {
   availableThemes: readonly ThemeName[];
   /** Whether the theme has been loaded from storage */
   isLoaded: boolean;
+  /** Current spacing density */
+  spacing: ThemeSpacing;
+  /** Change the spacing density */
+  setSpacing: (spacing: ThemeSpacing) => void;
 }
 
 const ThemeContext = createContext<ThemeContextValue | null>(null);
@@ -45,6 +57,8 @@ interface ThemeProviderProps {
   children: ReactNode;
   /** Default theme to use if none is saved */
   defaultTheme?: ThemeName;
+  /** Default spacing density (default: 'default') */
+  defaultSpacing?: ThemeSpacing;
   /** LocalStorage key for persisting theme choice */
   storageKey?: string;
   /** Disable localStorage persistence */
@@ -61,14 +75,18 @@ interface ThemeProviderProps {
  */
 export function ThemeProvider({
   children,
-  defaultTheme = 'rleaguez',
-  storageKey = 'catto-theme',
+  defaultTheme = "rleaguez",
+  defaultSpacing = "default",
+  storageKey = "catto-theme",
   disablePersistence = false,
 }: ThemeProviderProps) {
   const [theme, setThemeState] = useState<ThemeName>(defaultTheme);
+  const [spacing, setSpacingState] = useState<ThemeSpacing>(defaultSpacing);
   const [isLoaded, setIsLoaded] = useState(false);
 
-  // Load theme from storage on mount
+  const spacingStorageKey = `${storageKey}-spacing`;
+
+  // Load theme and spacing from storage on mount
   useEffect(() => {
     if (disablePersistence) {
       setIsLoaded(true);
@@ -76,33 +94,50 @@ export function ThemeProvider({
     }
 
     try {
-      const stored = localStorage.getItem(storageKey);
-      if (stored && isValidTheme(stored)) {
-        setThemeState(stored);
+      const storedTheme = localStorage.getItem(storageKey);
+      if (storedTheme && isValidTheme(storedTheme)) {
+        setThemeState(storedTheme);
+      }
+
+      const storedSpacing = localStorage.getItem(spacingStorageKey);
+      if (
+        storedSpacing &&
+        VALID_SPACINGS.includes(storedSpacing as ThemeSpacing)
+      ) {
+        setSpacingState(storedSpacing as ThemeSpacing);
       }
     } catch (e) {
       // localStorage may not be available (SSR, privacy mode)
-      console.warn('Failed to load theme from localStorage:', e);
+      console.warn("Failed to load theme from localStorage:", e);
     }
     setIsLoaded(true);
-  }, [storageKey, disablePersistence]);
+  }, [storageKey, spacingStorageKey, disablePersistence]);
 
-  // Apply theme to document when it changes
+  // Apply theme and spacing to document when they change
   useEffect(() => {
     if (!isLoaded) return;
 
-    // Set data-theme attribute on document root
-    document.documentElement.setAttribute('data-theme', theme);
+    // Set data-theme and data-spacing attributes on document root
+    document.documentElement.setAttribute("data-theme", theme);
+    document.documentElement.setAttribute("data-spacing", spacing);
 
     // Persist to localStorage
     if (!disablePersistence) {
       try {
         localStorage.setItem(storageKey, theme);
+        localStorage.setItem(spacingStorageKey, spacing);
       } catch (e) {
-        console.warn('Failed to save theme to localStorage:', e);
+        console.warn("Failed to save theme to localStorage:", e);
       }
     }
-  }, [theme, isLoaded, storageKey, disablePersistence]);
+  }, [
+    theme,
+    spacing,
+    isLoaded,
+    storageKey,
+    spacingStorageKey,
+    disablePersistence,
+  ]);
 
   const setTheme = useCallback((newTheme: ThemeName) => {
     if (isValidTheme(newTheme)) {
@@ -112,11 +147,21 @@ export function ThemeProvider({
     }
   }, []);
 
+  const setSpacing = useCallback((newSpacing: ThemeSpacing) => {
+    if (VALID_SPACINGS.includes(newSpacing)) {
+      setSpacingState(newSpacing);
+    } else {
+      console.warn(`Invalid spacing: ${newSpacing}`);
+    }
+  }, []);
+
   const value: ThemeContextValue = {
     theme,
     setTheme,
     availableThemes: THEMES,
     isLoaded,
+    spacing,
+    setSpacing,
   };
 
   return (
@@ -132,7 +177,7 @@ export function ThemeProvider({
 export function useTheme(): ThemeContextValue {
   const context = useContext(ThemeContext);
   if (!context) {
-    throw new Error('useTheme must be used within a ThemeProvider');
+    throw new Error("useTheme must be used within a ThemeProvider");
   }
   return context;
 }

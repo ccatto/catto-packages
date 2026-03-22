@@ -1,11 +1,11 @@
 // @ccatto/ui Test Utilities
 // Custom render function and testing helpers
 
-import { vi } from 'vitest';
-import type { ReactElement, ReactNode } from 'react';
-import { cleanup, render, type RenderOptions } from '@testing-library/react';
-import userEvent from '@testing-library/user-event';
-import { afterEach } from 'vitest';
+import { vi } from "vitest";
+import type { ReactElement, ReactNode } from "react";
+import { cleanup, render, type RenderOptions } from "@testing-library/react";
+import userEvent from "@testing-library/user-event";
+import { afterEach } from "vitest";
 
 // ============================================
 // Cleanup
@@ -42,7 +42,7 @@ const AllProviders = ({ children }: WrapperProps) => {
  */
 const customRender = (
   ui: ReactElement,
-  options?: Omit<RenderOptions, 'wrapper'>,
+  options?: Omit<RenderOptions, "wrapper">
 ): ReturnType<typeof render> & { user: ReturnType<typeof userEvent.setup> } => {
   return {
     user: userEvent.setup(),
@@ -69,12 +69,12 @@ export const createUser = (options?: Parameters<typeof userEvent.setup>[0]) => {
 export const waitForCondition = async (
   condition: () => boolean,
   timeout = 1000,
-  interval = 50,
+  interval = 50
 ): Promise<void> => {
   const startTime = Date.now();
   while (!condition()) {
     if (Date.now() - startTime > timeout) {
-      throw new Error('Condition not met within timeout');
+      throw new Error("Condition not met within timeout");
     }
     await new Promise((resolve) => setTimeout(resolve, interval));
   }
@@ -92,7 +92,7 @@ export const createMockFn = <T extends (...args: unknown[]) => unknown>() => {
 // ============================================
 
 // Re-export everything from @testing-library/react
-export * from '@testing-library/react';
+export * from "@testing-library/react";
 
 // Re-export userEvent
 export { userEvent };

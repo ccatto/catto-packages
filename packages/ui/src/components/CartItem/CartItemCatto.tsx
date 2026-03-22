@@ -1,10 +1,10 @@
 // @ccatto/ui - CartItemCatto Component
 // Cart line item display with quantity and actions
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { cn } from '../../utils';
-import QuantitySelectorCatto from '../QuantitySelector/QuantitySelectorCatto';
+import { useState } from "react";
+import { cn } from "../../utils";
+import QuantitySelectorCatto from "../QuantitySelector/QuantitySelectorCatto";
 
 export interface CartItemCattoProps {
   /** Product name */
@@ -38,7 +38,7 @@ export interface CartItemCattoProps {
   /** Additional CSS classes */
   className?: string;
   /** Test ID for testing */
-  'data-testid'?: string;
+  "data-testid"?: string;
 }
 
 /**
@@ -71,7 +71,7 @@ export default function CartItemCatto({
   image,
   price,
   quantity,
-  currency = '$',
+  currency = "$",
   variant,
   inStock = true,
   maxQuantity = 99,
@@ -82,7 +82,7 @@ export default function CartItemCatto({
   loading = false,
   compact = false,
   className,
-  'data-testid': testId,
+  "data-testid": testId,
 }: CartItemCattoProps) {
   const [imageError, setImageError] = useState(false);
   const lineTotal = price * quantity;
@@ -91,17 +91,17 @@ export default function CartItemCatto({
     <div
       data-testid={testId}
       className={cn(
-        'flex gap-4 border-b border-gray-200 dark:border-gray-700',
-        compact ? 'py-3' : 'py-4',
-        loading && 'opacity-60 pointer-events-none',
-        className,
+        "flex gap-4 border-b border-gray-200 dark:border-gray-700",
+        compact ? "py-3" : "py-4",
+        loading && "opacity-60 pointer-events-none",
+        className
       )}
     >
       {/* Product Image */}
       <div
         className={cn(
-          'shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800',
-          compact ? 'h-16 w-16' : 'h-24 w-24',
+          "shrink-0 overflow-hidden rounded-lg bg-gray-100 dark:bg-gray-800",
+          compact ? "h-16 w-16" : "h-24 w-24"
         )}
       >
         {image && !imageError ? (
@@ -136,8 +136,8 @@ export default function CartItemCatto({
           <div className="flex-1">
             <h3
               className={cn(
-                'font-medium text-gray-900 dark:text-white',
-                compact ? 'text-sm' : 'text-base',
+                "font-medium text-gray-900 dark:text-white",
+                compact ? "text-sm" : "text-base"
               )}
             >
               {name}
@@ -157,11 +157,11 @@ export default function CartItemCatto({
           </div>
 
           {/* Unit Price (shown on larger screens or compact mode) */}
-          <div className={cn('text-right', !compact && 'hidden sm:block')}>
+          <div className={cn("text-right", !compact && "hidden sm:block")}>
             <p
               className={cn(
-                'font-medium text-gray-900 dark:text-white',
-                compact ? 'text-sm' : 'text-base',
+                "font-medium text-gray-900 dark:text-white",
+                compact ? "text-sm" : "text-base"
               )}
             >
               {currency}
@@ -176,8 +176,8 @@ export default function CartItemCatto({
         {/* Bottom Row: Quantity, Actions, Line Total */}
         <div
           className={cn(
-            'flex items-end justify-between',
-            compact ? 'mt-2' : 'mt-3',
+            "flex items-end justify-between",
+            compact ? "mt-2" : "mt-3"
           )}
         >
           {/* Quantity Selector & Actions */}
@@ -188,7 +188,7 @@ export default function CartItemCatto({
                 onChange={onQuantityChange}
                 min={1}
                 max={maxQuantity}
-                size={compact ? 'sm' : 'md'}
+                size={compact ? "sm" : "md"}
                 disabled={loading}
               />
             )}
@@ -200,10 +200,10 @@ export default function CartItemCatto({
                   onClick={onRemove}
                   disabled={loading}
                   className={cn(
-                    'text-sm font-medium text-red-600 hover:text-red-700',
-                    'dark:text-red-400 dark:hover:text-red-300',
-                    'focus:outline-none focus:underline',
-                    'disabled:opacity-50 disabled:cursor-not-allowed',
+                    "text-sm font-medium text-red-600 hover:text-red-700",
+                    "dark:text-red-400 dark:hover:text-red-300",
+                    "focus:outline-none focus:underline",
+                    "disabled:opacity-50 disabled:cursor-not-allowed"
                   )}
                 >
                   Remove
@@ -218,10 +218,10 @@ export default function CartItemCatto({
                     onClick={onSaveForLater}
                     disabled={loading}
                     className={cn(
-                      'text-sm font-medium text-blue-600 hover:text-blue-700',
-                      'dark:text-blue-400 dark:hover:text-blue-300',
-                      'focus:outline-none focus:underline',
-                      'disabled:opacity-50 disabled:cursor-not-allowed',
+                      "text-sm font-medium text-blue-600 hover:text-blue-700",
+                      "dark:text-blue-400 dark:hover:text-blue-300",
+                      "focus:outline-none focus:underline",
+                      "disabled:opacity-50 disabled:cursor-not-allowed"
                     )}
                   >
                     Save for later
@@ -235,8 +235,8 @@ export default function CartItemCatto({
           <div className="text-right">
             <p
               className={cn(
-                'font-semibold text-gray-900 dark:text-white',
-                compact ? 'text-base' : 'text-lg',
+                "font-semibold text-gray-900 dark:text-white",
+                compact ? "text-base" : "text-lg"
               )}
             >
               {currency}

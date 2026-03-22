@@ -1,42 +1,42 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import CardCatto from './CardCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import CardCatto from "./CardCatto";
 
 const meta = {
-  title: 'Components/Card',
+  title: "Components/Card",
   component: CardCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     width: {
-      control: 'select',
+      control: "select",
       options: [
-        'xs',
-        'sm',
-        'md',
-        'lg',
-        'xl',
-        '2xl',
-        '3xl',
-        '4xl',
-        '5xl',
-        '6xl',
-        '7xl',
-        'full',
+        "xs",
+        "sm",
+        "md",
+        "lg",
+        "xl",
+        "2xl",
+        "3xl",
+        "4xl",
+        "5xl",
+        "6xl",
+        "7xl",
+        "full",
       ],
     },
     bodyPadding: {
-      control: 'select',
-      options: ['none', 'xs', 'sm', 'md', 'lg', 'xl'],
+      control: "select",
+      options: ["none", "xs", "sm", "md", "lg", "xl"],
     },
     elevation: {
-      control: 'select',
-      options: ['none', 'sm', 'md', 'lg', 'xl'],
+      control: "select",
+      options: ["none", "sm", "md", "lg", "xl"],
     },
     variant: {
-      control: 'select',
-      options: ['default', 'bordered', 'elevated', 'ghost'],
+      control: "select",
+      options: ["default", "bordered", "elevated", "ghost"],
     },
   },
 } satisfies Meta<typeof CardCatto>;
@@ -58,7 +58,7 @@ export const Default: Story = {
 
 export const WithTitle: Story = {
   args: {
-    title: 'Card Title',
+    title: "Card Title",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -71,8 +71,8 @@ export const WithTitle: Story = {
 
 export const Bordered: Story = {
   args: {
-    variant: 'bordered',
-    title: 'Bordered Card',
+    variant: "bordered",
+    title: "Bordered Card",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -85,9 +85,9 @@ export const Bordered: Story = {
 
 export const Elevated: Story = {
   args: {
-    variant: 'elevated',
-    elevation: 'lg',
-    title: 'Elevated Card',
+    variant: "elevated",
+    elevation: "lg",
+    title: "Elevated Card",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -100,8 +100,8 @@ export const Elevated: Story = {
 
 export const Ghost: Story = {
   args: {
-    variant: 'ghost',
-    title: 'Ghost Card',
+    variant: "ghost",
+    title: "Ghost Card",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -114,8 +114,8 @@ export const Ghost: Story = {
 
 export const SmallWidth: Story = {
   args: {
-    width: 'sm',
-    title: 'Small Card',
+    width: "sm",
+    title: "Small Card",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">A small width card.</p>
@@ -126,8 +126,8 @@ export const SmallWidth: Story = {
 
 export const FullWidth: Story = {
   args: {
-    width: 'full',
-    title: 'Full Width Card',
+    width: "full",
+    title: "Full Width Card",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">A full width card.</p>
@@ -136,7 +136,7 @@ export const FullWidth: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '600px' }}>
+      <div style={{ width: "600px" }}>
         <Story />
       </div>
     ),
@@ -145,7 +145,7 @@ export const FullWidth: Story = {
 
 export const NoPadding: Story = {
   args: {
-    bodyPadding: 'none',
+    bodyPadding: "none",
     children: (
       <img
         src="https://via.placeholder.com/400x200"

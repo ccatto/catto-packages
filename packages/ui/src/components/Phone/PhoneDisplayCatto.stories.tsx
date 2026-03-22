@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import PhoneDisplayCatto from './PhoneDisplayCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import PhoneDisplayCatto from "./PhoneDisplayCatto";
 
 const meta = {
-  title: 'Components/PhoneDisplay',
+  title: "Components/PhoneDisplay",
   component: PhoneDisplayCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof PhoneDisplayCatto>;
 
@@ -15,40 +15,40 @@ type Story = StoryObj<typeof meta>;
 
 export const USNumber: Story = {
   args: {
-    value: '+15551234567',
+    value: "+15551234567",
   },
 };
 
 export const InternationalNumber: Story = {
   args: {
-    value: '+442071234567',
+    value: "+442071234567",
   },
 };
 
 export const WithCountryCode: Story = {
   args: {
-    value: '+15551234567',
+    value: "+15551234567",
     showCountryCode: true,
   },
 };
 
 export const Formatted: Story = {
   args: {
-    value: '+15551234567',
-    format: 'national',
+    value: "+15551234567",
+    format: "national",
   },
 };
 
 export const Clickable: Story = {
   args: {
-    value: '+15551234567',
+    value: "+15551234567",
     clickable: true,
   },
 };
 
 export const EmptyValue: Story = {
   args: {
-    value: '',
-    placeholder: 'No phone number',
+    value: "",
+    placeholder: "No phone number",
   },
 };

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRPartyPulseCattoProps {
   /** Additional CSS classes */
@@ -30,8 +30,8 @@ const HRPartyPulseCatto: React.FC<HRPartyPulseCattoProps> = ({ className }) => {
   return (
     <hr
       className={cn(
-        'w-64 border-t-4 border-dashed border-transparent my-6 mx-auto animate-[partyPulse_1.5s_ease-in-out_infinite]',
-        className,
+        "w-64 border-t-4 border-dashed border-transparent my-6 mx-auto animate-[partyPulse_1.5s_ease-in-out_infinite]",
+        className
       )}
     />
   );

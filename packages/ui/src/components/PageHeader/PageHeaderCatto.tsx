@@ -1,59 +1,59 @@
 // @ccatto/ui - PageHeaderCatto Component
-'use client';
+"use client";
 
-import React, { ReactNode } from 'react';
-import type { StyleWidth } from '../../types';
+import React, { ReactNode } from "react";
+import type { StyleWidth } from "../../types";
 
 /**
  * Width classes mapping - responsive max-width constraints
  */
 const widthClasses: Record<StyleWidth, string> = {
-  xs: 'w-full md:max-w-xs',
-  sm: 'w-full md:max-w-sm',
-  md: 'w-full md:max-w-md',
-  lg: 'w-full md:max-w-lg',
-  xl: 'w-full md:max-w-xl',
-  '2xl': 'w-full md:max-w-2xl',
-  '3xl': 'w-full md:max-w-3xl',
-  '4xl': 'w-full md:max-w-4xl',
-  '5xl': 'w-full md:max-w-5xl',
-  '6xl': 'w-full md:max-w-6xl',
-  '7xl': 'w-full md:max-w-7xl',
-  full: 'w-full',
-  auto: 'w-auto',
+  xs: "w-full md:max-w-xs",
+  sm: "w-full md:max-w-sm",
+  md: "w-full md:max-w-md",
+  lg: "w-full md:max-w-lg",
+  xl: "w-full md:max-w-xl",
+  "2xl": "w-full md:max-w-2xl",
+  "3xl": "w-full md:max-w-3xl",
+  "4xl": "w-full md:max-w-4xl",
+  "5xl": "w-full md:max-w-5xl",
+  "6xl": "w-full md:max-w-6xl",
+  "7xl": "w-full md:max-w-7xl",
+  full: "w-full",
+  auto: "w-auto",
 };
 
 /**
  * Padding size options
  */
-type PaddingSize = 'none' | 'sm' | 'md' | 'lg' | 'xl';
+type PaddingSize = "none" | "sm" | "md" | "lg" | "xl";
 
 const paddingClasses: Record<PaddingSize, string> = {
-  none: '',
-  sm: 'py-2',
-  md: 'py-4',
-  lg: 'py-6',
-  xl: 'py-8',
+  none: "",
+  sm: "py-2",
+  md: "py-4",
+  lg: "py-6",
+  xl: "py-8",
 };
 
 /**
  * Title size options
  */
-type TitleSize = 'sm' | 'md' | 'lg' | 'xl' | '2xl' | '3xl';
+type TitleSize = "sm" | "md" | "lg" | "xl" | "2xl" | "3xl";
 
 const titleSizeClasses: Record<TitleSize, string> = {
-  sm: 'text-lg',
-  md: 'text-xl',
-  lg: 'text-2xl',
-  xl: 'text-3xl',
-  '2xl': 'text-4xl',
-  '3xl': 'text-5xl',
+  sm: "text-lg",
+  md: "text-xl",
+  lg: "text-2xl",
+  xl: "text-3xl",
+  "2xl": "text-4xl",
+  "3xl": "text-5xl",
 };
 
 /**
  * Layout options for title/subtitle arrangement
  */
-type Layout = 'stacked' | 'inline';
+type Layout = "stacked" | "inline";
 
 export interface PageHeaderCattoProps {
   /** The main page title (required) */
@@ -112,14 +112,14 @@ const PageHeaderCatto = React.memo(
     subtitle,
     icon,
     action,
-    width = '7xl',
+    width = "7xl",
     center = true,
-    padding = 'lg',
-    titleSize = 'xl',
-    layout = 'inline',
-    className = '',
-    titleClassName = '',
-    subtitleClassName = '',
+    padding = "lg",
+    titleSize = "xl",
+    layout = "inline",
+    className = "",
+    titleClassName = "",
+    subtitleClassName = "",
     withOuterPadding = true,
     headingLevel = 1,
   }: PageHeaderCattoProps) => {
@@ -129,35 +129,35 @@ const PageHeaderCatto = React.memo(
     // Build container classes
     const containerClasses = [
       widthClasses[width],
-      center ? 'mx-auto' : '',
+      center ? "mx-auto" : "",
       paddingClasses[padding],
       className,
     ]
       .filter(Boolean)
-      .join(' ');
+      .join(" ");
 
     // Build layout classes based on layout prop
     const layoutClasses =
-      layout === 'inline'
-        ? 'flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between'
-        : 'flex flex-col gap-1';
+      layout === "inline"
+        ? "flex flex-col gap-1 sm:flex-row sm:items-center sm:justify-between"
+        : "flex flex-col gap-1";
 
     // Title classes
     const titleClasses = [
       titleSizeClasses[titleSize],
-      'font-bold text-theme-text',
+      "font-bold text-theme-text",
       titleClassName,
     ]
       .filter(Boolean)
-      .join(' ');
+      .join(" ");
 
     // Subtitle classes
-    const subtitleClasses = ['text-theme-text-muted', subtitleClassName]
+    const subtitleClasses = ["text-theme-text-muted", subtitleClassName]
       .filter(Boolean)
-      .join(' ');
+      .join(" ");
 
     return (
-      <div className={withOuterPadding ? 'w-full px-1 md:px-10' : 'w-full'}>
+      <div className={withOuterPadding ? "w-full px-1 md:px-10" : "w-full"}>
         <div className={containerClasses}>
           <div className={layoutClasses}>
             {/* Title section with optional icon */}
@@ -173,7 +173,7 @@ const PageHeaderCatto = React.memo(
             {/* Subtitle */}
             {subtitle && (
               <div className={subtitleClasses}>
-                {typeof subtitle === 'string' ? <p>{subtitle}</p> : subtitle}
+                {typeof subtitle === "string" ? <p>{subtitle}</p> : subtitle}
               </div>
             )}
           </div>
@@ -185,9 +185,9 @@ const PageHeaderCatto = React.memo(
         </div>
       </div>
     );
-  },
+  }
 );
 
-PageHeaderCatto.displayName = 'PageHeaderCatto';
+PageHeaderCatto.displayName = "PageHeaderCatto";
 
 export default PageHeaderCatto;

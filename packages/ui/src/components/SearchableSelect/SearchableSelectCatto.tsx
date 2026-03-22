@@ -1,34 +1,34 @@
-'use client';
+"use client";
 
-import { forwardRef, useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown, Plus } from 'lucide-react';
-import type { SelectOption } from '../../types';
-import { cn } from '../../utils';
+import { forwardRef, useEffect, useRef, useState } from "react";
+import { Check, ChevronDown, Plus } from "lucide-react";
+import type { SelectOption } from "../../types";
+import { cn } from "../../utils";
 
-export type SearchableSelectSize = 'small' | 'medium' | 'large';
+export type SearchableSelectSize = "small" | "medium" | "large";
 export type SearchableSelectWidth =
-  | 'auto'
-  | 'full'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl';
+  | "auto"
+  | "full"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl";
 export type SearchableSelectVariant =
-  | 'outlined'
-  | 'filled'
-  | 'minimal'
-  | 'primary';
+  | "outlined"
+  | "filled"
+  | "minimal"
+  | "primary";
 export type SearchableSelectTheme =
-  | 'light'
-  | 'sunset'
-  | 'ocean'
-  | 'forest'
-  | 'dusk';
+  | "light"
+  | "sunset"
+  | "ocean"
+  | "forest"
+  | "dusk";
 
 export interface SearchableSelectCattoProps {
   /** Array of options to select from */
@@ -104,23 +104,23 @@ const SearchableSelectCatto = forwardRef<
       value,
       onChange,
       onCreateNew,
-      placeholder = 'Search or select an option',
-      createNewText = 'Create new',
+      placeholder = "Search or select an option",
+      createNewText = "Create new",
       disabled = false,
-      className = '',
+      className = "",
       label,
       error,
-      size = 'medium',
-      theme = 'sunset',
-      width = 'full',
-      variant = 'outlined',
+      size = "medium",
+      theme = "sunset",
+      width = "full",
+      variant = "outlined",
       allowCreate = false,
-      noResultsText = 'No options found',
+      noResultsText = "No options found",
     },
-    ref,
+    ref
   ) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [searchText, setSearchText] = useState('');
+    const [searchText, setSearchText] = useState("");
     const [filteredOptions, setFilteredOptions] =
       useState<SelectOption[]>(options);
     const internalContainerRef = useRef<HTMLDivElement | null>(null);
@@ -130,7 +130,7 @@ const SearchableSelectCatto = forwardRef<
     // Combine forwarded ref with internal ref
     const handleContainerRef = (node: HTMLDivElement | null) => {
       internalContainerRef.current = node;
-      if (typeof ref === 'function') {
+      if (typeof ref === "function") {
         ref(node);
       } else if (ref) {
         ref.current = node;
@@ -139,39 +139,39 @@ const SearchableSelectCatto = forwardRef<
 
     // Size variations
     const sizeClasses = {
-      small: 'h-8 text-sm',
-      medium: 'h-10 text-base',
-      large: 'h-12 text-lg',
+      small: "h-8 text-sm",
+      medium: "h-10 text-base",
+      large: "h-12 text-lg",
     };
 
     const inputPaddingClasses = {
-      small: 'px-2 py-1',
-      medium: 'px-3 py-2',
-      large: 'px-4 py-3',
+      small: "px-2 py-1",
+      medium: "px-3 py-2",
+      large: "px-4 py-3",
     };
 
     // Width styles
     const widthClasses = {
-      auto: 'w-auto',
-      full: 'w-full',
-      xs: 'w-20',
-      sm: 'w-32',
-      md: 'w-48',
-      lg: 'w-64',
-      xl: 'w-full md:w-96',
-      '2xl': 'md:w-[32rem] w-full',
-      '3xl': 'md:w-[48rem] w-full',
-      '4xl': 'md:w-[64rem] w-full',
-      '5xl': 'md:w-[80rem] w-full',
+      auto: "w-auto",
+      full: "w-full",
+      xs: "w-20",
+      sm: "w-32",
+      md: "w-48",
+      lg: "w-64",
+      xl: "w-full md:w-96",
+      "2xl": "md:w-[32rem] w-full",
+      "3xl": "md:w-[48rem] w-full",
+      "4xl": "md:w-[64rem] w-full",
+      "5xl": "md:w-[80rem] w-full",
     };
 
     // Variant styles
     const variantClasses = {
-      outlined: 'border',
-      filled: 'border-0 border-b-2',
-      minimal: 'border-0',
+      outlined: "border",
+      filled: "border-0 border-b-2",
+      minimal: "border-0",
       primary:
-        'border-2 border-theme-primary bg-theme-primary-subtle text-theme-primary hover:bg-theme-primary-subtle',
+        "border-2 border-theme-primary bg-theme-primary-subtle text-theme-primary hover:bg-theme-primary-subtle",
     };
 
     // Selected option from options
@@ -183,7 +183,7 @@ const SearchableSelectCatto = forwardRef<
         setFilteredOptions(options);
       } else {
         const filtered = options.filter((option) =>
-          option.label.toLowerCase().includes(searchText.toLowerCase()),
+          option.label.toLowerCase().includes(searchText.toLowerCase())
         );
         setFilteredOptions(filtered);
       }
@@ -192,7 +192,7 @@ const SearchableSelectCatto = forwardRef<
     // Reset search text when the dropdown is closed
     useEffect(() => {
       if (!isOpen) {
-        setSearchText('');
+        setSearchText("");
       }
     }, [isOpen]);
 
@@ -214,17 +214,17 @@ const SearchableSelectCatto = forwardRef<
         }
       };
 
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
       return () =>
-        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     // Handle key navigation within dropdown
     const handleKeyDown = (event: React.KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         setIsOpen(false);
         event.preventDefault();
-      } else if (event.key === 'ArrowDown' && isOpen) {
+      } else if (event.key === "ArrowDown" && isOpen) {
         event.preventDefault();
         const firstOption = optionRefs.current[0];
         firstOption?.focus();
@@ -233,15 +233,15 @@ const SearchableSelectCatto = forwardRef<
 
     const handleOptionKeyDown = (
       event: React.KeyboardEvent<HTMLDivElement>,
-      index: number,
+      index: number
     ) => {
-      if (event.key === 'ArrowDown') {
+      if (event.key === "ArrowDown") {
         event.preventDefault();
         const nextOption = optionRefs.current[index + 1];
         if (nextOption) {
           nextOption.focus();
         }
-      } else if (event.key === 'ArrowUp') {
+      } else if (event.key === "ArrowUp") {
         event.preventDefault();
         if (index === 0) {
           inputRef.current?.focus();
@@ -251,7 +251,7 @@ const SearchableSelectCatto = forwardRef<
             prevOption.focus();
           }
         }
-      } else if (event.key === 'Enter' || event.key === ' ') {
+      } else if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
         if (index < filteredOptions.length) {
           onChange(filteredOptions[index].value);
@@ -260,7 +260,7 @@ const SearchableSelectCatto = forwardRef<
           onCreateNew(searchText);
           setIsOpen(false);
         }
-      } else if (event.key === 'Escape') {
+      } else if (event.key === "Escape") {
         setIsOpen(false);
       }
     };
@@ -270,7 +270,7 @@ const SearchableSelectCatto = forwardRef<
       if (searchText && isOpen) {
         return searchText;
       }
-      return selectedOption ? selectedOption.label : '';
+      return selectedOption ? selectedOption.label : "";
     };
 
     // Handle click on the container
@@ -295,26 +295,26 @@ const SearchableSelectCatto = forwardRef<
     const getOptionClasses = (isSelected: boolean) =>
       cn(
         inputPaddingClasses[size],
-        'flex items-center justify-between cursor-pointer',
+        "flex items-center justify-between cursor-pointer",
         isSelected
-          ? 'bg-theme-primary-subtle text-theme-primary'
-          : 'hover:bg-theme-surface-secondary text-theme-text',
+          ? "bg-theme-primary-subtle text-theme-primary"
+          : "hover:bg-theme-surface-secondary text-theme-text"
       );
 
     return (
       <div
-        className={cn('relative', widthClasses[width], className)}
+        className={cn("relative", widthClasses[width], className)}
         ref={handleContainerRef}
       >
         {label && (
           <label
             className={cn(
-              'block font-medium mb-1 text-theme-text',
-              size === 'small'
-                ? 'text-sm'
-                : size === 'large'
-                  ? 'text-lg'
-                  : 'text-base',
+              "block font-medium mb-1 text-theme-text",
+              size === "small"
+                ? "text-sm"
+                : size === "large"
+                ? "text-lg"
+                : "text-base"
             )}
           >
             {label}
@@ -323,14 +323,14 @@ const SearchableSelectCatto = forwardRef<
 
         <div
           className={cn(
-            'flex items-center rounded-md transition-all duration-200',
-            'focus-within:outline-none focus-within:ring-2',
+            "flex items-center rounded-md transition-all duration-200",
+            "focus-within:outline-none focus-within:ring-2",
             variantClasses[variant],
             sizeClasses[size],
-            variant !== 'primary' && themeClasses[theme],
-            disabled ? 'opacity-50 cursor-not-allowed' : 'cursor-pointer',
-            error && 'border-red-500 ring-1 ring-red-500',
-            isOpen && 'ring-2 ring-theme-primary',
+            variant !== "primary" && themeClasses[theme],
+            disabled ? "opacity-50 cursor-not-allowed" : "cursor-pointer",
+            error && "border-red-500 ring-1 ring-red-500",
+            isOpen && "ring-2 ring-theme-primary"
           )}
           onClick={handleContainerClick}
         >
@@ -338,10 +338,10 @@ const SearchableSelectCatto = forwardRef<
             ref={inputRef}
             type="text"
             className={cn(
-              'w-full bg-transparent outline-none',
+              "w-full bg-transparent outline-none",
               inputPaddingClasses[size],
-              disabled && 'cursor-not-allowed',
-              'placeholder-theme-text-subtle',
+              disabled && "cursor-not-allowed",
+              "placeholder-theme-text-subtle"
             )}
             placeholder={placeholder}
             value={getDisplayValue()}
@@ -358,9 +358,9 @@ const SearchableSelectCatto = forwardRef<
           />
           <ChevronDown
             className={cn(
-              'h-4 w-4 ml-2 mr-3 transition-transform duration-200',
-              'text-theme-text-muted',
-              isOpen && 'rotate-180 transform',
+              "h-4 w-4 ml-2 mr-3 transition-transform duration-200",
+              "text-theme-text-muted",
+              isOpen && "rotate-180 transform"
             )}
           />
         </div>
@@ -370,8 +370,8 @@ const SearchableSelectCatto = forwardRef<
         {isOpen && (
           <div
             className={cn(
-              'absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg border shadow-lg',
-              'bg-theme-surface border-theme-border',
+              "absolute z-10 mt-1 max-h-60 w-full overflow-auto rounded-lg border shadow-lg",
+              "bg-theme-surface border-theme-border"
             )}
           >
             {filteredOptions.length > 0 ? (
@@ -401,7 +401,7 @@ const SearchableSelectCatto = forwardRef<
               <div
                 className={cn(
                   inputPaddingClasses[size],
-                  'text-theme-text-muted italic',
+                  "text-theme-text-muted italic"
                 )}
               >
                 {noResultsText}
@@ -415,9 +415,9 @@ const SearchableSelectCatto = forwardRef<
                 <div
                   className={cn(
                     inputPaddingClasses[size],
-                    'flex items-center cursor-pointer',
-                    'text-theme-primary',
-                    'hover:bg-theme-primary-subtle',
+                    "flex items-center cursor-pointer",
+                    "text-theme-primary",
+                    "hover:bg-theme-primary-subtle"
                   )}
                   onClick={() => {
                     onCreateNew(searchText);
@@ -441,9 +441,9 @@ const SearchableSelectCatto = forwardRef<
         )}
       </div>
     );
-  },
+  }
 );
 
-SearchableSelectCatto.displayName = 'SearchableSelectCatto';
+SearchableSelectCatto.displayName = "SearchableSelectCatto";
 
 export default SearchableSelectCatto;

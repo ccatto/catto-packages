@@ -1,12 +1,12 @@
 // @ccatto/ui - QuantitySelectorCatto Component
 // Quantity input with increment/decrement buttons
-'use client';
+"use client";
 
-import { forwardRef } from 'react';
-import { cn } from '../../utils';
+import { forwardRef } from "react";
+import { cn } from "../../utils";
 
-export type QuantitySelectorSize = 'sm' | 'md' | 'lg';
-export type QuantitySelectorVariant = 'default' | 'outline' | 'filled';
+export type QuantitySelectorSize = "sm" | "md" | "lg";
+export type QuantitySelectorVariant = "default" | "outline" | "filled";
 
 export interface QuantitySelectorCattoProps {
   /** Current quantity value */
@@ -30,9 +30,9 @@ export interface QuantitySelectorCattoProps {
   /** Additional CSS classes */
   className?: string;
   /** Aria label for accessibility */
-  'aria-label'?: string;
+  "aria-label"?: string;
   /** Test ID for testing */
-  'data-testid'?: string;
+  "data-testid"?: string;
 }
 
 const sizeStyles: Record<
@@ -40,19 +40,19 @@ const sizeStyles: Record<
   { button: string; input: string; icon: string }
 > = {
   sm: {
-    button: 'h-7 w-7',
-    input: 'h-7 w-10 text-sm',
-    icon: 'h-3 w-3',
+    button: "h-7 w-7",
+    input: "h-7 w-10 text-sm",
+    icon: "h-3 w-3",
   },
   md: {
-    button: 'h-9 w-9',
-    input: 'h-9 w-14 text-base',
-    icon: 'h-4 w-4',
+    button: "h-9 w-9",
+    input: "h-9 w-14 text-base",
+    icon: "h-4 w-4",
   },
   lg: {
-    button: 'h-11 w-11',
-    input: 'h-11 w-16 text-lg',
-    icon: 'h-5 w-5',
+    button: "h-11 w-11",
+    input: "h-11 w-16 text-lg",
+    icon: "h-5 w-5",
   },
 };
 
@@ -61,22 +61,22 @@ const variantStyles: Record<
   { container: string; button: string; input: string }
 > = {
   default: {
-    container: 'bg-gray-100 dark:bg-gray-800',
+    container: "bg-gray-100 dark:bg-gray-800",
     button:
-      'text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700',
-    input: 'bg-transparent text-gray-900 dark:text-white',
+      "text-gray-700 hover:bg-gray-200 dark:text-gray-300 dark:hover:bg-gray-700",
+    input: "bg-transparent text-gray-900 dark:text-white",
   },
   outline: {
-    container: 'border border-gray-300 dark:border-gray-600 bg-transparent',
+    container: "border border-gray-300 dark:border-gray-600 bg-transparent",
     button:
-      'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800',
-    input: 'bg-transparent text-gray-900 dark:text-white',
+      "text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800",
+    input: "bg-transparent text-gray-900 dark:text-white",
   },
   filled: {
-    container: 'bg-gray-200 dark:bg-gray-700',
+    container: "bg-gray-200 dark:bg-gray-700",
     button:
-      'text-gray-800 hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-600',
-    input: 'bg-transparent text-gray-900 dark:text-white',
+      "text-gray-800 hover:bg-gray-300 dark:text-gray-200 dark:hover:bg-gray-600",
+    input: "bg-transparent text-gray-900 dark:text-white",
   },
 };
 
@@ -106,15 +106,15 @@ const QuantitySelectorCatto = forwardRef<
       min = 0,
       max = 99,
       step = 1,
-      size = 'md',
-      variant = 'default',
+      size = "md",
+      variant = "default",
       disabled = false,
       showInput = false,
       className,
-      'aria-label': ariaLabel = 'Quantity',
-      'data-testid': testId,
+      "aria-label": ariaLabel = "Quantity",
+      "data-testid": testId,
     },
-    ref,
+    ref
   ) => {
     const canDecrement = value > min;
     const canIncrement = value < max;
@@ -146,10 +146,10 @@ const QuantitySelectorCatto = forwardRef<
         ref={ref}
         data-testid={testId}
         className={cn(
-          'inline-flex items-center rounded-lg',
+          "inline-flex items-center rounded-lg",
           variantStyle.container,
-          disabled && 'opacity-50 cursor-not-allowed',
-          className,
+          disabled && "opacity-50 cursor-not-allowed",
+          className
         )}
         role="group"
         aria-label={ariaLabel}
@@ -161,11 +161,11 @@ const QuantitySelectorCatto = forwardRef<
           disabled={disabled || !canDecrement}
           aria-label="Decrease quantity"
           className={cn(
-            'flex items-center justify-center rounded-l-lg transition-colors',
-            'focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500',
-            'disabled:opacity-50 disabled:cursor-not-allowed',
+            "flex items-center justify-center rounded-l-lg transition-colors",
+            "focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500",
+            "disabled:opacity-50 disabled:cursor-not-allowed",
             styles.button,
-            variantStyle.button,
+            variantStyle.button
           )}
         >
           <svg
@@ -191,19 +191,19 @@ const QuantitySelectorCatto = forwardRef<
             disabled={disabled}
             aria-label={`${ariaLabel} value`}
             className={cn(
-              'text-center font-medium border-x border-gray-200 dark:border-gray-600',
-              'focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500',
-              '[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none',
+              "text-center font-medium border-x border-gray-200 dark:border-gray-600",
+              "focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500",
+              "[appearance:textfield] [&::-webkit-outer-spin-button]:appearance-none [&::-webkit-inner-spin-button]:appearance-none",
               styles.input,
-              variantStyle.input,
+              variantStyle.input
             )}
           />
         ) : (
           <span
             className={cn(
-              'flex items-center justify-center font-medium border-x border-gray-200 dark:border-gray-600',
+              "flex items-center justify-center font-medium border-x border-gray-200 dark:border-gray-600",
               styles.input,
-              variantStyle.input,
+              variantStyle.input
             )}
             aria-live="polite"
           >
@@ -218,11 +218,11 @@ const QuantitySelectorCatto = forwardRef<
           disabled={disabled || !canIncrement}
           aria-label="Increase quantity"
           className={cn(
-            'flex items-center justify-center rounded-r-lg transition-colors',
-            'focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500',
-            'disabled:opacity-50 disabled:cursor-not-allowed',
+            "flex items-center justify-center rounded-r-lg transition-colors",
+            "focus:outline-none focus:ring-2 focus:ring-inset focus:ring-blue-500",
+            "disabled:opacity-50 disabled:cursor-not-allowed",
             styles.button,
-            variantStyle.button,
+            variantStyle.button
           )}
         >
           <svg
@@ -241,9 +241,9 @@ const QuantitySelectorCatto = forwardRef<
         </button>
       </div>
     );
-  },
+  }
 );
 
-QuantitySelectorCatto.displayName = 'QuantitySelectorCatto';
+QuantitySelectorCatto.displayName = "QuantitySelectorCatto";
 
 export default QuantitySelectorCatto;

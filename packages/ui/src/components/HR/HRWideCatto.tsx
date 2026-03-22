@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRWideCattoProps {
   /** Additional CSS classes */
@@ -13,7 +13,7 @@ export interface HRWideCattoProps {
 const HRWideCatto: React.FC<HRWideCattoProps> = ({ className }) => {
   return (
     <hr
-      className={cn('w-full border-t-2 border-theme-primary my-6', className)}
+      className={cn("w-full border-t-2 border-theme-primary my-6", className)}
     />
   );
 };

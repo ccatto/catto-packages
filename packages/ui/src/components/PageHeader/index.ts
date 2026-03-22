@@ -1,2 +1,2 @@
-export { default as PageHeaderCatto } from './PageHeaderCatto';
-export type { PageHeaderCattoProps } from './PageHeaderCatto';
+export { default as PageHeaderCatto } from "./PageHeaderCatto";
+export type { PageHeaderCattoProps } from "./PageHeaderCatto";

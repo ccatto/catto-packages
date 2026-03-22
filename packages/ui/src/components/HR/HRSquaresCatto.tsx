@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRSquaresCattoProps {
   /** Number of squares to display */
@@ -18,16 +18,16 @@ export interface HRSquaresCattoProps {
  */
 const HRSquaresCatto: React.FC<HRSquaresCattoProps> = ({
   count = 10,
-  size = 'w-3 h-3',
-  gap = 'gap-2',
+  size = "w-3 h-3",
+  gap = "gap-2",
   className,
 }) => {
   return (
     <div
-      className={cn('flex justify-center items-center my-4', gap, className)}
+      className={cn("flex justify-center items-center my-4", gap, className)}
     >
       {Array.from({ length: count }).map((_, idx) => (
-        <div key={idx} className={cn(size, 'bg-theme-primary rounded-sm')} />
+        <div key={idx} className={cn(size, "bg-theme-primary rounded-sm")} />
       ))}
     </div>
   );

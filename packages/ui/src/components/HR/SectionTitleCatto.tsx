@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface SectionTitleCattoProps {
   /** Main title text */
@@ -33,7 +33,7 @@ const SectionTitleCatto: React.FC<SectionTitleCattoProps> = ({
   className,
 }) => {
   return (
-    <div className={cn('text-center my-6', className)}>
+    <div className={cn("text-center my-6", className)}>
       <h2 className="text-2xl font-bold text-slate-900 dark:text-slate-50">
         {title}
       </h2>

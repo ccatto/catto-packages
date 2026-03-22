@@ -89,4 +89,16 @@
   --catto-theme-info: #3b82f6;
   --catto-theme-info-subtle: #dbeafe;
   --catto-theme-on-info: #1e3a8a;
+
+  /* ======================
+   * SPACING SCALE
+   * Used for: padding, margin, gap — consistent spacing across all components
+   * Based on Tailwind's 4px base unit (1 = 0.25rem = 4px)
+   * ====================== */
+  --catto-spacing-xs: 0.25rem; /* 4px  — Tailwind: 1 */
+  --catto-spacing-sm: 0.5rem; /* 8px  — Tailwind: 2 */
+  --catto-spacing-md: 1rem; /* 16px — Tailwind: 4 */
+  --catto-spacing-lg: 1.5rem; /* 24px — Tailwind: 6 */
+  --catto-spacing-xl: 2rem; /* 32px — Tailwind: 8 */
+  --catto-spacing-2xl: 3rem; /* 48px — Tailwind: 12 */
 }

@@ -10,7 +10,7 @@
  */
 
 /* Light Mode */
-[data-theme='corporate-steel'] {
+[data-theme="corporate-steel"] {
   /* Primary = Deep Blue */
   --catto-theme-primary: #1e40af; /* blue-800 */
   --catto-theme-primary-hover: #1e3a8a; /* blue-900 */
@@ -51,8 +51,8 @@
 }
 
 /* Dark Mode */
-[data-theme='corporate-steel'].dark,
-.dark[data-theme='corporate-steel'] {
+[data-theme="corporate-steel"].dark,
+.dark[data-theme="corporate-steel"] {
   /* Primary = Lighter blue for dark mode readability */
   --catto-theme-primary: #3b82f6; /* blue-500 */
   --catto-theme-primary-hover: #60a5fa; /* blue-400 */

@@ -10,7 +10,7 @@
  */
 
 /* Light Mode (default) */
-[data-theme='rleaguez'],
+[data-theme="rleaguez"],
 :root {
   /* Primary = Navy Blue (RLeaguez brand) */
   --catto-theme-primary: #2563eb;
@@ -52,8 +52,8 @@
 }
 
 /* Dark Mode */
-[data-theme='rleaguez'].dark,
-.dark[data-theme='rleaguez'],
+[data-theme="rleaguez"].dark,
+.dark[data-theme="rleaguez"],
 .dark :root,
 :root.dark {
   /* Primary = Lighter blue for dark mode readability */

@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface StepConfig {
   /** Whether this step is completed */
@@ -40,21 +40,21 @@ const ProgressStepperCatto: React.FC<ProgressStepperCattoProps> = ({
       <li
         key={index}
         className={cn(
-          'flex items-center',
-          !isLast && 'w-full',
+          "flex items-center",
+          !isLast && "w-full",
           !isLast &&
             "after:inline-block after:h-1 after:w-full after:border-4 after:border-b after:content-['']",
           isCompleted
-            ? 'text-blue-600 dark:text-blue-500 after:border-blue-100 dark:after:border-blue-800'
-            : 'after:border-gray-100 dark:after:border-gray-700',
+            ? "text-blue-600 dark:text-blue-500 after:border-blue-100 dark:after:border-blue-800"
+            : "after:border-gray-100 dark:after:border-gray-700"
         )}
       >
         <span
           className={cn(
-            'flex h-10 w-10 shrink-0 items-center justify-center rounded-full lg:h-12 lg:w-12',
+            "flex h-10 w-10 shrink-0 items-center justify-center rounded-full lg:h-12 lg:w-12",
             isCompleted
-              ? 'bg-blue-100 dark:bg-blue-800'
-              : 'bg-gray-100 dark:bg-gray-700',
+              ? "bg-blue-100 dark:bg-blue-800"
+              : "bg-gray-100 dark:bg-gray-700"
           )}
         >
           {step?.icon ??
@@ -77,10 +77,10 @@ const ProgressStepperCatto: React.FC<ProgressStepperCattoProps> = ({
             ) : (
               <span
                 className={cn(
-                  'text-sm font-medium lg:text-base',
+                  "text-sm font-medium lg:text-base",
                   isCurrent
-                    ? 'text-blue-600 dark:text-blue-300'
-                    : 'text-gray-500 dark:text-gray-100',
+                    ? "text-blue-600 dark:text-blue-300"
+                    : "text-gray-500 dark:text-gray-100"
                 )}
               >
                 {index + 1}
@@ -92,9 +92,9 @@ const ProgressStepperCatto: React.FC<ProgressStepperCattoProps> = ({
   };
 
   return (
-    <ol className={cn('flex w-full items-center', className)}>
+    <ol className={cn("flex w-full items-center", className)}>
       {Array.from({ length: stepCount }).map((_, index) =>
-        renderStep(index, index === stepCount - 1),
+        renderStep(index, index === stepCount - 1)
       )}
     </ol>
   );

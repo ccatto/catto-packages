@@ -1,6 +1,6 @@
 // @ccatto/ui - MobileScrollIndicatorWrapperCatto
 // Horizontal scroll wrapper with gradient indicators and navigation buttons
-'use client';
+"use client";
 
 import React, {
   ReactNode,
@@ -8,10 +8,10 @@ import React, {
   useEffect,
   useRef,
   useState,
-} from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from '../../utils';
-import ButtonCatto from '../Button/ButtonCatto';
+} from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { cn } from "../../utils";
+import ButtonCatto from "../Button/ButtonCatto";
 
 export interface MobileScrollIndicatorWrapperCattoProps {
   /** Content to be scrollable */
@@ -37,38 +37,38 @@ export interface MobileScrollIndicatorWrapperCattoProps {
   /** Enable keyboard arrow navigation (default: true) */
   keyboardControls?: boolean;
   /** Accent color theme (default: 'orange') */
-  accentColor?: 'orange' | 'blue' | 'default';
+  accentColor?: "orange" | "blue" | "default";
 }
 
 const MobileScrollIndicatorWrapperCatto = ({
   children,
-  className = '',
+  className = "",
   showGradients = true,
   showChevrons = true,
-  gradientColor = 'from-gray-100',
-  gradientColorDark = 'dark:from-gray-900',
-  gradientWidth = 'w-12',
+  gradientColor = "from-gray-100",
+  gradientColorDark = "dark:from-gray-900",
+  gradientWidth = "w-12",
   showScrollButtons = false,
   showTutorial = false,
   scrollAmount = 200,
   keyboardControls = true,
-  accentColor = 'orange',
+  accentColor = "orange",
   ...props
 }: MobileScrollIndicatorWrapperCattoProps) => {
   const [showRightIndicator, setShowRightIndicator] = useState<boolean>(false);
   const [showLeftIndicator, setShowLeftIndicator] = useState<boolean>(false);
   const [isScrolling, setIsScrolling] = useState<boolean>(false);
   const [hasSeenTutorial, setHasSeenTutorial] = useState(() => {
-    if (typeof window !== 'undefined') {
-      return localStorage.getItem('has-seen-scroll-tutorial') === 'true';
+    if (typeof window !== "undefined") {
+      return localStorage.getItem("has-seen-scroll-tutorial") === "true";
     }
     return false;
   });
 
   useEffect(() => {
     if (showTutorial) {
-      if (typeof window !== 'undefined' && !hasSeenTutorial) {
-        localStorage.setItem('has-seen-scroll-tutorial', 'true');
+      if (typeof window !== "undefined" && !hasSeenTutorial) {
+        localStorage.setItem("has-seen-scroll-tutorial", "true");
         setHasSeenTutorial(true);
       }
     }
@@ -79,25 +79,25 @@ const MobileScrollIndicatorWrapperCatto = ({
   // Dynamic accent color classes
   const getAccentClasses = () => {
     switch (accentColor) {
-      case 'orange':
+      case "orange":
         return {
           button:
-            'hover:bg-theme-secondary-subtle active:bg-theme-secondary-subtle',
-          icon: 'text-theme-secondary',
-          gradient: 'from-slate-50 dark:from-slate-800',
+            "hover:bg-theme-secondary-subtle active:bg-theme-secondary-subtle",
+          icon: "text-theme-secondary",
+          gradient: "from-slate-50 dark:from-slate-800",
         };
-      case 'blue':
+      case "blue":
         return {
           button:
-            'hover:bg-theme-primary-subtle active:bg-theme-primary-subtle',
-          icon: 'text-theme-primary',
-          gradient: 'from-slate-50 dark:from-slate-800',
+            "hover:bg-theme-primary-subtle active:bg-theme-primary-subtle",
+          icon: "text-theme-primary",
+          gradient: "from-slate-50 dark:from-slate-800",
         };
       default:
         return {
           button:
-            'hover:bg-gray-200 active:bg-gray-300 dark:hover:bg-gray-700 dark:active:bg-gray-600',
-          icon: 'text-gray-600 dark:text-gray-400',
+            "hover:bg-gray-200 active:bg-gray-300 dark:hover:bg-gray-700 dark:active:bg-gray-600",
+          icon: "text-gray-600 dark:text-gray-400",
           gradient: `${gradientColor} ${gradientColorDark}`,
         };
     }
@@ -119,19 +119,19 @@ const MobileScrollIndicatorWrapperCatto = ({
   }, []);
 
   const scroll = useCallback(
-    (direction: 'left' | 'right') => {
+    (direction: "left" | "right") => {
       const element = scrollContainerRef.current;
       if (element) {
         setIsScrolling(true);
-        const scrollValue = direction === 'left' ? -scrollAmount : scrollAmount;
+        const scrollValue = direction === "left" ? -scrollAmount : scrollAmount;
         element.scrollBy({
           left: scrollValue,
-          behavior: 'smooth',
+          behavior: "smooth",
         });
         setTimeout(() => setIsScrolling(false), 300);
       }
     },
-    [scrollAmount],
+    [scrollAmount]
   );
 
   const handleKeyDown = useCallback(
@@ -140,15 +140,15 @@ const MobileScrollIndicatorWrapperCatto = ({
         return;
       }
 
-      if (e.key === 'ArrowLeft') {
-        scroll('left');
+      if (e.key === "ArrowLeft") {
+        scroll("left");
         e.preventDefault();
-      } else if (e.key === 'ArrowRight') {
-        scroll('right');
+      } else if (e.key === "ArrowRight") {
+        scroll("right");
         e.preventDefault();
       }
     },
-    [keyboardControls, scroll],
+    [keyboardControls, scroll]
   );
 
   useEffect(() => {
@@ -162,31 +162,31 @@ const MobileScrollIndicatorWrapperCatto = ({
     });
 
     observer.observe(element);
-    element.addEventListener('scroll', checkScroll);
+    element.addEventListener("scroll", checkScroll);
     if (keyboardControls) {
-      window.addEventListener('keydown', handleKeyDown);
+      window.addEventListener("keydown", handleKeyDown);
     }
 
     checkScroll();
 
     return () => {
       observer.disconnect();
-      element.removeEventListener('scroll', checkScroll);
+      element.removeEventListener("scroll", checkScroll);
       if (keyboardControls) {
-        window.removeEventListener('keydown', handleKeyDown);
+        window.removeEventListener("keydown", handleKeyDown);
       }
     };
   }, [keyboardControls, handleKeyDown, checkScroll]);
 
   return (
-    <div className={cn('relative', className)} {...props} role="region">
+    <div className={cn("relative isolate", className)} {...props} role="region">
       {/* Left gradient and button */}
       {(showGradients || showScrollButtons) && showLeftIndicator && (
         <div
           className={cn(
-            'absolute top-0 bottom-0 left-0 bg-linear-to-r animate-fadeIn z-10 flex items-center to-transparent',
+            "absolute top-0 bottom-0 left-0 bg-linear-to-r animate-fadeIn z-10 flex items-center to-transparent",
             gradientWidth,
-            accentClasses.gradient,
+            accentClasses.gradient
           )}
         >
           {showScrollButtons && (
@@ -194,10 +194,10 @@ const MobileScrollIndicatorWrapperCatto = ({
               variant="pillOutline"
               size="small"
               width="fit"
-              onClick={() => scroll('left')}
+              onClick={() => scroll("left")}
               className={cn(
-                'p-1.5 min-w-0 ml-1',
-                isScrolling && 'animate-shrink',
+                "p-1.5 min-w-0 ml-1",
+                isScrolling && "animate-shrink"
               )}
               aria-label="Scroll left"
             >
@@ -206,7 +206,7 @@ const MobileScrollIndicatorWrapperCatto = ({
           )}
           {showChevrons && !showScrollButtons && (
             <ChevronLeft
-              className={cn('h-5 w-5 ml-1 animate-bounce', accentClasses.icon)}
+              className={cn("h-5 w-5 ml-1 animate-bounce", accentClasses.icon)}
             />
           )}
         </div>
@@ -216,9 +216,9 @@ const MobileScrollIndicatorWrapperCatto = ({
       {(showGradients || showScrollButtons) && showRightIndicator && (
         <div
           className={cn(
-            'absolute top-0 right-0 bottom-0 bg-linear-to-l animate-fadeIn z-10 flex items-center justify-end to-transparent',
+            "absolute top-0 right-0 bottom-0 bg-linear-to-l animate-fadeIn z-10 flex items-center justify-end to-transparent",
             gradientWidth,
-            accentClasses.gradient,
+            accentClasses.gradient
           )}
         >
           {showScrollButtons && (
@@ -226,10 +226,10 @@ const MobileScrollIndicatorWrapperCatto = ({
               variant="pillOutline"
               size="small"
               width="fit"
-              onClick={() => scroll('right')}
+              onClick={() => scroll("right")}
               className={cn(
-                'p-1.5 min-w-0 mr-1',
-                isScrolling && 'animate-shrink',
+                "p-1.5 min-w-0 mr-1",
+                isScrolling && "animate-shrink"
               )}
               aria-label="Scroll right"
             >
@@ -239,11 +239,11 @@ const MobileScrollIndicatorWrapperCatto = ({
           {showChevrons && !showScrollButtons && (
             <ChevronRight
               className={cn(
-                'h-5 w-5 mr-1',
+                "h-5 w-5 mr-1",
                 accentClasses.icon,
                 showTutorial && !hasSeenTutorial
-                  ? 'animate-bounce-highlight'
-                  : 'animate-bounce',
+                  ? "animate-bounce-highlight"
+                  : "animate-bounce"
               )}
             />
           )}
@@ -258,7 +258,7 @@ const MobileScrollIndicatorWrapperCatto = ({
       {/* Scrollable container */}
       <div
         ref={scrollContainerRef}
-        className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent dark:scrollbar-thumb-gray-600 overflow-x-auto"
+        className="scrollbar-thin scrollbar-thumb-gray-300 scrollbar-track-transparent dark:scrollbar-thumb-gray-600 overflow-x-auto overscroll-x-contain"
         onScroll={checkScroll}
         tabIndex={0}
         role="scrollbox"

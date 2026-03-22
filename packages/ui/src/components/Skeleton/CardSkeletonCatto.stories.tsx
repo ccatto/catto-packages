@@ -1,12 +1,12 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import CardSkeletonCatto from './CardSkeletonCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import CardSkeletonCatto from "./CardSkeletonCatto";
 
 const meta = {
-  title: 'Components/Skeleton/Card',
+  title: "Components/Skeleton/Card",
   component: CardSkeletonCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof CardSkeletonCatto>;
 
@@ -17,7 +17,7 @@ export const Default: Story = {
   args: {},
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -30,7 +30,7 @@ export const WithImage: Story = {
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -39,7 +39,7 @@ export const WithImage: Story = {
 
 export const Grid: Story = {
   render: () => (
-    <div className="grid grid-cols-3 gap-4" style={{ width: '800px' }}>
+    <div className="grid grid-cols-3 gap-4" style={{ width: "800px" }}>
       <CardSkeletonCatto showImage />
       <CardSkeletonCatto showImage />
       <CardSkeletonCatto showImage />

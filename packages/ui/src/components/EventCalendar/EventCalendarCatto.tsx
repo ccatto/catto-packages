@@ -1,16 +1,16 @@
-'use client';
+"use client";
 
-import React, { useEffect, useMemo, useState } from 'react';
-import { ChevronLeft, ChevronRight } from 'lucide-react';
-import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from '../../i18n/defaults';
-import { cn } from '../../utils';
-import CalendarEventCard from './CalendarEventCard';
+import React, { useEffect, useMemo, useState } from "react";
+import { ChevronLeft, ChevronRight } from "lucide-react";
+import { CalendarLabels, DEFAULT_CALENDAR_LABELS } from "../../i18n/defaults";
+import { cn } from "../../utils";
+import CalendarEventCard from "./CalendarEventCard";
 import {
   CalendarEventItem,
   CalendarView,
   EventCalendarSize,
   EventCalendarTheme,
-} from './types';
+} from "./types";
 
 export interface EventCalendarLabels extends CalendarLabels {
   /** Text for "Today" button (default: "Today") */
@@ -27,12 +27,12 @@ export interface EventCalendarLabels extends CalendarLabels {
 
 export const DEFAULT_EVENT_CALENDAR_LABELS: Required<EventCalendarLabels> = {
   ...DEFAULT_CALENDAR_LABELS,
-  todayButton: 'Today',
-  noEvents: 'No events',
-  moreEvents: '+{count} more',
-  month: 'Month',
-  week: 'Week',
-  day: 'Day',
+  todayButton: "Today",
+  noEvents: "No events",
+  moreEvents: "+{count} more",
+  month: "Month",
+  week: "Week",
+  day: "Day",
 };
 
 export interface EventCalendarCattoProps {
@@ -103,7 +103,7 @@ const themeClasses: Record<EventCalendarTheme, string> = {
  */
 const getEventsForDate = (
   events: CalendarEventItem[],
-  date: Date,
+  date: Date
 ): CalendarEventItem[] => {
   const dateStr = date.toDateString();
   return events.filter((event) => {
@@ -128,7 +128,7 @@ const getEventsForDate = (
  */
 const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
   events = [],
-  view = 'month',
+  view = "month",
   selectedDate: initialSelectedDate,
   onDateSelect,
   onEventClick,
@@ -136,8 +136,8 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
   onViewChange,
   minDate,
   maxDate,
-  theme = 'midnightEmber',
-  size = 'medium',
+  theme = "midnightEmber",
+  size = "medium",
   labels = {},
   loading = false,
   showViewSwitcher = false,
@@ -148,10 +148,10 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
   const mergedLabels = { ...DEFAULT_EVENT_CALENDAR_LABELS, ...labels };
 
   const [currentDate, setCurrentDate] = useState(
-    initialSelectedDate || new Date(),
+    initialSelectedDate || new Date()
   );
   const [selectedDate, setSelectedDate] = useState(
-    initialSelectedDate || new Date(),
+    initialSelectedDate || new Date()
   );
   const [mounted, setMounted] = useState(false);
 
@@ -162,28 +162,28 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
   // Size classes
   const sizeClasses = {
     small: {
-      container: 'max-w-md',
-      header: 'text-sm py-2 px-3',
-      dayHeader: 'text-xs py-1',
-      day: 'min-h-16 p-1',
-      dayNumber: 'text-xs',
-      event: 'text-xs',
+      container: "max-w-md",
+      header: "text-sm py-2 px-3",
+      dayHeader: "text-xs py-1",
+      day: "min-h-16 p-1",
+      dayNumber: "text-xs",
+      event: "text-xs",
     },
     medium: {
-      container: 'max-w-2xl',
-      header: 'text-base py-3 px-4',
-      dayHeader: 'text-sm py-2',
-      day: 'min-h-24 p-1.5',
-      dayNumber: 'text-sm',
-      event: 'text-xs',
+      container: "max-w-2xl",
+      header: "text-base py-3 px-4",
+      dayHeader: "text-sm py-2",
+      day: "min-h-24 p-1.5",
+      dayNumber: "text-sm",
+      event: "text-xs",
     },
     large: {
-      container: 'max-w-4xl',
-      header: 'text-lg py-4 px-6',
-      dayHeader: 'text-base py-2',
-      day: 'min-h-32 p-2',
-      dayNumber: 'text-base',
-      event: 'text-sm',
+      container: "max-w-4xl",
+      header: "text-lg py-4 px-6",
+      dayHeader: "text-base py-2",
+      day: "min-h-32 p-2",
+      dayNumber: "text-base",
+      event: "text-sm",
     },
   };
 
@@ -232,8 +232,8 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
 
   // Format month/year header
   const currentMonthYear = currentDate.toLocaleDateString(mergedLabels.locale, {
-    month: 'long',
-    year: 'numeric',
+    month: "long",
+    year: "numeric",
   });
 
   const isToday = (date: Date | null) => {
@@ -273,11 +273,11 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
         key={date.toISOString()}
         className={cn(
           sizeClasses[size].day,
-          'border-r border-b border-gray-200 dark:border-gray-700',
-          'cursor-pointer transition-colors',
-          isSelected(date) && 'bg-orange-50 dark:bg-orange-900/20',
-          !isSelected(date) && 'hover:bg-gray-50 dark:hover:bg-gray-800/50',
-          isDisabled(date) && 'opacity-50 cursor-not-allowed',
+          "border-r border-b border-gray-200 dark:border-gray-700",
+          "cursor-pointer transition-colors",
+          isSelected(date) && "bg-orange-50 dark:bg-orange-900/20",
+          !isSelected(date) && "hover:bg-gray-50 dark:hover:bg-gray-800/50",
+          isDisabled(date) && "opacity-50 cursor-not-allowed"
         )}
         onClick={() => !isDisabled(date) && handleDateSelect(date)}
       >
@@ -285,10 +285,10 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
         <div
           className={cn(
             sizeClasses[size].dayNumber,
-            'font-medium mb-1',
+            "font-medium mb-1",
             isToday(date) &&
-              'bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center',
-            !isToday(date) && 'text-gray-700 dark:text-gray-300',
+              "bg-orange-500 text-white rounded-full w-6 h-6 flex items-center justify-center",
+            !isToday(date) && "text-gray-700 dark:text-gray-300"
           )}
         >
           {date.getDate()}
@@ -310,7 +310,7 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
           ))}
           {moreCount > 0 && (
             <div className="text-xs text-gray-500 dark:text-gray-400 px-1">
-              {mergedLabels.moreEvents.replace('{count}', String(moreCount))}
+              {mergedLabels.moreEvents.replace("{count}", String(moreCount))}
             </div>
           )}
         </div>
@@ -323,11 +323,11 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
       <div
         className={cn(
           sizeClasses[size].container,
-          'w-full',
+          "w-full",
           themeClasses[theme],
-          'rounded-lg border',
-          'animate-pulse',
-          className,
+          "rounded-lg border",
+          "animate-pulse",
+          className
         )}
       >
         <div className="h-64 flex items-center justify-center">
@@ -341,17 +341,17 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
     <div
       className={cn(
         sizeClasses[size].container,
-        'w-full',
+        "w-full",
         themeClasses[theme],
-        'rounded-lg border overflow-hidden',
-        className,
+        "rounded-lg border overflow-hidden",
+        className
       )}
     >
       {/* Header */}
       <div
         className={cn(
-          'flex items-center justify-between border-b dark:border-gray-700',
-          sizeClasses[size].header,
+          "flex items-center justify-between border-b dark:border-gray-700",
+          sizeClasses[size].header
         )}
       >
         <div className="flex items-center gap-2">
@@ -362,7 +362,7 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
             aria-label={mergedLabels.previousMonth}
           >
             <ChevronLeft
-              size={size === 'small' ? 16 : size === 'medium' ? 20 : 24}
+              size={size === "small" ? 16 : size === "medium" ? 20 : 24}
             />
           </button>
           <h2 className="font-semibold min-w-32 text-center">
@@ -375,7 +375,7 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
             aria-label={mergedLabels.nextMonth}
           >
             <ChevronRight
-              size={size === 'small' ? 16 : size === 'medium' ? 20 : 24}
+              size={size === "small" ? 16 : size === "medium" ? 20 : 24}
             />
           </button>
         </div>
@@ -393,16 +393,16 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
 
           {showViewSwitcher && (
             <div className="flex border rounded overflow-hidden">
-              {(['month', 'week', 'day'] as CalendarView[]).map((v) => (
+              {(["month", "week", "day"] as CalendarView[]).map((v) => (
                 <button
                   key={v}
                   type="button"
                   onClick={() => onViewChange?.(v)}
                   className={cn(
-                    'px-3 py-1 text-sm capitalize',
+                    "px-3 py-1 text-sm capitalize",
                     view === v
-                      ? 'bg-orange-500 text-white'
-                      : 'hover:bg-gray-100 dark:hover:bg-gray-800',
+                      ? "bg-orange-500 text-white"
+                      : "hover:bg-gray-100 dark:hover:bg-gray-800"
                   )}
                 >
                   {mergedLabels[v]}
@@ -420,8 +420,8 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
             key={index}
             className={cn(
               sizeClasses[size].dayHeader,
-              'text-center font-medium text-orange-500 dark:text-orange-400',
-              'border-r last:border-r-0 dark:border-gray-700',
+              "text-center font-medium text-orange-500 dark:text-orange-400",
+              "border-r last:border-r-0 dark:border-gray-700"
             )}
           >
             {day}
@@ -437,6 +437,6 @@ const EventCalendarCatto: React.FC<EventCalendarCattoProps> = ({
   );
 };
 
-EventCalendarCatto.displayName = 'EventCalendarCatto';
+EventCalendarCatto.displayName = "EventCalendarCatto";
 
 export default EventCalendarCatto;

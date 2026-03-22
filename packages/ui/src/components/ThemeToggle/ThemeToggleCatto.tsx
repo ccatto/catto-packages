@@ -1,8 +1,8 @@
-'use client';
+"use client";
 
-import { useEffect, useState } from 'react';
-import { useTheme } from 'next-themes';
-import ButtonTogglePillCatto from '../ButtonTogglePill/ButtonTogglePillCatto';
+import { useEffect, useState } from "react";
+import { useTheme } from "next-themes";
+import ButtonTogglePillCatto from "../ButtonTogglePill/ButtonTogglePillCatto";
 
 export interface ThemeToggleCattoProps {
   /** Additional CSS classes */
@@ -29,11 +29,11 @@ const ThemeToggleCatto: React.FC<ThemeToggleCattoProps> = ({ className }) => {
   }
 
   const toggleTheme = (isLeft: boolean) => {
-    setTheme(isLeft ? 'dark' : 'light');
+    setTheme(isLeft ? "dark" : "light");
   };
 
   // Pass current theme state to button (dark = left/true, light = right/false)
-  const isDarkMode = theme === 'dark';
+  const isDarkMode = theme === "dark";
 
   return (
     <ButtonTogglePillCatto

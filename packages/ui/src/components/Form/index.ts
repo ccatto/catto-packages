@@ -1,8 +1,8 @@
 // @ccatto/ui - Form barrel export
-export { default as FormCatto } from './FormCatto';
+export { default as FormCatto } from "./FormCatto";
 export type {
   FormCattoProps,
   FormCattoLabels,
   FormErrorActions,
   FormField,
-} from './FormCatto';
+} from "./FormCatto";

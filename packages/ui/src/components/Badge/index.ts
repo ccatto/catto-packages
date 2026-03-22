@@ -1,3 +1,3 @@
 // Badge Component
-export { default as BadgeCatto } from './BadgeCatto';
-export type { BadgeCattoProps, BadgeVariant, BadgeSize } from './BadgeCatto';
+export { default as BadgeCatto } from "./BadgeCatto";
+export type { BadgeCattoProps, BadgeVariant, BadgeSize } from "./BadgeCatto";

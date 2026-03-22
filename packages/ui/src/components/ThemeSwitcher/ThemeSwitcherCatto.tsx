@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /**
  * ThemeSwitcherCatto - UI component for switching themes
@@ -6,25 +6,25 @@
  * Uses SelectCatto for consistent styling with the rest of the UI.
  * Can be placed in settings pages, headers, or nav menus.
  */
-import { useTheme } from '../../context/ThemeProvider';
-import { THEME_METADATA, type ThemeName } from '../../themes';
-import SelectCatto from '../Select/SelectCatto';
+import { useTheme } from "../../context/ThemeProvider";
+import { THEME_METADATA, type ThemeName } from "../../themes";
+import SelectCatto from "../Select/SelectCatto";
 
 export interface ThemeSwitcherCattoProps {
   /** Label shown above the select */
   label?: string;
   /** Size variant for the select */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Width variant */
-  width?: 'auto' | 'full' | 'sm' | 'md' | 'lg';
+  width?: "auto" | "full" | "sm" | "md" | "lg";
   /** Additional CSS class */
   className?: string;
 }
 
 export default function ThemeSwitcherCatto({
-  label = 'Theme',
-  size = 'md',
-  width = 'md',
+  label = "Theme",
+  size = "md",
+  width = "md",
   className,
 }: ThemeSwitcherCattoProps) {
   const { theme, setTheme, availableThemes } = useTheme();

@@ -2,10 +2,10 @@
 export {
   default as LanguageSwitcherCatto,
   SpinningEarthGlobe,
-} from './LanguageSwitcherCatto';
+} from "./LanguageSwitcherCatto";
 export type {
   LanguageSwitcherCattoProps,
   LanguageOption,
   LanguageSwitcherVariant,
   LanguageSwitcherSize,
-} from './LanguageSwitcherCatto';
+} from "./LanguageSwitcherCatto";

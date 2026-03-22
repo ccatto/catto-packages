@@ -1,7 +1,7 @@
-'use client';
+"use client";
 
-import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { Check, ChevronDown, Search, X } from 'lucide-react';
+import { useCallback, useEffect, useMemo, useRef, useState } from "react";
+import { Check, ChevronDown, Search, X } from "lucide-react";
 
 export interface MultiSelectOption {
   /** Unique value for the option */
@@ -50,25 +50,27 @@ export interface MultiSelectCattoProps {
   /** Message when search has no results */
   noResultsMessage?: string;
   /** Component variant */
-  variant?: 'default' | 'primary' | 'outline';
+  variant?: "default" | "primary" | "outline";
   /** Component size */
-  size?: 'sm' | 'md' | 'lg';
+  size?: "sm" | "md" | "lg";
   /** Component width */
-  width?: 'auto' | 'full';
+  width?: "auto" | "full";
   /** Additional className */
   className?: string;
   /** Custom option renderer */
   renderOption?: (
     option: MultiSelectOption,
-    isSelected: boolean,
+    isSelected: boolean
   ) => React.ReactNode;
   /** Custom chip renderer */
   renderChip?: (
     option: MultiSelectOption,
-    onRemove: () => void,
+    onRemove: () => void
   ) => React.ReactNode;
   /** Start with the dropdown open */
   defaultOpen?: boolean;
+  /** Label for the Done button (default: "Done") */
+  doneLabel?: string;
 }
 
 /**
@@ -108,7 +110,7 @@ const MultiSelectCatto = ({
   selectedValues,
   onChange,
   multiple = true,
-  placeholder = 'Select...',
+  placeholder = "Select...",
   disabled = false,
   error,
   label,
@@ -117,19 +119,20 @@ const MultiSelectCatto = ({
   maxSelections,
   showSelectAll = false,
   searchable = false,
-  searchPlaceholder = 'Search...',
-  emptyMessage = 'No options available',
-  noResultsMessage = 'No results found',
-  variant = 'default',
-  size = 'md',
-  width = 'full',
-  className = '',
+  searchPlaceholder = "Search...",
+  emptyMessage = "No options available",
+  noResultsMessage = "No results found",
+  variant = "default",
+  size = "md",
+  width = "full",
+  className = "",
   renderOption,
   renderChip,
   defaultOpen = false,
+  doneLabel = "Done",
 }: MultiSelectCattoProps) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   const containerRef = useRef<HTMLDivElement>(null);
   const searchInputRef = useRef<HTMLInputElement>(null);
 
@@ -141,13 +144,26 @@ const MultiSelectCatto = ({
         !containerRef.current.contains(event.target as Node)
       ) {
         setIsOpen(false);
-        setSearchTerm('');
+        setSearchTerm("");
       }
     };
 
-    document.addEventListener('mousedown', handleClickOutside);
-    return () => document.removeEventListener('mousedown', handleClickOutside);
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
   }, []);
+
+  // Close dropdown on Escape key
+  useEffect(() => {
+    if (!isOpen) return;
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        setIsOpen(false);
+        setSearchTerm("");
+      }
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, [isOpen]);
 
   // Focus search input when dropdown opens
   useEffect(() => {
@@ -163,20 +179,20 @@ const MultiSelectCatto = ({
     return options.filter(
       (opt) =>
         opt.label.toLowerCase().includes(lowerSearch) ||
-        opt.description?.toLowerCase().includes(lowerSearch),
+        opt.description?.toLowerCase().includes(lowerSearch)
     );
   }, [options, searchTerm]);
 
   // Get selected options objects
   const selectedOptions = useMemo(
     () => options.filter((opt) => selectedValues.includes(opt.value)),
-    [options, selectedValues],
+    [options, selectedValues]
   );
 
   // Count of selectable (non-disabled) options
   const selectableOptions = useMemo(
     () => filteredOptions.filter((opt) => !opt.disabled),
-    [filteredOptions],
+    [filteredOptions]
   );
 
   // Check if all selectable options are selected
@@ -184,7 +200,7 @@ const MultiSelectCatto = ({
     () =>
       selectableOptions.length > 0 &&
       selectableOptions.every((opt) => selectedValues.includes(opt.value)),
-    [selectableOptions, selectedValues],
+    [selectableOptions, selectedValues]
   );
 
   // Toggle single option
@@ -202,10 +218,10 @@ const MultiSelectCatto = ({
       } else {
         onChange([value]);
         setIsOpen(false);
-        setSearchTerm('');
+        setSearchTerm("");
       }
     },
-    [multiple, selectedValues, onChange, maxSelections],
+    [multiple, selectedValues, onChange, maxSelections]
   );
 
   // Remove from selection (for chips)
@@ -214,7 +230,7 @@ const MultiSelectCatto = ({
       e.stopPropagation();
       onChange(selectedValues.filter((v) => v !== value));
     },
-    [selectedValues, onChange],
+    [selectedValues, onChange]
   );
 
   // Select all available options
@@ -234,28 +250,28 @@ const MultiSelectCatto = ({
 
   // Size classes
   const sizeClasses = {
-    sm: 'min-h-[36px] text-sm',
-    md: 'min-h-[42px] text-base',
-    lg: 'min-h-[48px] text-lg',
+    sm: "min-h-[36px] text-sm",
+    md: "min-h-[42px] text-base",
+    lg: "min-h-[48px] text-lg",
   };
 
   // Width classes
   const widthClasses = {
-    auto: 'w-auto min-w-[200px]',
-    full: 'w-full',
+    auto: "w-auto min-w-[200px]",
+    full: "w-full",
   };
 
   // Variant border classes
   const variantClasses = {
-    default: error ? 'border-red-500' : 'border-theme-border',
-    primary: error ? 'border-red-500' : 'border-theme-secondary',
-    outline: error ? 'border-red-500' : 'border-theme-border-strong',
+    default: error ? "border-red-500" : "border-theme-border",
+    primary: error ? "border-red-500" : "border-theme-secondary",
+    outline: error ? "border-red-500" : "border-theme-border-strong",
   };
 
   // Default option renderer
   const defaultRenderOption = (
     option: MultiSelectOption,
-    isSelected: boolean,
+    isSelected: boolean
   ) => {
     const isDisabledByMax =
       !isSelected &&
@@ -273,13 +289,13 @@ const MultiSelectCatto = ({
           w-full flex items-center gap-3 px-3 py-2 text-left transition-colors
           ${
             isSelected
-              ? 'bg-theme-secondary-subtle'
-              : 'hover:bg-theme-surface-secondary'
+              ? "bg-theme-secondary-subtle"
+              : "hover:bg-theme-surface-secondary"
           }
           ${
             isOptionDisabled
-              ? 'opacity-50 cursor-not-allowed'
-              : 'cursor-pointer'
+              ? "opacity-50 cursor-not-allowed"
+              : "cursor-pointer"
           }
         `}
       >
@@ -289,8 +305,8 @@ const MultiSelectCatto = ({
           flex-shrink-0 w-5 h-5 rounded border-2 flex items-center justify-center
           ${
             isSelected
-              ? 'bg-theme-secondary border-theme-secondary'
-              : 'border-theme-border'
+              ? "bg-theme-secondary border-theme-secondary"
+              : "border-theme-border"
           }
         `}
         >
@@ -325,7 +341,7 @@ const MultiSelectCatto = ({
   // invalid nested button HTML (chips render inside the trigger button)
   const defaultRenderChip = (
     option: MultiSelectOption,
-    onRemove: () => void,
+    onRemove: () => void
   ) => (
     <span
       key={option.value}
@@ -346,7 +362,7 @@ const MultiSelectCatto = ({
           onRemove();
         }}
         onKeyDown={(e) => {
-          if (e.key === 'Enter' || e.key === ' ') {
+          if (e.key === "Enter" || e.key === " ") {
             e.preventDefault();
             e.stopPropagation();
             onRemove();
@@ -369,7 +385,7 @@ const MultiSelectCatto = ({
         <label className="block text-sm font-medium text-theme-text-muted mb-1">
           {label}
           {maxSelections && multiple && (
-            <span className="ml-2 text-xs text-theme-text-subtle">
+            <span className="ml-2 text-base font-bold text-theme-secondary">
               ({selectedValues.length}/{maxSelections})
             </span>
           )}
@@ -383,15 +399,16 @@ const MultiSelectCatto = ({
         disabled={disabled}
         className={`
           ${widthClasses[width]} flex items-center justify-between ${
-            sizeClasses[size]
-          } px-3 py-2
+          sizeClasses[size]
+        } px-3 py-2
           bg-theme-surface border rounded-lg
           ${variantClasses[variant]}
           ${
             disabled
-              ? 'opacity-50 cursor-not-allowed'
-              : 'cursor-pointer hover:border-theme-border-strong'
+              ? "opacity-50 cursor-not-allowed"
+              : "cursor-pointer hover:border-theme-border-strong"
           }
+          ${isOpen ? "ring-2 ring-theme-secondary border-theme-secondary" : ""}
           focus:outline-none focus:ring-2 focus:ring-theme-secondary
         `}
       >
@@ -404,11 +421,11 @@ const MultiSelectCatto = ({
               selectedOptions.map((opt) =>
                 renderChip
                   ? renderChip(opt, () =>
-                      onChange(selectedValues.filter((v) => v !== opt.value)),
+                      onChange(selectedValues.filter((v) => v !== opt.value))
                     )
                   : defaultRenderChip(opt, () =>
-                      onChange(selectedValues.filter((v) => v !== opt.value)),
-                    ),
+                      onChange(selectedValues.filter((v) => v !== opt.value))
+                    )
               )
             ) : (
               // Show single selected item for single-select
@@ -428,17 +445,17 @@ const MultiSelectCatto = ({
         </div>
         <ChevronDown
           className={`flex-shrink-0 w-5 h-5 ml-2 text-theme-text-subtle transition-transform ${
-            isOpen ? 'rotate-180' : ''
+            isOpen ? "rotate-180" : ""
           }`}
         />
       </button>
 
       {/* Dropdown */}
       {isOpen && (
-        <div className="absolute z-50 w-full mt-1 bg-theme-surface border border-theme-border rounded-lg shadow-lg overflow-hidden">
+        <div className="absolute z-50 w-full mt-1 bg-theme-surface border border-theme-border rounded-lg shadow-lg overflow-hidden max-h-[400px] flex flex-col">
           {/* Search input */}
           {searchable && (
-            <div className="p-2 border-b border-theme-border">
+            <div className="shrink-0 p-2 border-b border-theme-border">
               <div className="relative">
                 <Search className="absolute left-3 top-1/2 -translate-y-1/2 h-4 w-4 text-theme-text-subtle" />
                 <input
@@ -455,7 +472,7 @@ const MultiSelectCatto = ({
 
           {/* Select All / Clear buttons */}
           {showSelectAll && multiple && selectableOptions.length > 0 && (
-            <div className="flex items-center justify-between px-3 py-2 border-b border-theme-border bg-theme-surface-secondary">
+            <div className="flex shrink-0 items-center justify-between px-3 py-2 border-b border-theme-border bg-theme-surface-secondary">
               <span className="text-xs text-theme-text-muted">
                 {selectedValues.length} selected
               </span>
@@ -486,7 +503,7 @@ const MultiSelectCatto = ({
           )}
 
           {/* Options list */}
-          <div className="max-h-64 overflow-y-auto">
+          <div className="flex-1 min-h-0 overflow-y-auto">
             {filteredOptions.length === 0 ? (
               <div className="px-3 py-4 text-center text-theme-text-muted">
                 {options.length === 0 ? emptyMessage : noResultsMessage}
@@ -497,11 +514,30 @@ const MultiSelectCatto = ({
                   ? renderOption(option, selectedValues.includes(option.value))
                   : defaultRenderOption(
                       option,
-                      selectedValues.includes(option.value),
-                    ),
+                      selectedValues.includes(option.value)
+                    )
               )
             )}
           </div>
+
+          {/* Done button - explicit close for multi-select (hidden when defaultOpen) */}
+          {multiple && !defaultOpen && (
+            <div className="shrink-0 border-t border-theme-border bg-theme-surface p-2">
+              <button
+                type="button"
+                onClick={() => {
+                  setIsOpen(false);
+                  setSearchTerm("");
+                }}
+                className="w-full py-2.5 px-3 rounded-md text-sm font-semibold bg-theme-secondary text-theme-on-secondary hover:opacity-90 transition-opacity shadow-sm"
+              >
+                {doneLabel}
+                {selectedValues.length > 0 && (
+                  <span className="ml-1">({selectedValues.length})</span>
+                )}
+              </button>
+            </div>
+          )}
         </div>
       )}
 

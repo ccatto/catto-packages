@@ -1,6 +1,6 @@
-'use client';
+"use client";
 
-import { cn } from '../../utils';
+import { cn } from "../../utils";
 
 export interface HRAnimatedLineCattoProps {
   /** Additional CSS classes */
@@ -29,8 +29,8 @@ const HRAnimatedLineCatto: React.FC<HRAnimatedLineCattoProps> = ({
   return (
     <div
       className={cn(
-        'relative w-48 h-1 mx-auto my-4 bg-slate-300 dark:bg-slate-600 overflow-hidden rounded-full',
-        className,
+        "relative w-48 h-1 mx-auto my-4 bg-slate-300 dark:bg-slate-600 overflow-hidden rounded-full",
+        className
       )}
     >
       <div className="absolute inset-0 bg-gradient-to-r from-[var(--catto-theme-secondary)] via-[var(--catto-theme-primary)] to-[var(--catto-theme-secondary)] animate-[marquee_2s_linear_infinite]" />

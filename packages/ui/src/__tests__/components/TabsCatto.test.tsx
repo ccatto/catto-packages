@@ -1,60 +1,60 @@
 // @ccatto/ui - TabsCatto Tests
-import { describe, expect, it, vi } from 'vitest';
-import TabsCatto from '../../components/Tabs/TabsCatto';
-import { fireEvent, render, screen } from '../test-utils';
+import { describe, expect, it, vi } from "vitest";
+import TabsCatto from "../../components/Tabs/TabsCatto";
+import { fireEvent, render, screen } from "../test-utils";
 
 const mockTabs = [
   {
-    id: 'tab1',
-    label: 'Tab 1',
+    id: "tab1",
+    label: "Tab 1",
     content: <div data-testid="content-1">Content 1</div>,
   },
   {
-    id: 'tab2',
-    label: 'Tab 2',
+    id: "tab2",
+    label: "Tab 2",
     content: <div data-testid="content-2">Content 2</div>,
   },
   {
-    id: 'tab3',
-    label: 'Tab 3',
+    id: "tab3",
+    label: "Tab 3",
     content: <div data-testid="content-3">Content 3</div>,
   },
 ];
 
-describe('TabsCatto', () => {
-  describe('rendering', () => {
-    it('renders all tabs', () => {
+describe("TabsCatto", () => {
+  describe("rendering", () => {
+    it("renders all tabs", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      expect(screen.getByRole('tab', { name: 'Tab 1' })).toBeInTheDocument();
-      expect(screen.getByRole('tab', { name: 'Tab 2' })).toBeInTheDocument();
-      expect(screen.getByRole('tab', { name: 'Tab 3' })).toBeInTheDocument();
+      expect(screen.getByRole("tab", { name: "Tab 1" })).toBeInTheDocument();
+      expect(screen.getByRole("tab", { name: "Tab 2" })).toBeInTheDocument();
+      expect(screen.getByRole("tab", { name: "Tab 3" })).toBeInTheDocument();
     });
 
-    it('renders tablist', () => {
+    it("renders tablist", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      expect(screen.getByRole('tablist')).toBeInTheDocument();
+      expect(screen.getByRole("tablist")).toBeInTheDocument();
     });
 
-    it('renders tabpanel', () => {
+    it("renders tabpanel", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      expect(screen.getByRole('tabpanel')).toBeInTheDocument();
+      expect(screen.getByRole("tabpanel")).toBeInTheDocument();
     });
 
-    it('renders first tab content by default', () => {
+    it("renders first tab content by default", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      expect(screen.getByTestId('content-1')).toBeInTheDocument();
-      expect(screen.queryByTestId('content-2')).not.toBeInTheDocument();
+      expect(screen.getByTestId("content-1")).toBeInTheDocument();
+      expect(screen.queryByTestId("content-2")).not.toBeInTheDocument();
     });
 
-    it('renders tab icons when provided', () => {
+    it("renders tab icons when provided", () => {
       const tabsWithIcons = [
         {
-          id: 'tab1',
-          label: 'Tab 1',
+          id: "tab1",
+          label: "Tab 1",
           icon: <span data-testid="icon-1">icon</span>,
           content: <div>Content</div>,
         },
@@ -62,72 +62,72 @@ describe('TabsCatto', () => {
 
       render(<TabsCatto tabs={tabsWithIcons} />);
 
-      expect(screen.getByTestId('icon-1')).toBeInTheDocument();
+      expect(screen.getByTestId("icon-1")).toBeInTheDocument();
     });
   });
 
-  describe('default tab', () => {
-    it('first tab is active by default', () => {
+  describe("default tab", () => {
+    it("first tab is active by default", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      const firstTab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(firstTab).toHaveAttribute('aria-selected', 'true');
+      const firstTab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(firstTab).toHaveAttribute("aria-selected", "true");
     });
 
-    it('defaultTab sets initial active tab', () => {
+    it("defaultTab sets initial active tab", () => {
       render(<TabsCatto tabs={mockTabs} defaultTab="tab2" />);
 
-      const secondTab = screen.getByRole('tab', { name: 'Tab 2' });
-      expect(secondTab).toHaveAttribute('aria-selected', 'true');
-      expect(screen.getByTestId('content-2')).toBeInTheDocument();
+      const secondTab = screen.getByRole("tab", { name: "Tab 2" });
+      expect(secondTab).toHaveAttribute("aria-selected", "true");
+      expect(screen.getByTestId("content-2")).toBeInTheDocument();
     });
   });
 
-  describe('tab switching', () => {
-    it('clicking tab switches content', () => {
+  describe("tab switching", () => {
+    it("clicking tab switches content", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      expect(screen.getByTestId('content-1')).toBeInTheDocument();
+      expect(screen.getByTestId("content-1")).toBeInTheDocument();
 
-      fireEvent.click(screen.getByRole('tab', { name: 'Tab 2' }));
+      fireEvent.click(screen.getByRole("tab", { name: "Tab 2" }));
 
-      expect(screen.getByTestId('content-2')).toBeInTheDocument();
-      expect(screen.queryByTestId('content-1')).not.toBeInTheDocument();
+      expect(screen.getByTestId("content-2")).toBeInTheDocument();
+      expect(screen.queryByTestId("content-1")).not.toBeInTheDocument();
     });
 
-    it('calls onChange callback when tab is clicked', () => {
+    it("calls onChange callback when tab is clicked", () => {
       const handleChange = vi.fn();
       render(<TabsCatto tabs={mockTabs} onChange={handleChange} />);
 
-      fireEvent.click(screen.getByRole('tab', { name: 'Tab 2' }));
+      fireEvent.click(screen.getByRole("tab", { name: "Tab 2" }));
 
       expect(handleChange).toHaveBeenCalledTimes(1);
-      expect(handleChange).toHaveBeenCalledWith('tab2');
+      expect(handleChange).toHaveBeenCalledWith("tab2");
     });
 
-    it('updates aria-selected when switching tabs', () => {
+    it("updates aria-selected when switching tabs", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      const tab1 = screen.getByRole('tab', { name: 'Tab 1' });
-      const tab2 = screen.getByRole('tab', { name: 'Tab 2' });
+      const tab1 = screen.getByRole("tab", { name: "Tab 1" });
+      const tab2 = screen.getByRole("tab", { name: "Tab 2" });
 
-      expect(tab1).toHaveAttribute('aria-selected', 'true');
-      expect(tab2).toHaveAttribute('aria-selected', 'false');
+      expect(tab1).toHaveAttribute("aria-selected", "true");
+      expect(tab2).toHaveAttribute("aria-selected", "false");
 
       fireEvent.click(tab2);
 
-      expect(tab1).toHaveAttribute('aria-selected', 'false');
-      expect(tab2).toHaveAttribute('aria-selected', 'true');
+      expect(tab1).toHaveAttribute("aria-selected", "false");
+      expect(tab2).toHaveAttribute("aria-selected", "true");
     });
   });
 
-  describe('disabled tabs', () => {
-    it('disabled tab has aria-disabled', () => {
+  describe("disabled tabs", () => {
+    it("disabled tab has aria-disabled", () => {
       const tabsWithDisabled = [
-        { id: 'tab1', label: 'Tab 1', content: <div>Content</div> },
+        { id: "tab1", label: "Tab 1", content: <div>Content</div> },
         {
-          id: 'tab2',
-          label: 'Tab 2',
+          id: "tab2",
+          label: "Tab 2",
           content: <div>Content</div>,
           disabled: true,
         },
@@ -135,16 +135,16 @@ describe('TabsCatto', () => {
 
       render(<TabsCatto tabs={tabsWithDisabled} />);
 
-      const disabledTab = screen.getByRole('tab', { name: 'Tab 2' });
-      expect(disabledTab).toHaveAttribute('aria-disabled', 'true');
+      const disabledTab = screen.getByRole("tab", { name: "Tab 2" });
+      expect(disabledTab).toHaveAttribute("aria-disabled", "true");
     });
 
-    it('disabled tab has tabIndex -1', () => {
+    it("disabled tab has tabIndex -1", () => {
       const tabsWithDisabled = [
-        { id: 'tab1', label: 'Tab 1', content: <div>Content</div> },
+        { id: "tab1", label: "Tab 1", content: <div>Content</div> },
         {
-          id: 'tab2',
-          label: 'Tab 2',
+          id: "tab2",
+          label: "Tab 2",
           content: <div>Content</div>,
           disabled: true,
         },
@@ -152,21 +152,21 @@ describe('TabsCatto', () => {
 
       render(<TabsCatto tabs={tabsWithDisabled} />);
 
-      const disabledTab = screen.getByRole('tab', { name: 'Tab 2' });
-      expect(disabledTab).toHaveAttribute('tabIndex', '-1');
+      const disabledTab = screen.getByRole("tab", { name: "Tab 2" });
+      expect(disabledTab).toHaveAttribute("tabIndex", "-1");
     });
 
-    it('clicking disabled tab does not switch content', () => {
+    it("clicking disabled tab does not switch content", () => {
       const handleChange = vi.fn();
       const tabsWithDisabled = [
         {
-          id: 'tab1',
-          label: 'Tab 1',
+          id: "tab1",
+          label: "Tab 1",
           content: <div data-testid="content-1">Content 1</div>,
         },
         {
-          id: 'tab2',
-          label: 'Tab 2',
+          id: "tab2",
+          label: "Tab 2",
           content: <div data-testid="content-2">Content 2</div>,
           disabled: true,
         },
@@ -174,18 +174,18 @@ describe('TabsCatto', () => {
 
       render(<TabsCatto tabs={tabsWithDisabled} onChange={handleChange} />);
 
-      fireEvent.click(screen.getByRole('tab', { name: 'Tab 2' }));
+      fireEvent.click(screen.getByRole("tab", { name: "Tab 2" }));
 
       expect(handleChange).not.toHaveBeenCalled();
-      expect(screen.getByTestId('content-1')).toBeInTheDocument();
+      expect(screen.getByTestId("content-1")).toBeInTheDocument();
     });
 
-    it('disabled tab has opacity styling', () => {
+    it("disabled tab has opacity styling", () => {
       const tabsWithDisabled = [
-        { id: 'tab1', label: 'Tab 1', content: <div>Content</div> },
+        { id: "tab1", label: "Tab 1", content: <div>Content</div> },
         {
-          id: 'tab2',
-          label: 'Tab 2',
+          id: "tab2",
+          label: "Tab 2",
           content: <div>Content</div>,
           disabled: true,
         },
@@ -193,152 +193,152 @@ describe('TabsCatto', () => {
 
       render(<TabsCatto tabs={tabsWithDisabled} />);
 
-      const disabledTab = screen.getByRole('tab', { name: 'Tab 2' });
-      expect(disabledTab.className).toContain('opacity-50');
+      const disabledTab = screen.getByRole("tab", { name: "Tab 2" });
+      expect(disabledTab.className).toContain("opacity-50");
     });
   });
 
-  describe('variants', () => {
-    it('applies default variant styles', () => {
+  describe("variants", () => {
+    it("applies default variant styles", () => {
       render(<TabsCatto tabs={mockTabs} variant="default" />);
 
-      const activeTab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(activeTab.className).toContain('rounded-t-lg');
+      const activeTab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(activeTab.className).toContain("rounded-t-lg");
     });
 
-    it('applies underline variant styles', () => {
+    it("applies underline variant styles", () => {
       render(<TabsCatto tabs={mockTabs} variant="underline" />);
 
-      const activeTab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(activeTab.className).toContain('border-b-2');
-      expect(activeTab.className).toContain('border-theme-secondary');
+      const activeTab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(activeTab.className).toContain("border-b-2");
+      expect(activeTab.className).toContain("border-theme-secondary");
     });
 
-    it('applies pills variant styles', () => {
+    it("applies pills variant styles", () => {
       render(<TabsCatto tabs={mockTabs} variant="pills" />);
 
-      const activeTab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(activeTab.className).toContain('rounded-full');
-      expect(activeTab.className).toContain('bg-theme-secondary');
+      const activeTab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(activeTab.className).toContain("rounded-full");
+      expect(activeTab.className).toContain("bg-theme-secondary");
     });
 
-    it('applies bordered variant styles', () => {
+    it("applies bordered variant styles", () => {
       render(<TabsCatto tabs={mockTabs} variant="bordered" />);
 
-      const activeTab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(activeTab.className).toContain('border-2');
-      expect(activeTab.className).toContain('rounded-lg');
+      const activeTab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(activeTab.className).toContain("border-2");
+      expect(activeTab.className).toContain("rounded-lg");
     });
   });
 
-  describe('sizes', () => {
-    it('applies small size styles', () => {
+  describe("sizes", () => {
+    it("applies small size styles", () => {
       render(<TabsCatto tabs={mockTabs} size="sm" />);
 
-      const tab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(tab.className).toContain('text-sm');
-      expect(tab.className).toContain('px-3');
+      const tab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(tab.className).toContain("text-sm");
+      expect(tab.className).toContain("px-3");
     });
 
-    it('applies medium size styles by default', () => {
+    it("applies medium size styles by default", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      const tab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(tab.className).toContain('text-base');
-      expect(tab.className).toContain('px-4');
+      const tab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(tab.className).toContain("text-base");
+      expect(tab.className).toContain("px-4");
     });
 
-    it('applies large size styles', () => {
+    it("applies large size styles", () => {
       render(<TabsCatto tabs={mockTabs} size="lg" />);
 
-      const tab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(tab.className).toContain('text-lg');
-      expect(tab.className).toContain('px-5');
+      const tab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(tab.className).toContain("text-lg");
+      expect(tab.className).toContain("px-5");
     });
   });
 
-  describe('fullWidth', () => {
-    it('applies flex-1 to tabs when fullWidth is true', () => {
+  describe("fullWidth", () => {
+    it("applies flex-1 to tabs when fullWidth is true", () => {
       render(<TabsCatto tabs={mockTabs} fullWidth />);
 
-      const tab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(tab.className).toContain('flex-1');
+      const tab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(tab.className).toContain("flex-1");
     });
 
-    it('does not apply flex-1 when fullWidth is false', () => {
+    it("does not apply flex-1 when fullWidth is false", () => {
       render(<TabsCatto tabs={mockTabs} fullWidth={false} />);
 
-      const tab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(tab.className).not.toContain('flex-1');
+      const tab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(tab.className).not.toContain("flex-1");
     });
   });
 
-  describe('alignment', () => {
-    it('applies left alignment by default', () => {
+  describe("alignment", () => {
+    it("applies left alignment by default", () => {
       const { container } = render(<TabsCatto tabs={mockTabs} />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      expect(tablist?.className).toContain('justify-start');
+      expect(tablist?.className).toContain("justify-start");
     });
 
-    it('applies center alignment', () => {
+    it("applies center alignment", () => {
       const { container } = render(
-        <TabsCatto tabs={mockTabs} align="center" />,
+        <TabsCatto tabs={mockTabs} align="center" />
       );
 
       const tablist = container.querySelector('[role="tablist"]');
-      expect(tablist?.className).toContain('justify-center');
+      expect(tablist?.className).toContain("justify-center");
     });
 
-    it('applies right alignment', () => {
+    it("applies right alignment", () => {
       const { container } = render(<TabsCatto tabs={mockTabs} align="right" />);
 
       const tablist = container.querySelector('[role="tablist"]');
-      expect(tablist?.className).toContain('justify-end');
+      expect(tablist?.className).toContain("justify-end");
     });
   });
 
-  describe('custom classNames', () => {
-    it('applies custom className to container', () => {
+  describe("custom classNames", () => {
+    it("applies custom className to container", () => {
       const { container } = render(
-        <TabsCatto tabs={mockTabs} className="my-custom-class" />,
+        <TabsCatto tabs={mockTabs} className="my-custom-class" />
       );
 
-      expect(container.firstChild).toHaveClass('my-custom-class');
+      expect(container.firstChild).toHaveClass("my-custom-class");
     });
 
-    it('applies custom tabsClassName to tabs container', () => {
+    it("applies custom tabsClassName to tabs container", () => {
       const { container } = render(
-        <TabsCatto tabs={mockTabs} tabsClassName="custom-tabs-class" />,
+        <TabsCatto tabs={mockTabs} tabsClassName="custom-tabs-class" />
       );
 
       const tablist = container.querySelector('[role="tablist"]');
-      expect(tablist?.className).toContain('custom-tabs-class');
+      expect(tablist?.className).toContain("custom-tabs-class");
     });
 
-    it('applies custom contentClassName to content area', () => {
+    it("applies custom contentClassName to content area", () => {
       const { container } = render(
-        <TabsCatto tabs={mockTabs} contentClassName="custom-content-class" />,
+        <TabsCatto tabs={mockTabs} contentClassName="custom-content-class" />
       );
 
       const tabpanel = container.querySelector('[role="tabpanel"]');
-      expect(tabpanel?.className).toContain('custom-content-class');
+      expect(tabpanel?.className).toContain("custom-content-class");
     });
   });
 
-  describe('accessibility', () => {
+  describe("accessibility", () => {
     it('tabs have role="tab"', () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      const tabs = screen.getAllByRole('tab');
+      const tabs = screen.getAllByRole("tab");
       expect(tabs).toHaveLength(3);
     });
 
-    it('enabled tabs have tabIndex 0', () => {
+    it("enabled tabs have tabIndex 0", () => {
       render(<TabsCatto tabs={mockTabs} />);
 
-      const tab = screen.getByRole('tab', { name: 'Tab 1' });
-      expect(tab).toHaveAttribute('tabIndex', '0');
+      const tab = screen.getByRole("tab", { name: "Tab 1" });
+      expect(tab).toHaveAttribute("tabIndex", "0");
     });
   });
 });

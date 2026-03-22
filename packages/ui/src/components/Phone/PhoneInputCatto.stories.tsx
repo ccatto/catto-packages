@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import PhoneInputCatto from './PhoneInputCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import PhoneInputCatto from "./PhoneInputCatto";
 
 const meta = {
-  title: 'Components/PhoneInput',
+  title: "Components/PhoneInput",
   component: PhoneInputCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
     onChange: fn(),
@@ -19,11 +19,11 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    placeholder: 'Enter phone number',
+    placeholder: "Enter phone number",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -32,12 +32,12 @@ export const Default: Story = {
 
 export const WithLabel: Story = {
   args: {
-    label: 'Phone Number',
-    placeholder: '(555) 123-4567',
+    label: "Phone Number",
+    placeholder: "(555) 123-4567",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -46,12 +46,12 @@ export const WithLabel: Story = {
 
 export const WithValue: Story = {
   args: {
-    label: 'Phone Number',
-    value: '+15551234567',
+    label: "Phone Number",
+    value: "+15551234567",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -60,13 +60,13 @@ export const WithValue: Story = {
 
 export const WithError: Story = {
   args: {
-    label: 'Phone Number',
-    value: '123',
-    error: 'Please enter a valid phone number',
+    label: "Phone Number",
+    value: "123",
+    error: "Please enter a valid phone number",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -75,13 +75,13 @@ export const WithError: Story = {
 
 export const Disabled: Story = {
   args: {
-    label: 'Phone Number',
-    value: '+15551234567',
+    label: "Phone Number",
+    value: "+15551234567",
     disabled: true,
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),
@@ -90,13 +90,13 @@ export const Disabled: Story = {
 
 export const Required: Story = {
   args: {
-    label: 'Phone Number',
+    label: "Phone Number",
     required: true,
-    placeholder: 'Required field',
+    placeholder: "Required field",
   },
   decorators: [
     (Story) => (
-      <div style={{ width: '300px' }}>
+      <div style={{ width: "300px" }}>
         <Story />
       </div>
     ),

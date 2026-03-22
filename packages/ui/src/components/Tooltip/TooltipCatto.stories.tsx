@@ -1,18 +1,18 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { Info } from 'lucide-react';
-import TooltipCatto from './TooltipCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { Info } from "lucide-react";
+import TooltipCatto from "./TooltipCatto";
 
 const meta = {
-  title: 'Components/Tooltip',
+  title: "Components/Tooltip",
   component: TooltipCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     position: {
-      control: 'select',
-      options: ['top', 'bottom', 'left', 'right'],
+      control: "select",
+      options: ["top", "bottom", "left", "right"],
     },
   },
 } satisfies Meta<typeof TooltipCatto>;
@@ -22,8 +22,8 @@ type Story = StoryObj<typeof meta>;
 
 export const Top: Story = {
   args: {
-    content: 'This is a tooltip',
-    position: 'top',
+    content: "This is a tooltip",
+    position: "top",
     children: (
       <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
         Hover me
@@ -34,8 +34,8 @@ export const Top: Story = {
 
 export const Bottom: Story = {
   args: {
-    content: 'This is a tooltip',
-    position: 'bottom',
+    content: "This is a tooltip",
+    position: "bottom",
     children: (
       <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
         Hover me
@@ -46,8 +46,8 @@ export const Bottom: Story = {
 
 export const Left: Story = {
   args: {
-    content: 'This is a tooltip',
-    position: 'left',
+    content: "This is a tooltip",
+    position: "left",
     children: (
       <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
         Hover me
@@ -58,8 +58,8 @@ export const Left: Story = {
 
 export const Right: Story = {
   args: {
-    content: 'This is a tooltip',
-    position: 'right',
+    content: "This is a tooltip",
+    position: "right",
     children: (
       <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
         Hover me
@@ -70,8 +70,8 @@ export const Right: Story = {
 
 export const WithIcon: Story = {
   args: {
-    content: 'Click for more information',
-    position: 'top',
+    content: "Click for more information",
+    position: "top",
     children: <Info className="h-5 w-5 text-gray-500 cursor-help" />,
   },
 };
@@ -79,8 +79,8 @@ export const WithIcon: Story = {
 export const LongContent: Story = {
   args: {
     content:
-      'This is a longer tooltip message that provides more detailed information about the element.',
-    position: 'top',
+      "This is a longer tooltip message that provides more detailed information about the element.",
+    position: "top",
     children: (
       <button className="px-4 py-2 bg-gray-200 dark:bg-gray-700 rounded">
         Hover for details

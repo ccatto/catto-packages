@@ -1,34 +1,34 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import MellowModalCatto from './MellowModalCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import MellowModalCatto from "./MellowModalCatto";
 
 const meta = {
-  title: 'Components/Modal',
+  title: "Components/Modal",
   component: MellowModalCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     theme: {
-      control: 'select',
+      control: "select",
       options: [
-        'primary',
-        'danger',
-        'success',
-        'warning',
-        'neutral',
-        'midnightEmber',
-        'branded',
+        "primary",
+        "danger",
+        "success",
+        "warning",
+        "neutral",
+        "midnightEmber",
+        "branded",
       ],
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg', 'xl', '2xl', 'full'],
+      control: "select",
+      options: ["sm", "md", "lg", "xl", "2xl", "full"],
     },
     position: {
-      control: 'select',
-      options: ['center', 'top', 'bottom'],
+      control: "select",
+      options: ["center", "top", "bottom"],
     },
   },
   args: {
@@ -42,7 +42,7 @@ type Story = StoryObj<typeof meta>;
 export const Default: Story = {
   args: {
     isOpen: true,
-    title: 'Modal Title',
+    title: "Modal Title",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -56,8 +56,8 @@ export const Default: Story = {
 export const Small: Story = {
   args: {
     isOpen: true,
-    title: 'Small Modal',
-    size: 'sm',
+    title: "Small Modal",
+    size: "sm",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -71,8 +71,8 @@ export const Small: Story = {
 export const Large: Story = {
   args: {
     isOpen: true,
-    title: 'Large Modal',
-    size: 'lg',
+    title: "Large Modal",
+    size: "lg",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -86,8 +86,8 @@ export const Large: Story = {
 export const ExtraLarge: Story = {
   args: {
     isOpen: true,
-    title: 'Extra Large Modal',
-    size: 'xl',
+    title: "Extra Large Modal",
+    size: "xl",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -101,8 +101,8 @@ export const ExtraLarge: Story = {
 export const DangerTheme: Story = {
   args: {
     isOpen: true,
-    title: 'Delete Confirmation',
-    theme: 'danger',
+    title: "Delete Confirmation",
+    theme: "danger",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -117,8 +117,8 @@ export const DangerTheme: Story = {
 export const SuccessTheme: Story = {
   args: {
     isOpen: true,
-    title: 'Success!',
-    theme: 'success',
+    title: "Success!",
+    theme: "success",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -132,8 +132,8 @@ export const SuccessTheme: Story = {
 export const WarningTheme: Story = {
   args: {
     isOpen: true,
-    title: 'Warning',
-    theme: 'warning',
+    title: "Warning",
+    theme: "warning",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -147,7 +147,7 @@ export const WarningTheme: Story = {
 export const WithFooter: Story = {
   args: {
     isOpen: true,
-    title: 'Confirm Action',
+    title: "Confirm Action",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -171,8 +171,8 @@ export const WithFooter: Story = {
 export const TopPosition: Story = {
   args: {
     isOpen: true,
-    title: 'Top Position',
-    position: 'top',
+    title: "Top Position",
+    position: "top",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">
@@ -186,8 +186,8 @@ export const TopPosition: Story = {
 export const BottomPosition: Story = {
   args: {
     isOpen: true,
-    title: 'Bottom Position',
-    position: 'bottom',
+    title: "Bottom Position",
+    position: "bottom",
     children: (
       <div className="p-4">
         <p className="text-gray-700 dark:text-gray-300">

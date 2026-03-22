@@ -1,26 +1,26 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import RatingStarsCatto from './RatingStarsCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import RatingStarsCatto from "./RatingStarsCatto";
 
 const meta = {
-  title: 'E-commerce/RatingStars',
+  title: "E-commerce/RatingStars",
   component: RatingStarsCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl'],
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl"],
     },
     color: {
-      control: 'select',
-      options: ['yellow', 'orange', 'gold'],
+      control: "select",
+      options: ["yellow", "orange", "gold"],
     },
     precision: {
-      control: 'select',
-      options: ['full', 'half'],
+      control: "select",
+      options: ["full", "half"],
     },
   },
   args: {
@@ -82,35 +82,35 @@ export const WithValueAndCount: Story = {
 export const ExtraSmall: Story = {
   args: {
     value: 4,
-    size: 'xs',
+    size: "xs",
   },
 };
 
 export const Small: Story = {
   args: {
     value: 4,
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
     value: 4,
-    size: 'md',
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
     value: 4,
-    size: 'lg',
+    size: "lg",
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
     value: 4,
-    size: 'xl',
+    size: "xl",
   },
 };
 
@@ -121,21 +121,21 @@ export const ExtraLarge: Story = {
 export const Yellow: Story = {
   args: {
     value: 4,
-    color: 'yellow',
+    color: "yellow",
   },
 };
 
 export const Orange: Story = {
   args: {
     value: 4,
-    color: 'orange',
+    color: "orange",
   },
 };
 
 export const Gold: Story = {
   args: {
     value: 4,
-    color: 'gold',
+    color: "gold",
   },
 };
 
@@ -162,7 +162,7 @@ export const HalfStarPrecision: Story = {
   args: {
     value: 3.5,
     interactive: true,
-    precision: 'half',
+    precision: "half",
     showValue: true,
   },
 };

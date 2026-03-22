@@ -1,13 +1,13 @@
 // @ccatto/ui - AvatarCatto Component
 // User avatar with image, initials fallback, and status indicator
-'use client';
+"use client";
 
-import { useState } from 'react';
-import { cn } from '../../utils';
+import { useState } from "react";
+import { cn } from "../../utils";
 
-export type AvatarSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl' | '2xl';
-export type AvatarStatus = 'online' | 'offline' | 'away' | 'busy' | 'none';
-export type AvatarShape = 'circle' | 'rounded' | 'square';
+export type AvatarSize = "xs" | "sm" | "md" | "lg" | "xl" | "2xl";
+export type AvatarStatus = "online" | "offline" | "away" | "busy" | "none";
+export type AvatarShape = "circle" | "rounded" | "square";
 
 export interface AvatarCattoProps {
   /** Image source URL */
@@ -33,39 +33,39 @@ export interface AvatarCattoProps {
   /** Click handler */
   onClick?: () => void;
   /** Test ID for testing */
-  'data-testid'?: string;
+  "data-testid"?: string;
 }
 
 const sizeStyles: Record<AvatarSize, string> = {
-  xs: 'h-6 w-6 text-xs',
-  sm: 'h-8 w-8 text-sm',
-  md: 'h-10 w-10 text-base',
-  lg: 'h-12 w-12 text-lg',
-  xl: 'h-16 w-16 text-xl',
-  '2xl': 'h-20 w-20 text-2xl',
+  xs: "h-6 w-6 text-xs",
+  sm: "h-8 w-8 text-sm",
+  md: "h-10 w-10 text-base",
+  lg: "h-12 w-12 text-lg",
+  xl: "h-16 w-16 text-xl",
+  "2xl": "h-20 w-20 text-2xl",
 };
 
 const shapeStyles: Record<AvatarShape, string> = {
-  circle: 'rounded-full',
-  rounded: 'rounded-lg',
-  square: 'rounded-none',
+  circle: "rounded-full",
+  rounded: "rounded-lg",
+  square: "rounded-none",
 };
 
 const statusColors: Record<AvatarStatus, string> = {
-  online: 'bg-green-500',
-  offline: 'bg-gray-400',
-  away: 'bg-yellow-500',
-  busy: 'bg-red-500',
-  none: '',
+  online: "bg-green-500",
+  offline: "bg-gray-400",
+  away: "bg-yellow-500",
+  busy: "bg-red-500",
+  none: "",
 };
 
 const statusSizeStyles: Record<AvatarSize, string> = {
-  xs: 'h-1.5 w-1.5 border',
-  sm: 'h-2 w-2 border',
-  md: 'h-2.5 w-2.5 border-2',
-  lg: 'h-3 w-3 border-2',
-  xl: 'h-4 w-4 border-2',
-  '2xl': 'h-5 w-5 border-2',
+  xs: "h-1.5 w-1.5 border",
+  sm: "h-2 w-2 border",
+  md: "h-2.5 w-2.5 border-2",
+  lg: "h-3 w-3 border-2",
+  xl: "h-4 w-4 border-2",
+  "2xl": "h-5 w-5 border-2",
 };
 
 /**
@@ -84,14 +84,14 @@ function getInitials(name: string): string {
  */
 function getColorFromName(name: string): string {
   const colors = [
-    'bg-blue-500',
-    'bg-green-500',
-    'bg-orange-500',
-    'bg-red-500',
-    'bg-cyan-500',
-    'bg-indigo-500',
-    'bg-pink-500',
-    'bg-teal-500',
+    "bg-blue-500",
+    "bg-green-500",
+    "bg-orange-500",
+    "bg-red-500",
+    "bg-cyan-500",
+    "bg-indigo-500",
+    "bg-pink-500",
+    "bg-teal-500",
   ];
   let hash = 0;
   for (let i = 0; i < name.length; i++) {
@@ -123,46 +123,46 @@ export default function AvatarCatto({
   src,
   alt,
   name,
-  size = 'md',
-  shape = 'circle',
-  status = 'none',
+  size = "md",
+  shape = "circle",
+  status = "none",
   fallback,
   ring = false,
-  ringColor = 'ring-gray-200 dark:ring-gray-700',
+  ringColor = "ring-gray-200 dark:ring-gray-700",
   className,
   onClick,
-  'data-testid': testId,
+  "data-testid": testId,
 }: AvatarCattoProps) {
   const [imageError, setImageError] = useState(false);
 
   const showImage = src && !imageError;
-  const initials = name ? getInitials(name) : '';
-  const bgColor = name ? getColorFromName(name) : 'bg-gray-400';
+  const initials = name ? getInitials(name) : "";
+  const bgColor = name ? getColorFromName(name) : "bg-gray-400";
 
   const isInteractive = !!onClick;
-  const Component = isInteractive ? 'button' : 'div';
+  const Component = isInteractive ? "button" : "div";
 
   return (
     <Component
       data-testid={testId}
       onClick={onClick}
-      type={isInteractive ? 'button' : undefined}
+      type={isInteractive ? "button" : undefined}
       className={cn(
-        'relative inline-flex items-center justify-center overflow-hidden',
+        "relative inline-flex items-center justify-center overflow-hidden",
         sizeStyles[size],
         shapeStyles[shape],
         ring && `ring-2 ${ringColor}`,
         isInteractive &&
-          'cursor-pointer transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500',
+          "cursor-pointer transition-transform hover:scale-105 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500",
         !showImage && bgColor,
-        className,
+        className
       )}
       aria-label={alt || name}
     >
       {showImage ? (
         <img
           src={src}
-          alt={alt || name || 'Avatar'}
+          alt={alt || name || "Avatar"}
           className="h-full w-full object-cover"
           onError={() => setImageError(true)}
         />
@@ -183,12 +183,12 @@ export default function AvatarCatto({
       )}
 
       {/* Status indicator */}
-      {status !== 'none' && (
+      {status !== "none" && (
         <span
           className={cn(
-            'absolute bottom-0 right-0 rounded-full border-white dark:border-gray-800',
+            "absolute bottom-0 right-0 rounded-full border-white dark:border-gray-800",
             statusColors[status],
-            statusSizeStyles[size],
+            statusSizeStyles[size]
           )}
           aria-label={`Status: ${status}`}
         />

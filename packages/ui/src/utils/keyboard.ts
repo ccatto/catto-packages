@@ -1,17 +1,17 @@
 // @ccatto/ui - Keyboard Utilities
 
-import { KeyboardEvent as ReactKeyboardEvent } from 'react';
+import { KeyboardEvent as ReactKeyboardEvent } from "react";
 
 const KEYS = {
-  ENTER: 'Enter',
-  SPACE: ' ',
-  ARROW_DOWN: 'ArrowDown',
-  ARROW_UP: 'ArrowUp',
-  ESCAPE: 'Escape',
+  ENTER: "Enter",
+  SPACE: " ",
+  ARROW_DOWN: "ArrowDown",
+  ARROW_UP: "ArrowUp",
+  ESCAPE: "Escape",
 } as const;
 
 // Typeahead search state - shared across calls (only one dropdown open at a time)
-let typeaheadBuffer = '';
+let typeaheadBuffer = "";
 let typeaheadTimeout: ReturnType<typeof setTimeout> | null = null;
 let lastMatchIndex = -1;
 const TYPEAHEAD_TIMEOUT_MS = 500;
@@ -51,7 +51,7 @@ export const scrollOptionIntoContainer = (el: HTMLElement) => {
 export const handleTypeahead = (
   key: string,
   options: { value: string; label: string }[],
-  optionRefs: React.MutableRefObject<(HTMLDivElement | null)[]> | null,
+  optionRefs: React.MutableRefObject<(HTMLDivElement | null)[]> | null
 ): number => {
   // Only handle single printable characters
   if (key.length !== 1 || !key.match(/[a-zA-Z0-9]/)) {
@@ -75,7 +75,7 @@ export const handleTypeahead = (
 
   // Set timeout to clear buffer
   typeaheadTimeout = setTimeout(() => {
-    typeaheadBuffer = '';
+    typeaheadBuffer = "";
     lastMatchIndex = -1;
   }, TYPEAHEAD_TIMEOUT_MS);
 
@@ -97,7 +97,7 @@ export const handleTypeahead = (
   } else {
     // Multi-character prefix search (e.g., "fl" → "Florida")
     matchIndex = options.findIndex((option) =>
-      option.label.toLowerCase().startsWith(typeaheadBuffer),
+      option.label.toLowerCase().startsWith(typeaheadBuffer)
     );
   }
 
@@ -119,7 +119,7 @@ export const handleTypeahead = (
  * Clear typeahead buffer - call when dropdown closes
  */
 export const clearTypeahead = () => {
-  typeaheadBuffer = '';
+  typeaheadBuffer = "";
   lastMatchIndex = -1;
   if (typeaheadTimeout) {
     clearTimeout(typeaheadTimeout);
@@ -131,7 +131,7 @@ export const handleOptionKeyDown = (
   event: ReactKeyboardEvent<HTMLDivElement>,
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   optionRefs: React.RefObject<(HTMLDivElement | null)[]>,
-  isOpen: boolean,
+  isOpen: boolean
 ) => {
   if (!optionRefs.current) {
     return;
@@ -184,13 +184,13 @@ export const handleKeyDown = (
   onChange: (value: string) => void,
   setIsOpen: React.Dispatch<React.SetStateAction<boolean>>,
   options: { value: string; label: string }[],
-  isOpen: boolean,
+  isOpen: boolean
 ): number => {
   const currentIndex = optionRefs.current.findIndex(
-    (ref) => ref === document.activeElement,
+    (ref) => ref === document.activeElement
   );
 
-  if (event.key === 'ArrowDown') {
+  if (event.key === "ArrowDown") {
     event.preventDefault();
     if (!isOpen) {
       setIsOpen(true);
@@ -202,7 +202,7 @@ export const handleKeyDown = (
     return -1;
   }
 
-  if (event.key === 'ArrowUp') {
+  if (event.key === "ArrowUp") {
     event.preventDefault();
     if (!isOpen) {
       setIsOpen(true);
@@ -214,7 +214,7 @@ export const handleKeyDown = (
     return -1;
   }
 
-  if (event.key === 'Enter' && currentIndex !== -1) {
+  if (event.key === "Enter" && currentIndex !== -1) {
     event.preventDefault();
     onChange(options[currentIndex].value);
     setIsOpen(false);
@@ -222,7 +222,7 @@ export const handleKeyDown = (
     return -1;
   }
 
-  if (event.key === 'Escape') {
+  if (event.key === "Escape") {
     event.preventDefault();
     setIsOpen(false);
     clearTypeahead();

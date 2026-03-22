@@ -1,13 +1,13 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import LanguageSwitcherCatto from './LanguageSwitcherCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import LanguageSwitcherCatto from "./LanguageSwitcherCatto";
 
 const meta = {
-  title: 'Components/LanguageSwitcher',
+  title: "Components/LanguageSwitcher",
   component: LanguageSwitcherCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   args: {
     onChange: fn(),
@@ -19,23 +19,23 @@ type Story = StoryObj<typeof meta>;
 
 export const Default: Story = {
   args: {
-    currentLanguage: 'en',
+    currentLanguage: "en",
     languages: [
-      { code: 'en', label: 'English' },
-      { code: 'es', label: 'Español' },
-      { code: 'fr', label: 'Français' },
+      { code: "en", label: "English" },
+      { code: "es", label: "Español" },
+      { code: "fr", label: "Français" },
     ],
   },
 };
 
 export const WithFlags: Story = {
   args: {
-    currentLanguage: 'en',
+    currentLanguage: "en",
     languages: [
-      { code: 'en', label: 'English', flag: '🇺🇸' },
-      { code: 'es', label: 'Español', flag: '🇪🇸' },
-      { code: 'fr', label: 'Français', flag: '🇫🇷' },
-      { code: 'de', label: 'Deutsch', flag: '🇩🇪' },
+      { code: "en", label: "English", flag: "🇺🇸" },
+      { code: "es", label: "Español", flag: "🇪🇸" },
+      { code: "fr", label: "Français", flag: "🇫🇷" },
+      { code: "de", label: "Deutsch", flag: "🇩🇪" },
     ],
     showFlags: true,
   },
@@ -43,26 +43,26 @@ export const WithFlags: Story = {
 
 export const SpanishSelected: Story = {
   args: {
-    currentLanguage: 'es',
+    currentLanguage: "es",
     languages: [
-      { code: 'en', label: 'English' },
-      { code: 'es', label: 'Español' },
+      { code: "en", label: "English" },
+      { code: "es", label: "Español" },
     ],
   },
 };
 
 export const ManyLanguages: Story = {
   args: {
-    currentLanguage: 'en',
+    currentLanguage: "en",
     languages: [
-      { code: 'en', label: 'English' },
-      { code: 'es', label: 'Español' },
-      { code: 'fr', label: 'Français' },
-      { code: 'de', label: 'Deutsch' },
-      { code: 'it', label: 'Italiano' },
-      { code: 'pt', label: 'Português' },
-      { code: 'ja', label: '日本語' },
-      { code: 'zh', label: '中文' },
+      { code: "en", label: "English" },
+      { code: "es", label: "Español" },
+      { code: "fr", label: "Français" },
+      { code: "de", label: "Deutsch" },
+      { code: "it", label: "Italiano" },
+      { code: "pt", label: "Português" },
+      { code: "ja", label: "日本語" },
+      { code: "zh", label: "中文" },
     ],
   },
 };

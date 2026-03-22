@@ -1,4 +1,4 @@
-'use client';
+"use client";
 
 /**
  * Event Calendar Types
@@ -7,23 +7,23 @@
 
 /** Color options for calendar events */
 export type EventColor =
-  | 'orange'
-  | 'blue'
-  | 'green'
-  | 'red'
-  | 'gray'
-  | 'purple';
+  | "orange"
+  | "blue"
+  | "green"
+  | "red"
+  | "gray"
+  | "purple";
 
 /** Event type identifiers */
 export type EventType =
-  | 'tournament'
-  | 'league'
-  | 'clinic'
-  | 'lesson'
-  | 'openplay'
-  | 'event'
-  | 'blocked'
-  | 'holiday';
+  | "tournament"
+  | "league"
+  | "clinic"
+  | "lesson"
+  | "openplay"
+  | "event"
+  | "blocked"
+  | "holiday";
 
 /**
  * Calendar event item - the core data structure for events
@@ -62,18 +62,18 @@ export interface TimeSlot {
 }
 
 /** Calendar view mode */
-export type CalendarView = 'month' | 'week' | 'day';
+export type CalendarView = "month" | "week" | "day";
 
 /** Calendar theme options (matches CalendarCatto) */
 export type EventCalendarTheme =
-  | 'midnightEmber'
-  | 'sunset'
-  | 'ocean'
-  | 'forest'
-  | 'lavender';
+  | "midnightEmber"
+  | "sunset"
+  | "ocean"
+  | "forest"
+  | "lavender";
 
 /** Calendar size options */
-export type EventCalendarSize = 'small' | 'medium' | 'large';
+export type EventCalendarSize = "small" | "medium" | "large";
 
 /**
  * Color classes for events based on color prop
@@ -83,40 +83,40 @@ export const eventColorClasses: Record<
   { bg: string; text: string; border: string; hover: string }
 > = {
   orange: {
-    bg: 'bg-orange-100 dark:bg-orange-900/30',
-    text: 'text-orange-800 dark:text-orange-200',
-    border: 'border-orange-300 dark:border-orange-700',
-    hover: 'hover:bg-orange-200 dark:hover:bg-orange-800/40',
+    bg: "bg-orange-100 dark:bg-orange-900/30",
+    text: "text-orange-800 dark:text-orange-200",
+    border: "border-orange-300 dark:border-orange-700",
+    hover: "hover:bg-orange-200 dark:hover:bg-orange-800/40",
   },
   blue: {
-    bg: 'bg-blue-100 dark:bg-blue-900/30',
-    text: 'text-blue-800 dark:text-blue-200',
-    border: 'border-blue-300 dark:border-blue-700',
-    hover: 'hover:bg-blue-200 dark:hover:bg-blue-800/40',
+    bg: "bg-blue-100 dark:bg-blue-900/30",
+    text: "text-blue-800 dark:text-blue-200",
+    border: "border-blue-300 dark:border-blue-700",
+    hover: "hover:bg-blue-200 dark:hover:bg-blue-800/40",
   },
   green: {
-    bg: 'bg-green-100 dark:bg-green-900/30',
-    text: 'text-green-800 dark:text-green-200',
-    border: 'border-green-300 dark:border-green-700',
-    hover: 'hover:bg-green-200 dark:hover:bg-green-800/40',
+    bg: "bg-green-100 dark:bg-green-900/30",
+    text: "text-green-800 dark:text-green-200",
+    border: "border-green-300 dark:border-green-700",
+    hover: "hover:bg-green-200 dark:hover:bg-green-800/40",
   },
   red: {
-    bg: 'bg-red-100 dark:bg-red-900/30',
-    text: 'text-red-800 dark:text-red-200',
-    border: 'border-red-300 dark:border-red-700',
-    hover: 'hover:bg-red-200 dark:hover:bg-red-800/40',
+    bg: "bg-red-100 dark:bg-red-900/30",
+    text: "text-red-800 dark:text-red-200",
+    border: "border-red-300 dark:border-red-700",
+    hover: "hover:bg-red-200 dark:hover:bg-red-800/40",
   },
   gray: {
-    bg: 'bg-gray-100 dark:bg-gray-700/30',
-    text: 'text-gray-800 dark:text-gray-200',
-    border: 'border-gray-300 dark:border-gray-600',
-    hover: 'hover:bg-gray-200 dark:hover:bg-gray-600/40',
+    bg: "bg-gray-100 dark:bg-gray-700/30",
+    text: "text-gray-800 dark:text-gray-200",
+    border: "border-gray-300 dark:border-gray-600",
+    hover: "hover:bg-gray-200 dark:hover:bg-gray-600/40",
   },
   purple: {
-    bg: 'bg-slate-100 dark:bg-slate-700/30',
-    text: 'text-slate-800 dark:text-slate-200',
-    border: 'border-slate-300 dark:border-slate-600',
-    hover: 'hover:bg-slate-200 dark:hover:bg-slate-600/40',
+    bg: "bg-slate-100 dark:bg-slate-700/30",
+    text: "text-slate-800 dark:text-slate-200",
+    border: "border-slate-300 dark:border-slate-600",
+    hover: "hover:bg-slate-200 dark:hover:bg-slate-600/40",
   },
 };
 
@@ -124,26 +124,26 @@ export const eventColorClasses: Record<
  * Icon mapping for event types
  */
 export const eventTypeIcons: Record<EventType, string> = {
-  tournament: '🏆',
-  league: '🏅',
-  clinic: '📚',
-  lesson: '🎓',
-  openplay: '🎾',
-  event: '📅',
-  blocked: '🚫',
-  holiday: '🎉',
+  tournament: "🏆",
+  league: "🏅",
+  clinic: "📚",
+  lesson: "🎓",
+  openplay: "🎾",
+  event: "📅",
+  blocked: "🚫",
+  holiday: "🎉",
 };
 
 /**
  * Default color mapping for event types
  */
 export const eventTypeColors: Record<EventType, EventColor> = {
-  tournament: 'orange',
-  league: 'blue',
-  clinic: 'green',
-  lesson: 'green',
-  openplay: 'blue',
-  event: 'gray',
-  blocked: 'gray',
-  holiday: 'red',
+  tournament: "orange",
+  league: "blue",
+  clinic: "green",
+  lesson: "green",
+  openplay: "blue",
+  event: "gray",
+  blocked: "gray",
+  holiday: "red",
 };

@@ -1,32 +1,33 @@
 // @ccatto/ui - SelectCatto Component
-'use client';
+"use client";
 
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { Check, ChevronDown } from 'lucide-react';
-import { DEFAULT_SELECT_LABELS, type SelectLabels } from '../../i18n/defaults';
-import type { SelectOption } from '../../types';
+import React, { forwardRef, useEffect, useRef, useState } from "react";
+import { Check, ChevronDown } from "lucide-react";
+import { Z_INDEX } from "../../constants/z-index";
+import { DEFAULT_SELECT_LABELS, type SelectLabels } from "../../i18n/defaults";
+import type { SelectOption } from "../../types";
 import {
   clearTypeahead,
   handleKeyDown,
   handleOptionKeyDown,
   scrollOptionIntoContainer,
-} from '../../utils/keyboard';
+} from "../../utils/keyboard";
 
-type SelectVariant = 'default' | 'primary' | 'secondary' | 'outline' | 'ghost';
-type SelectSize = 'sm' | 'md' | 'lg';
-type SelectTheme = 'light' | 'dark';
+type SelectVariant = "default" | "primary" | "secondary" | "outline" | "ghost";
+type SelectSize = "sm" | "md" | "lg";
+type SelectTheme = "light" | "dark";
 type SelectWidth =
-  | 'auto'
-  | 'full'
-  | 'xs'
-  | 'sm'
-  | 'md'
-  | 'lg'
-  | 'xl'
-  | '2xl'
-  | '3xl'
-  | '4xl'
-  | '5xl';
+  | "auto"
+  | "full"
+  | "xs"
+  | "sm"
+  | "md"
+  | "lg"
+  | "xl"
+  | "2xl"
+  | "3xl"
+  | "4xl"
+  | "5xl";
 
 export interface SelectCattoProps {
   options: SelectOption[];
@@ -57,18 +58,18 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
       onChange,
       placeholder,
       disabled = false,
-      className = '',
+      className = "",
       label,
       error,
-      variant = 'default',
-      size = 'md',
-      theme = 'dark',
-      width = 'full',
+      variant = "default",
+      size = "md",
+      theme = "dark",
+      width = "full",
       labels,
       leadingIcon,
       showSelectedIcon = true,
     },
-    ref,
+    ref
   ) => {
     // Merge provided labels with defaults
     const resolvedLabels = {
@@ -93,9 +94,9 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
         }
       };
 
-      document.addEventListener('mousedown', handleClickOutside);
+      document.addEventListener("mousedown", handleClickOutside);
       return () =>
-        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener("mousedown", handleClickOutside);
     }, []);
 
     useEffect(() => {
@@ -132,17 +133,17 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
 
     const getWidthStyle = () => {
       const widthClasses = {
-        auto: 'w-auto',
-        full: 'w-full',
-        xs: 'w-20',
-        sm: 'w-32',
-        md: 'w-48',
-        lg: 'w-64',
-        xl: 'w-full md:w-96',
-        '2xl': 'md:w-[32rem] w-full',
-        '3xl': 'md:w-[48rem] w-full',
-        '4xl': 'md:w-[64rem] w-full',
-        '5xl': 'md:w-[80rem] w-full',
+        auto: "w-auto",
+        full: "w-full",
+        xs: "w-20",
+        sm: "w-32",
+        md: "w-48",
+        lg: "w-64",
+        xl: "w-full md:w-96",
+        "2xl": "md:w-[32rem] w-full",
+        "3xl": "md:w-[48rem] w-full",
+        "4xl": "md:w-[64rem] w-full",
+        "5xl": "md:w-[80rem] w-full",
       };
       return widthClasses[width];
     };
@@ -151,75 +152,75 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
     const variantStyles = {
       light: {
         default:
-          'border-theme-border bg-theme-surface hover:border-theme-border-strong',
+          "border-theme-border bg-theme-surface hover:border-theme-border-strong",
         primary:
-          'border-theme-primary bg-theme-primary-subtle hover:bg-theme-primary-subtle text-theme-primary',
+          "border-theme-primary bg-theme-primary-subtle hover:bg-theme-primary-subtle text-theme-primary",
         secondary:
-          'border-theme-secondary bg-theme-secondary-subtle hover:bg-theme-secondary-subtle text-theme-secondary',
+          "border-theme-secondary bg-theme-secondary-subtle hover:bg-theme-secondary-subtle text-theme-secondary",
         outline:
-          'border-2 border-theme-border bg-transparent hover:bg-theme-surface-secondary',
+          "border-2 border-theme-border bg-transparent hover:bg-theme-surface-secondary",
         ghost:
-          'border-transparent bg-theme-surface-secondary hover:bg-theme-surface-tertiary',
+          "border-transparent bg-theme-surface-secondary hover:bg-theme-surface-tertiary",
       },
       dark: {
         default:
-          'border-theme-border bg-theme-surface hover:border-theme-border-strong',
+          "border-theme-border bg-theme-surface hover:border-theme-border-strong",
         primary:
-          'border-theme-primary bg-theme-primary-subtle hover:bg-theme-primary-subtle text-theme-primary',
+          "border-theme-primary bg-theme-primary-subtle hover:bg-theme-primary-subtle text-theme-primary",
         secondary:
-          'border-theme-secondary bg-theme-secondary-subtle hover:bg-theme-secondary-subtle text-theme-secondary',
+          "border-theme-secondary bg-theme-secondary-subtle hover:bg-theme-secondary-subtle text-theme-secondary",
         outline:
-          'border-2 border-theme-border bg-transparent hover:bg-theme-surface-secondary',
+          "border-2 border-theme-border bg-transparent hover:bg-theme-surface-secondary",
         ghost:
-          'border-transparent bg-theme-surface-secondary hover:bg-theme-surface-tertiary',
+          "border-transparent bg-theme-surface-secondary hover:bg-theme-surface-tertiary",
       },
     };
 
     const sizeStyles = {
-      sm: 'px-2 py-1 text-sm',
-      md: 'px-4 py-2',
-      lg: 'px-6 py-3 text-lg',
+      sm: "px-2 py-1 text-sm",
+      md: "px-4 py-2",
+      lg: "px-6 py-3 text-lg",
     };
 
     const getDropdownItemStyles = (isSelected: boolean) => {
       const baseStyles =
-        'px-4 py-2 cursor-pointer flex items-center justify-between';
+        "px-4 py-2 cursor-pointer flex items-center justify-between";
 
       // Dropdown item styles - uses theme tokens for brand colors
       const variantSpecificStyles = {
         light: {
           default: isSelected
-            ? 'bg-theme-surface-secondary text-theme-text'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-surface-secondary text-theme-text"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           primary: isSelected
-            ? 'bg-theme-primary-subtle text-theme-primary'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-primary-subtle text-theme-primary"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           secondary: isSelected
-            ? 'bg-theme-secondary-subtle text-theme-secondary'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-secondary-subtle text-theme-secondary"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           outline: isSelected
-            ? 'bg-theme-surface-secondary text-theme-text'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-surface-secondary text-theme-text"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           ghost: isSelected
-            ? 'bg-theme-surface-tertiary text-theme-text'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-surface-tertiary text-theme-text"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
         },
         dark: {
           default: isSelected
-            ? 'bg-theme-surface-secondary text-theme-text'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-surface-secondary text-theme-text"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           primary: isSelected
-            ? 'bg-theme-primary-subtle text-theme-primary'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-primary-subtle text-theme-primary"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           secondary: isSelected
-            ? 'bg-theme-secondary-subtle text-theme-secondary'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-secondary-subtle text-theme-secondary"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           outline: isSelected
-            ? 'bg-theme-surface-secondary text-theme-text'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-surface-secondary text-theme-text"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
           ghost: isSelected
-            ? 'bg-theme-surface-tertiary text-theme-text'
-            : 'hover:bg-theme-surface-secondary text-theme-text-muted',
+            ? "bg-theme-surface-tertiary text-theme-text"
+            : "hover:bg-theme-surface-secondary text-theme-text-muted",
         },
       };
 
@@ -227,14 +228,14 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
     };
 
     const getLabelStyles = () => {
-      const baseStyles = 'block font-medium mb-1';
+      const baseStyles = "block font-medium mb-1";
       const sizeStyle =
-        size === 'sm' ? 'text-sm' : size === 'lg' ? 'text-lg' : 'text-base';
+        size === "sm" ? "text-sm" : size === "lg" ? "text-lg" : "text-base";
       return `${baseStyles} ${sizeStyle} text-theme-text`;
     };
 
     const getPlaceholderStyles = () => {
-      return 'text-theme-text-subtle';
+      return "text-theme-text-subtle";
     };
 
     // Generate unique ID for listbox
@@ -243,7 +244,7 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
     // Combine forwarded ref with internal selectRef
     const handleRef = (node: HTMLDivElement | null) => {
       selectRef.current = node;
-      if (typeof ref === 'function') {
+      if (typeof ref === "function") {
         ref(node);
       } else if (ref) {
         ref.current = node;
@@ -253,7 +254,7 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
     return (
       <div
         className={`relative ${
-          isOpen ? 'z-[9999]' : 'z-auto'
+          isOpen ? Z_INDEX.dropdown : "z-auto"
         } ${getWidthStyle()} `}
         ref={handleRef}
       >
@@ -268,7 +269,7 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
               onChange,
               setIsOpen,
               options,
-              isOpen,
+              isOpen
             );
             if (pendingIndex >= 0) {
               pendingFocusIndexRef.current = pendingIndex;
@@ -285,9 +286,9 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
             className={`flex w-full cursor-pointer items-center justify-between rounded-lg transition-colors duration-200 ${
               sizeStyles[size]
             } ${variantStyles[theme][variant]} ${
-              disabled ? 'cursor-not-allowed opacity-50' : ''
-            } ${error ? 'border-red-500 ring-1 ring-red-500' : ''} ${
-              isOpen ? 'ring-2 ring-theme-primary' : ''
+              disabled ? "cursor-not-allowed opacity-50" : ""
+            } ${error ? "border-red-500 ring-1 ring-red-500" : ""} ${
+              isOpen ? "ring-2 ring-theme-primary" : ""
             } border text-theme-text `}
           >
             <span className="flex items-center gap-2 truncate">
@@ -306,19 +307,19 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
                 className={`block truncate ${
                   !selectedOption && options.length !== 1
                     ? getPlaceholderStyles()
-                    : ''
+                    : ""
                 }`}
               >
                 {selectedOption
                   ? selectedOption.label
                   : options.length === 1
-                    ? options[0].label
-                    : resolvedPlaceholder}
+                  ? options[0].label
+                  : resolvedPlaceholder}
               </span>
             </span>
             <ChevronDown
               className={`h-4 w-4 shrink-0 transition-transform duration-200 ${
-                isOpen ? 'rotate-180 transform' : ''
+                isOpen ? "rotate-180 transform" : ""
               } text-theme-text-subtle`}
             />
           </div>
@@ -328,7 +329,7 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
               role="listbox"
               id={listboxId}
               aria-label={label || resolvedPlaceholder}
-              className={`absolute z-[9999] mt-1 max-h-60 overflow-auto rounded-lg border shadow-xl
+              className={`absolute mt-1 max-h-60 overflow-auto rounded-lg border shadow-xl
               w-full min-w-max
               max-sm:fixed max-sm:left-2 max-sm:right-2 max-sm:w-auto max-sm:bottom-20
               border-theme-border bg-theme-surface`}
@@ -370,12 +371,14 @@ const SelectCatto = forwardRef<HTMLDivElement, SelectCattoProps>(
             </div>
           )}
         </div>
+        {/* Spacer to push parent scrollable area when dropdown is open (prevents CardCatto overflow clip) */}
+        {isOpen && <div className="h-64" aria-hidden="true" />}
         {error && <p className="mt-1 text-sm text-red-500">{error}</p>}
       </div>
     );
-  },
+  }
 );
 
-SelectCatto.displayName = 'SelectCatto';
+SelectCatto.displayName = "SelectCatto";
 
 export default SelectCatto;

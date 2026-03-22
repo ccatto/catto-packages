@@ -1,25 +1,25 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import AvatarCatto from './AvatarCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import AvatarCatto from "./AvatarCatto";
 
 const meta = {
-  title: 'Components/Avatar',
+  title: "Components/Avatar",
   component: AvatarCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: 'select',
-      options: ['xs', 'sm', 'md', 'lg', 'xl', '2xl'],
+      control: "select",
+      options: ["xs", "sm", "md", "lg", "xl", "2xl"],
     },
     shape: {
-      control: 'select',
-      options: ['circle', 'rounded', 'square'],
+      control: "select",
+      options: ["circle", "rounded", "square"],
     },
     status: {
-      control: 'select',
-      options: [undefined, 'online', 'offline', 'away', 'busy'],
+      control: "select",
+      options: [undefined, "online", "offline", "away", "busy"],
     },
   },
 } satisfies Meta<typeof AvatarCatto>;
@@ -33,22 +33,22 @@ type Story = StoryObj<typeof meta>;
 
 export const WithImage: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=1',
-    alt: 'User avatar',
-    name: 'John Doe',
+    src: "https://i.pravatar.cc/150?img=1",
+    alt: "User avatar",
+    name: "John Doe",
   },
 };
 
 export const WithInitials: Story = {
   args: {
-    name: 'John Doe',
+    name: "John Doe",
   },
 };
 
 export const FallbackToInitials: Story = {
   args: {
-    src: 'https://invalid-url.com/avatar.jpg',
-    name: 'Jane Smith',
+    src: "https://invalid-url.com/avatar.jpg",
+    name: "Jane Smith",
   },
 };
 
@@ -58,43 +58,43 @@ export const FallbackToInitials: Story = {
 
 export const ExtraSmall: Story = {
   args: {
-    name: 'XS User',
-    size: 'xs',
+    name: "XS User",
+    size: "xs",
   },
 };
 
 export const Small: Story = {
   args: {
-    name: 'Small User',
-    size: 'sm',
+    name: "Small User",
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
-    name: 'Medium User',
-    size: 'md',
+    name: "Medium User",
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
-    name: 'Large User',
-    size: 'lg',
+    name: "Large User",
+    size: "lg",
   },
 };
 
 export const ExtraLarge: Story = {
   args: {
-    name: 'XL User',
-    size: 'xl',
+    name: "XL User",
+    size: "xl",
   },
 };
 
 export const DoubleExtraLarge: Story = {
   args: {
-    name: '2XL User',
-    size: '2xl',
+    name: "2XL User",
+    size: "2xl",
   },
 };
 
@@ -104,25 +104,25 @@ export const DoubleExtraLarge: Story = {
 
 export const Circle: Story = {
   args: {
-    name: 'Circle Shape',
-    shape: 'circle',
-    size: 'lg',
+    name: "Circle Shape",
+    shape: "circle",
+    size: "lg",
   },
 };
 
 export const Rounded: Story = {
   args: {
-    name: 'Rounded Shape',
-    shape: 'rounded',
-    size: 'lg',
+    name: "Rounded Shape",
+    shape: "rounded",
+    size: "lg",
   },
 };
 
 export const Square: Story = {
   args: {
-    name: 'Square Shape',
-    shape: 'square',
-    size: 'lg',
+    name: "Square Shape",
+    shape: "square",
+    size: "lg",
   },
 };
 
@@ -132,37 +132,37 @@ export const Square: Story = {
 
 export const Online: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=2',
-    name: 'Online User',
-    status: 'online',
-    size: 'lg',
+    src: "https://i.pravatar.cc/150?img=2",
+    name: "Online User",
+    status: "online",
+    size: "lg",
   },
 };
 
 export const Offline: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=3',
-    name: 'Offline User',
-    status: 'offline',
-    size: 'lg',
+    src: "https://i.pravatar.cc/150?img=3",
+    name: "Offline User",
+    status: "offline",
+    size: "lg",
   },
 };
 
 export const Away: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=4',
-    name: 'Away User',
-    status: 'away',
-    size: 'lg',
+    src: "https://i.pravatar.cc/150?img=4",
+    name: "Away User",
+    status: "away",
+    size: "lg",
   },
 };
 
 export const Busy: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=5',
-    name: 'Busy User',
-    status: 'busy',
-    size: 'lg',
+    src: "https://i.pravatar.cc/150?img=5",
+    name: "Busy User",
+    status: "busy",
+    size: "lg",
   },
 };
 
@@ -172,10 +172,10 @@ export const Busy: Story = {
 
 export const WithRing: Story = {
   args: {
-    src: 'https://i.pravatar.cc/150?img=6',
-    name: 'Ringed Avatar',
+    src: "https://i.pravatar.cc/150?img=6",
+    name: "Ringed Avatar",
     ring: true,
-    size: 'lg',
+    size: "lg",
   },
 };
 

@@ -1,19 +1,19 @@
 // @ccatto/ui - DrawerCatto Component
 // Generic slide-in drawer with Portal support
-'use client';
+"use client";
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { createPortal } from 'react-dom';
-import { X } from 'lucide-react';
-import { DEFAULT_DRAWER_LABELS, DrawerLabels } from '../../i18n/defaults';
-import { cn } from '../../utils';
+import React, { useCallback, useEffect, useState } from "react";
+import { createPortal } from "react-dom";
+import { X } from "lucide-react";
+import { DEFAULT_DRAWER_LABELS, DrawerLabels } from "../../i18n/defaults";
+import { cn } from "../../utils";
 
 // ============================================
 // Types
 // ============================================
 
-export type DrawerSide = 'left' | 'right';
-export type DrawerWidth = 'sm' | 'md' | 'lg' | 'xl' | 'full';
+export type DrawerSide = "left" | "right";
+export type DrawerWidth = "sm" | "md" | "lg" | "xl" | "full";
 
 export interface DrawerCattoProps {
   /** Whether the drawer is open */
@@ -37,7 +37,7 @@ export interface DrawerCattoProps {
   /** Show close button in header */
   showCloseButton?: boolean;
   /** Close button variant - 'default' uses slate colors, 'danger' uses red */
-  closeButtonVariant?: 'default' | 'danger';
+  closeButtonVariant?: "default" | "danger";
   /** Show dark overlay behind drawer */
   overlay?: boolean;
   /** Custom overlay className (e.g., 'bottom-20' for partial overlay) */
@@ -57,18 +57,18 @@ export interface DrawerCattoProps {
   /** z-index for the drawer (default: 50) */
   zIndex?: number;
   /** Accessible label for the drawer */
-  'aria-label'?: string;
+  "aria-label"?: string;
   /** i18n labels for internationalization */
   labels?: DrawerLabels;
 }
 
 // Width configurations
 const widthConfig: Record<DrawerWidth, string> = {
-  sm: 'w-64',
-  md: 'w-80',
-  lg: 'w-96',
-  xl: 'w-[28rem]',
-  full: 'w-full',
+  sm: "w-64",
+  md: "w-80",
+  lg: "w-96",
+  xl: "w-[28rem]",
+  full: "w-full",
 };
 
 /**
@@ -98,15 +98,15 @@ const widthConfig: Record<DrawerWidth, string> = {
 const DrawerCatto: React.FC<DrawerCattoProps> = ({
   isOpen,
   onClose,
-  side = 'left',
-  width = 'md',
+  side = "left",
+  width = "md",
   customWidth,
   customHeight,
   children,
   title,
   header,
   showCloseButton = true,
-  closeButtonVariant = 'default',
+  closeButtonVariant = "default",
   overlay = true,
   overlayClassName,
   closeOnOverlayClick = true,
@@ -116,7 +116,7 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
   className,
   contentClassName,
   zIndex = 50,
-  'aria-label': ariaLabel,
+  "aria-label": ariaLabel,
   labels = {},
 }) => {
   // Merge with defaults
@@ -134,28 +134,28 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
     if (!preventScroll) return;
 
     if (isOpen) {
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
     }
     return () => {
-      document.body.style.overflow = '';
+      document.body.style.overflow = "";
     };
   }, [isOpen, preventScroll]);
 
   // Handle escape key
   const handleEscape = useCallback(
     (e: KeyboardEvent) => {
-      if (e.key === 'Escape' && closeOnEscape) {
+      if (e.key === "Escape" && closeOnEscape) {
         onClose();
       }
     },
-    [closeOnEscape, onClose],
+    [closeOnEscape, onClose]
   );
 
   useEffect(() => {
     if (isOpen) {
-      window.addEventListener('keydown', handleEscape);
+      window.addEventListener("keydown", handleEscape);
     }
-    return () => window.removeEventListener('keydown', handleEscape);
+    return () => window.removeEventListener("keydown", handleEscape);
   }, [isOpen, handleEscape]);
 
   // Handle overlay click
@@ -171,14 +171,14 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
   // Slide direction classes
   const slideClasses = {
     left: {
-      base: 'left-0',
-      closed: '-translate-x-full',
-      open: 'translate-x-0',
+      base: "left-0",
+      closed: "-translate-x-full",
+      open: "translate-x-0",
     },
     right: {
-      base: 'right-0',
-      closed: 'translate-x-full',
-      open: 'translate-x-0',
+      base: "right-0",
+      closed: "translate-x-full",
+      open: "translate-x-0",
     },
   };
 
@@ -186,7 +186,7 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
 
   // Height/position class - default to top-0 h-full unless custom provided
   // customHeight can be used for special cases like "top-0 bottom-20" for drawers that don't extend to bottom
-  const drawerHeight = customHeight || 'top-0 h-full';
+  const drawerHeight = customHeight || "top-0 h-full";
 
   // Drawer content
   const drawerContent = (
@@ -195,9 +195,9 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
       {overlay && isOpen && (
         <div
           className={cn(
-            'fixed inset-0 bg-black/50 transition-opacity duration-300',
-            isOpen ? 'opacity-100' : 'opacity-0',
-            overlayClassName,
+            "fixed inset-0 bg-black/50 transition-opacity duration-300",
+            isOpen ? "opacity-100" : "opacity-0",
+            overlayClassName
           )}
           style={{ zIndex: zIndex - 1 }}
           onClick={handleOverlayClick}
@@ -208,18 +208,18 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
       {/* Drawer */}
       <div
         className={cn(
-          'fixed transform shadow-xl transition-transform duration-300 ease-in-out',
-          'bg-theme-surface',
+          "fixed transform shadow-xl transition-transform duration-300 ease-in-out",
+          "bg-theme-surface",
           slideConfig.base,
           drawerWidth,
           drawerHeight,
           isOpen ? slideConfig.open : slideConfig.closed,
-          className,
+          className
         )}
         style={{ zIndex }}
         role="dialog"
         aria-modal="true"
-        aria-label={ariaLabel || title || 'Drawer'}
+        aria-label={ariaLabel || title || "Drawer"}
       >
         {/* Header */}
         {(title || header || showCloseButton) && (
@@ -233,24 +233,24 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
               <button
                 onClick={onClose}
                 className={cn(
-                  'rounded-lg p-2 transition-all duration-200',
-                  closeButtonVariant === 'danger'
+                  "rounded-lg p-2 transition-all duration-200",
+                  closeButtonVariant === "danger"
                     ? [
                         // Base: Red icon
-                        'text-red-500 dark:text-red-500',
+                        "text-red-500 dark:text-red-500",
                         // Hover: Lighter red bg, darker icon
-                        'hover:bg-red-100 dark:hover:bg-red-900/40 hover:text-red-600 dark:hover:text-red-400',
+                        "hover:bg-red-100 dark:hover:bg-red-900/40 hover:text-red-600 dark:hover:text-red-400",
                         // Active/Click: Even more prominent
-                        'active:bg-red-200 dark:active:bg-red-800/50 active:text-red-700 dark:active:text-red-300 active:scale-95',
+                        "active:bg-red-200 dark:active:bg-red-800/50 active:text-red-700 dark:active:text-red-300 active:scale-95",
                         // Focus ring in red
-                        'focus:outline-none focus:ring-2 focus:ring-red-500/50',
+                        "focus:outline-none focus:ring-2 focus:ring-red-500/50",
                       ]
                     : [
-                        'text-theme-text-subtle',
-                        'hover:bg-theme-surface-secondary hover:text-theme-text',
-                        'active:bg-theme-surface-tertiary active:scale-95',
-                        'focus:outline-none focus:ring-2 focus:ring-theme-primary',
-                      ],
+                        "text-theme-text-subtle",
+                        "hover:bg-theme-surface-secondary hover:text-theme-text",
+                        "active:bg-theme-surface-tertiary active:scale-95",
+                        "focus:outline-none focus:ring-2 focus:ring-theme-primary",
+                      ]
                 )}
                 aria-label={mergedLabels.closeButton}
               >
@@ -263,8 +263,8 @@ const DrawerCatto: React.FC<DrawerCattoProps> = ({
         {/* Content */}
         <div
           className={cn(
-            'h-[calc(100%-4rem)] overflow-y-auto',
-            contentClassName,
+            "h-[calc(100%-4rem)] overflow-y-auto",
+            contentClassName
           )}
         >
           {children}

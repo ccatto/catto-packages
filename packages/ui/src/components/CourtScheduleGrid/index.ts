@@ -2,7 +2,7 @@ export {
   CourtScheduleGridCatto,
   default,
   DEFAULT_COURT_SCHEDULE_GRID_LABELS,
-} from './CourtScheduleGridCatto';
+} from "./CourtScheduleGridCatto";
 export type {
   CourtScheduleGridCattoProps,
   CourtScheduleGridLabels,
@@ -10,4 +10,4 @@ export type {
   TimeSlotData,
   CourtTimeSlotState,
   ScheduleDropData,
-} from './CourtScheduleGridCatto';
+} from "./CourtScheduleGridCatto";

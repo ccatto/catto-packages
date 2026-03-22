@@ -1,22 +1,22 @@
-import type { Meta, StoryObj } from '@storybook/react';
-import { fn } from '@storybook/test';
-import QuantitySelectorCatto from './QuantitySelectorCatto';
+import type { Meta, StoryObj } from "@storybook/react";
+import { fn } from "@storybook/test";
+import QuantitySelectorCatto from "./QuantitySelectorCatto";
 
 const meta = {
-  title: 'E-commerce/QuantitySelector',
+  title: "E-commerce/QuantitySelector",
   component: QuantitySelectorCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
   argTypes: {
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
     variant: {
-      control: 'select',
-      options: ['default', 'outline', 'filled'],
+      control: "select",
+      options: ["default", "outline", "filled"],
     },
   },
   args: {
@@ -67,35 +67,35 @@ export const WithInput: Story = {
 export const Small: Story = {
   args: {
     value: 1,
-    size: 'sm',
+    size: "sm",
   },
 };
 
 export const Medium: Story = {
   args: {
     value: 1,
-    size: 'md',
+    size: "md",
   },
 };
 
 export const Large: Story = {
   args: {
     value: 1,
-    size: 'lg',
+    size: "lg",
   },
 };
 
 export const OutlineVariant: Story = {
   args: {
     value: 1,
-    variant: 'outline',
+    variant: "outline",
   },
 };
 
 export const FilledVariant: Story = {
   args: {
     value: 1,
-    variant: 'filled',
+    variant: "filled",
   },
 };
 

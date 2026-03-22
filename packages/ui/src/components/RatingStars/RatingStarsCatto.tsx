@@ -1,11 +1,11 @@
 // @ccatto/ui - RatingStarsCatto Component
 // Star rating display and input
-'use client';
+"use client";
 
-import { forwardRef, useState } from 'react';
-import { cn } from '../../utils';
+import { forwardRef, useState } from "react";
+import { cn } from "../../utils";
 
-export type RatingStarsSize = 'xs' | 'sm' | 'md' | 'lg' | 'xl';
+export type RatingStarsSize = "xs" | "sm" | "md" | "lg" | "xl";
 
 export interface RatingStarsCattoProps {
   /** Current rating value (0-5, supports decimals for display) */
@@ -23,39 +23,39 @@ export interface RatingStarsCattoProps {
   /** Show count (e.g., number of reviews) */
   count?: number;
   /** Color of filled stars */
-  color?: 'yellow' | 'orange' | 'gold';
+  color?: "yellow" | "orange" | "gold";
   /** Color of empty stars */
   emptyColor?: string;
   /** Allow half-star precision on click */
-  precision?: 'full' | 'half';
+  precision?: "full" | "half";
   /** Disable interaction */
   disabled?: boolean;
   /** Additional CSS classes */
   className?: string;
   /** Test ID for testing */
-  'data-testid'?: string;
+  "data-testid"?: string;
 }
 
 const sizeStyles: Record<RatingStarsSize, string> = {
-  xs: 'h-3 w-3',
-  sm: 'h-4 w-4',
-  md: 'h-5 w-5',
-  lg: 'h-6 w-6',
-  xl: 'h-8 w-8',
+  xs: "h-3 w-3",
+  sm: "h-4 w-4",
+  md: "h-5 w-5",
+  lg: "h-6 w-6",
+  xl: "h-8 w-8",
 };
 
 const textSizeStyles: Record<RatingStarsSize, string> = {
-  xs: 'text-xs',
-  sm: 'text-sm',
-  md: 'text-base',
-  lg: 'text-lg',
-  xl: 'text-xl',
+  xs: "text-xs",
+  sm: "text-sm",
+  md: "text-base",
+  lg: "text-lg",
+  xl: "text-xl",
 };
 
 const colorStyles: Record<string, string> = {
-  yellow: 'text-yellow-400',
-  orange: 'text-orange-400',
-  gold: 'text-amber-400',
+  yellow: "text-yellow-400",
+  orange: "text-orange-400",
+  gold: "text-amber-400",
 };
 
 /**
@@ -82,19 +82,19 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
     {
       value,
       max = 5,
-      size = 'md',
+      size = "md",
       interactive = false,
       onChange,
       showValue = false,
       count,
-      color = 'yellow',
-      emptyColor = 'text-gray-300 dark:text-gray-600',
-      precision = 'full',
+      color = "yellow",
+      emptyColor = "text-gray-300 dark:text-gray-600",
+      precision = "full",
       disabled = false,
       className,
-      'data-testid': testId,
+      "data-testid": testId,
     },
-    ref,
+    ref
   ) => {
     const [hoverValue, setHoverValue] = useState<number | null>(null);
 
@@ -105,19 +105,19 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
       if (!isInteractive) return;
 
       const newValue =
-        precision === 'half' && isHalf ? starIndex + 0.5 : starIndex + 1;
+        precision === "half" && isHalf ? starIndex + 0.5 : starIndex + 1;
       onChange(newValue);
     };
 
     const handleMouseMove = (
       starIndex: number,
-      e: React.MouseEvent<HTMLButtonElement>,
+      e: React.MouseEvent<HTMLButtonElement>
     ) => {
       if (!isInteractive) return;
 
       const rect = e.currentTarget.getBoundingClientRect();
       const isHalf =
-        precision === 'half' && e.clientX < rect.left + rect.width / 2;
+        precision === "half" && e.clientX < rect.left + rect.width / 2;
       setHoverValue(isHalf ? starIndex + 0.5 : starIndex + 1);
     };
 
@@ -131,7 +131,7 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
       const starValue = index + 1;
       const fillPercentage = Math.min(
         100,
-        Math.max(0, (displayValue - index) * 100),
+        Math.max(0, (displayValue - index) * 100)
       );
       const isFilled = fillPercentage >= 100;
       const isPartial = fillPercentage > 0 && fillPercentage < 100;
@@ -175,7 +175,7 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
             onClick={(e) => {
               const rect = e.currentTarget.getBoundingClientRect();
               const isHalf =
-                precision === 'half' && e.clientX < rect.left + rect.width / 2;
+                precision === "half" && e.clientX < rect.left + rect.width / 2;
               handleClick(index, isHalf);
             }}
             onMouseMove={(e) => handleMouseMove(index, e)}
@@ -183,9 +183,9 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
             disabled={disabled}
             aria-label={`Rate ${starValue} out of ${max}`}
             className={cn(
-              'focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 rounded',
-              'transition-transform hover:scale-110',
-              disabled && 'cursor-not-allowed',
+              "focus:outline-none focus:ring-2 focus:ring-offset-1 focus:ring-blue-500 rounded",
+              "transition-transform hover:scale-110",
+              disabled && "cursor-not-allowed"
             )}
           >
             {starContent}
@@ -200,8 +200,8 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
       <div
         ref={ref}
         data-testid={testId}
-        className={cn('inline-flex items-center gap-1', className)}
-        role={isInteractive ? 'radiogroup' : 'img'}
+        className={cn("inline-flex items-center gap-1", className)}
+        role={isInteractive ? "radiogroup" : "img"}
         aria-label={`Rating: ${value} out of ${max} stars`}
       >
         <div className="flex">
@@ -211,8 +211,8 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
         {showValue && (
           <span
             className={cn(
-              'font-medium text-gray-700 dark:text-gray-300',
-              textSizeStyles[size],
+              "font-medium text-gray-700 dark:text-gray-300",
+              textSizeStyles[size]
             )}
           >
             {value.toFixed(1)}
@@ -222,8 +222,8 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
         {count !== undefined && (
           <span
             className={cn(
-              'text-gray-500 dark:text-gray-400',
-              textSizeStyles[size],
+              "text-gray-500 dark:text-gray-400",
+              textSizeStyles[size]
             )}
           >
             ({count})
@@ -231,9 +231,9 @@ const RatingStarsCatto = forwardRef<HTMLDivElement, RatingStarsCattoProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
-RatingStarsCatto.displayName = 'RatingStarsCatto';
+RatingStarsCatto.displayName = "RatingStarsCatto";
 
 export default RatingStarsCatto;

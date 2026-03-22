@@ -1,5 +1,5 @@
 // @ccatto/ui - HR (Horizontal Rule / Divider) Components Stories
-import type { Meta, StoryObj } from '@storybook/react';
+import type { Meta, StoryObj } from "@storybook/react";
 import {
   HRAnimatedLineCatto,
   HRCircleCatto,
@@ -13,15 +13,15 @@ import {
   HRTriangleCatto,
   HRWideCatto,
   SectionTitleCatto,
-} from './index';
+} from "./index";
 
 // Use HRDividerCatto as the "main" component for autodocs
 const meta = {
-  title: 'Components/HR Dividers',
+  title: "Components/HR Dividers",
   component: HRDividerCatto,
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
 } satisfies Meta<typeof HRDividerCatto>;
 

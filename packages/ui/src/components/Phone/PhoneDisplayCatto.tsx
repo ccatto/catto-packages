@@ -1,16 +1,16 @@
 // @ccatto/ui - PhoneDisplayCatto Component
 // Display-only component for formatted phone numbers
-'use client';
+"use client";
 
-import React from 'react';
-import { formatPhoneNumber, PhoneFormatOptions } from '../../utils/phone';
+import React from "react";
+import { formatPhoneNumber, PhoneFormatOptions } from "../../utils/phone";
 
 export interface PhoneDisplayCattoProps {
   /** Phone number to display (raw or formatted) */
   value: string | null | undefined;
 
   /** Format style (default: 'national') */
-  format?: 'national' | 'international' | 'e164';
+  format?: "national" | "international" | "e164";
 
   /** Text to show when value is empty (default: 'Not provided') */
   emptyText?: string;
@@ -45,11 +45,11 @@ export interface PhoneDisplayCattoProps {
  */
 export default function PhoneDisplayCatto({
   value,
-  format = 'national',
-  emptyText = 'Not provided',
-  className = '',
+  format = "national",
+  emptyText = "Not provided",
+  className = "",
   asLink = false,
-  linkClassName = '',
+  linkClassName = "",
 }: PhoneDisplayCattoProps): React.ReactElement {
   // Format the phone number for display
   const formattedPhone = formatPhoneNumber(value, {
@@ -66,7 +66,7 @@ export default function PhoneDisplayCatto({
   }
 
   // Get E.164 format for tel: link
-  const telHref = `tel:${formatPhoneNumber(value, { format: 'e164' })}`;
+  const telHref = `tel:${formatPhoneNumber(value, { format: "e164" })}`;
 
   // Render as link if requested
   if (asLink) {
@@ -88,4 +88,4 @@ export default function PhoneDisplayCatto({
   );
 }
 
-PhoneDisplayCatto.displayName = 'PhoneDisplayCatto';
+PhoneDisplayCatto.displayName = "PhoneDisplayCatto";

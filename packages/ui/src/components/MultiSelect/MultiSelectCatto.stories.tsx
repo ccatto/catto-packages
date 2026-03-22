@@ -1,26 +1,26 @@
-import { useState } from 'react';
-import type { Meta, StoryObj } from '@storybook/react';
-import MultiSelectCatto, { MultiSelectOption } from './MultiSelectCatto';
+import { useState } from "react";
+import type { Meta, StoryObj } from "@storybook/react";
+import MultiSelectCatto, { MultiSelectOption } from "./MultiSelectCatto";
 
 const meta: Meta<typeof MultiSelectCatto> = {
-  title: 'Components/MultiSelectCatto',
+  title: "Components/MultiSelectCatto",
   component: MultiSelectCatto,
   parameters: {
-    layout: 'centered',
+    layout: "centered",
   },
-  tags: ['autodocs'],
+  tags: ["autodocs"],
   argTypes: {
     variant: {
-      control: 'select',
-      options: ['default', 'primary', 'outline'],
+      control: "select",
+      options: ["default", "primary", "outline"],
     },
     size: {
-      control: 'select',
-      options: ['sm', 'md', 'lg'],
+      control: "select",
+      options: ["sm", "md", "lg"],
     },
     width: {
-      control: 'select',
-      options: ['auto', 'full'],
+      control: "select",
+      options: ["auto", "full"],
     },
   },
   decorators: [
@@ -37,48 +37,48 @@ type Story = StoryObj<typeof MultiSelectCatto>;
 
 // Sample options
 const teamOptions: MultiSelectOption[] = [
-  { value: '1', label: 'Team Alpha', color: '#ef4444' },
-  { value: '2', label: 'Team Beta', color: '#3b82f6' },
-  { value: '3', label: 'Team Charlie', color: '#22c55e' },
-  { value: '4', label: 'Team Delta', color: '#f97316' },
-  { value: '5', label: 'Team Echo', color: '#8b5cf6' },
-  { value: '6', label: 'Team Foxtrot', color: '#ec4899' },
+  { value: "1", label: "Team Alpha", color: "#ef4444" },
+  { value: "2", label: "Team Beta", color: "#3b82f6" },
+  { value: "3", label: "Team Charlie", color: "#22c55e" },
+  { value: "4", label: "Team Delta", color: "#f97316" },
+  { value: "5", label: "Team Echo", color: "#8b5cf6" },
+  { value: "6", label: "Team Foxtrot", color: "#ec4899" },
 ];
 
 const teamOptionsWithDisabled: MultiSelectOption[] = [
-  { value: '1', label: 'Team Alpha', color: '#ef4444' },
+  { value: "1", label: "Team Alpha", color: "#ef4444" },
   {
-    value: '2',
-    label: 'Team Beta',
-    color: '#3b82f6',
+    value: "2",
+    label: "Team Beta",
+    color: "#3b82f6",
     disabled: true,
-    description: 'Already registered',
+    description: "Already registered",
   },
-  { value: '3', label: 'Team Charlie', color: '#22c55e' },
+  { value: "3", label: "Team Charlie", color: "#22c55e" },
   {
-    value: '4',
-    label: 'Team Delta',
-    color: '#f97316',
+    value: "4",
+    label: "Team Delta",
+    color: "#f97316",
     disabled: true,
-    description: 'Already registered',
+    description: "Already registered",
   },
-  { value: '5', label: 'Team Echo', color: '#8b5cf6' },
+  { value: "5", label: "Team Echo", color: "#8b5cf6" },
 ];
 
 const simpleOptions: MultiSelectOption[] = [
-  { value: 'apple', label: 'Apple' },
-  { value: 'banana', label: 'Banana' },
-  { value: 'cherry', label: 'Cherry' },
-  { value: 'date', label: 'Date' },
-  { value: 'elderberry', label: 'Elderberry' },
+  { value: "apple", label: "Apple" },
+  { value: "banana", label: "Banana" },
+  { value: "cherry", label: "Cherry" },
+  { value: "date", label: "Date" },
+  { value: "elderberry", label: "Elderberry" },
 ];
 
 // Interactive wrapper for stories
 const MultiSelectWrapper = (
-  props: Partial<React.ComponentProps<typeof MultiSelectCatto>>,
+  props: Partial<React.ComponentProps<typeof MultiSelectCatto>>
 ) => {
   const [selected, setSelected] = useState<string[]>(
-    props.selectedValues || [],
+    props.selectedValues || []
   );
 
   return (
@@ -182,7 +182,7 @@ export const WithoutColors: Story = {
 };
 
 export const PreSelected: Story = {
-  render: () => <MultiSelectWrapper selectedValues={['1', '3']} />,
+  render: () => <MultiSelectWrapper selectedValues={["1", "3"]} />,
 };
 
 export const WithError: Story = {
@@ -205,7 +205,7 @@ export const WithHelperText: Story = {
 
 export const Disabled: Story = {
   render: () => (
-    <MultiSelectWrapper label="Select Teams" disabled selectedValues={['1']} />
+    <MultiSelectWrapper label="Select Teams" disabled selectedValues={["1"]} />
   ),
 };
 

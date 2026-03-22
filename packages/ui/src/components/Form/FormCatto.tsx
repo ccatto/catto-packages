@@ -1,8 +1,8 @@
 // @ccatto/ui - FormCatto
 // Reusable form component built on react-hook-form with Zod validation
-'use client';
+"use client";
 
-import React, { JSX, useEffect, useRef, useState } from 'react';
+import React, { JSX, useEffect, useRef, useState } from "react";
 import {
   Controller,
   DefaultValues,
@@ -10,16 +10,16 @@ import {
   Path,
   SubmitHandler,
   useForm,
-} from 'react-hook-form';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { AlertCircle, X } from 'lucide-react';
-import { z } from 'zod';
-import { cn } from '../../utils';
-import ButtonCatto from '../Button/ButtonCatto';
-import InputCatto from '../Input/InputCatto';
-import LinkCatto from '../Link/LinkCatto';
-import LoadingMessageAndCircleCatto from '../Loading/LoadingMessageAndCircleCatto';
-import MellowModalCatto from '../Modal/MellowModalCatto';
+} from "react-hook-form";
+import { zodResolver } from "@hookform/resolvers/zod";
+import { AlertCircle, X } from "lucide-react";
+import { z } from "zod";
+import { cn } from "../../utils";
+import ButtonCatto from "../Button/ButtonCatto";
+import InputCatto from "../Input/InputCatto";
+import LinkCatto from "../Link/LinkCatto";
+import LoadingMessageAndCircleCatto from "../Loading/LoadingMessageAndCircleCatto";
+import MellowModalCatto from "../Modal/MellowModalCatto";
 
 /** Error action buttons configuration */
 export interface FormErrorActions {
@@ -51,10 +51,10 @@ export interface FormCattoLabels {
 
 /** Default labels */
 const DEFAULT_LABELS: Required<FormCattoLabels> = {
-  submit: 'Submit',
-  submitting: 'Submitting...',
-  cancel: 'Cancel',
-  error: 'Error',
+  submit: "Submit",
+  submitting: "Submitting...",
+  cancel: "Cancel",
+  error: "Error",
 };
 
 /** Field configuration for the form */
@@ -77,7 +77,7 @@ export interface FormField<T extends FieldValues> {
       value: T[keyof T];
       ref: React.Ref<HTMLInputElement | HTMLSelectElement>;
     },
-    fieldState: { error?: { message?: string } },
+    fieldState: { error?: { message?: string } }
   ) => JSX.Element;
 }
 
@@ -107,7 +107,7 @@ export interface FormCattoProps<T extends FieldValues> {
   /** Additional CSS classes for the form container */
   className?: string;
   /** Input variant style */
-  inputVariant?: 'outlined' | 'filled' | 'minimal';
+  inputVariant?: "outlined" | "filled" | "minimal";
   /** Content rendered inside the form container, before the fields */
   headerContent?: React.ReactNode;
 }
@@ -143,7 +143,7 @@ const FormCatto = <T extends FieldValues>({
   errorActions,
   labels = {},
   className,
-  inputVariant = 'outlined',
+  inputVariant = "outlined",
   headerContent,
 }: FormCattoProps<T>) => {
   // Merge with default labels
@@ -163,9 +163,9 @@ const FormCatto = <T extends FieldValues>({
     defaultValues: fields.reduce(
       (acc, field) => ({
         ...acc,
-        [field.name]: field.defaultValue ?? '',
+        [field.name]: field.defaultValue ?? "",
       }),
-      {},
+      {}
     ) as DefaultValues<T>,
   });
 
@@ -190,13 +190,15 @@ const FormCatto = <T extends FieldValues>({
   const firstInputRef = useRef<HTMLInputElement>(null);
 
   useEffect(() => {
-    if (firstInputRef.current) {
-      firstInputRef.current.focus();
-    }
+    // Use requestAnimationFrame to ensure the input is rendered before focusing
+    // (handles dynamic imports and lazy-loaded forms)
+    requestAnimationFrame(() => {
+      firstInputRef.current?.focus();
+    });
   }, []);
 
   return (
-    <div className={cn('flex w-full justify-center', className)}>
+    <div className={cn("flex w-full justify-center", className)}>
       <div className="w-full rounded-2xl bg-gray-300 p-2 dark:bg-gray-600">
         <form
           className="w-full"
@@ -232,11 +234,7 @@ const FormCatto = <T extends FieldValues>({
           )}
 
           {fields.map((field, index) => (
-            <div
-              className="w-full"
-              key={field.name}
-              style={{ marginBottom: '1rem' }}
-            >
+            <div className="w-full mb-4" key={field.name}>
               <div className="mb-2">
                 <label
                   className="m-4 font-light text-slate-900 dark:text-gray-100"
@@ -257,8 +255,8 @@ const FormCatto = <T extends FieldValues>({
                     <>
                       <InputCatto
                         id={field.name}
-                        type={field.type || 'text'}
-                        placeholder={field.placeholder || ''}
+                        type={field.type || "text"}
+                        placeholder={field.placeholder || ""}
                         ref={index === 0 ? firstInputRef : null}
                         value={controllerField.value}
                         onChange={(value, event) => {
@@ -268,7 +266,7 @@ const FormCatto = <T extends FieldValues>({
                         disabled={isSubmitting}
                         variant={inputVariant}
                         size="medium"
-                        className="mt-2 ps-10"
+                        className="mt-2"
                       />
                       {errors[field.name] && (
                         <span className="text-red-800 dark:text-red-500">

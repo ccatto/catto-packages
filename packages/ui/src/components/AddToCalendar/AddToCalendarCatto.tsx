@@ -1,18 +1,18 @@
 // @ccatto/ui - AddToCalendarCatto Component
 // Dropdown button to add an event to Google Calendar or download .ics file
-'use client';
+"use client";
 
-import React, { forwardRef, useEffect, useRef, useState } from 'react';
-import { Calendar, Download, ExternalLink } from 'lucide-react';
-import type { AddToCalendarLabels } from '../../i18n/defaults';
-import { DEFAULT_ADD_TO_CALENDAR_LABELS } from '../../i18n/defaults';
-import { cn } from '../../utils';
-import type { CalendarEvent } from '../../utils/calendar-utils';
+import React, { forwardRef, useEffect, useRef, useState } from "react";
+import { Calendar, Download, ExternalLink } from "lucide-react";
+import type { AddToCalendarLabels } from "../../i18n/defaults";
+import { DEFAULT_ADD_TO_CALENDAR_LABELS } from "../../i18n/defaults";
+import { cn } from "../../utils";
+import type { CalendarEvent } from "../../utils/calendar-utils";
 import {
   downloadICSFile,
   generateGoogleCalendarURL,
-} from '../../utils/calendar-utils';
-import ButtonCatto from '../Button/ButtonCatto';
+} from "../../utils/calendar-utils";
+import ButtonCatto from "../Button/ButtonCatto";
 
 // ============================================================================
 // TYPES
@@ -62,24 +62,24 @@ const AddToCalendarCatto = forwardRef<HTMLDivElement, AddToCalendarCattoProps>(
       };
 
       if (isOpen) {
-        document.addEventListener('mousedown', handleClickOutside);
+        document.addEventListener("mousedown", handleClickOutside);
       }
       return () =>
-        document.removeEventListener('mousedown', handleClickOutside);
+        document.removeEventListener("mousedown", handleClickOutside);
     }, [isOpen]);
 
     // Close on Escape key
     useEffect(() => {
       const handleEscape = (e: KeyboardEvent) => {
-        if (e.key === 'Escape' && isOpen) {
+        if (e.key === "Escape" && isOpen) {
           setIsOpen(false);
         }
       };
 
       if (isOpen) {
-        document.addEventListener('keydown', handleEscape);
+        document.addEventListener("keydown", handleEscape);
       }
-      return () => document.removeEventListener('keydown', handleEscape);
+      return () => document.removeEventListener("keydown", handleEscape);
     }, [isOpen]);
 
     const handleDownloadICS = () => {
@@ -88,13 +88,13 @@ const AddToCalendarCatto = forwardRef<HTMLDivElement, AddToCalendarCattoProps>(
     };
 
     const handleGoogleCalendar = () => {
-      window.open(generateGoogleCalendarURL(event), '_blank', 'noopener');
+      window.open(generateGoogleCalendarURL(event), "_blank", "noopener");
       setIsOpen(false);
     };
 
     const handleContainerRef = (node: HTMLDivElement | null) => {
       dropdownRef.current = node;
-      if (typeof ref === 'function') {
+      if (typeof ref === "function") {
         ref(node);
       } else if (ref) {
         ref.current = node;
@@ -102,18 +102,18 @@ const AddToCalendarCatto = forwardRef<HTMLDivElement, AddToCalendarCattoProps>(
     };
 
     return (
-      <div className={cn('relative', className)} ref={handleContainerRef}>
+      <div className={cn("relative", className)} ref={handleContainerRef}>
         {/* Trigger Button */}
         <ButtonCatto
           variant="ghost"
           size="small"
-          width={compact ? 'fit' : 'auto'}
+          width={compact ? "fit" : "auto"}
           onClick={() => setIsOpen(!isOpen)}
           disabled={disabled}
           className={cn(
             compact
-              ? 'text-gray-500 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400'
-              : 'text-gray-600 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400',
+              ? "text-gray-500 hover:text-orange-500 dark:text-gray-400 dark:hover:text-orange-400"
+              : "text-gray-600 hover:text-orange-600 dark:text-gray-400 dark:hover:text-orange-400"
           )}
         >
           <Calendar className="h-4 w-4" aria-hidden="true" />
@@ -163,9 +163,9 @@ const AddToCalendarCatto = forwardRef<HTMLDivElement, AddToCalendarCattoProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
-AddToCalendarCatto.displayName = 'AddToCalendarCatto';
+AddToCalendarCatto.displayName = "AddToCalendarCatto";
 
 export default AddToCalendarCatto;

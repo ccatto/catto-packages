@@ -1,24 +1,24 @@
 // @ccatto/ui - ToastCatto Component
-'use client';
+"use client";
 
-import React, { useCallback, useEffect, useState } from 'react';
-import { X } from 'lucide-react';
+import React, { useCallback, useEffect, useState } from "react";
+import { X } from "lucide-react";
 
 type ToastVariant =
-  | 'primary'
-  | 'success'
-  | 'warning'
-  | 'error'
-  | 'info'
-  | 'midnightEmber';
-type ToastSize = 'sm' | 'md' | 'lg';
-type ToastAnimation = 'slide' | 'fade' | 'bounce' | 'none';
+  | "primary"
+  | "success"
+  | "warning"
+  | "error"
+  | "info"
+  | "midnightEmber";
+type ToastSize = "sm" | "md" | "lg";
+type ToastAnimation = "slide" | "fade" | "bounce" | "none";
 type ToastPlacement =
-  | 'lowerLeft'
-  | 'lowerRight'
-  | 'upperLeft'
-  | 'upperRight'
-  | 'center';
+  | "lowerLeft"
+  | "lowerRight"
+  | "upperLeft"
+  | "upperRight"
+  | "center";
 
 export interface ToastCattoProps {
   header?: string;
@@ -32,43 +32,43 @@ export interface ToastCattoProps {
 }
 
 const variantStyles: Record<ToastVariant, string> = {
-  primary: 'bg-theme-primary text-theme-on-primary',
-  success: 'bg-green-500 text-gray-900',
-  warning: 'bg-yellow-500 text-slate-900',
-  error: 'bg-red-500 text-slate-50',
-  info: 'bg-cyan-500 text-slate-50',
-  midnightEmber: 'bg-[#1a2743] text-[#ff6b35]',
+  primary: "bg-theme-primary text-theme-on-primary",
+  success: "bg-green-500 text-gray-900",
+  warning: "bg-yellow-500 text-slate-900",
+  error: "bg-red-500 text-slate-50",
+  info: "bg-cyan-500 text-slate-50",
+  midnightEmber: "bg-[#1a2743] text-[#ff6b35]",
 };
 
 const sizeStyles: Record<ToastSize, string> = {
-  sm: 'text-sm py-2 px-3 min-w-[250px]',
-  md: 'text-base py-3 px-4 min-w-[300px]',
-  lg: 'text-lg py-4 px-5 min-w-[350px]',
+  sm: "text-sm py-2 px-3 min-w-[250px]",
+  md: "text-base py-3 px-4 min-w-[300px]",
+  lg: "text-lg py-4 px-5 min-w-[350px]",
 };
 
 const animationStyles: Record<ToastAnimation, string> = {
-  slide: 'animate-slideIn',
-  fade: 'animate-fadeIn',
-  bounce: 'animate-bounceIn',
-  none: '',
+  slide: "animate-slideIn",
+  fade: "animate-fadeIn",
+  bounce: "animate-bounceIn",
+  none: "",
 };
 
 const placementStyles: Record<ToastPlacement, string> = {
-  lowerLeft: 'bottom-20 left-4',
-  lowerRight: 'bottom-20 right-4',
-  upperLeft: 'top-4 left-4',
-  upperRight: 'top-4 right-4',
-  center: 'top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2',
+  lowerLeft: "bottom-20 left-4",
+  lowerRight: "bottom-20 right-4",
+  upperLeft: "top-4 left-4",
+  upperRight: "top-4 right-4",
+  center: "top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2",
 };
 
 const ToastCatto: React.FC<ToastCattoProps> = ({
   header,
   body,
-  variant = 'primary',
-  size = 'md',
-  animation = 'slide',
+  variant = "primary",
+  size = "md",
+  animation = "slide",
   duration = 3000,
-  placement = 'upperRight',
+  placement = "upperRight",
   onClose,
 }) => {
   const [isVisible, setIsVisible] = useState(true);
@@ -95,16 +95,16 @@ const ToastCatto: React.FC<ToastCattoProps> = ({
     }, 10);
 
     const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === 'Escape') {
+      if (event.key === "Escape") {
         handleClose();
       }
     };
 
-    window.addEventListener('keydown', handleKeyDown);
+    window.addEventListener("keydown", handleKeyDown);
 
     return () => {
       clearInterval(progressInterval);
-      window.removeEventListener('keydown', handleKeyDown);
+      window.removeEventListener("keydown", handleKeyDown);
     };
   }, [duration, handleClose]);
 
@@ -133,7 +133,7 @@ const ToastCatto: React.FC<ToastCattoProps> = ({
             className="absolute bottom-0 left-0 h-1 bg-gray-900/30"
             style={{
               width: `${progress}%`,
-              transition: 'width 0.1s linear',
+              transition: "width 0.1s linear",
             }}
           />
         </div>

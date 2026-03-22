@@ -1,32 +1,33 @@
 // @ccatto/ui - InputCatto Component
-'use client';
+"use client";
 
-import React, { forwardRef, useId, useRef, useState } from 'react';
+import React, { forwardRef, useId, useRef, useState } from "react";
 
-export interface InputCattoProps extends Omit<
-  React.InputHTMLAttributes<HTMLInputElement>,
-  'size' | 'onChange'
-> {
+export interface InputCattoProps
+  extends Omit<
+    React.InputHTMLAttributes<HTMLInputElement>,
+    "size" | "onChange"
+  > {
   value?: string;
   /** Custom onChange handler (value, event) - for backwards compatibility */
   onChange?: (
     value: string,
-    event: React.ChangeEvent<HTMLInputElement>,
+    event: React.ChangeEvent<HTMLInputElement>
   ) => void;
   /** Native onChange handler for React Hook Form register() compatibility */
   onChangeNative?: React.ChangeEventHandler<HTMLInputElement>;
   placeholder?: string;
-  size?: 'small' | 'medium' | 'large';
+  size?: "small" | "medium" | "large";
   className?: string;
   type?: string;
   width?: string;
-  variant?: 'outlined' | 'filled' | 'minimal';
+  variant?: "outlined" | "filled" | "minimal";
 
   // NEW: Label support
   /** Optional label text displayed above or beside the input */
   label?: string;
   /** Position of the label: 'top' (default) or 'left' (inline) */
-  labelPosition?: 'top' | 'left';
+  labelPosition?: "top" | "left";
   /** Show required indicator (*) after label */
   required?: boolean;
 
@@ -48,26 +49,26 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
       value,
       onChange,
       onChangeNative,
-      placeholder = '',
-      size = 'medium',
-      className = '',
-      type = 'text',
-      width = 'w-full',
-      variant = 'outlined',
+      placeholder = "",
+      size = "medium",
+      className = "",
+      type = "text",
+      width = "w-full",
+      variant = "outlined",
       disabled,
       onFocus,
       onBlur,
       // New props
       label,
-      labelPosition = 'top',
+      labelPosition = "top",
       required,
       error,
       helperText,
-      wrapperClassName = '',
+      wrapperClassName = "",
       id: providedId,
       ...props
     },
-    ref,
+    ref
   ) => {
     const [isFocused, setIsFocused] = useState(false);
     const inputRef = useRef<HTMLInputElement | null>(null);
@@ -76,56 +77,56 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
 
     // Size variations
     const sizeClasses = {
-      small: 'h-8 px-2 text-sm',
-      medium: 'h-10 px-3 text-base',
-      large: 'h-12 px-4 text-lg',
+      small: "h-8 px-2 text-sm",
+      medium: "h-10 px-3 text-base",
+      large: "h-12 px-4 text-lg",
     };
 
     // Error state styling
     const hasError = Boolean(error);
     const errorBorderClasses = hasError
-      ? 'border-red-500 dark:border-red-400'
-      : '';
+      ? "border-red-500 dark:border-red-400"
+      : "";
     // Focus ring - uses theme secondary (accent) for focus states
     const errorFocusClasses = hasError
-      ? 'ring-red-500/20 dark:ring-red-400/20 shadow-red-500/10 dark:shadow-red-400/10'
-      : 'ring-theme-accent shadow-theme-accent';
+      ? "ring-red-500/20 dark:ring-red-400/20 shadow-red-500/10 dark:shadow-red-400/10"
+      : "ring-theme-accent shadow-theme-accent";
 
     // Variant styles with focus states - explicit colors
     const getVariantClasses = () => {
       // Focus border uses theme secondary (accent color)
       const focusBorder = hasError
-        ? 'border-red-500 dark:border-red-400'
-        : 'border-theme-secondary';
+        ? "border-red-500 dark:border-red-400"
+        : "border-theme-secondary";
 
       const baseBorder = hasError
-        ? 'border-red-500 dark:border-red-400'
-        : 'border-slate-300 dark:border-slate-700';
+        ? "border-red-500 dark:border-red-400"
+        : "border-slate-300 dark:border-slate-700";
 
       switch (variant) {
-        case 'outlined':
+        case "outlined":
           return `
             border ${isFocused ? focusBorder : baseBorder}
             bg-theme-surface text-theme-text
           `;
-        case 'filled':
+        case "filled":
           return `
             border-0 border-b-2 ${isFocused ? focusBorder : baseBorder}
             bg-theme-surface-sunken text-theme-text
           `;
-        case 'minimal':
+        case "minimal":
           return `
             border-0 border-b ${isFocused ? focusBorder : baseBorder}
             bg-transparent text-theme-text
           `;
         default:
-          return '';
+          return "";
       }
     };
 
     // Focus ring and glow effect
     const focusClasses =
-      isFocused && !disabled ? `ring-4 ${errorFocusClasses} shadow-lg` : '';
+      isFocused && !disabled ? `ring-4 ${errorFocusClasses} shadow-lg` : "";
 
     // Base states and interactions - explicit colors
     const stateClasses = {
@@ -164,6 +165,7 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
     // Combine all classes for input
     const inputClasses = `
       ${width}
+      max-w-full min-w-0
       ${sizeClasses[size]}
       ${getVariantClasses()}
       ${disabled ? stateClasses.disabled : stateClasses.default}
@@ -172,13 +174,13 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
       ${className}
     `
       .trim()
-      .replace(/\s+/g, ' ');
+      .replace(/\s+/g, " ");
 
     // Label classes based on position
     const labelClasses =
-      labelPosition === 'left'
-        ? 'flex items-center text-sm font-medium text-theme-text-muted mr-3 whitespace-nowrap'
-        : 'block text-sm font-medium text-theme-text-muted mb-1';
+      labelPosition === "left"
+        ? "flex items-center text-sm font-medium text-theme-text-muted mr-3 whitespace-nowrap"
+        : "block text-sm font-medium text-theme-text-muted mb-1";
 
     // The input element
     // Only pass value prop if explicitly provided (allows uncontrolled mode for RHF)
@@ -188,7 +190,7 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
       <input
         ref={(el) => {
           // Handle forwarded ref
-          if (typeof ref === 'function') {
+          if (typeof ref === "function") {
             ref(el);
           } else if (ref) {
             (ref as React.MutableRefObject<HTMLInputElement | null>).current =
@@ -206,13 +208,13 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
         disabled={disabled}
         onFocus={handleFocus}
         onBlur={handleBlur}
-        aria-invalid={hasError ? 'true' : undefined}
+        aria-invalid={hasError ? "true" : undefined}
         aria-describedby={
-          error && typeof error === 'string'
+          error && typeof error === "string"
             ? `${inputId}-error`
             : helperText
-              ? `${inputId}-helper`
-              : undefined
+            ? `${inputId}-helper`
+            : undefined
         }
         {...props}
       />
@@ -225,7 +227,7 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
 
     // Wrapper layout classes
     const wrapperLayoutClasses =
-      labelPosition === 'left' ? 'flex items-center' : 'flex flex-col';
+      labelPosition === "left" ? "flex items-center" : "flex flex-col";
 
     return (
       <div className={`${wrapperLayoutClasses} ${wrapperClassName}`}>
@@ -240,11 +242,11 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
         )}
 
         {/* Input wrapper for left-label layout */}
-        {labelPosition === 'left' ? (
+        {labelPosition === "left" ? (
           <div className="flex-1 flex flex-col">
             {inputElement}
             {/* Error message */}
-            {error && typeof error === 'string' && (
+            {error && typeof error === "string" && (
               <p
                 id={`${inputId}-error`}
                 className="mt-1 text-sm text-red-600 dark:text-red-400"
@@ -254,7 +256,7 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
               </p>
             )}
             {/* Helper text (only shown when no error message) */}
-            {helperText && !(error && typeof error === 'string') && (
+            {helperText && !(error && typeof error === "string") && (
               <p
                 id={`${inputId}-helper`}
                 className="mt-1 text-sm text-theme-text-subtle"
@@ -267,7 +269,7 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
           <>
             {inputElement}
             {/* Error message */}
-            {error && typeof error === 'string' && (
+            {error && typeof error === "string" && (
               <p
                 id={`${inputId}-error`}
                 className="mt-1 text-sm text-red-600 dark:text-red-400"
@@ -277,7 +279,7 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
               </p>
             )}
             {/* Helper text (only shown when no error message) */}
-            {helperText && !(error && typeof error === 'string') && (
+            {helperText && !(error && typeof error === "string") && (
               <p
                 id={`${inputId}-helper`}
                 className="mt-1 text-sm text-theme-text-subtle"
@@ -289,9 +291,9 @@ const InputCatto = forwardRef<HTMLInputElement, InputCattoProps>(
         )}
       </div>
     );
-  },
+  }
 );
 
-InputCatto.displayName = 'InputCatto';
+InputCatto.displayName = "InputCatto";
 
 export default InputCatto;
