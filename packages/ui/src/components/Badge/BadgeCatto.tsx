@@ -17,8 +17,8 @@ export type BadgeVariant =
 export type BadgeSize = 'xs' | 'sm' | 'md' | 'lg';
 
 export interface BadgeCattoProps {
-  /** Badge content (text or number) */
-  children: React.ReactNode;
+  /** Badge content (text or number, optional when dot=true) */
+  children?: React.ReactNode;
   /** Visual style variant */
   variant?: BadgeVariant;
   /** Size of the badge */
