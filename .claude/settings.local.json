@@ -24,7 +24,8 @@
       "Bash(ls packages/ui/vitest.config.*)",
       "Bash(find:*)",
       "Bash(git pull:*)",
-      "Bash(npm publish:*)"
+      "Bash(npm publish:*)",
+      "Bash(git checkout:*)"
     ]
   }
 }

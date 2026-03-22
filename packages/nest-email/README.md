@@ -1,6 +1,6 @@
 # @ccatto/nest-email
 
-Catto Email - NestJS email service with SendGrid integration.
+NestJS email service with SendGrid integration.
 
 ## Install
 
