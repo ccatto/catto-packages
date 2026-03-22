@@ -25,7 +25,8 @@
       "Bash(find:*)",
       "Bash(git pull:*)",
       "Bash(npm publish:*)",
-      "Bash(git checkout:*)"
+      "Bash(git checkout:*)",
+      "Bash(ls /Users/chriscatto/Documents/GitK8/catto-packages/node_modules/@testing-library/jest-dom/vitest*)"
     ]
   }
 }

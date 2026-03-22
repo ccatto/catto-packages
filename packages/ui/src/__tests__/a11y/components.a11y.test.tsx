@@ -113,19 +113,19 @@ describe('Accessibility Tests', () => {
 
     // SelectCatto uses a div with tabindex instead of combobox role - check it's focusable
     it('select trigger is focusable', () => {
-      const { container } = render(<SelectCatto options={options} />);
+      const { container } = render(<SelectCatto options={options} value="" onChange={() => {}} />);
       const trigger = container.querySelector('[tabindex="0"]');
       expect(trigger).toBeInTheDocument();
     });
 
     it('has aria-expanded attribute', () => {
-      const { container } = render(<SelectCatto options={options} />);
+      const { container } = render(<SelectCatto options={options} value="" onChange={() => {}} />);
       const trigger = container.querySelector('[aria-expanded]');
       expect(trigger).toHaveAttribute('aria-expanded');
     });
 
     it('has aria-haspopup attribute', () => {
-      const { container } = render(<SelectCatto options={options} />);
+      const { container } = render(<SelectCatto options={options} value="" onChange={() => {}} />);
       const trigger = container.querySelector('[aria-haspopup]');
       expect(trigger).toHaveAttribute('aria-haspopup', 'listbox');
     });

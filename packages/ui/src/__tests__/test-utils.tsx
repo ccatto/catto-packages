@@ -1,6 +1,7 @@
 // @ccatto/ui Test Utilities
 // Custom render function and testing helpers
 
+import { vi } from 'vitest';
 import type { ReactElement, ReactNode } from 'react';
 import { cleanup, render, type RenderOptions } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
@@ -42,7 +43,7 @@ const AllProviders = ({ children }: WrapperProps) => {
 const customRender = (
   ui: ReactElement,
   options?: Omit<RenderOptions, 'wrapper'>,
-) => {
+): ReturnType<typeof render> & { user: ReturnType<typeof userEvent.setup> } => {
   return {
     user: userEvent.setup(),
     ...render(ui, { wrapper: AllProviders, ...options }),
