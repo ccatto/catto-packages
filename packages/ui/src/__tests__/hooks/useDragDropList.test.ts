@@ -27,7 +27,7 @@ Object.defineProperty(navigator, "maxTouchPoints", {
 });
 // Remove ontouchstart if present (jsdom may define it)
 if ("ontouchstart" in window) {
-  delete (window as Record<string, unknown>).ontouchstart;
+  delete (window as unknown as Record<string, unknown>).ontouchstart;
 }
 
 describe("useDragDropList", () => {
