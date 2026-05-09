@@ -1,0 +1,63 @@
+{
+  "name": "@ccatto/auth-ui",
+  "version": "0.1.0",
+  "description": "Catto Auth UI - presentational React forms (sign-in, register, login) for Catto-based apps. Bring your own auth client.",
+  "license": "MIT",
+  "author": "Chris Catto",
+  "keywords": [
+    "react",
+    "react-components",
+    "authentication",
+    "auth-ui",
+    "sign-in",
+    "register",
+    "next-intl",
+    "tailwindcss",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/auth-ui",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/auth-ui"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@ccatto/ui": "*",
+    "@types/react": "^19.0.0",
+    "glob": "^13.0.0",
+    "next-intl": "^4.0.0",
+    "react": "^19.0.0",
+    "rimraf": "^6.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "@ccatto/ui": ">=1.0.0",
+    "next-intl": ">=3.0.0",
+    "react": ">=18.0.0"
+  }
+}
