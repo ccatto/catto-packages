@@ -5,22 +5,22 @@ import { ThemeProvider } from "../../context/ThemeProvider";
 
 // Mock the themes module
 vi.mock("../../themes", () => ({
-  THEMES: ["rleaguez", "neon-pulse"] as const,
+  THEMES: ["corporate-steel", "neon-pulse"] as const,
   THEME_METADATA: {
-    rleaguez: { label: "RLeaguez", description: "Orange and navy theme" },
+    "corporate-steel": { label: "Corporate Steel", description: "Default professional blue & teal theme" },
     "neon-pulse": { label: "Neon Pulse", description: "Vibrant neon theme" },
   },
-  isValidTheme: (theme: string) => ["rleaguez", "neon-pulse"].includes(theme),
+  isValidTheme: (theme: string) => ["corporate-steel", "neon-pulse"].includes(theme),
 }));
 
 // Wrapper component with ThemeProvider
 const renderWithThemeProvider = (
   ui: React.ReactElement,
-  options?: { defaultTheme?: "rleaguez" | "neon-pulse" }
+  options?: { defaultTheme?: "corporate-steel" | "neon-pulse" }
 ) => {
   return render(
     <ThemeProvider
-      defaultTheme={options?.defaultTheme || "rleaguez"}
+      defaultTheme={options?.defaultTheme || "corporate-steel"}
       disablePersistence
     >
       {ui}
@@ -49,7 +49,7 @@ describe("ThemeSwitcherCatto", () => {
     it("displays current theme as selected", () => {
       renderWithThemeProvider(<ThemeSwitcherCatto />);
 
-      expect(screen.getByText("RLeaguez")).toBeInTheDocument();
+      expect(screen.getByText("Corporate Steel")).toBeInTheDocument();
     });
 
     it("shows all available themes in dropdown", () => {
@@ -59,9 +59,9 @@ describe("ThemeSwitcherCatto", () => {
       const trigger = screen.getByRole("combobox");
       fireEvent.click(trigger);
 
-      // After opening, there will be multiple RLeaguez texts (trigger + option)
-      const rleaguezElements = screen.getAllByText("RLeaguez");
-      expect(rleaguezElements.length).toBeGreaterThanOrEqual(1);
+      // After opening, there will be multiple Corporate Steel texts (trigger + option)
+      const themeOptions = screen.getAllByText("Corporate Steel");
+      expect(themeOptions.length).toBeGreaterThanOrEqual(1);
 
       // Neon Pulse should appear as an option
       expect(screen.getByText("Neon Pulse")).toBeInTheDocument();
