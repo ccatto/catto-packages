@@ -43,3 +43,8 @@ export type {
   RegisterUserFormCattoProps,
   RegisterValues,
 } from './RegisterUserFormCatto';
+export { default as UserProfileFormCatto } from './UserProfileFormCatto';
+export type {
+  UserProfileFormCattoProps,
+  ProfileValues,
+} from './UserProfileFormCatto';
