@@ -1,0 +1,85 @@
+/**
+ * @ccatto/ui — Tailwind v4 token mapping
+ *
+ * Maps every `--catto-theme-*` design token (defined in `tokens.css` and
+ * the per-palette files like `corporate-steel.css`) to a `--color-theme-*`
+ * Tailwind theme entry, so utility classes like `bg-theme-primary`,
+ * `text-theme-on-primary`, `bg-theme-success`, etc. all resolve in your
+ * app's compiled CSS.
+ *
+ * Without this file, consumers had to mirror this list by hand inside their
+ * own `@theme {}` block in globals.css — easy to miss tokens (notably
+ * `text-theme-on-primary`), which would silently render unreadable text on
+ * primary buttons until someone caught it.
+ *
+ * ## Usage
+ *
+ * In your app's globals.css (Tailwind v4):
+ *
+ * ```css
+ * @import 'tailwindcss';
+ * @import '@ccatto/ui/themes/tokens.css';            // base CSS variables
+ * @import '@ccatto/ui/themes/corporate-steel.css';   // your chosen palette
+ * @import '@ccatto/ui/themes/tailwind-tokens.css';   // this file
+ *
+ * @source "../../../../node_modules/@ccatto/ui/dist";  // scan package classes
+ * ```
+ */
+
+@theme {
+  /* Primary */
+  --color-theme-primary: var(--catto-theme-primary);
+  --color-theme-primary-hover: var(--catto-theme-primary-hover);
+  --color-theme-primary-active: var(--catto-theme-primary-active);
+  --color-theme-primary-subtle: var(--catto-theme-primary-subtle);
+  --color-theme-on-primary: var(--catto-theme-on-primary);
+
+  /* Secondary */
+  --color-theme-secondary: var(--catto-theme-secondary);
+  --color-theme-secondary-hover: var(--catto-theme-secondary-hover);
+  --color-theme-secondary-active: var(--catto-theme-secondary-active);
+  --color-theme-secondary-subtle: var(--catto-theme-secondary-subtle);
+  --color-theme-on-secondary: var(--catto-theme-on-secondary);
+
+  /* Accent */
+  --color-theme-accent: var(--catto-theme-accent);
+  --color-theme-accent-hover: var(--catto-theme-accent-hover);
+  --color-theme-on-accent: var(--catto-theme-on-accent);
+
+  /* Surfaces & background */
+  --color-theme-background: var(--catto-theme-background);
+  --color-theme-surface: var(--catto-theme-surface);
+  --color-theme-surface-elevated: var(--catto-theme-surface-elevated);
+  --color-theme-surface-sunken: var(--catto-theme-surface-sunken);
+
+  /* Text */
+  --color-theme-text: var(--catto-theme-text);
+  --color-theme-text-muted: var(--catto-theme-text-muted);
+  --color-theme-text-subtle: var(--catto-theme-text-subtle);
+  --color-theme-text-inverse: var(--catto-theme-text-inverse);
+
+  /* Borders */
+  --color-theme-border: var(--catto-theme-border);
+  --color-theme-border-strong: var(--catto-theme-border-strong);
+  --color-theme-border-subtle: var(--catto-theme-border-subtle);
+
+  /* Status: success */
+  --color-theme-success: var(--catto-theme-success);
+  --color-theme-success-subtle: var(--catto-theme-success-subtle);
+  --color-theme-on-success: var(--catto-theme-on-success);
+
+  /* Status: warning */
+  --color-theme-warning: var(--catto-theme-warning);
+  --color-theme-warning-subtle: var(--catto-theme-warning-subtle);
+  --color-theme-on-warning: var(--catto-theme-on-warning);
+
+  /* Status: error */
+  --color-theme-error: var(--catto-theme-error);
+  --color-theme-error-subtle: var(--catto-theme-error-subtle);
+  --color-theme-on-error: var(--catto-theme-on-error);
+
+  /* Status: info */
+  --color-theme-info: var(--catto-theme-info);
+  --color-theme-info-subtle: var(--catto-theme-info-subtle);
+  --color-theme-on-info: var(--catto-theme-on-info);
+}

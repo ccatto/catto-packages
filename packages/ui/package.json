@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/ui",
-  "version": "1.4.1",
+  "version": "1.5.0",
   "description": "Catto UI Component Library - React components with Tailwind CSS",
   "keywords": [
     "react",
@@ -62,6 +62,10 @@
       "style": "./dist/themes/forest-earth.css",
       "default": "./dist/themes/forest-earth.css"
     },
+    "./dist/themes/tailwind-tokens.css": {
+      "style": "./dist/themes/tailwind-tokens.css",
+      "default": "./dist/themes/tailwind-tokens.css"
+    },
     "./themes/tokens.css": {
       "style": "./dist/themes/tokens.css",
       "default": "./dist/themes/tokens.css"
@@ -81,6 +85,10 @@
     "./themes/forest-earth.css": {
       "style": "./dist/themes/forest-earth.css",
       "default": "./dist/themes/forest-earth.css"
+    },
+    "./themes/tailwind-tokens.css": {
+      "style": "./dist/themes/tailwind-tokens.css",
+      "default": "./dist/themes/tailwind-tokens.css"
     }
   },
   "main": "./dist/index.cjs",
