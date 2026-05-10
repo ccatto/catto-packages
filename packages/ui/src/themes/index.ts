@@ -8,7 +8,6 @@
 
 // Available themes - add new themes here
 export const THEMES = [
-  "rleaguez",
   "neon-pulse",
   "royal-crown",
   "corporate-steel",
@@ -32,13 +31,6 @@ export interface ThemeMetadata {
 }
 
 export const THEME_METADATA: Record<ThemeName, ThemeMetadata> = {
-  rleaguez: {
-    name: "rleaguez",
-    label: "RLeaguez",
-    description: "Default orange & navy blue theme",
-    primaryColor: "#1e40af", // Navy blue
-    secondaryColor: "#f97316", // Orange
-  },
   "neon-pulse": {
     name: "neon-pulse",
     label: "Neon Pulse",
@@ -89,7 +81,6 @@ export function isValidTheme(theme: string): theme is ThemeName {
  * Used by build tools to know which files to include
  */
 export const THEME_FILES: Record<ThemeName, string> = {
-  rleaguez: "./rleaguez.css",
   "neon-pulse": "./neon-pulse.css",
   "royal-crown": "./royal-crown.css",
   "corporate-steel": "./corporate-steel.css",

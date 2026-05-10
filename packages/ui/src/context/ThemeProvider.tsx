@@ -11,7 +11,7 @@
  *   import { ThemeProvider, useTheme } from '@ccatto/ui';
  *
  *   // Wrap your app
- *   <ThemeProvider defaultTheme="rleaguez">
+ *   <ThemeProvider defaultTheme="corporate-steel">
  *     <App />
  *   </ThemeProvider>
  *
@@ -75,7 +75,7 @@ interface ThemeProviderProps {
  */
 export function ThemeProvider({
   children,
-  defaultTheme = "rleaguez",
+  defaultTheme = "corporate-steel",
   defaultSpacing = "default",
   storageKey = "catto-theme",
   disablePersistence = false,

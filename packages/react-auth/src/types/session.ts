@@ -16,8 +16,13 @@ export interface EnrichedUser {
   /** Custom fields added by enrichSession hook */
   playerID?: number;
   role: string;
-  organizationId: string | null;
-  organizations: Array<{
+  /**
+   * Optional multi-tenant fields. Apps that don't model organizations can omit
+   * them entirely; legacy callers that always set them (incl. to null / [])
+   * still typecheck.
+   */
+  organizationId?: string | null;
+  organizations?: Array<{
     id: string;
     name: string;
     slug: string;
@@ -51,8 +56,9 @@ export interface CompatSessionUser {
   image: string | null;
   playerID?: number;
   role: string;
-  organizationId: string | null;
-  organizations: Array<{
+  /** See `EnrichedUser.organizationId` — optional multi-tenant field. */
+  organizationId?: string | null;
+  organizations?: Array<{
     id: string;
     name: string;
     slug: string;
