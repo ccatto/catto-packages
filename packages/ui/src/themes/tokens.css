@@ -120,10 +120,12 @@
  * tokens generally read fine on a dark surface without help.
  * ============================================================================ */
 .surface-fixed-dark {
-  /* Text */
-  --catto-theme-text: #f8fafc; /* slate-50  — primary text */
-  --catto-theme-text-muted: #cbd5e1; /* slate-300 — labels */
-  --catto-theme-text-subtle: #94a3b8; /* slate-400 — helper text */
+  /* Text — brighter than dark-mode defaults for higher contrast against
+   * heavily saturated dark backgrounds (e.g. blue-900) where mid slate
+   * gray reads as muted/dim rather than as a label. */
+  --catto-theme-text: #ffffff; /* pure white — primary text */
+  --catto-theme-text-muted: #f1f5f9; /* slate-100 — labels */
+  --catto-theme-text-subtle: #cbd5e1; /* slate-300 — helper text */
   --catto-theme-text-inverse: #0f172a; /* slate-900 — for inverse contexts */
 
   /* Borders */
