@@ -3,7 +3,7 @@
 // Gmail-style row selection - hidden by default, shown when showSelection={true}
 "use client";
 
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 import CheckboxCatto from "../Checkbox/CheckboxCatto";
 
 /**

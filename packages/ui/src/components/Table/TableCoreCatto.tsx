@@ -3,7 +3,8 @@
 "use client";
 
 import { ReactNode } from "react";
-import { flexRender, Table as TableType } from "@tanstack/react-table";
+import { flexRender } from "@tanstack/react-table";
+import type { Table as TableType } from "@tanstack/react-table";
 import { cn } from "../../utils";
 import {
   Table,
