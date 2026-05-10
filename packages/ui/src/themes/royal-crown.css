@@ -22,18 +22,18 @@
   --catto-theme-secondary: #d97706; /* amber-600 */
   --catto-theme-secondary-hover: #b45309; /* amber-700 */
   --catto-theme-secondary-active: #92400e; /* amber-800 */
-  --catto-theme-on-secondary: #ffffff;
+  --catto-theme-on-secondary: #f8fafc;
   --catto-theme-secondary-subtle: #fef3c7; /* amber-100 */
 
   /* Accent = Gold/Amber (same as secondary) */
   --catto-theme-accent: #d97706; /* amber-600 */
   --catto-theme-accent-hover: #f59e0b; /* amber-500 */
-  --catto-theme-on-accent: #ffffff;
+  --catto-theme-on-accent: #f8fafc;
 
   /* Surfaces - Light mode (warm stone tones) */
   --catto-theme-background: #fafaf9; /* stone-50 */
   --catto-theme-surface: #f5f5f4; /* stone-100 */
-  --catto-theme-surface-elevated: #ffffff;
+  --catto-theme-surface-elevated: #f8fafc;
   --catto-theme-surface-sunken: #e7e5e4; /* stone-200 */
   --catto-theme-surface-secondary: #e7e5e4; /* stone-200 */
   --catto-theme-surface-tertiary: #d6d3d1; /* stone-300 */
@@ -57,7 +57,7 @@
   --catto-theme-primary: #8b5cf6; /* violet-500 */
   --catto-theme-primary-hover: #a78bfa; /* violet-400 */
   --catto-theme-primary-active: #7c3aed; /* violet-600 */
-  --catto-theme-on-primary: #ffffff;
+  --catto-theme-on-primary: #f8fafc;
   --catto-theme-primary-subtle: #4c1d95; /* violet-900 */
 
   /* Secondary = Gold/Amber stays vibrant in dark mode */

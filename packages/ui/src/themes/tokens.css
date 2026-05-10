@@ -29,7 +29,7 @@
   --catto-theme-secondary: var(--catto-theme-secondary, #f97316);
   --catto-theme-secondary-hover: var(--catto-theme-secondary-hover, #ea580c);
   --catto-theme-secondary-active: var(--catto-theme-secondary-active, #c2410c);
-  --catto-theme-on-secondary: var(--catto-theme-on-secondary, #ffffff);
+  --catto-theme-on-secondary: var(--catto-theme-on-secondary, #f8fafc);
   --catto-theme-secondary-subtle: var(--catto-theme-secondary-subtle, #ffedd5);
 
   /* ======================
@@ -39,7 +39,7 @@
    * ====================== */
   --catto-theme-accent: var(--catto-theme-accent, #f97316);
   --catto-theme-accent-hover: var(--catto-theme-accent-hover, #fb923c);
-  --catto-theme-on-accent: var(--catto-theme-on-accent, #ffffff);
+  --catto-theme-on-accent: var(--catto-theme-on-accent, #f8fafc);
 
   /* ======================
    * SURFACE COLORS
@@ -47,7 +47,7 @@
    * ====================== */
   --catto-theme-background: var(--catto-theme-background, #f8fafc);
   --catto-theme-surface: var(--catto-theme-surface, #f1f5f9);
-  --catto-theme-surface-elevated: var(--catto-theme-surface-elevated, #ffffff);
+  --catto-theme-surface-elevated: var(--catto-theme-surface-elevated, #f8fafc);
   --catto-theme-surface-sunken: var(--catto-theme-surface-sunken, #e2e8f0);
   --catto-theme-surface-secondary: var(
     --catto-theme-surface-secondary,
@@ -123,7 +123,7 @@
   /* Text — brighter than dark-mode defaults for higher contrast against
    * heavily saturated dark backgrounds (e.g. blue-900) where mid slate
    * gray reads as muted/dim rather than as a label. */
-  --catto-theme-text: #ffffff; /* pure white — primary text */
+  --catto-theme-text: #f8fafc; /* slate-50 — primary text */
   --catto-theme-text-muted: #f1f5f9; /* slate-100 — labels */
   --catto-theme-text-subtle: #cbd5e1; /* slate-300 — helper text */
   --catto-theme-text-inverse: #0f172a; /* slate-900 — for inverse contexts */
