@@ -3,7 +3,7 @@
 "use client";
 
 import React, { memo, useCallback, useState } from "react";
-import { Column } from "@tanstack/react-table";
+import type { Column } from "@tanstack/react-table";
 import { ArrowUpDown } from "lucide-react";
 import { cn } from "../../utils";
 

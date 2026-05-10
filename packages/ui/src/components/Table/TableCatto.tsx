@@ -3,7 +3,7 @@
 "use client";
 
 import { ReactNode, useEffect, useMemo } from "react";
-import { ColumnDef } from "@tanstack/react-table";
+import type { ColumnDef } from "@tanstack/react-table";
 import { useTableInstanceCatto } from "../../hooks/table/useTableInstanceCatto";
 import { isBelow, useBreakpoint } from "../../hooks/useBreakpoint";
 import "../../types/table-meta";

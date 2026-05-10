@@ -2,7 +2,7 @@
 // Table pagination buttons - Previous and Next arrows
 "use client";
 
-import { Table as TableType } from "@tanstack/react-table";
+import type { Table as TableType } from "@tanstack/react-table";
 import { ArrowLeft, ArrowRight } from "lucide-react";
 import { cn } from "../../utils";
 

@@ -4,7 +4,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { Table as TableType } from "@tanstack/react-table";
+import type { Table as TableType } from "@tanstack/react-table";
 import { cn } from "../../utils";
 import InputCatto from "../Input/InputCatto";
 import { TablePrevNextButtonsCatto } from "./TablePrevNextButtonsCatto";
