@@ -14,25 +14,25 @@
   --catto-theme-primary: #0891b2; /* cyan-600 */
   --catto-theme-primary-hover: #06b6d4; /* cyan-500 */
   --catto-theme-primary-active: #0e7490; /* cyan-700 */
-  --catto-theme-on-primary: #ffffff;
+  --catto-theme-on-primary: #f8fafc;
   --catto-theme-primary-subtle: #cffafe; /* cyan-100 */
 
   /* Secondary = Purple/Violet */
   --catto-theme-secondary: #7c3aed; /* violet-600 */
   --catto-theme-secondary-hover: #8b5cf6; /* violet-500 */
   --catto-theme-secondary-active: #6d28d9; /* violet-700 */
-  --catto-theme-on-secondary: #ffffff;
+  --catto-theme-on-secondary: #f8fafc;
   --catto-theme-secondary-subtle: #ede9fe; /* violet-100 */
 
   /* Accent = Purple */
   --catto-theme-accent: #a855f7; /* purple-500 */
   --catto-theme-accent-hover: #c084fc; /* purple-400 */
-  --catto-theme-on-accent: #ffffff;
+  --catto-theme-on-accent: #f8fafc;
 
   /* Surfaces - Light mode */
   --catto-theme-background: #f1f5f9; /* slate-100 */
-  --catto-theme-surface: #ffffff;
-  --catto-theme-surface-elevated: #ffffff;
+  --catto-theme-surface: #f8fafc;
+  --catto-theme-surface-elevated: #f8fafc;
   --catto-theme-surface-sunken: #e2e8f0; /* slate-200 */
   --catto-theme-surface-secondary: #e2e8f0; /* slate-200 - hover states */
   --catto-theme-surface-tertiary: #cbd5e1; /* slate-300 - active states */
@@ -63,13 +63,13 @@
   --catto-theme-secondary: #8b5cf6; /* violet-500 */
   --catto-theme-secondary-hover: #a78bfa; /* violet-400 */
   --catto-theme-secondary-active: #7c3aed; /* violet-600 */
-  --catto-theme-on-secondary: #ffffff;
+  --catto-theme-on-secondary: #f8fafc;
   --catto-theme-secondary-subtle: #4c1d95; /* violet-900 */
 
   /* Accent = Purple (for highlights, badges) */
   --catto-theme-accent: #a855f7; /* purple-500 */
   --catto-theme-accent-hover: #c084fc; /* purple-400 */
-  --catto-theme-on-accent: #ffffff;
+  --catto-theme-on-accent: #f8fafc;
 
   /* Surfaces - Deep dark with purple tint */
   --catto-theme-background: #0a0a0f; /* Near black with slight purple */

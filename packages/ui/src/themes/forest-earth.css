@@ -22,18 +22,18 @@
   --catto-theme-secondary: #d97706; /* amber-600 */
   --catto-theme-secondary-hover: #b45309; /* amber-700 */
   --catto-theme-secondary-active: #92400e; /* amber-800 */
-  --catto-theme-on-secondary: #ffffff;
+  --catto-theme-on-secondary: #f8fafc;
   --catto-theme-secondary-subtle: #fef3c7; /* amber-100 */
 
   /* Accent = Amber (same as secondary) */
   --catto-theme-accent: #d97706; /* amber-600 */
   --catto-theme-accent-hover: #f59e0b; /* amber-500 */
-  --catto-theme-on-accent: #ffffff;
+  --catto-theme-on-accent: #f8fafc;
 
   /* Surfaces - Light mode (warm neutral tones) */
   --catto-theme-background: #fafafa; /* neutral-50 */
   --catto-theme-surface: #f5f5f5; /* neutral-100 */
-  --catto-theme-surface-elevated: #ffffff;
+  --catto-theme-surface-elevated: #f8fafc;
   --catto-theme-surface-sunken: #e5e5e5; /* neutral-200 */
   --catto-theme-surface-secondary: #e5e5e5; /* neutral-200 */
   --catto-theme-surface-tertiary: #d4d4d4; /* neutral-300 */
