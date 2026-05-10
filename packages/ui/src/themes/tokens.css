@@ -102,3 +102,38 @@
   --catto-spacing-xl: 2rem; /* 32px — Tailwind: 8 */
   --catto-spacing-2xl: 3rem; /* 48px — Tailwind: 12 */
 }
+
+/* ============================================================================
+ * FIXED-DARK SURFACE OVERRIDE
+ * ----------------------------------------------------------------------------
+ * Applied by components that paint a fixed-dark background regardless of the
+ * page's light/dark mode (e.g. `MellowModalCatto` with `theme="midnightEmber"`).
+ *
+ * Re-declares the mode-aware `--catto-theme-*` tokens with palette-agnostic
+ * dark-surface values so child components — `InputCatto` labels, helper text,
+ * borders, internal surfaces — render readably even when the page is in
+ * light mode and would otherwise resolve those tokens to dark-on-dark.
+ *
+ * Values are based on the slate scale and pair well with any fixed-dark
+ * background (blue-900 / slate-900 / etc.). They intentionally do NOT touch
+ * primary / secondary / on-primary / on-secondary: those palette-driven
+ * tokens generally read fine on a dark surface without help.
+ * ============================================================================ */
+.surface-fixed-dark {
+  /* Text */
+  --catto-theme-text: #f8fafc; /* slate-50  — primary text */
+  --catto-theme-text-muted: #cbd5e1; /* slate-300 — labels */
+  --catto-theme-text-subtle: #94a3b8; /* slate-400 — helper text */
+  --catto-theme-text-inverse: #0f172a; /* slate-900 — for inverse contexts */
+
+  /* Borders */
+  --catto-theme-border: #475569; /* slate-600 */
+  --catto-theme-border-subtle: #334155; /* slate-700 */
+  --catto-theme-border-strong: #64748b; /* slate-500 */
+
+  /* Surfaces — for nested cards / inputs / etc. inside the dark surface */
+  --catto-theme-surface: #1e293b; /* slate-800 */
+  --catto-theme-surface-elevated: #334155; /* slate-700 */
+  --catto-theme-surface-sunken: #0f172a; /* slate-900 */
+}
+

@@ -378,7 +378,7 @@ const MellowModalCatto: React.FC<MellowModalCattoProps> = ({
             : "translate-y-4"
         } scale-95 opacity-0 ${
           size === "full" ? "max-h-[95vh]" : "max-h-[85vh]"
-        } overflow-y-auto ${className}`}
+        } overflow-y-auto ${theme === "midnightEmber" ? "surface-fixed-dark" : ""} ${className}`}
         role="dialog"
         aria-modal="true"
         aria-labelledby={title ? "modal-title" : undefined}
