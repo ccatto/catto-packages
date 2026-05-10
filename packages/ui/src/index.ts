@@ -198,6 +198,14 @@ export type {
   AvatarUploadCattoLabels,
 } from "./components/Avatar/AvatarUploadCatto";
 
+// UserMenuDropdown
+export { default as UserMenuDropdownCatto } from "./components/UserMenuDropdown/UserMenuDropdownCatto";
+export type {
+  UserMenuDropdownCattoProps,
+  UserMenuLink,
+  UserMenuUser,
+} from "./components/UserMenuDropdown/UserMenuDropdownCatto";
+
 // PricingCard
 export { default as PricingCardCatto } from "./components/PricingCard/PricingCardCatto";
 export type {
