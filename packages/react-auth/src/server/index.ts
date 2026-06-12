@@ -12,4 +12,5 @@ export { createCattoAuth, type CreateCattoAuthResult } from './create-auth';
 export type {
   CattoAuthServerConfig,
   CattoAuthSocialProvider,
+  CattoAuthPhoneConfig,
 } from '../types/config';

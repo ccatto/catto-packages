@@ -28,6 +28,7 @@ import { betterAuth } from 'better-auth';
 import { prismaAdapter } from 'better-auth/adapters/prisma';
 import { createAuthMiddleware } from 'better-auth/api';
 import { nextCookies } from 'better-auth/next-js';
+import { phoneNumber } from 'better-auth/plugins';
 import type {
   CattoAuthServerConfig,
   CattoAuthSocialProvider,
@@ -64,6 +65,9 @@ export function createCattoAuth(
   if (config.socialProviders?.github) {
     socialProviders.github = config.socialProviders.github;
   }
+  if (config.socialProviders?.apple) {
+    socialProviders.apple = config.socialProviders.apple;
+  }
   if (config.socialProviders?.facebook) {
     socialProviders.facebook = {
       ...config.socialProviders.facebook,
@@ -73,6 +77,33 @@ export function createCattoAuth(
       ],
     };
   }
+
+  // Build plugins list. nextCookies() must stay last so Set-Cookie headers
+  // from any preceding plugin/route are forwarded in Next.js server actions.
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  const plugins: any[] = [];
+  const phoneCfg = config.phoneAuth;
+  if (phoneCfg?.enabled && phoneCfg.sendOtp) {
+    const tempEmailDomain = phoneCfg.tempEmailDomain ?? 'phone.catto.local';
+    plugins.push(
+      phoneNumber({
+        sendOTP: async ({ phoneNumber: toNumber, code }) => {
+          await phoneCfg.sendOtp({ phoneNumber: toNumber, code });
+        },
+        requireVerification: phoneCfg.requireVerification ?? true,
+        ...(phoneCfg.otpExpiresInSeconds
+          ? { expiresIn: phoneCfg.otpExpiresInSeconds }
+          : {}),
+        signUpOnVerification: {
+          getTempEmail: (toNumber: string) => `${toNumber}@${tempEmailDomain}`,
+          // Use the phone number as the initial display name; the app can
+          // prompt for a real name post-verify.
+          getTempName: (toNumber: string) => toNumber,
+        },
+      }),
+    );
+  }
+  plugins.push(nextCookies());
 
   const auth = betterAuth({
     // Database
@@ -136,8 +167,8 @@ export function createCattoAuth(
       },
     },
 
-    // Plugins
-    plugins: [nextCookies()],
+    // Plugins (phoneNumber when configured, then nextCookies last)
+    plugins,
 
     // Hooks
     hooks: {

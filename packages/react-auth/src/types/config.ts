@@ -15,6 +15,26 @@ export interface CattoAuthSocialProvider {
   scope?: string[];
 }
 
+/** Phone-number + OTP auth config (Better Auth `phoneNumber` plugin). */
+export interface CattoAuthPhoneConfig {
+  /** Master switch — when false/undefined the plugin is not registered. */
+  enabled?: boolean;
+  /**
+   * Deliver the OTP code via SMS. The app owns the transport (Telnyx, Twilio, etc.).
+   * Throw/reject to surface a send failure to the caller.
+   */
+  sendOtp: (args: { phoneNumber: string; code: string }) => Promise<void>;
+  /**
+   * Domain used to mint a synthetic email for phone-only users on first verify
+   * (Better Auth requires an email). Default: 'phone.catto.local'.
+   */
+  tempEmailDomain?: string;
+  /** Require phone verification before the number is trusted. Default: true. */
+  requireVerification?: boolean;
+  /** OTP lifetime in seconds. Default: Better Auth's default (300). */
+  otpExpiresInSeconds?: number;
+}
+
 /** Minimal database client interface — compatible with PrismaClient without version coupling */
 export interface CattoAuthDatabaseClient {
   user: {
@@ -42,7 +62,15 @@ export interface CattoAuthServerConfig {
     google?: CattoAuthSocialProvider;
     facebook?: CattoAuthSocialProvider;
     github?: CattoAuthSocialProvider;
+    apple?: CattoAuthSocialProvider;
   };
+
+  /**
+   * Phone-number + OTP authentication (Better Auth `phoneNumber` plugin).
+   * Optional — only enabled when `enabled` is true and a `sendOtp` transport
+   * is provided. The app owns the SMS transport (Telnyx, Twilio, etc.).
+   */
+  phoneAuth?: CattoAuthPhoneConfig;
 
   /** Session configuration */
   session?: {

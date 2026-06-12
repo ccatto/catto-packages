@@ -29,6 +29,12 @@
  * Translation keys (default namespace `auth`):
  * - `signIn.{cardTitle, emailLabel, passwordLabel, submit, submitting, errorGeneric}`
  * - `register.{nameLabel, emailLabel, passwordLabel, submit, submitting, errorGeneric}`
+ *
+ * Social + phone + panel (added in 0.3.0):
+ * - `social.continueWith` — ICU string with a `{provider}` arg, e.g. "Continue with {provider}"
+ * - `signIn.{or, email, phone}` — AuthPanelCatto divider + tab labels
+ * - `phone.{phoneLabel, sendCode, sending, enterCode, changeNumber, resendCode, resendIn, verifying, errorGeneric}`
+ * - `newUser.{welcome, yourName, enterName, saveName, saving, skipForNow}`
  */
 
 export { default as LoginCatto } from './LoginCatto';
@@ -38,6 +44,15 @@ export type {
   SignInEmailPassFormCattoProps,
   SignInValues,
 } from './SignInEmailPassFormCatto';
+export { default as SocialButtonsCatto } from './SocialButtonsCatto';
+export type {
+  SocialButtonsCattoProps,
+  SocialProvider,
+} from './SocialButtonsCatto';
+export { default as SignInPhoneFormCatto } from './SignInPhoneFormCatto';
+export type { SignInPhoneFormCattoProps } from './SignInPhoneFormCatto';
+export { default as AuthPanelCatto } from './AuthPanelCatto';
+export type { AuthPanelCattoProps } from './AuthPanelCatto';
 export { default as RegisterUserFormCatto } from './RegisterUserFormCatto';
 export type {
   RegisterUserFormCattoProps,
