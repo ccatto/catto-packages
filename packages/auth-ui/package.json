@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/auth-ui",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "description": "Catto Auth UI - presentational React forms (sign-in, register, login) for Catto-based apps. Bring your own auth client.",
   "license": "MIT",
   "author": "Chris Catto",
