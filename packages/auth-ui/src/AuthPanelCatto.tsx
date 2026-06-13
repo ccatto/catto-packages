@@ -17,6 +17,12 @@ export interface AuthPanelCattoProps {
   phone?: boolean;
   /** Offer email + password sign-in (default true). */
   emailPassword?: boolean;
+  /**
+   * Which method's tab shows first / is selected by default when both email
+   * and phone are offered (default 'email'). The chosen method's tab renders
+   * on the left.
+   */
+  defaultMethod?: 'email' | 'phone';
 
   /** Social: called with the chosen provider (caller owns the auth client). */
   onProvider?: (provider: SocialProvider) => Promise<void> | void;
@@ -46,6 +52,7 @@ const AuthPanelCatto = ({
   social = [],
   phone = false,
   emailPassword = true,
+  defaultMethod = 'email',
   onProvider,
   onEmailSubmit,
   onSendOtp,
@@ -59,8 +66,14 @@ const AuthPanelCatto = ({
   const showEmail = emailPassword && !!onEmailSubmit;
   const showPhone = phone && !!onSendOtp && !!onVerifyOtp;
   const showTabs = showEmail && showPhone;
+  // Tab order follows defaultMethod; filtered to the methods actually offered.
+  const methodOrder: Array<'email' | 'phone'> =
+    defaultMethod === 'phone' ? ['phone', 'email'] : ['email', 'phone'];
+  const methods = methodOrder.filter((m) =>
+    m === 'email' ? showEmail : showPhone,
+  );
   const [method, setMethod] = useState<'email' | 'phone'>(
-    showEmail ? 'email' : 'phone',
+    methods[0] ?? 'email',
   );
 
   return (
@@ -88,32 +101,22 @@ const AuthPanelCatto = ({
           className="flex border-b border-gray-300 dark:border-gray-700"
           role="tablist"
         >
-          <button
-            type="button"
-            role="tab"
-            aria-selected={method === 'email'}
-            onClick={() => setMethod('email')}
-            className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors ${
-              method === 'email'
-                ? 'border-b-2 border-orange-500 text-orange-600 dark:text-orange-400'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
-            }`}
-          >
-            {t('signIn.email')}
-          </button>
-          <button
-            type="button"
-            role="tab"
-            aria-selected={method === 'phone'}
-            onClick={() => setMethod('phone')}
-            className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors ${
-              method === 'phone'
-                ? 'border-b-2 border-orange-500 text-orange-600 dark:text-orange-400'
-                : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
-            }`}
-          >
-            {t('signIn.phone')}
-          </button>
+          {methods.map((m) => (
+            <button
+              key={m}
+              type="button"
+              role="tab"
+              aria-selected={method === m}
+              onClick={() => setMethod(m)}
+              className={`flex-1 px-4 py-2.5 text-sm font-medium transition-colors ${
+                method === m
+                  ? 'border-b-2 border-orange-500 text-orange-600 dark:text-orange-400'
+                  : 'text-gray-500 hover:text-gray-700 dark:text-gray-400'
+              }`}
+            >
+              {t(`signIn.${m}`)}
+            </button>
+          ))}
         </div>
       )}
 
