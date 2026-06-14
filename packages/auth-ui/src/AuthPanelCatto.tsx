@@ -37,6 +37,11 @@ export interface AuthPanelCattoProps {
   ) => Promise<{ isNewUser?: boolean } | void>;
   /** Phone: optionally persist a display name for a brand-new user. */
   onSaveName?: (name: string) => Promise<void>;
+  /**
+   * Phone: called when the phone flow finishes (existing user verified, or new
+   * user saved/skipped their name). Use for post-auth navigation.
+   */
+  onComplete?: () => void;
 
   /** Default country for the phone input (ISO code, default 'US'). */
   defaultCountry?: string;
@@ -58,6 +63,7 @@ const AuthPanelCatto = ({
   onSendOtp,
   onVerifyOtp,
   onSaveName,
+  onComplete,
   defaultCountry = 'US',
   i18nNamespace = 'auth',
 }: AuthPanelCattoProps) => {
@@ -132,6 +138,7 @@ const AuthPanelCatto = ({
           onSendOtp={onSendOtp!}
           onVerifyOtp={onVerifyOtp!}
           onSaveName={onSaveName}
+          onComplete={onComplete}
           defaultCountry={defaultCountry}
           i18nNamespace={i18nNamespace}
         />

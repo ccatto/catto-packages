@@ -30,6 +30,13 @@ export interface SignInPhoneFormCattoProps {
    * omitted, the name step is skipped entirely.
    */
   onSaveName?: (name: string) => Promise<void>;
+  /**
+   * Called when the flow finishes — after an existing user verifies, or after
+   * a new user saves or skips the name step. This is the single place to put
+   * post-auth navigation (e.g. `router.push('/home')`). Without it, the form
+   * just resolves in place.
+   */
+  onComplete?: () => void;
   /** Default country for the phone input (ISO code, default 'US'). */
   defaultCountry?: string;
   /** Seconds before "resend" is allowed again (default 30). */
@@ -49,6 +56,7 @@ const SignInPhoneFormCatto = ({
   onSendOtp,
   onVerifyOtp,
   onSaveName,
+  onComplete,
   defaultCountry = 'US',
   resendSeconds = 30,
   i18nNamespace = 'auth',
@@ -94,9 +102,10 @@ const SignInPhoneFormCatto = ({
       const result = await onVerifyOtp(e164, code);
       if (result?.isNewUser && onSaveName) {
         setStep('name');
+      } else {
+        // Existing user, or new user with no name step — flow is done.
+        onComplete?.();
       }
-      // On success (existing user, or new user without a name step) the caller
-      // redirects; we leave the form as-is.
     } catch (err) {
       setError(err instanceof Error ? err.message : t('phone.errorGeneric'));
     } finally {
@@ -105,12 +114,12 @@ const SignInPhoneFormCatto = ({
   };
 
   const saveName = async (skip: boolean) => {
-    if (!onSaveName) return;
     setError(null);
     setSubmitting(true);
     try {
-      if (!skip && name.trim()) await onSaveName(name.trim());
-      // Caller-side redirect handles navigation after this resolves.
+      if (!skip && name.trim() && onSaveName) await onSaveName(name.trim());
+      // Both save and skip finish the flow; the caller navigates via onComplete.
+      onComplete?.();
     } catch (err) {
       setError(err instanceof Error ? err.message : t('phone.errorGeneric'));
     } finally {
