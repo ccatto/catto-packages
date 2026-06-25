@@ -83,6 +83,28 @@ export class JwtAuthService {
     }
   }
 
+  /**
+   * Exchange a one-time mobile-OAuth handoff code for app JWTs and store them.
+   * Used by the native deep-link / in-app-browser social sign-in flow after
+   * {@link startNativeSocialSignIn} returns a `code`. Requires the app's
+   * `IAuthApiService` to implement `exchangeAuthCode`.
+   */
+  async loginWithExchangeCode(code: string): Promise<LoginResponse> {
+    if (!this.api.exchangeAuthCode) {
+      throw new Error('Exchange-code auth not configured');
+    }
+    try {
+      const data = await this.api.exchangeAuthCode(code);
+      await this.storage.setAccessToken(data.accessToken);
+      await this.storage.setRefreshToken(data.refreshToken);
+      this.log.info('Auth code exchange successful', { userId: data.user.id });
+      return data;
+    } catch (error) {
+      this.log.error('Auth code exchange failed', { error });
+      throw error;
+    }
+  }
+
   /** Register new user */
   async register(data: RegisterData): Promise<LoginResponse> {
     try {
