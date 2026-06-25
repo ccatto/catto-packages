@@ -1,7 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
-import { ButtonCatto, InputCatto } from '@ccatto/ui';
+import { ButtonCatto, InputCatto, PhoneDisplayCatto } from '@ccatto/ui';
 import { useTranslations } from 'next-intl';
 
 export interface ProfileValues {
@@ -12,6 +12,18 @@ export interface ProfileValues {
 export interface UserProfileFormCattoProps {
   /** Pre-fills the form. The component re-syncs if `initialValues` changes. */
   initialValues: ProfileValues;
+  /**
+   * Whether to render the email field at all. Set false for phone-first
+   * accounts that have no real email (so the synthetic placeholder address is
+   * never shown and email isn't required to save). Defaults to true.
+   */
+  showEmail?: boolean;
+  /**
+   * Verified phone number (E.164). When provided, renders a read-only
+   * "Phone" row above the email field. Phone changes happen via re-verifying,
+   * not this form, so it's display-only.
+   */
+  phoneNumber?: string;
   /**
    * Called with the edited `{ name, email }` when the user saves. Throw (or
    * reject) to surface an error in the form's red-text region. The form
@@ -30,6 +42,8 @@ export interface UserProfileFormCattoProps {
 
 const UserProfileFormCatto = ({
   initialValues,
+  showEmail = true,
+  phoneNumber,
   onSubmit,
   i18nNamespace = 'auth',
 }: UserProfileFormCattoProps) => {
@@ -49,10 +63,13 @@ const UserProfileFormCatto = ({
 
   const dirty =
     name.trim() !== initialValues.name.trim() ||
-    email.trim() !== initialValues.email.trim();
+    (showEmail && email.trim() !== initialValues.email.trim());
 
   const canSubmit =
-    dirty && name.trim().length > 0 && email.trim().length > 0 && !submitting;
+    dirty &&
+    name.trim().length > 0 &&
+    (!showEmail || email.trim().length > 0) &&
+    !submitting;
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -77,17 +94,32 @@ const UserProfileFormCatto = ({
         label={t('profile.nameLabel')}
         value={name}
         onChange={(value) => setName(value)}
+        placeholder={t('profile.namePlaceholder')}
         required
         autoComplete="name"
       />
-      <InputCatto
-        type="email"
-        label={t('profile.emailLabel')}
-        value={email}
-        onChange={(value) => setEmail(value)}
-        required
-        autoComplete="email"
-      />
+      {phoneNumber && (
+        <div className="flex flex-col gap-1">
+          <span className="text-sm font-medium text-gray-700 dark:text-gray-300">
+            {t('profile.phoneLabel')}
+          </span>
+          <PhoneDisplayCatto
+            value={phoneNumber}
+            format="international"
+            className="text-sm text-gray-900 dark:text-gray-50"
+          />
+        </div>
+      )}
+      {showEmail && (
+        <InputCatto
+          type="email"
+          label={t('profile.emailLabel')}
+          value={email}
+          onChange={(value) => setEmail(value)}
+          required
+          autoComplete="email"
+        />
+      )}
       {error && (
         <p className="text-sm text-red-600 dark:text-red-400">{error}</p>
       )}
