@@ -1,0 +1,61 @@
+{
+  "name": "@ccatto/capacitor-inapp-auth",
+  "version": "1.0.0",
+  "description": "Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth that returns to the app via a custom callback URL scheme.",
+  "license": "MIT",
+  "author": "Chris Catto",
+  "keywords": [
+    "capacitor",
+    "plugin",
+    "ios",
+    "oauth",
+    "aswebauthenticationsession",
+    "auth",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/capacitor-inapp-auth",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/capacitor-inapp-auth"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "ios",
+    "CcattoCapacitorInappAuth.podspec"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch",
+    "typecheck": "tsc --noEmit"
+  },
+  "capacitor": {
+    "ios": {
+      "src": "ios"
+    }
+  },
+  "devDependencies": {
+    "@capacitor/core": "^7.0.0",
+    "rimraf": "^6.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0"
+  },
+  "peerDependencies": {
+    "@capacitor/core": ">=5.0.0"
+  }
+}
