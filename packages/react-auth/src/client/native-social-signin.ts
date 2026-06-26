@@ -87,8 +87,22 @@ export async function startNativeSocialSignIn(
     config.provider,
   )}`;
 
+  // Optional peer dep: import via a non-literal specifier with a local type so
+  // react-auth's type build never hard-depends on the plugin's .d.ts (it may be
+  // unbuilt in a fresh monorepo checkout, or absent entirely in a web-only
+  // consumer that doesn't install it).
+  type InAppAuthModule = {
+    InAppAuth: {
+      start(opts: {
+        url: string;
+        callbackScheme: string;
+      }): Promise<{ url: string }>;
+    };
+  };
+  const pluginSpecifier = '@ccatto/capacitor-inapp-auth';
+
   try {
-    const { InAppAuth } = await import('@ccatto/capacitor-inapp-auth');
+    const { InAppAuth } = (await import(pluginSpecifier)) as InAppAuthModule;
     const { url } = await InAppAuth.start({
       url: startUrl,
       callbackScheme: config.callbackScheme,
