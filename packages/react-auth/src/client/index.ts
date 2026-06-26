@@ -7,5 +7,6 @@
 
 export * from './auth-client';
 export * from './compat-layer';
+export * from './native-social-signin';
 export * from './session-provider';
 export * from './session-store';

@@ -68,7 +68,7 @@ function createMockApi(
       refreshToken: 'refresh-token-new',
       user: mockUser,
     })),
-    logout: vi.fn(async () => ({ success: true })),
+    logout: vi.fn(async () => {}),
     refreshToken: vi.fn(async () => ({
       accessToken: createMockJwt(),
     })),
@@ -128,6 +128,53 @@ describe('JwtAuthService', () => {
       expect(storage.setAccessToken).toHaveBeenCalledWith(result.accessToken);
       expect(storage.setRefreshToken).toHaveBeenCalledWith(result.refreshToken);
       expect(result.user).toBeDefined();
+    });
+  });
+
+  describe('loginWithExchangeCode', () => {
+    it('exchanges the code, stores tokens, and returns the response', async () => {
+      const exchanged: LoginResponse = {
+        accessToken: createMockJwt(),
+        refreshToken: 'refresh-from-exchange',
+        user: {
+          id: 'user-123',
+          email: 'test@example.com',
+          name: 'Test User',
+          role: 'user',
+        },
+      };
+      api = createMockApi({ exchangeAuthCode: vi.fn(async () => exchanged) });
+      service = new JwtAuthService(storage, api);
+
+      const result = await service.loginWithExchangeCode('abc123');
+
+      expect(api.exchangeAuthCode).toHaveBeenCalledWith('abc123');
+      expect(storage.setAccessToken).toHaveBeenCalledWith(exchanged.accessToken);
+      expect(storage.setRefreshToken).toHaveBeenCalledWith(
+        exchanged.refreshToken,
+      );
+      expect(result.user.id).toBe('user-123');
+    });
+
+    it('throws when the API does not implement exchangeAuthCode', async () => {
+      await expect(service.loginWithExchangeCode('abc123')).rejects.toThrow(
+        'Exchange-code auth not configured',
+      );
+      expect(storage.setAccessToken).not.toHaveBeenCalled();
+    });
+
+    it('propagates API errors without storing tokens', async () => {
+      api = createMockApi({
+        exchangeAuthCode: vi.fn(async () => {
+          throw new Error('Invalid or expired code.');
+        }),
+      });
+      service = new JwtAuthService(storage, api);
+
+      await expect(service.loginWithExchangeCode('bad')).rejects.toThrow(
+        'Invalid or expired code.',
+      );
+      expect(storage.setAccessToken).not.toHaveBeenCalled();
     });
   });
 

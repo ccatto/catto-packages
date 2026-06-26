@@ -70,6 +70,12 @@ export interface IAuthApiService {
   register(data: RegisterData): Promise<LoginResponse>;
   logout(refreshToken: string): Promise<void>;
   refreshToken(refreshToken: string): Promise<{ accessToken: string }>;
+  /**
+   * Exchange a one-time mobile-OAuth handoff code (minted by the web
+   * `mobile-auth-callback` route) for app JWTs. Required for native social
+   * sign-in via `startNativeSocialSignIn`; optional otherwise.
+   */
+  exchangeAuthCode?(code: string): Promise<LoginResponse>;
   forgotPassword?(
     email: string,
   ): Promise<{ message: string; resetToken?: string }>;

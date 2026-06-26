@@ -29,6 +29,7 @@ export default defineConfig({
     '@apollo/client',
     '@capacitor/core',
     '@capacitor/preferences',
+    '@ccatto/capacitor-inapp-auth',
     '@simplewebauthn/browser',
     'graphql',
   ],
