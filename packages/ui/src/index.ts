@@ -218,6 +218,36 @@ export type {
 export { default as ProductCardCatto } from "./components/ProductCard/ProductCardCatto";
 export type { ProductCardCattoProps } from "./components/ProductCard/ProductCardCatto";
 
+// ProductTile — presentation-only catalog/review tile (counterpart to ProductCard)
+export { default as ProductTileCatto } from "./components/ProductTile/ProductTileCatto";
+export type { ProductTileCattoProps } from "./components/ProductTile/ProductTileCatto";
+export type { ProductTileVariants } from "./components/ProductTile/variants";
+
+// ProductGrid — responsive catalog grid wrapper
+export { default as ProductGridCatto } from "./components/ProductGrid/ProductGridCatto";
+export type {
+  ProductGridCattoProps,
+  ProductGridCols,
+} from "./components/ProductGrid/ProductGridCatto";
+
+// ProductHero — generic product-detail hero
+export { default as ProductHeroCatto } from "./components/ProductHero/ProductHeroCatto";
+export type {
+  ProductHeroCattoProps,
+  ProductHeroBadge,
+  ProductHeroMeta,
+  ProductHeroLink,
+} from "./components/ProductHero/ProductHeroCatto";
+
+// ProductFilterSidebar — faceted filter sidebar (desktop column + mobile drawer)
+export { default as ProductFilterSidebarCatto } from "./components/ProductFilterSidebar/ProductFilterSidebarCatto";
+export type {
+  ProductFilterSidebarCattoProps,
+  FilterSection,
+  FilterOption,
+  FilterSectionType,
+} from "./components/ProductFilterSidebar/ProductFilterSidebarCatto";
+
 // QuantitySelector
 export { default as QuantitySelectorCatto } from "./components/QuantitySelector/QuantitySelectorCatto";
 export type {
