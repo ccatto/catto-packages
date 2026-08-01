@@ -267,11 +267,14 @@ const ProductFilterSidebarCatto: React.FC<ProductFilterSidebarCattoProps> = ({
             type="button"
             onClick={onOpen}
             className="inline-flex items-center gap-2 rounded-lg border border-theme-border bg-theme-surface px-3 py-2 text-sm font-medium text-theme-text lg:hidden"
+            aria-expanded={!!isOpen}
+            aria-label={mobileTriggerLabel}
           >
+            {/* interactive=false → renders a <span>, so we don't nest <button>. */}
             <AnimatedHamburgerCatto
               isOpen={!!isOpen}
-              onClick={onOpen!}
               size="sm"
+              interactive={false}
             />
             {mobileTriggerLabel}
           </button>

@@ -14,8 +14,8 @@ export type HamburgerSize = "sm" | "md" | "lg";
 export interface AnimatedHamburgerCattoProps {
   /** Whether the hamburger is in open (X) state */
   isOpen: boolean;
-  /** Click handler */
-  onClick: () => void;
+  /** Click handler (optional when interactive={false}) */
+  onClick?: () => void;
   /** Size of the hamburger */
   size?: HamburgerSize;
   /** Optional label text below the icon */
@@ -26,6 +26,12 @@ export interface AnimatedHamburgerCattoProps {
   className?: string;
   /** Accessible label */
   "aria-label"?: string;
+  /**
+   * Render as an interactive <button> (default). Set false to render a
+   * non-interactive <span> — use when the parent is already a <button>, to
+   * avoid nesting <button> inside <button> (invalid HTML / hydration error).
+   */
+  interactive?: boolean;
 }
 
 // Size configurations with pixel values for reliable cross-package rendering
@@ -96,6 +102,7 @@ const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
   showLabel = true,
   className,
   "aria-label": ariaLabel,
+  interactive = true,
 }) => {
   const config = sizeConfig[size];
 
@@ -150,19 +157,8 @@ const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
       : "none",
   };
 
-  return (
-    <button
-      onClick={onClick}
-      className={cn(
-        "relative flex flex-col items-center rounded-lg p-2 transition-colors",
-        textColorClass,
-        "hover:bg-theme-surface-secondary",
-        "focus:outline-none focus:ring-2 focus:ring-theme-secondary",
-        className
-      )}
-      aria-label={ariaLabel || (isOpen ? "Close menu" : "Open menu")}
-      aria-expanded={isOpen}
-    >
+  const inner = (
+    <>
       {/* Hamburger bars container */}
       <div style={containerStyle}>
         {/* Top bar - rotates 45° when open */}
@@ -177,6 +173,40 @@ const AnimatedHamburgerCatto: React.FC<AnimatedHamburgerCattoProps> = ({
       {showLabel && label && (
         <span className={cn(textColorClass, config.labelClass)}>{label}</span>
       )}
+    </>
+  );
+
+  // Non-interactive: render a <span> so it can safely live inside a parent
+  // <button> without nesting buttons (invalid HTML → hydration error).
+  if (!interactive) {
+    return (
+      <span
+        aria-hidden="true"
+        className={cn(
+          "relative flex flex-col items-center rounded-lg p-2 transition-colors",
+          textColorClass,
+          className
+        )}
+      >
+        {inner}
+      </span>
+    );
+  }
+
+  return (
+    <button
+      onClick={onClick}
+      className={cn(
+        "relative flex flex-col items-center rounded-lg p-2 transition-colors",
+        textColorClass,
+        "hover:bg-theme-surface-secondary",
+        "focus:outline-none focus:ring-2 focus:ring-theme-secondary",
+        className
+      )}
+      aria-label={ariaLabel || (isOpen ? "Close menu" : "Open menu")}
+      aria-expanded={isOpen}
+    >
+      {inner}
     </button>
   );
 };
