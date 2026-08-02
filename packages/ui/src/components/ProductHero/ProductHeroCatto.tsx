@@ -24,6 +24,8 @@ export interface ProductHeroLink {
   icon?: React.ReactNode;
   /** Opens in a new tab with rel=noopener. Internal links use LinkComponent. */
   external?: boolean;
+  /** Fired on click (e.g. analytics for outbound/referral clicks). */
+  onClick?: () => void;
 }
 
 export interface ProductHeroCattoProps {
@@ -174,6 +176,7 @@ const ProductHeroCatto: React.FC<ProductHeroCattoProps> = ({
                       target="_blank"
                       rel="noopener noreferrer"
                       className={linkClass}
+                      onClick={link.onClick}
                     >
                       {content}
                     </a>
@@ -191,7 +194,12 @@ const ProductHeroCatto: React.FC<ProductHeroCattoProps> = ({
                   );
                 }
                 return (
-                  <a key={link.label} href={link.url} className={linkClass}>
+                  <a
+                    key={link.label}
+                    href={link.url}
+                    className={linkClass}
+                    onClick={link.onClick}
+                  >
                     {content}
                   </a>
                 );
