@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/capacitor-inapp-auth",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth that returns to the app via a custom callback URL scheme.",
   "license": "MIT",
   "author": "Chris Catto",
@@ -28,7 +28,8 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
-    }
+    },
+    "./package.json": "./package.json"
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
@@ -36,6 +37,7 @@
   "files": [
     "dist",
     "ios",
+    "Package.swift",
     "CcattoCapacitorInappAuth.podspec"
   ],
   "scripts": {

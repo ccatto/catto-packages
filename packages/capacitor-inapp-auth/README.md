@@ -45,6 +45,30 @@ if (Capacitor.isPluginAvailable('InAppAuth')) {
 2. The plugin conforms to `CAPBridgedPlugin` (required for Capacitor 6+
    registration) and targets iOS 14+.
 
+## Package-manager support (SPM + CocoaPods)
+
+This package ships **both** a root `Package.swift` and a `.podspec`, so it works
+under Capacitor's Swift Package Manager integration (Capacitor 8's default — a
+`ios/App/CapApp-SPM/Package.swift`, **no** `Podfile`) *and* under CocoaPods.
+
+If you fork this to build your own native plugin, two things are easy to miss and
+cause `cap sync` to **silently drop the plugin** (it never shows in "Found N
+Capacitor plugins", so `isPluginAvailable(...)` is `false` and callers fall back
+to the web flow):
+
+- **`exports` must expose `./package.json`.** `cap` finds plugins via
+  `require.resolve('<pkg>/package.json')`; without
+  `"./package.json": "./package.json"` in the `exports` map, modern Node throws
+  `ERR_PACKAGE_PATH_NOT_EXPORTED` and discovery fails (worse in Yarn workspaces,
+  where the package hoists to the root `node_modules`).
+- **Ship a root `Package.swift`** whose library product name matches the name
+  Capacitor derives from the npm name (`@ccatto/capacitor-inapp-auth` →
+  `CcattoCapacitorInappAuth`). A `.podspec` alone only satisfies CocoaPods, not
+  SPM.
+
+Verify: `grep CcattoCapacitorInappAuth ios/App/CapApp-SPM/Package.swift` in the
+consuming app after `npx cap sync ios`.
+
 ## Notes
 
 - iOS only today. On web, `start()` throws `unavailable` — use the standard
