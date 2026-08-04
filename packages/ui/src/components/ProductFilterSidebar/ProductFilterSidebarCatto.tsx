@@ -31,6 +31,14 @@ export interface FilterSection {
   selected: string | string[] | null;
   /** Start this section collapsed. */
   defaultCollapsed?: boolean;
+  /** Render a search box above the options that filters them by label
+   *  client-side. Great for long lists (e.g. 100+ brands). */
+  searchable?: boolean;
+  /** Placeholder for the search box (default `Search {title}`). */
+  searchPlaceholder?: string;
+  /** When the option count exceeds this, cap the list height and scroll it,
+   *  so one large section doesn't dominate the sidebar. */
+  maxVisibleOptions?: number;
 }
 
 export interface ProductFilterSidebarCattoProps {
@@ -71,11 +79,21 @@ const SidebarSection: React.FC<{
   LinkComponent?: ProductFilterSidebarCattoProps["LinkComponent"];
 }> = ({ section, collapsible, onChange, LinkComponent }) => {
   const [open, setOpen] = useState(!section.defaultCollapsed);
+  const [query, setQuery] = useState("");
   const selectedArr = Array.isArray(section.selected)
     ? section.selected
     : section.selected != null
       ? [section.selected]
       : [];
+
+  const q = query.trim().toLowerCase();
+  const visibleOptions =
+    section.searchable && q
+      ? section.options.filter((o) => o.label.toLowerCase().includes(q))
+      : section.options;
+  const scroll =
+    section.maxVisibleOptions != null &&
+    visibleOptions.length > section.maxVisibleOptions;
 
   return (
     <div className="border-b border-theme-border py-4">
@@ -99,8 +117,30 @@ const SidebarSection: React.FC<{
       </button>
 
       {open && (
-        <ul className="mt-3 space-y-2">
-          {section.options.map((opt) => {
+        <>
+          {section.searchable && (
+            <input
+              type="text"
+              value={query}
+              onChange={(e) => setQuery(e.target.value)}
+              placeholder={
+                section.searchPlaceholder ??
+                `Search ${section.title.toLowerCase()}`
+              }
+              aria-label={`Search ${section.title}`}
+              className="mt-3 w-full rounded border border-theme-border bg-theme-surface px-2 py-1 text-sm text-theme-text placeholder:text-theme-text-muted focus:outline-none focus:ring-1 focus:ring-theme-secondary"
+            />
+          )}
+          <div
+            className={scroll ? "overflow-y-auto pr-1" : undefined}
+            style={
+              scroll
+                ? { maxHeight: `${(section.maxVisibleOptions ?? 8) * 2.25}rem` }
+                : undefined
+            }
+          >
+            <ul className="mt-3 space-y-2">
+              {visibleOptions.map((opt) => {
             const isSelected = selectedArr.includes(opt.value);
 
             if (section.type === "link") {
@@ -156,7 +196,12 @@ const SidebarSection: React.FC<{
               </li>
             );
           })}
-        </ul>
+            </ul>
+            {visibleOptions.length === 0 && (
+              <p className="mt-3 text-sm text-theme-text-muted">No matches</p>
+            )}
+          </div>
+        </>
       )}
     </div>
   );
@@ -253,7 +298,9 @@ const ProductFilterSidebarCatto: React.FC<ProductFilterSidebarCattoProps> = ({
       {/* Desktop: sticky left column */}
       <aside
         className={cn(
-          "hidden self-start lg:sticky lg:top-20 lg:block",
+          // Sticky column; cap to the viewport and scroll internally so long
+          // filter lists (e.g. 100+ brands) never run off the bottom.
+          "hidden self-start lg:sticky lg:top-20 lg:block lg:max-h-[calc(100vh-6rem)] lg:overflow-y-auto lg:pr-1",
           className,
         )}
       >
