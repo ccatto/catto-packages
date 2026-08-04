@@ -13,3 +13,5 @@ export { buildImageKitUrl } from './url';
 export type { ImageKitTransform } from './url';
 export { ImageUploadCatto } from './ImageUploadCatto';
 export type { ImageUploadCattoProps } from './ImageUploadCatto';
+export { ImageGalleryCatto } from './ImageGalleryCatto';
+export type { ImageGalleryCattoProps } from './ImageGalleryCatto';
