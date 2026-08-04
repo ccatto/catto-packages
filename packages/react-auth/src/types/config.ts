@@ -56,6 +56,13 @@ export interface CattoAuthServerConfig {
   secret: string;
   /** Base URL for auth callbacks (BETTER_AUTH_URL) */
   baseURL: string;
+  /**
+   * Additional origins allowed to make auth requests (CORS / CSRF). Better Auth
+   * trusts `baseURL` by default; add more hosts here when the app is reachable
+   * on several domains (e.g. a custom domain + the old deploy host during a
+   * migration, plus localhost for dev).
+   */
+  trustedOrigins?: string[];
 
   /** OAuth social providers */
   socialProviders?: {

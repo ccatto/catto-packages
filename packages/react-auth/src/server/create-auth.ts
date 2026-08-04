@@ -118,6 +118,7 @@ export function createCattoAuth(
     // Secret & URL
     secret: config.secret,
     baseURL: config.baseURL,
+    ...(config.trustedOrigins ? { trustedOrigins: config.trustedOrigins } : {}),
 
     // Email/password
     emailAndPassword: {
