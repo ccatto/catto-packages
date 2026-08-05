@@ -58,7 +58,7 @@ Whether you're building a dashboard, e-commerce site, or mobile app, @ccatto/ui 
 ## Features
 
 - **71 UI Components** - Buttons, Cards, Inputs, Modals, Tables, Forms, Calendars, and more
-- **4 Custom Hooks** - Table state management, haptic feedback, drag-and-drop
+- **5 Custom Hooks** - Table state, haptic feedback, drag-and-drop, server-side paging
 - **7 Languages** - English, Spanish, Portuguese, Chinese, French, German, Hindi
 - **Tailwind CSS v4** - Modern utility-first styling
 - **Dark Mode Support** - All components support light/dark themes
@@ -231,6 +231,18 @@ import '@ccatto/ui/themes/rleaguez.css';
 | `QuantitySelectorCatto` | Quantity +/- buttons with min/max limits                 |
 | `RatingStarsCatto`      | Star rating display/input with partial stars             |
 
+### Server-side List Controls
+
+Data-source-agnostic primitives for server-driven lists (paging + sort). They
+manage **UI state only** — feed the returned values into your own query.
+
+| Component               | Description                                                |
+| ----------------------- | --------------------------------------------------------- |
+| `useServerPagingCatto`  | Hook owning "Load more" `limit` state + reset-on-filter   |
+| `LoadMoreButtonCatto`   | Centered load-more button + "Showing X of N" caption      |
+| `SortSelectCatto`       | Accessible labeled sort `<select>` emitting a value string |
+| `PaginationCatto`       | Numbered prev/next pager (classic page-based style)        |
+
 ### Phone Components
 
 | Component           | Description                                         |
@@ -369,7 +381,7 @@ import { MellowModalCatto } from '@ccatto/ui';
 
 ---
 
-## Hooks (4)
+## Hooks (5)
 
 ### useHaptics
 
@@ -439,6 +451,57 @@ function MyList({ items, onReorder }) {
   });
   // Render draggable list...
 }
+```
+
+### useServerPagingCatto (server-side "Load more")
+
+UI-only paging state for lists backed by a server query with
+`{ take, skip, orderBy, orderDir }`. The hook owns `limit`; you wire it into
+your own query. Changing `resetKey` (filters/search/sort) snaps back to page 1.
+
+```tsx
+import {
+  useServerPagingCatto,
+  LoadMoreButtonCatto,
+  SortSelectCatto,
+  ProductGridCatto,
+} from '@ccatto/ui';
+
+// 6-line wiring: hook -> external query -> button
+const { limit, loadMore, hasMore } = useServerPagingCatto({
+  total,
+  pageSize: 48,
+  resetKey: [brandSlug, shapes, search, sortKey],
+});
+const [orderBy, orderDir] = sortKey.split(':'); // your app maps sortKey -> query
+const { data, loading } = useQuery(QUERY, {
+  variables: { pagination: { take: limit, orderBy, orderDir } },
+});
+const items = data?.items ?? [];
+
+return (
+  <>
+    <SortSelectCatto
+      value={sortKey}
+      onChange={setSortKey}
+      options={[
+        { value: 'createdAt:desc', label: 'Newest' },
+        { value: 'price:asc', label: 'Price: Low to High' },
+      ]}
+    />
+    <ProductGridCatto cols={4} loading={loading && items.length === 0}>
+      {items.map((p) => (
+        <ProductTileCatto key={p.id} {...p} />
+      ))}
+    </ProductGridCatto>
+    <LoadMoreButtonCatto
+      shown={items.length}
+      total={total}
+      loading={loading}
+      onClick={loadMore}
+    />
+  </>
+);
 ```
 
 ---

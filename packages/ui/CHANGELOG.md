@@ -5,6 +5,31 @@ All notable changes to @ccatto/ui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.8.0] - 2026-08-05
+
+### Added
+
+#### Server-side list controls (data-source-agnostic)
+
+Reusable primitives for server-driven lists (paging + sort) so consuming apps
+stop hand-rolling `limit` state, "Load more", reset-on-filter-change, and sort
+dropdowns. These manage **UI state only** — they know nothing about
+Apollo/fetch/GraphQL. Feed the returned `limit`/`orderBy`/`orderDir` into your
+own query. Complements `TableCatto` (client-side paging) by solving the
+server-side fetch cap it can't.
+
+- **useServerPagingCatto** - Hook owning "Load more" state. Keeps a `limit`
+  starting at `pageSize` (default 24); `loadMore()` adds a page; `limit` resets
+  to `pageSize` when `resetKey` changes (so filter/search/sort go back to page
+  1). Returns `{ limit, loadMore, reset, hasMore, showing }` where `showing(n)`
+  builds a "Showing X of N" caption (overridable via `label`).
+- **LoadMoreButtonCatto** - Centered load-more button (disabled while `loading`)
+  with a subtle "Showing X of N" caption. Hidden when `shown >= total`.
+- **SortSelectCatto** - Accessible labeled sort dropdown emitting the selected
+  option's `value` string.
+- **PaginationCatto** - Numbered prev/next pager (0-based `page`, `pageCount`,
+  `onPageChange`) for the classic page-based style.
+
 ## [1.0.0] - 2026-02-XX
 
 ### Added

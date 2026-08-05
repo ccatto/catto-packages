@@ -248,6 +248,20 @@ export type {
   FilterSectionType,
 } from "./components/ProductFilterSidebar/ProductFilterSidebarCatto";
 
+// ServerPaging — data-source-agnostic primitives for server-driven lists
+// (Load more, sort dropdown, numbered pager). Pairs with useServerPagingCatto.
+export {
+  LoadMoreButtonCatto,
+  SortSelectCatto,
+  PaginationCatto,
+} from "./components/ServerPaging";
+export type {
+  LoadMoreButtonCattoProps,
+  SortSelectCattoProps,
+  SortSelectOption,
+  PaginationCattoProps,
+} from "./components/ServerPaging";
+
 // QuantitySelector
 export { default as QuantitySelectorCatto } from "./components/QuantitySelector/QuantitySelectorCatto";
 export type {
@@ -463,6 +477,13 @@ export { useTableInstanceCatto } from "./hooks/table/useTableInstanceCatto";
 // Breakpoint Hook (responsive column visibility)
 export { useBreakpoint, isBelow } from "./hooks/useBreakpoint";
 export type { Breakpoint } from "./hooks/useBreakpoint";
+
+// Server Paging Hook (UI-only "Load more" state for server-paginated lists)
+export { useServerPagingCatto } from "./hooks/useServerPagingCatto";
+export type {
+  UseServerPagingCattoOptions,
+  UseServerPagingCattoReturn,
+} from "./hooks/useServerPagingCatto";
 
 // ============================================
 // Utilities
