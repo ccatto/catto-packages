@@ -230,6 +230,34 @@ import '@ccatto/ui/themes/rleaguez.css';
 | `CartItemCatto`         | Cart line item with quantity selector, remove action     |
 | `QuantitySelectorCatto` | Quantity +/- buttons with min/max limits                 |
 | `RatingStarsCatto`      | Star rating display/input with partial stars             |
+| `ProductFilterSidebarCatto` | Faceted filter sidebar (desktop column + mobile drawer) |
+
+#### `ProductFilterSidebarCatto` — mobile trigger placement
+
+On mobile the component renders a built-in "Filters" hamburger trigger plus a
+left drawer. To place the trigger **inline with your page `<h1>`** instead
+(right-justified, mobile only), pass `hideMobileTrigger` and render your own
+button that calls the same `onOpen` you pass to the sidebar:
+
+```tsx
+const [filtersOpen, setFiltersOpen] = useState(false);
+
+<div className="flex items-center justify-between lg:block">
+  <h1 className="text-2xl font-bold">Paddles</h1>
+  <button className="lg:hidden" onClick={() => setFiltersOpen(true)}>
+    Filters
+  </button>
+</div>
+
+<ProductFilterSidebarCatto
+  sections={sections}
+  onChange={handleChange}
+  isOpen={filtersOpen}
+  onOpen={() => setFiltersOpen(true)}
+  onClose={() => setFiltersOpen(false)}
+  hideMobileTrigger   // suppress the built-in trigger; drawer still renders
+/>;
+```
 
 ### Server-side List Controls
 
