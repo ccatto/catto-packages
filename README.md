@@ -11,7 +11,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 | `@ccatto/profanity` | Content moderation / profanity filtering |
 | `@ccatto/shared` | Shared utilities (geo, color, profanity re-exports) |
 | `@ccatto/react-auth` | Frontend authentication hooks and services (Better Auth + JWT) |
-| `@ccatto/react-contact` | Contact form hooks with validation and reCAPTCHA |
+| `@ccatto/react-contact` | Plug-n-play contact form: `ContactFormCatto` component + hooks + framework-agnostic Telnyx SMS notifier (`/server`) |
 | `@ccatto/react-mobile` | Capacitor mobile hooks (haptics, deep links, network, etc.) |
 | `@ccatto/react-push` | Push notification hooks for web and mobile |
 | `@ccatto/nest-auth` | NestJS authentication module (JWT, guards, decorators) |

@@ -45,7 +45,7 @@ catto-packages/
 | `@ccatto/shared` | 1.0.0 | Shared utilities (geo, color, profanity re-exports) — source dir is `packages/catto-shared/` |
 | `@ccatto/profanity` | 1.0.0 | Content moderation / profanity filtering |
 | `@ccatto/react-auth` | 1.0.0 | Better Auth + JWT + mobile auth hooks |
-| `@ccatto/react-contact` | 1.0.0 | Contact form hooks with validation and reCAPTCHA |
+| `@ccatto/react-contact` | 1.1.0 | Plug-n-play contact form: `ContactFormCatto` + hooks + framework-agnostic Telnyx SMS notifier (`/server` subpath) |
 | `@ccatto/react-mobile` | 1.0.0 | Capacitor hooks (haptics, deep links, network, etc.) |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/nest-auth` | 1.0.0 | NestJS JWT, WebAuthn, guards, decorators |

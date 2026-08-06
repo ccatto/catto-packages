@@ -11,11 +11,16 @@ export { createContactSchema } from './schema/contactSchema';
 export { useContactForm } from './hooks/useContactForm';
 export { useRecaptcha } from './hooks/useRecaptcha';
 
+// Components
+export { ContactFormCatto } from './components/ContactFormCatto';
+export type { ContactFormCattoProps } from './components/ContactFormCatto';
+
 // Types
 export type {
   ContactFieldConfig,
   ContactFieldName,
   ContactFormData,
+  ContactMessageInput,
   ContactSchemaConfig,
   UseContactFormConfig,
   UseContactFormReturn,
