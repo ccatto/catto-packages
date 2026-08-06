@@ -5,6 +5,23 @@ All notable changes to @ccatto/ui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.9.0] - 2026-08-06
+
+### Fixed
+
+- **`ProductFilterSidebarCatto`** mobile drawer no longer clips its content. The
+  left fly-out is now ~80% of the viewport width (capped at 20rem) with
+  horizontal padding, so the left edge and the right-side "Clear all" button are
+  fully visible on small phones (360–430px).
+
+### Added
+
+- **`ProductFilterSidebarCatto`** gains **`hideMobileTrigger?: boolean`**. When
+  `true`, the drawer still renders but the built-in "Filters" hamburger trigger
+  is suppressed — so apps can place their own trigger inline with a page heading
+  (right-justified, mobile only) by calling the same `onOpen` they already pass.
+  Default `false`; existing consumers are unaffected.
+
 ## [1.8.0] - 2026-08-05
 
 ### Added

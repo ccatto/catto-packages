@@ -61,6 +61,13 @@ export interface ProductFilterSidebarCattoProps {
   onClose?: () => void;
   /** Label for the mobile trigger (default "Filters"). */
   mobileTriggerLabel?: string;
+  /**
+   * Hide the built-in mobile "Filters" hamburger trigger while still rendering
+   * the drawer. Use this to place your own trigger inline with a page heading
+   * (right-justified, mobile only): render a button that calls the same `onOpen`
+   * you pass here. Default `false` (built-in trigger renders as before).
+   */
+  hideMobileTrigger?: boolean;
 
   /** Router link for type "link" options. */
   LinkComponent?: React.ComponentType<{
@@ -275,6 +282,7 @@ const ProductFilterSidebarCatto: React.FC<ProductFilterSidebarCattoProps> = ({
   onOpen,
   onClose,
   mobileTriggerLabel = "Filters",
+  hideMobileTrigger = false,
   LinkComponent,
   className,
 }) => {
@@ -310,26 +318,34 @@ const ProductFilterSidebarCatto: React.FC<ProductFilterSidebarCattoProps> = ({
       {/* Mobile: trigger + drawer (app-controlled) */}
       {hasMobile && (
         <>
-          <button
-            type="button"
-            onClick={onOpen}
-            className="inline-flex items-center gap-2 rounded-lg border border-theme-border bg-theme-surface px-3 py-2 text-sm font-medium text-theme-text lg:hidden"
-            aria-expanded={!!isOpen}
-            aria-label={mobileTriggerLabel}
-          >
-            {/* interactive=false → renders a <span>, so we don't nest <button>. */}
-            <AnimatedHamburgerCatto
-              isOpen={!!isOpen}
-              size="sm"
-              interactive={false}
-            />
-            {mobileTriggerLabel}
-          </button>
+          {/* Built-in trigger. Pass `hideMobileTrigger` to render your own
+              (e.g. inline with a page <h1>) — it just needs to call `onOpen`. */}
+          {!hideMobileTrigger && (
+            <button
+              type="button"
+              onClick={onOpen}
+              className="inline-flex items-center gap-2 rounded-lg border border-theme-border bg-theme-surface px-3 py-2 text-sm font-medium text-theme-text lg:hidden"
+              aria-expanded={!!isOpen}
+              aria-label={mobileTriggerLabel}
+            >
+              {/* interactive=false → renders a <span>, so we don't nest <button>. */}
+              <AnimatedHamburgerCatto
+                isOpen={!!isOpen}
+                size="sm"
+                interactive={false}
+              />
+              {mobileTriggerLabel}
+            </button>
+          )}
           <DrawerCatto
             isOpen={!!isOpen}
             onClose={onClose!}
             side="left"
-            width="sm"
+            // ~80% of the viewport, capped so it never gets unwieldy on larger
+            // phones. `contentClassName` adds horizontal padding so content and
+            // the "Clear all" button never touch (previously clipped) edges.
+            customWidth="w-[80vw] max-w-[20rem]"
+            contentClassName="px-4 pb-6"
             title={mobileTriggerLabel}
           >
             {body}
