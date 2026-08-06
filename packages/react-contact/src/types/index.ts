@@ -54,6 +54,27 @@ export interface ContactFormData {
   message: string;
 }
 
+/**
+ * Friendly wire shape POSTed by `ContactFormCatto` and consumed by the
+ * `sendContactMessage()` server helper (`@ccatto/react-contact/server`).
+ * Intentionally decoupled from the internal `ContactFormData` field names so
+ * the JSON body reads naturally in route handlers.
+ */
+export interface ContactMessageInput {
+  /** Sender's name. */
+  name: string;
+  /** Sender's email. */
+  email: string;
+  /** Optional callback phone number. */
+  phone?: string;
+  /** The message body. */
+  message: string;
+  /** Honeypot field — if non-empty the submission is treated as spam. */
+  website?: string;
+  /** Captcha token (reCAPTCHA v3 or Cloudflare Turnstile), if captcha is used. */
+  token?: string;
+}
+
 /** Configuration for useContactForm() */
 export interface UseContactFormConfig {
   /** Schema configuration for Zod validation */

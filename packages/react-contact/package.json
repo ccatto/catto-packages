@@ -1,7 +1,7 @@
 {
   "name": "@ccatto/react-contact",
-  "version": "1.0.0",
-  "description": "Catto Contact - React hooks and schema factory for contact forms",
+  "version": "1.1.0",
+  "description": "Catto Contact - plug-n-play contact form: React component, hooks, schema, and a framework-agnostic SMS notifier",
   "license": "MIT",
   "author": "Chris Catto",
   "keywords": [
@@ -10,6 +10,10 @@
     "hooks",
     "zod",
     "typescript",
+    "telnyx",
+    "sms",
+    "recaptcha",
+    "turnstile",
     "catto"
   ],
   "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/react-contact",
@@ -27,13 +31,20 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./server": {
+      "types": "./dist/server.d.ts",
+      "import": "./dist/server.js",
+      "require": "./dist/server.cjs"
     }
   },
   "main": "./dist/index.cjs",
   "module": "./dist/index.js",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
   ],
   "scripts": {
     "build": "tsup",
