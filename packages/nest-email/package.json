@@ -14,7 +14,7 @@
   "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/nest-email",
   "repository": {
     "type": "git",
-    "url": "https://github.com/ccatto/catto-packages.git",
+    "url": "git+https://github.com/ccatto/catto-packages.git",
     "directory": "packages/nest-email"
   },
   "publishConfig": {
