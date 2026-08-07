@@ -8,7 +8,19 @@ items to the bottom **Done** section with the shipping version.
 
 ## Open
 
-_No open package work right now._
+### Docs / hygiene (low priority)
+
+- **Missing package READMEs.** `@ccatto/imagekit` (1.1.0) and `@ccatto/nest-events`
+  (1.0.0) are published with no `README.md` — npm shows a blank page. Add a
+  README to each (usage + install + peer deps) and add it to their `files`
+  array. Every other package has one.
+- **CI Node 20 deprecation.** `.github/workflows/*` use `actions/checkout@v4` and
+  `actions/setup-node@v4`, which GitHub now force-runs on Node 24 with a
+  deprecation warning. Bump both to `@v5` in `ci.yml` and `publish.yml`.
+- **`"use client"` bundling warning.** `yarn build` logs `Module level directives
+  cause errors when bundled, "use client" in "dist/index.*" was ignored` for
+  packages that bundle a `"use client"` dep. Confirm it's benign (it appears to
+  be) or mark the dep external so the directive is preserved.
 
 ### Consumer follow-ups (pickle-paddle-reviews — separate repo, maintainer)
 
