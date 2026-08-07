@@ -13,7 +13,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 | `@ccatto/react-auth` | Frontend authentication hooks and services (Better Auth + JWT) |
 | `@ccatto/react-contact` | Plug-n-play contact form: `ContactFormCatto` component + hooks + framework-agnostic Telnyx SMS notifier (`/server`) |
 | `@ccatto/react-mobile` | Capacitor mobile hooks (haptics, deep links, network, etc.) |
-| `@ccatto/react-analytics` | Drop-in Google Analytics 4 for Next.js App Router (`<GoogleAnalyticsCatto/>` + `trackEvent`) |
+| `@ccatto/react-analytics` | Drop-in Google Analytics 4 for Next.js + Capacitor (`<GoogleAnalyticsCatto/>`, `trackEvent`, Capacitor `app_platform` dimension) |
 | `@ccatto/react-push` | Push notification hooks for web and mobile |
 | `@ccatto/nest-auth` | NestJS authentication module (JWT, guards, decorators) |
 | `@ccatto/nest-email` | NestJS email module (SendGrid) |

@@ -58,7 +58,7 @@ catto-packages/
 | `@ccatto/react-auth` | 1.4.0 | Better Auth + JWT + mobile auth hooks |
 | `@ccatto/react-contact` | 1.1.0 | Plug-n-play contact form: `ContactFormCatto` + hooks + framework-agnostic Telnyx SMS notifier (`/server` subpath) |
 | `@ccatto/react-mobile` | 1.0.0 | Capacitor hooks (haptics, deep links, network, etc.) |
-| `@ccatto/react-analytics` | 1.0.0 | Drop-in GA4 for Next.js App Router (`<GoogleAnalyticsCatto/>` + `trackEvent`) — wraps `@next/third-parties` |
+| `@ccatto/react-analytics` | 1.1.0 | Drop-in GA4 for Next.js + Capacitor (`<GoogleAnalyticsCatto/>`, `trackEvent`, `app_platform` dimension via `/platform`) — wraps `@next/third-parties` |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
 | `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |

@@ -1,7 +1,7 @@
 {
   "name": "@ccatto/react-analytics",
-  "version": "1.0.0",
-  "description": "Catto Analytics - drop-in Google Analytics 4 for Next.js App Router: <GoogleAnalyticsCatto/> + trackEvent()",
+  "version": "1.1.0",
+  "description": "Catto Analytics - drop-in Google Analytics 4 for Next.js + Capacitor: <GoogleAnalyticsCatto/>, trackEvent(), and Capacitor platform dimensions",
   "license": "MIT",
   "author": "Chris Catto",
   "keywords": [
@@ -30,6 +30,11 @@
       "types": "./dist/index.d.ts",
       "import": "./dist/index.js",
       "require": "./dist/index.cjs"
+    },
+    "./platform": {
+      "types": "./dist/platform.d.ts",
+      "import": "./dist/platform.js",
+      "require": "./dist/platform.cjs"
     }
   },
   "main": "./dist/index.cjs",
@@ -56,6 +61,7 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^5.1.2",
+    "glob": "^13.0.0",
     "jsdom": "^27.4.0",
     "next": "^16.0.0",
     "react": "^19.0.0",
