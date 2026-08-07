@@ -8,19 +8,15 @@ items to the bottom **Done** section with the shipping version.
 
 ## Open
 
-### Docs / hygiene (low priority)
+_No open package work right now._
 
-- **Missing package READMEs.** `@ccatto/imagekit` (1.1.0) and `@ccatto/nest-events`
-  (1.0.0) are published with no `README.md` — npm shows a blank page. Add a
-  README to each (usage + install + peer deps) and add it to their `files`
-  array. Every other package has one.
-- **CI Node 20 deprecation.** `.github/workflows/*` use `actions/checkout@v4` and
-  `actions/setup-node@v4`, which GitHub now force-runs on Node 24 with a
-  deprecation warning. Bump both to `@v5` in `ci.yml` and `publish.yml`.
-- **`"use client"` bundling warning.** `yarn build` logs `Module level directives
-  cause errors when bundled, "use client" in "dist/index.*" was ignored` for
-  packages that bundle a `"use client"` dep. Confirm it's benign (it appears to
-  be) or mark the dep external so the directive is preserved.
+**Confirmed benign (no action):** the `yarn build` warning `Module level
+directives cause errors when bundled, "use client" in "dist/index.*" was ignored`
+comes from `@ccatto/ui` bundling its own components — each component source has a
+top-of-file `"use client"` that rollup strips when concatenating modules, and the
+tsup `onSuccess` step re-adds a single authoritative top-level directive (verified
+`head -1 dist/index.js` == `"use client"`). Cosmetic; silencing it would mean a
+risky refactor of every component for no runtime benefit.
 
 ### Consumer follow-ups (pickle-paddle-reviews — separate repo, maintainer)
 
@@ -40,6 +36,10 @@ These live in the app, not this repo. Do them there after `yarn install`:
 
 ## Done
 
+- ✅ `@ccatto/imagekit@1.1.1` + `@ccatto/nest-events@1.0.1` — add package READMEs
+  (were publishing with a blank npm page); patch bump to republish with docs
+- ✅ CI — bump `actions/checkout` + `actions/setup-node` `@v4` → `@v5` (clears the
+  Node 20 deprecation warning) in `ci.yml` + `publish.yml`
 - ✅ `@ccatto/ui@1.9.0` — `ProductFilterSidebarCatto` mobile polish: widened/padded
   mobile drawer (no clipping) + `hideMobileTrigger` prop for inline trigger
   placement — PR #26
