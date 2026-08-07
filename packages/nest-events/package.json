@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/nest-events",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Catto Events - NestJS in-house event/analytics logging to your own DB (no third-party SDK)",
   "license": "MIT",
   "author": "Chris Catto",
@@ -25,7 +25,8 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "README.md"
   ],
   "scripts": {
     "prebuild": "yarn clean",

@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Monorepo of 14 reusable packages (UI components, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
+Monorepo of 19 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
 
 **Tech Stack**: Yarn Workspaces + TurboRepo + TypeScript 5.7+. React/browser packages build with **tsup** and test with **vitest**; NestJS packages build with **tsc** (`tsconfig.build.json`) and test with **jest**.
 
@@ -13,20 +13,25 @@ Monorepo of 14 reusable packages (UI components, logging, auth, NestJS modules, 
 ```
 catto-packages/
 ├── packages/
-│   ├── ui/                # @ccatto/ui (the only minor-bumped package: 1.1.0)
+│   ├── ui/                # @ccatto/ui (most actively versioned: 1.9.0)
+│   ├── auth-ui/           # @ccatto/auth-ui (presentational auth forms)
 │   ├── logger/
 │   ├── catto-shared/      # publishes as @ccatto/shared (legacy dir name)
 │   ├── profanity/
+│   ├── imagekit/          # @ccatto/imagekit (ImageKit upload + auth signer)
 │   ├── react-auth/
 │   ├── react-contact/
 │   ├── react-mobile/
 │   ├── react-push/
+│   ├── capacitor-inapp-auth/  # @ccatto/capacitor-inapp-auth (native OAuth plugin)
+│   ├── sms/               # @ccatto/sms (runtime-agnostic Telnyx sender)
 │   ├── nest-auth/
 │   ├── nest-email/
 │   ├── nest-sms/
 │   ├── nest-payments/
 │   ├── nest-push/
-│   └── nest-recaptcha/
+│   ├── nest-recaptcha/
+│   └── nest-events/       # @ccatto/nest-events (in-house event/analytics logging)
 ├── docs/
 │   └── npm-publishing.md  # NPM_TOKEN rotation, publish workflow
 ├── .github/workflows/
@@ -38,22 +43,30 @@ catto-packages/
 
 ## Packages
 
+> Versions below are a snapshot (drift over time) — the `package.json` `version`
+> field is always the source of truth. The publish workflow keys off version.
+
 | Package | Version | Description |
 |---------|---------|-------------|
-| `@ccatto/ui` | 1.1.0 | React component library (ButtonCatto, CardCatto, TableCatto, etc.) — Tailwind, atomic design, themes |
+| `@ccatto/ui` | 1.9.0 | React component library (ButtonCatto, CardCatto, TableCatto, server-paging + filter-sidebar primitives, etc.) — Tailwind, atomic design, themes |
+| `@ccatto/auth-ui` | 0.4.0 | Presentational React auth forms (sign-in, register, login) |
 | `@ccatto/logger` | 1.0.0 | Pino factories for browser and Node.js |
 | `@ccatto/shared` | 1.0.0 | Shared utilities (geo, color, profanity re-exports) — source dir is `packages/catto-shared/` |
-| `@ccatto/profanity` | 1.0.0 | Content moderation / profanity filtering |
-| `@ccatto/react-auth` | 1.0.0 | Better Auth + JWT + mobile auth hooks |
+| `@ccatto/profanity` | 1.0.0 | Content moderation / profanity filtering (Zod + NestJS helpers) |
+| `@ccatto/imagekit` | 1.1.0 | ImageKit upload auth signer + client upload + React uploader/gallery |
+| `@ccatto/react-auth` | 1.4.0 | Better Auth + JWT + mobile auth hooks |
 | `@ccatto/react-contact` | 1.1.0 | Plug-n-play contact form: `ContactFormCatto` + hooks + framework-agnostic Telnyx SMS notifier (`/server` subpath) |
 | `@ccatto/react-mobile` | 1.0.0 | Capacitor hooks (haptics, deep links, network, etc.) |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
+| `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
+| `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |
 | `@ccatto/nest-auth` | 1.0.0 | NestJS JWT, WebAuthn, guards, decorators |
 | `@ccatto/nest-email` | 1.0.0 | NestJS email module (SendGrid) |
 | `@ccatto/nest-sms` | 1.0.0 | NestJS SMS module (Telnyx) |
 | `@ccatto/nest-payments` | 1.0.0 | NestJS payments module (Stripe) |
 | `@ccatto/nest-push` | 1.0.0 | NestJS push notifications module (Firebase FCM) |
 | `@ccatto/nest-recaptcha` | 1.0.0 | NestJS Google reCAPTCHA v3 verification |
+| `@ccatto/nest-events` | 1.0.0 | NestJS in-house event/analytics logging to your own DB |
 
 ## Dependency Graph
 
@@ -129,7 +142,7 @@ To publish manually: `cd packages/<name> && npm publish` (after `yarn build`).
 
 - **Yarn-only**: never run `npm install` at the root; the lockfile is `yarn.lock` and the toolchain assumes Yarn 1.
 - **Directory vs package name mismatch**: `@ccatto/shared` lives in `packages/catto-shared/` (legacy directory name retained to avoid churn). The `name` field in its `package.json` is the source of truth — Yarn Workspaces resolves by package name, not directory.
-- **`@ccatto/ui` is the only package above 1.0.0** (currently 1.1.0). When making coordinated changes, only bump the packages you actually changed; the publish workflow keys off version, not commits.
+- **Versions are per-package and independent.** Several are already past 1.0.0 (`ui` 1.9.0, `react-auth` 1.4.0, `react-contact`/`imagekit` 1.1.0, `capacitor-inapp-auth` 1.0.1), and two are pre-1.0 (`auth-ui` 0.4.0, `sms` 0.1.0). When making coordinated changes, only bump the packages you actually changed; the publish workflow keys off version, not commits. Check each `package.json` for the current version rather than trusting the snapshot table above.
 - **`postinstall` runs `build:all`** so consumers and CI both get a fully built workspace after `yarn install`. Don't remove it without updating CI.
 - **Peer deps are wide and mostly optional** (see `nest-auth`, `ui`) — keep new peer deps optional unless truly required, to avoid breaking consumers.
 - **Resolutions** in root `package.json` pin `@typescript-eslint/*` and `better-call` — adjust with care.
