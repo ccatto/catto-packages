@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Monorepo of 19 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
+Monorepo of 20 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
 
 **Tech Stack**: Yarn Workspaces + TurboRepo + TypeScript 5.7+. React/browser packages build with **tsup** and test with **vitest**; NestJS packages build with **tsc** (`tsconfig.build.json`) and test with **jest**.
 
@@ -23,6 +23,7 @@ catto-packages/
 │   ├── react-contact/
 │   ├── react-mobile/
 │   ├── react-push/
+│   ├── react-analytics/  # @ccatto/react-analytics (GA4 for Next.js App Router)
 │   ├── capacitor-inapp-auth/  # @ccatto/capacitor-inapp-auth (native OAuth plugin)
 │   ├── sms/               # @ccatto/sms (runtime-agnostic Telnyx sender)
 │   ├── nest-auth/
@@ -57,6 +58,7 @@ catto-packages/
 | `@ccatto/react-auth` | 1.4.0 | Better Auth + JWT + mobile auth hooks |
 | `@ccatto/react-contact` | 1.1.0 | Plug-n-play contact form: `ContactFormCatto` + hooks + framework-agnostic Telnyx SMS notifier (`/server` subpath) |
 | `@ccatto/react-mobile` | 1.0.0 | Capacitor hooks (haptics, deep links, network, etc.) |
+| `@ccatto/react-analytics` | 1.0.0 | Drop-in GA4 for Next.js App Router (`<GoogleAnalyticsCatto/>` + `trackEvent`) — wraps `@next/third-parties` |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
 | `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |
