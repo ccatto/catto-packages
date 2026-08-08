@@ -105,6 +105,16 @@ export type {
   NavLinkItem,
 } from "./components/NavLinkGroup/NavLinkGroupCatto";
 
+// Sidebar Tree Nav — collapsible nested navigation tree (docs-style sidebar)
+export {
+  default as SidebarTreeNavCatto,
+  findNavTreePath,
+} from "./components/SidebarTreeNav/SidebarTreeNavCatto";
+export type {
+  SidebarTreeNavCattoProps,
+  NavTreeItem,
+} from "./components/SidebarTreeNav/SidebarTreeNavCatto";
+
 // Hide On Scroll
 export { default as HideOnScrollWrapper } from "./components/HideOnScroll/HideOnScrollWrapper";
 export type {

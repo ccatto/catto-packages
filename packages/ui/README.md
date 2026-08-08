@@ -199,7 +199,77 @@ import '@ccatto/ui/themes/rleaguez.css';
 | `BottomNavCatto`         | Mobile bottom navigation with hide-on-scroll              |
 | `AnimatedHamburgerCatto` | Animated hamburger menu icon                              |
 | `NavLinkGroupCatto`      | Grouped navigation links with section headers             |
+| `SidebarTreeNavCatto`    | Collapsible **nested** navigation tree (docs-style sidebar) |
 | `HideOnScrollWrapper`    | Wrapper that hides content on scroll                      |
+
+#### `SidebarTreeNavCatto` — nested docs-style nav tree
+
+Generic, **data-driven** collapsible tree for knowledge bases / docs. Renders
+whatever `items` tree it's given (arbitrary depth), auto-expands the ancestor
+path to the active item, and is keyboard + screen-reader accessible. It owns no
+layout — you place it.
+
+```tsx
+import { SidebarTreeNavCatto, type NavTreeItem } from "@ccatto/ui";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
+
+const navTree: NavTreeItem[] = [
+  {
+    key: "basics",
+    label: "Basics",
+    children: [
+      { key: "rules", label: "The Rules", href: "/pickle-talk/rules" },
+      { key: "scoring", label: "Scoring", href: "/pickle-talk/scoring" },
+    ],
+  },
+  { key: "about", label: "About", href: "/about" },
+];
+
+// Desktop: a persistent sticky aside.
+<aside className="sticky top-20 hidden max-h-[calc(100vh-6rem)] overflow-y-auto lg:block">
+  <SidebarTreeNavCatto
+    items={navTree}
+    title="Pickle Talk"
+    currentPath={usePathname()}
+    collapsible
+    storageKey="pickle-talk-nav"
+    LinkComponent={Link}
+  />
+</aside>;
+```
+
+**Mobile** — wrap the *same* component in `DrawerCatto` (left flyout) opened by a
+"Contents" button; nothing tree-specific changes:
+
+```tsx
+<DrawerCatto isOpen={open} onClose={() => setOpen(false)} side="left" title="Contents">
+  <SidebarTreeNavCatto items={navTree} currentPath={pathname} LinkComponent={Link} />
+</DrawerCatto>
+```
+
+**Sibling scroll-row recipe** — pair the tree with a slim
+`MobileScrollIndicatorWrapperCatto` row of the current section's siblings for
+quick thumb-hops, fed from the same data via the exported `findNavTreePath`:
+
+```tsx
+import { findNavTreePath, MobileScrollIndicatorWrapperCatto } from "@ccatto/ui";
+
+const path = findNavTreePath(navTree, { currentPath: pathname }); // ["basics","rules"]
+const parentKey = path[path.length - 2];
+const siblings = /* find parentKey's children in navTree */ [];
+
+<MobileScrollIndicatorWrapperCatto className="lg:hidden">
+  <div className="flex gap-2 px-4">
+    {siblings.map((s) => <Link key={s.key} href={s.href!}>{s.label}</Link>)}
+  </div>
+</MobileScrollIndicatorWrapperCatto>;
+```
+
+**Data source** — the control is pure, so adding a page never means editing the
+nav: (1) keep a static `navTree.ts` and pass it in, or (2) build the same
+`NavTreeItem[]` shape from a DB pages table (parent/order) with admin CRUD +
+`useDragDropList` reordering. Same `items` shape either way.
 
 ### Data Display
 

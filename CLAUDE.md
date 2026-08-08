@@ -51,7 +51,7 @@ catto-packages/
 
 | Package | Version | Description |
 |---------|---------|-------------|
-| `@ccatto/ui` | 1.9.0 | React component library (ButtonCatto, CardCatto, TableCatto, server-paging + filter-sidebar primitives, etc.) — Tailwind, atomic design, themes |
+| `@ccatto/ui` | 1.10.0 | React component library (ButtonCatto, CardCatto, TableCatto, server-paging + filter-sidebar + nested nav-tree primitives, etc.) — Tailwind, atomic design, themes |
 | `@ccatto/auth-ui` | 0.4.0 | Presentational React auth forms (sign-in, register, login) |
 | `@ccatto/logger` | 1.0.0 | Pino factories for browser and Node.js |
 | `@ccatto/shared` | 1.0.0 | Shared utilities (geo, color, profanity re-exports) — source dir is `packages/catto-shared/` |
