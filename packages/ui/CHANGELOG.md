@@ -5,6 +5,23 @@ All notable changes to @ccatto/ui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.10.0] - 2026-08-08
+
+### Added
+
+- **`SidebarTreeNavCatto`** — a generic, data-driven **collapsible nested
+  navigation tree** (docs-style sidebar), filling the gap between the flat
+  `NavLinkGroupCatto` and the faceted `ProductFilterSidebarCatto`. Arbitrary
+  depth via a single `items: NavTreeItem[]` source; **auto-expands the ancestor
+  path** to the active item (matched by `currentPath` or `activeKey`) and
+  highlights it; per-branch chevron toggle; whole-sidebar collapse to an icon
+  rail (controlled or uncontrolled); optional SSR/WebView-guarded localStorage
+  persistence (`storageKey`). Accessible: `role="tree"`/`treeitem`,
+  `aria-expanded`, roving tabindex + arrow-key navigation, visible focus ring,
+  and `motion-reduce` support. Layout-agnostic — the app wraps it in
+  `DrawerCatto` on mobile. Exports the `findNavTreePath` helper (drives
+  auto-expand and the sibling scroll-row recipe).
+
 ## [1.9.0] - 2026-08-06
 
 ### Fixed
