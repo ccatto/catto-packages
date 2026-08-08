@@ -99,6 +99,7 @@ yarn test             # turbo run test (depends on build)
 yarn lint             # turbo run lint
 yarn clean            # turbo run clean
 yarn prettier         # format everything
+yarn check:packages   # validate every package's exports/types (publint + attw); CI-gated
 
 # Per-package (run from package dir, or via workspace flag)
 yarn workspace @ccatto/ui build

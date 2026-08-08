@@ -53,11 +53,12 @@ pre-publish local-link path, so iterating on a package against a real app is slo
 
 ### High value, low effort — the "if we do anything, do these"
 
-1. **Add `publint` + `@arethetypeswrong/cli` to CI.** Validates every package's
-   `exports` map, ESM/CJS interop, and that types resolve for all consumer module
-   settings. We hand-built dual `import`/`require`/`types` exports and `./server`
-   / `./platform` subpaths several times — this would guard them automatically and
-   catch broken publishes before they ship. ~1 hour.
+1. ✅ **DONE — `publint` + `@arethetypeswrong/cli` in CI.** `yarn check:packages`
+   (`scripts/check-packages.mjs`) runs both per-package; wired into `ci.yml` as a
+   blocking step. It immediately surfaced (and fixed) the `@ccatto/profanity/nest`
+   node10 subpath break. Two systemic findings are documented-ignored with
+   follow-ups below (`false-esm` on tsup packages; node10 subpaths on
+   bundler-consumed packages).
 2. **npm provenance.** Add `--provenance` + `permissions: id-token: write` to
    `publish.yml` for verified supply-chain provenance badges on npm. Near-zero
    effort, real trust signal.

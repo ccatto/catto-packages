@@ -31,7 +31,30 @@
       "Bash(for comp:*)",
       "Bash(do echo:*)",
       "Read(//Users/chriscatto/Documents/GitK8/catto-packages/**)",
-      "Bash(done)"
+      "Bash(done)",
+      "Bash(yarn typecheck *)",
+      "Bash(yarn test:run useServerPagingCatto)",
+      "Bash(yarn build *)",
+      "Bash(cd *)",
+      "Bash(yarn test:run)",
+      "Bash(git add *)",
+      "Bash(git push *)",
+      "Bash(gh pr create --base main --head feat/ui-server-paging-controls --title 'feat\\(ui\\): server-side list controls — paging + sort \\(v1.8.0\\)' --body ' *)",
+      "Bash(gh pr *)",
+      "Bash(cat tsup.config.ts)",
+      "Bash(cat vitest.config.ts)",
+      "Bash(cat src/schema/contactSchema.ts)",
+      "Bash(node -e \"console.log\\('server:', require\\('./package.json'\\).exports['./server'].import\\); console.log\\('files:', require\\('./package.json'\\).files.join\\(','\\)\\)\")",
+      "Bash(git commit -m ' *)",
+      "Bash(node -e \"console.log\\('ui version on main:', require\\('./packages/ui/package.json'\\).version\\)\")",
+      "Bash(yarn test:run ProductFilterSidebarCatto)",
+      "Bash(node -e \"const fs=require\\('fs'\\);const s=fs.readFileSync\\('.github/workflows/publish.yml','utf8'\\); const y=require\\('js-yaml'\\); try{y.load\\(s\\);console.log\\('publish.yml: valid YAML'\\);}catch\\(e\\){console.log\\('YAML ERROR:',e.message\\);process.exit\\(1\\);}\")",
+      "Bash(python3 -c \"import yaml,sys; yaml.safe_load\\(open\\('.github/workflows/publish.yml'\\)\\); print\\('publish.yml: valid YAML \\(python\\)'\\)\")",
+      "Bash(git commit -q -m ' *)",
+      "Bash(node -e \"const p=require\\('./packages/imagekit/package.json'\\); console.log\\('files:',JSON.stringify\\(p.files\\),'\\\\nexports:',JSON.stringify\\(p.exports\\),'\\\\ndesc:',p.description,'\\\\npeers:',JSON.stringify\\(p.peerDependencies||{}\\)\\)\")",
+      "Bash(node -e \"const p=require\\('./package.json'\\); console.log\\('version:',p.version,'\\\\nfiles:',JSON.stringify\\(p.files\\),'\\\\nexports:',JSON.stringify\\(p.exports||'\\(none\\)'\\),'\\\\ndesc:',p.description,'\\\\npeers:',JSON.stringify\\(p.peerDependencies||{}\\)\\)\")",
+      "Bash(perl -pi -e 's{actions/checkout\\\\@v4}{actions/checkout\\\\@v5}g; s{actions/setup-node\\\\@v4}{actions/setup-node\\\\@v5}g' .github/workflows/ci.yml .github/workflows/publish.yml)",
+      "Bash(node -e \"const y=require\\('js-yaml'\\),fs=require\\('fs'\\); for\\(const f of ['.github/workflows/ci.yml','.github/workflows/publish.yml']\\){y.load\\(fs.readFileSync\\(f,'utf8'\\)\\);console.log\\(f+': valid YAML'\\);}\")"
     ]
   }
 }
