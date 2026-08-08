@@ -15,6 +15,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 | `@ccatto/react-mobile` | Capacitor mobile hooks (haptics, deep links, network, etc.) |
 | `@ccatto/react-analytics` | Drop-in Google Analytics 4 for Next.js + Capacitor (`<GoogleAnalyticsCatto/>`, `trackEvent`, Capacitor `app_platform` dimension) |
 | `@ccatto/react-comments` | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`) — transport-agnostic |
+| `@ccatto/react-pages` | Page-CMS UI: render Markdown pages, drag-reorder admin tree, page editor, tree→nav mapping — transport-agnostic |
 | `@ccatto/react-push` | Push notification hooks for web and mobile |
 | `@ccatto/nest-auth` | NestJS authentication module (JWT, guards, decorators) |
 | `@ccatto/nest-email` | NestJS email module (SendGrid) |
@@ -23,6 +24,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 | `@ccatto/nest-recaptcha` | NestJS reCAPTCHA verification module |
 | `@ccatto/nest-push` | NestJS push notifications module (Firebase) |
 | `@ccatto/nest-comments` | NestJS moderated comments module (profanity + admin moderation + report/flag) for UGC |
+| `@ccatto/nest-pages` | NestJS page-CMS module: admin-authored nested content pages (tree, path resolution, drag-reorder, draft/publish) |
 
 ## Quick Start
 
