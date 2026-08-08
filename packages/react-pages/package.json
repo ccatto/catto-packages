@@ -1,0 +1,72 @@
+{
+  "name": "@ccatto/react-pages",
+  "version": "1.0.0",
+  "description": "Catto Pages - React page CMS UI: render Markdown pages, admin tree with drag-reorder, page editor, and page-tree -> nav mapping. Transport-agnostic.",
+  "license": "MIT",
+  "author": "Chris Catto",
+  "keywords": [
+    "react",
+    "cms",
+    "pages",
+    "markdown",
+    "drag-and-drop",
+    "typescript",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/react-pages",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/react-pages"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:run": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@ccatto/ui": "^1.10.0",
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.0.0",
+    "@types/react": "^19.0.0",
+    "@types/react-dom": "^19.0.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "glob": "^13.0.0",
+    "jsdom": "^27.4.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rimraf": "^6.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.16"
+  },
+  "peerDependencies": {
+    "@ccatto/ui": ">=1.10.0",
+    "react": ">=18.0.0"
+  }
+}

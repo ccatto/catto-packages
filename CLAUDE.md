@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Monorepo of 22 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics, moderated comments) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
+Monorepo of 24 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics, moderated comments, page CMS) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
 
 **Tech Stack**: Yarn Workspaces + TurboRepo + TypeScript 5.7+. React/browser packages build with **tsup** and test with **vitest**; NestJS packages build with **tsc** (`tsconfig.build.json`) and test with **jest**.
 
@@ -25,6 +25,7 @@ catto-packages/
 │   ├── react-push/
 │   ├── react-analytics/  # @ccatto/react-analytics (GA4 for Next.js App Router)
 │   ├── react-comments/   # @ccatto/react-comments (comment thread + moderation UI)
+│   ├── react-pages/      # @ccatto/react-pages (page-CMS UI: render/edit/reorder)
 │   ├── capacitor-inapp-auth/  # @ccatto/capacitor-inapp-auth (native OAuth plugin)
 │   ├── sms/               # @ccatto/sms (runtime-agnostic Telnyx sender)
 │   ├── nest-auth/
@@ -34,7 +35,8 @@ catto-packages/
 │   ├── nest-push/
 │   ├── nest-recaptcha/
 │   ├── nest-events/       # @ccatto/nest-events (in-house event/analytics logging)
-│   └── nest-comments/     # @ccatto/nest-comments (moderated comments for UGC)
+│   ├── nest-comments/     # @ccatto/nest-comments (moderated comments for UGC)
+│   └── nest-pages/        # @ccatto/nest-pages (page CMS: admin-authored pages)
 ├── docs/
 │   └── npm-publishing.md  # NPM_TOKEN rotation, publish workflow
 ├── .github/workflows/
@@ -62,6 +64,7 @@ catto-packages/
 | `@ccatto/react-mobile` | 1.0.0 | Capacitor hooks (haptics, deep links, network, etc.) |
 | `@ccatto/react-analytics` | 1.1.0 | Drop-in GA4 for Next.js + Capacitor (`<GoogleAnalyticsCatto/>`, `trackEvent`, `app_platform` dimension via `/platform`) — wraps `@next/third-parties` |
 | `@ccatto/react-comments` | 1.0.0 | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`, `useCommentModeration`) — transport-agnostic |
+| `@ccatto/react-pages` | 1.0.0 | Page-CMS UI (`<PageBodyCatto/>`, `<PageAdminTreeCatto/>`, `<PageEditorCatto/>`, `toNavTree`) — reuses `useDragDropList` + `NavTreeItem`; transport-agnostic |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
 | `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |
@@ -73,6 +76,7 @@ catto-packages/
 | `@ccatto/nest-recaptcha` | 1.0.0 | NestJS Google reCAPTCHA v3 verification |
 | `@ccatto/nest-events` | 1.0.0 | NestJS in-house event/analytics logging to your own DB |
 | `@ccatto/nest-comments` | 1.0.0 | NestJS moderated comments for UGC (profanity gate + admin moderation + report/flag); reuses `nest-auth` guards |
+| `@ccatto/nest-pages` | 1.0.0 | NestJS page CMS: admin-authored nested content pages (tree, path resolution, drag-reorder, draft/publish); reuses `nest-auth` guards |
 
 ## Dependency Graph
 
@@ -84,6 +88,8 @@ catto-packages/
 @ccatto/react-mobile       -> @ccatto/logger
 @ccatto/react-push         -> @ccatto/logger
 @ccatto/nest-comments      -> @ccatto/nest-auth, @ccatto/profanity
+@ccatto/nest-pages         -> @ccatto/nest-auth
+@ccatto/react-pages        -> @ccatto/ui (peer)
 (all others are leaves)
 ```
 
