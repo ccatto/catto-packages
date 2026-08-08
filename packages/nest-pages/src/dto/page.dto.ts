@@ -1,5 +1,10 @@
 /**
  * @ccatto/nest-pages - GraphQL DTOs
+ *
+ * Every optional field carries an EXPLICIT `@Field(() => Type, ...)` — NestJS
+ * code-first can't infer the GraphQL type from a `string | null` union (TS
+ * reflection emits `Object`), which crashes schema build with UndefinedTypeError.
+ * The `pages.schema.spec.ts` smoke test guards this at CI time.
  */
 import {
   Field,
@@ -33,22 +38,22 @@ export class PageNode {
   @Field(() => ID)
   id!: string;
 
-  @Field()
+  @Field(() => String)
   namespace!: string;
 
-  @Field()
+  @Field(() => String)
   slug!: string;
 
   @Field(() => ID, { nullable: true })
   parentId?: string | null;
 
-  @Field()
+  @Field(() => String)
   title!: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   excerpt?: string | null;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   icon?: string | null;
 
   @Field(() => PageStatus)
@@ -57,11 +62,11 @@ export class PageNode {
   @Field(() => Int)
   order!: number;
 
-  @Field()
+  @Field(() => String)
   body!: string;
 
   /** Full slug path from the namespace root, e.g. "training/shots/forehand". */
-  @Field()
+  @Field(() => String)
   path!: string;
 
   /** Child pages (ordered). Empty for leaves. */
@@ -71,7 +76,7 @@ export class PageNode {
 
 @InputType()
 export class CreatePageInput {
-  @Field()
+  @Field(() => String)
   @IsString()
   @MaxLength(64)
   namespace!: string;
@@ -81,31 +86,31 @@ export class CreatePageInput {
   @IsString()
   parentId?: string;
 
-  @Field()
+  @Field(() => String)
   @IsString()
   @MinLength(1)
   @MaxLength(255)
   title!: string;
 
   /** Optional — auto-slugified from `title` when omitted. */
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(191)
   slug?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   body?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(500)
   excerpt?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(64)
@@ -119,30 +124,30 @@ export class CreatePageInput {
 
 @InputType()
 export class UpdatePageInput {
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(255)
   title?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(191)
   slug?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   body?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(500)
   excerpt?: string;
 
-  @Field({ nullable: true })
+  @Field(() => String, { nullable: true })
   @IsOptional()
   @IsString()
   @MaxLength(64)

@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/nest-pages",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Catto Pages - NestJS module for admin-authored nested content pages (a page CMS): tree, path resolution, drag-reorder, draft/publish",
   "license": "MIT",
   "author": "Chris Catto",
