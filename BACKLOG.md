@@ -53,11 +53,24 @@ These live in the apps, not this repo. Do them there after `yarn install`.
 ### Repo / tooling improvement ideas (open-ended, low priority)
 
 See [`docs/IMPROVEMENT-NOTES.md`](docs/IMPROVEMENT-NOTES.md) for the full writeup
-(architecture context + ideas by impact×effort). Highest-value, lowest-effort
-candidates: `publint`/`@arethetypeswrong/cli` in CI, npm `--provenance`, replace
+(architecture context + ideas by impact×effort). ✅ Done: `publint` + `attw` in
+CI (`yarn check:packages`). Remaining highest-value: npm `--provenance`, replace
 `build:all` with `turbo run build`, and a package-consistency check
 (`syncpack`/`manypkg`). Bigger bets: Changesets for versioning/publishing, a
 shared React build preset to unify the three `"use client"` strategies.
+
+**Export-validation follow-ups** (surfaced by `attw`; currently documented-ignored
+in `scripts/check-packages.mjs`, so the check stays green):
+- **Fix `false-esm` on the tsup dual ESM/CJS packages** (`ui`, `logger`, `sms`,
+  `auth-ui`, `capacitor-inapp-auth`, `react-*`). Split the `exports` `require`
+  condition to its own `types` pointing at the `.d.cts` tsup already emits, e.g.
+  `"require": { "types": "./dist/index.d.cts", "default": "./dist/index.cjs" }`.
+  Mechanical but touches ~11 packages + a version bump/republish each — do as one
+  deliberate release, then drop `false-esm` from the global ignore.
+- **node10 subpath shims for the remaining bundler-consumed subpaths**
+  (`react-contact/server`, `react-analytics/platform`, `react-auth/server`,
+  `imagekit/server`) — same root re-export shim `@ccatto/profanity` now uses, if
+  we ever want them classic-resolution-safe. Low priority (all bundler-consumed).
 
 ### Package ideas (optional, later)
 - `@ccatto/react-analytics`: optional consent gating (`enabled` prop /

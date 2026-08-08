@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/profanity",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Catto Profanity - Multi-language profanity filter with Zod and NestJS support",
   "license": "MIT",
   "author": "Chris Catto",
@@ -38,7 +38,12 @@
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "zod.js",
+    "zod.d.ts",
+    "nest.js",
+    "nest.d.ts",
+    "README.md"
   ],
   "scripts": {
     "prebuild": "yarn clean",
