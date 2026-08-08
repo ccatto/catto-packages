@@ -50,6 +50,15 @@ These live in the apps, not this repo. Do them there after `yarn install`.
 - Swap any bespoke GA snippet for `@ccatto/react-analytics` using its existing
   GA4 property id.
 
+### Repo / tooling improvement ideas (open-ended, low priority)
+
+See [`docs/IMPROVEMENT-NOTES.md`](docs/IMPROVEMENT-NOTES.md) for the full writeup
+(architecture context + ideas by impact×effort). Highest-value, lowest-effort
+candidates: `publint`/`@arethetypeswrong/cli` in CI, npm `--provenance`, replace
+`build:all` with `turbo run build`, and a package-consistency check
+(`syncpack`/`manypkg`). Bigger bets: Changesets for versioning/publishing, a
+shared React build preset to unify the three `"use client"` strategies.
+
 ### Package ideas (optional, later)
 - `@ccatto/react-analytics`: optional consent gating (`enabled` prop /
   cookie-consent hook) for GDPR regions; a `GoogleTagManagerCatto` sibling; a
