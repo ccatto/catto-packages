@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Monorepo of 24 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics, moderated comments, page CMS) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
+Monorepo of 25 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics, moderated comments, page CMS, account settings) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
 
 **Tech Stack**: Yarn Workspaces + TurboRepo + TypeScript 5.7+. React/browser packages build with **tsup** and test with **vitest**; NestJS packages build with **tsc** (`tsconfig.build.json`) and test with **jest**.
 
@@ -26,6 +26,7 @@ catto-packages/
 │   ├── react-analytics/  # @ccatto/react-analytics (GA4 for Next.js App Router)
 │   ├── react-comments/   # @ccatto/react-comments (comment thread + moderation UI)
 │   ├── react-pages/      # @ccatto/react-pages (page-CMS UI: render/edit/reorder)
+│   ├── react-account/    # @ccatto/react-account (account settings: phone/delete/blocks)
 │   ├── capacitor-inapp-auth/  # @ccatto/capacitor-inapp-auth (native OAuth plugin)
 │   ├── sms/               # @ccatto/sms (runtime-agnostic Telnyx sender)
 │   ├── nest-auth/
@@ -65,6 +66,7 @@ catto-packages/
 | `@ccatto/react-analytics` | 1.1.0 | Drop-in GA4 for Next.js + Capacitor (`<GoogleAnalyticsCatto/>`, `trackEvent`, `app_platform` dimension via `/platform`) — wraps `@next/third-parties` |
 | `@ccatto/react-comments` | 1.0.0 | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`, `useCommentModeration`) — transport-agnostic |
 | `@ccatto/react-pages` | 1.0.0 | Page-CMS UI (`<PageBodyCatto/>`, `<PageAdminTreeCatto/>`, `<PageEditorCatto/>`, `toNavTree`) — reuses `useDragDropList` + `NavTreeItem`; transport-agnostic |
+| `@ccatto/react-account` | 1.0.0 | Account-settings UI (`<AccountSettingsCatto/>`, `<PhoneManagerCatto/>` w/ phone-first safeguard, `<DeleteAccountCatto/>`, `<BlockedUsersCatto/>`, `canRemovePhone`) — dual-auth, transport-agnostic |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
 | `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |
@@ -90,6 +92,7 @@ catto-packages/
 @ccatto/nest-comments      -> @ccatto/nest-auth, @ccatto/profanity
 @ccatto/nest-pages         -> @ccatto/nest-auth
 @ccatto/react-pages        -> @ccatto/ui (peer)
+@ccatto/react-account      -> @ccatto/ui (peer)
 (all others are leaves)
 ```
 
