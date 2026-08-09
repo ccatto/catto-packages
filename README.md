@@ -16,6 +16,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 | `@ccatto/react-analytics` | Drop-in Google Analytics 4 for Next.js + Capacitor (`<GoogleAnalyticsCatto/>`, `trackEvent`, Capacitor `app_platform` dimension) |
 | `@ccatto/react-comments` | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`) — transport-agnostic |
 | `@ccatto/react-pages` | Page-CMS UI: render Markdown pages, drag-reorder admin tree, page editor, tree→nav mapping — transport-agnostic |
+| `@ccatto/react-account` | Account-settings UI (identity slot, phone/SMS remove, delete account, blocked users) — dual-auth, transport-agnostic |
 | `@ccatto/react-push` | Push notification hooks for web and mobile |
 | `@ccatto/nest-auth` | NestJS authentication module (JWT, guards, decorators) |
 | `@ccatto/nest-email` | NestJS email module (SendGrid) |
