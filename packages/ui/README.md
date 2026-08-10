@@ -188,6 +188,7 @@ import '@ccatto/ui/themes/rleaguez.css';
 | `MellowModalCatto` | Modal dialog with themes, sizes, positions, auto-close          |
 | `TooltipCatto`     | Hover tooltips with 5 variants, 4 positions                     |
 | `EmptyStateCatto`  | Empty/no-data states with icons, actions, variants              |
+| `ErrorPageCatto`   | Branded 404 / runtime-error template (for `not-found.tsx` / `error.tsx`) |
 | `BadgeCatto`       | Status badges with 8 variants, icons, dot mode, pulse animation |
 
 ### Navigation Components

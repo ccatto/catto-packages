@@ -46,6 +46,13 @@ export type { CheckboxCattoProps } from "./components/Checkbox/CheckboxCatto";
 export { default as EmptyStateCatto } from "./components/EmptyState/EmptyStateCatto";
 export type { EmptyStateCattoProps } from "./components/EmptyState/EmptyStateCatto";
 
+// ErrorPage — branded 404 / runtime-error template
+export { default as ErrorPageCatto } from "./components/ErrorPage/ErrorPageCatto";
+export type {
+  ErrorPageCattoProps,
+  ErrorIconType,
+} from "./components/ErrorPage/ErrorPageCatto";
+
 // Toast
 export { default as ToastCatto } from "./components/Toast/ToastCatto";
 export type { ToastCattoProps } from "./components/Toast/ToastCatto";

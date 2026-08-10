@@ -5,6 +5,17 @@ All notable changes to @ccatto/ui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.11.0] - 2026-08-10
+
+### Added
+
+- **`ErrorPageCatto`** — branded, theme-aware template for "not found" / runtime
+  -error pages, so apps stop re-implementing them. Pure/presentational: `title`,
+  `subtitle`, `description`, `errorCode` badge, `iconType`
+  (`error`/`notFound`/`auth`/`server`), a primary action + optional secondary
+  action (rendered via `LinkCatto`). Render it from an app's `not-found.tsx` /
+  `error.tsx` / `global-error.tsx`.
+
 ## [1.10.0] - 2026-08-08
 
 ### Added
