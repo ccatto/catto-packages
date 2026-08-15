@@ -9,7 +9,7 @@
 // checkbox's <label>, so clicking a link navigates (in-app) instead of toggling.
 'use client';
 
-import React, { Fragment, useId, useState } from 'react';
+import React, { Fragment, useEffect, useId, useRef, useState } from 'react';
 import type { LegalDocumentVersion } from '../index';
 import type { AcceptedVersion } from './useLegalAcceptance';
 
@@ -28,26 +28,62 @@ export interface LegalAcceptanceGateProps {
   renderLink: (doc: LegalDocumentVersion) => React.ReactNode;
   /** All user-facing strings (i18n). The package ships no English. */
   labels: LegalAcceptanceLabels;
+  /**
+   * Controlled mode: when provided, the checkbox reflects this value and the
+   * component keeps no internal state. Omit for the default uncontrolled mode.
+   */
+  checked?: boolean;
   className?: string;
+  /**
+   * Accessible name for the checkbox. Since the document links sit OUTSIDE the
+   * <label> (so clicks navigate rather than toggle), a screen reader otherwise
+   * only hears `agreePrefix`. Supply e.g. "I agree to the Terms and EULA".
+   */
+  'aria-label'?: string;
+  /** Id of an element describing the checkbox (e.g. the links container). */
+  'aria-describedby'?: string;
   'data-testid'?: string;
 }
+
+const signatureOf = (documents: LegalDocumentVersion[]): string =>
+  documents.map((d) => `${d.kind}:${d.version}`).join('|');
 
 export const LegalAcceptanceGate: React.FC<LegalAcceptanceGateProps> = ({
   documents,
   onChange,
   renderLink,
   labels,
+  checked,
   className,
+  'aria-label': ariaLabel,
+  'aria-describedby': ariaDescribedBy,
   'data-testid': testId,
 }) => {
   // Unchecked by default — a pre-checked box is not affirmative consent.
-  const [accepted, setAccepted] = useState(false);
+  const [internalAccepted, setInternalAccepted] = useState(false);
+  const isControlled = checked !== undefined;
+  const accepted = isControlled ? checked : internalAccepted;
   const id = useId();
   const separator = labels.separator ?? 'and';
 
+  // Correctness: when the required documents change (e.g. a version bump lands
+  // during a re-acceptance flow), a previously-checked box no longer reflects
+  // consent to the NEW set — reset it and tell the parent. Skipped in controlled
+  // mode (the parent owns the value) and on the first render (no false onChange
+  // on mount).
+  const signature = signatureOf(documents);
+  const prevSignatureRef = useRef(signature);
+  useEffect(() => {
+    if (isControlled) return;
+    if (prevSignatureRef.current === signature) return;
+    prevSignatureRef.current = signature;
+    setInternalAccepted(false);
+    onChange(false, []);
+  }, [signature, isControlled, onChange]);
+
   const handleToggle = () => {
     const next = !accepted;
-    setAccepted(next);
+    if (!isControlled) setInternalAccepted(next);
     onChange(
       next,
       next ? documents.map((d) => ({ kind: d.kind, version: d.version })) : [],
@@ -65,6 +101,8 @@ export const LegalAcceptanceGate: React.FC<LegalAcceptanceGateProps> = ({
         type="checkbox"
         checked={accepted}
         onChange={handleToggle}
+        aria-label={ariaLabel}
+        aria-describedby={ariaDescribedBy}
         data-testid={testId}
         className="mt-0.5 h-4 w-4 shrink-0"
       />

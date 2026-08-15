@@ -68,7 +68,7 @@ catto-packages/
 | `@ccatto/react-comments` | 1.0.0 | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`, `useCommentModeration`) — transport-agnostic |
 | `@ccatto/react-pages` | 1.0.0 | Page-CMS UI (`<PageBodyCatto/>`, `<PageAdminTreeCatto/>`, `<PageEditorCatto/>`, `toNavTree`) — reuses `useDragDropList` + `NavTreeItem`; transport-agnostic |
 | `@ccatto/react-account` | 1.0.0 | Account-settings UI (`<AccountSettingsCatto/>`, `<PhoneManagerCatto/>` w/ phone-first safeguard, `<DeleteAccountCatto/>`, `<BlockedUsersCatto/>`, `canRemovePhone`) — dual-auth, transport-agnostic |
-| `@ccatto/legal` | 1.0.0 | Legal acceptance (Terms/EULA/Privacy). Dual entry: React-free core + `assertAcceptanceValid` server guard (Nest-safe) and `/react` (`<LegalAcceptanceGate/>`, `useLegalAcceptance`). Versioned by exact-string equality; `react` is an optional peer |
+| `@ccatto/legal` | 1.1.0 | Legal acceptance (Terms/EULA/Privacy). Dual entry: React-free core (`getLegalStatus`, `assertAcceptanceValid` guard, `isLegalAcceptanceError`, `LEGAL_DOCUMENT_KINDS`) Nest-safe, and `/react` (`<LegalAcceptanceGate/>` w/ controlled + reset-on-change + a11y, `useLegalAcceptance`). Versioned by exact-string equality; `react` is an optional peer |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
 | `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |
