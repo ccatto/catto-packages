@@ -71,4 +71,93 @@ describe('LegalAcceptanceGate', () => {
     ).toBe('/legal/terms');
     expect(screen.getByRole('link', { name: 'EULA' })).toBeTruthy();
   });
+
+  it('applies aria-label to the checkbox for screen readers', () => {
+    const onChange = vi.fn();
+    render(
+      <LegalAcceptanceGate
+        documents={documents}
+        onChange={onChange}
+        renderLink={(doc) => <a href={doc.url}>{doc.kind}</a>}
+        labels={{ agreePrefix: 'I agree to the' }}
+        aria-label="I agree to the Terms and EULA"
+        data-testid="legal-gate"
+      />,
+    );
+    expect(
+      screen.getByTestId('legal-gate').getAttribute('aria-label'),
+    ).toBe('I agree to the Terms and EULA');
+  });
+
+  it('resets to unchecked and reports false when the required documents change', () => {
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <LegalAcceptanceGate
+        documents={documents}
+        onChange={onChange}
+        renderLink={(doc) => <a href={doc.url}>{doc.kind}</a>}
+        labels={{ agreePrefix: 'I agree to the' }}
+        data-testid="legal-gate"
+      />,
+    );
+    // User checks the box.
+    fireEvent.click(screen.getByTestId('legal-gate'));
+    expect((screen.getByTestId('legal-gate') as HTMLInputElement).checked).toBe(
+      true,
+    );
+    onChange.mockClear();
+
+    // A version bump lands mid-session — the box must reset and report false.
+    const bumped: LegalDocumentVersion[] = [
+      { kind: 'TERMS', version: '2026-09-01', url: '/legal/terms' },
+      { kind: 'EULA', version: '2026-09-01', url: '/legal/eula' },
+    ];
+    rerender(
+      <LegalAcceptanceGate
+        documents={bumped}
+        onChange={onChange}
+        renderLink={(doc) => <a href={doc.url}>{doc.kind}</a>}
+        labels={{ agreePrefix: 'I agree to the' }}
+        data-testid="legal-gate"
+      />,
+    );
+    expect((screen.getByTestId('legal-gate') as HTMLInputElement).checked).toBe(
+      false,
+    );
+    expect(onChange).toHaveBeenCalledWith(false, []);
+  });
+
+  it('controlled mode: reflects `checked` and keeps no internal state', () => {
+    const onChange = vi.fn();
+    const { rerender } = render(
+      <LegalAcceptanceGate
+        documents={documents}
+        checked={false}
+        onChange={onChange}
+        renderLink={(doc) => <a href={doc.url}>{doc.kind}</a>}
+        labels={{ agreePrefix: 'I agree to the' }}
+        data-testid="legal-gate"
+      />,
+    );
+    const box = () => screen.getByTestId('legal-gate') as HTMLInputElement;
+    // Clicking asks the parent to change but does not self-toggle.
+    fireEvent.click(box());
+    expect(onChange).toHaveBeenCalledWith(true, [
+      { kind: 'TERMS', version: '2026-08-14' },
+      { kind: 'EULA', version: '2026-08-14' },
+    ]);
+    expect(box().checked).toBe(false);
+    // Parent flips the prop -> box reflects it.
+    rerender(
+      <LegalAcceptanceGate
+        documents={documents}
+        checked={true}
+        onChange={onChange}
+        renderLink={(doc) => <a href={doc.url}>{doc.kind}</a>}
+        labels={{ agreePrefix: 'I agree to the' }}
+        data-testid="legal-gate"
+      />,
+    );
+    expect(box().checked).toBe(true);
+  });
 });

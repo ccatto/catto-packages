@@ -1,9 +1,14 @@
 import { describe, expect, it } from 'vitest';
 import {
   assertAcceptanceValid,
+  assertRequiredWellFormed,
+  getLegalStatus,
   getUnacceptedDocuments,
+  isLegalAcceptanceError,
+  LEGAL_DOCUMENT_KINDS,
   LegalAcceptanceError,
   requiresReacceptance,
+  toAcceptanceRecords,
   type LegalAcceptanceRecord,
   type LegalDocumentVersion,
 } from '../index';
@@ -101,5 +106,80 @@ describe('assertAcceptanceValid', () => {
         { kind: 'PRIVACY', version: '2026-08-14' },
       ]),
     ).not.toThrow();
+  });
+});
+
+describe('comparison fns accept a bare { kind, version } shape', () => {
+  it('works without fabricating an acceptedAt Date (e.g. raw Prisma rows)', () => {
+    const rows = [
+      { kind: 'TERMS' as const, version: '2026-08-14' },
+      { kind: 'EULA' as const, version: '2026-08-14' },
+    ];
+    expect(getUnacceptedDocuments(required, rows)).toEqual([]);
+    expect(requiresReacceptance(required, rows)).toBe(false);
+  });
+});
+
+describe('getLegalStatus', () => {
+  it('returns requiresReacceptance + the unaccepted list in one pass', () => {
+    expect(getLegalStatus(required, [rec('TERMS', '2026-08-14')])).toEqual({
+      requiresReacceptance: true,
+      unaccepted: [{ kind: 'EULA', version: '2026-08-14', url: '/legal/eula' }],
+    });
+    expect(
+      getLegalStatus(required, [
+        rec('TERMS', '2026-08-14'),
+        rec('EULA', '2026-08-14'),
+      ]),
+    ).toEqual({ requiresReacceptance: false, unaccepted: [] });
+  });
+});
+
+describe('LEGAL_DOCUMENT_KINDS', () => {
+  it('is the runtime tuple backing the LegalDocumentKind type', () => {
+    expect(LEGAL_DOCUMENT_KINDS).toEqual(['TERMS', 'EULA', 'PRIVACY']);
+  });
+});
+
+describe('isLegalAcceptanceError', () => {
+  it('recognizes the error by its code brand (survives dual-build class identity)', () => {
+    expect(isLegalAcceptanceError(new LegalAcceptanceError([]))).toBe(true);
+    // A structurally-branded plain object (e.g. deserialized across a boundary).
+    expect(isLegalAcceptanceError({ code: 'LEGAL_ACCEPTANCE_REQUIRED' })).toBe(
+      true,
+    );
+    expect(isLegalAcceptanceError(new Error('nope'))).toBe(false);
+    expect(isLegalAcceptanceError(null)).toBe(false);
+    expect(isLegalAcceptanceError('LEGAL_ACCEPTANCE_REQUIRED')).toBe(false);
+  });
+});
+
+describe('assertRequiredWellFormed', () => {
+  it('passes a clean list', () => {
+    expect(() => assertRequiredWellFormed(required)).not.toThrow();
+  });
+
+  it('throws on a duplicate kind', () => {
+    expect(() =>
+      assertRequiredWellFormed([
+        { kind: 'TERMS', version: '2026-08-14', url: '/a' },
+        { kind: 'TERMS', version: '2026-08-15', url: '/b' },
+      ]),
+    ).toThrow(/Duplicate/);
+  });
+
+  it('throws on a blank version', () => {
+    expect(() =>
+      assertRequiredWellFormed([{ kind: 'TERMS', version: '  ', url: '/a' }]),
+    ).toThrow(/blank version/);
+  });
+});
+
+describe('toAcceptanceRecords', () => {
+  it('stamps submitted entries with the given Date', () => {
+    const at = new Date('2026-08-15T00:00:00.000Z');
+    expect(
+      toAcceptanceRecords([{ kind: 'TERMS', version: '2026-08-14' }], at),
+    ).toEqual([{ kind: 'TERMS', version: '2026-08-14', acceptedAt: at }]);
   });
 });

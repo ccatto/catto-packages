@@ -1,6 +1,6 @@
 {
   "name": "@ccatto/legal",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Catto Legal - app-agnostic legal-acceptance mechanism (Terms/EULA/Privacy). Pure core + server guard (React-free) + a headless React acceptance gate at ./react.",
   "license": "MIT",
   "author": "Chris Catto",
