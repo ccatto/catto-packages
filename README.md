@@ -17,6 +17,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 | `@ccatto/react-comments` | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`) — transport-agnostic |
 | `@ccatto/react-pages` | Page-CMS UI: render Markdown pages, drag-reorder admin tree, page editor, tree→nav mapping — transport-agnostic |
 | `@ccatto/react-account` | Account-settings UI (identity slot, phone/SMS remove, delete account, blocked users) — dual-auth, transport-agnostic |
+| `@ccatto/legal` | Legal acceptance (Terms/EULA/Privacy) — React-free core + server guard, plus `/react` gate + hook. Versioned by exact-string equality (Apple 1.2 #5) |
 | `@ccatto/react-push` | Push notification hooks for web and mobile |
 | `@ccatto/nest-auth` | NestJS authentication module (JWT, guards, decorators) |
 | `@ccatto/nest-email` | NestJS email module (SendGrid) |

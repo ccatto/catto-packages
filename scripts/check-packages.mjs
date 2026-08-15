@@ -37,6 +37,7 @@ const ATTW_IGNORE_PER_PKG = {
   '@ccatto/react-contact': ['no-resolution'], // ./server — bundler-consumed
   '@ccatto/react-analytics': ['no-resolution'], // ./platform — bundler-consumed
   '@ccatto/react-auth': ['no-resolution'], // ./server — bundler-consumed
+  '@ccatto/legal': ['no-resolution'], // ./react — bundler-consumed (Nest uses the React-free main entry)
 };
 
 // --- run ---
