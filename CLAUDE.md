@@ -4,7 +4,7 @@
 
 ## Project Overview
 
-Monorepo of 25 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics, moderated comments, page CMS, account settings) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
+Monorepo of 26 reusable packages (UI components + auth UI, logging, auth, NestJS modules, React hooks, Capacitor mobile helpers, ImageKit upload, runtime-agnostic SMS, Google Analytics, moderated comments, page CMS, account settings, legal acceptance) managed with Yarn Workspaces and TurboRepo. All packages publish to the public npm registry under `@ccatto/*`.
 
 **Tech Stack**: Yarn Workspaces + TurboRepo + TypeScript 5.7+. React/browser packages build with **tsup** and test with **vitest**; NestJS packages build with **tsc** (`tsconfig.build.json`) and test with **jest**.
 
@@ -27,6 +27,7 @@ catto-packages/
 │   ├── react-comments/   # @ccatto/react-comments (comment thread + moderation UI)
 │   ├── react-pages/      # @ccatto/react-pages (page-CMS UI: render/edit/reorder)
 │   ├── react-account/    # @ccatto/react-account (account settings: phone/delete/blocks)
+│   ├── legal/            # @ccatto/legal (legal acceptance: core + /react gate)
 │   ├── capacitor-inapp-auth/  # @ccatto/capacitor-inapp-auth (native OAuth plugin)
 │   ├── sms/               # @ccatto/sms (runtime-agnostic Telnyx sender)
 │   ├── nest-auth/
@@ -67,6 +68,7 @@ catto-packages/
 | `@ccatto/react-comments` | 1.0.0 | Comment thread + moderation UI for UGC (`<CommentThreadCatto/>`, `<CommentModerationTableCatto/>`, `useCommentModeration`) — transport-agnostic |
 | `@ccatto/react-pages` | 1.0.0 | Page-CMS UI (`<PageBodyCatto/>`, `<PageAdminTreeCatto/>`, `<PageEditorCatto/>`, `toNavTree`) — reuses `useDragDropList` + `NavTreeItem`; transport-agnostic |
 | `@ccatto/react-account` | 1.0.0 | Account-settings UI (`<AccountSettingsCatto/>`, `<PhoneManagerCatto/>` w/ phone-first safeguard, `<DeleteAccountCatto/>`, `<BlockedUsersCatto/>`, `canRemovePhone`) — dual-auth, transport-agnostic |
+| `@ccatto/legal` | 1.0.0 | Legal acceptance (Terms/EULA/Privacy). Dual entry: React-free core + `assertAcceptanceValid` server guard (Nest-safe) and `/react` (`<LegalAcceptanceGate/>`, `useLegalAcceptance`). Versioned by exact-string equality; `react` is an optional peer |
 | `@ccatto/react-push` | 1.0.0 | Push notification hooks for web and mobile |
 | `@ccatto/capacitor-inapp-auth` | 1.0.1 | Capacitor plugin: ASWebAuthenticationSession wrapper for in-app OAuth |
 | `@ccatto/sms` | 0.1.0 | Runtime-agnostic SMS sender (Telnyx) for Node/Edge apps (no NestJS) |

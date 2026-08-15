@@ -1,0 +1,80 @@
+{
+  "name": "@ccatto/legal",
+  "version": "1.0.0",
+  "description": "Catto Legal - app-agnostic legal-acceptance mechanism (Terms/EULA/Privacy). Pure core + server guard (React-free) + a headless React acceptance gate at ./react.",
+  "license": "MIT",
+  "author": "Chris Catto",
+  "keywords": [
+    "legal",
+    "terms",
+    "eula",
+    "consent",
+    "app-store",
+    "react",
+    "typescript",
+    "catto"
+  ],
+  "homepage": "https://github.com/ccatto/catto-packages/tree/main/packages/legal",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ccatto/catto-packages.git",
+    "directory": "packages/legal"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "type": "module",
+  "sideEffects": false,
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js",
+      "require": "./dist/index.cjs"
+    },
+    "./react": {
+      "types": "./dist/react.d.ts",
+      "import": "./dist/react.js",
+      "require": "./dist/react.cjs"
+    }
+  },
+  "main": "./dist/index.cjs",
+  "module": "./dist/index.js",
+  "types": "./dist/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "CHANGELOG.md"
+  ],
+  "scripts": {
+    "build": "tsup",
+    "clean": "rimraf dist",
+    "dev": "tsup --watch",
+    "test": "vitest run",
+    "test:run": "vitest run",
+    "test:cov": "vitest run --coverage",
+    "test:watch": "vitest",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "@testing-library/react": "^16.3.1",
+    "@testing-library/user-event": "^14.0.0",
+    "@types/react": "^19.0.0",
+    "@vitejs/plugin-react": "^5.1.2",
+    "glob": "^13.0.0",
+    "jsdom": "^27.4.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0",
+    "rimraf": "^6.0.0",
+    "tsup": "^8.0.0",
+    "typescript": "^5.7.0",
+    "vitest": "^4.0.16"
+  },
+  "peerDependencies": {
+    "react": ">=18.0.0"
+  },
+  "peerDependenciesMeta": {
+    "react": {
+      "optional": true
+    }
+  }
+}
