@@ -46,6 +46,21 @@ export type { CheckboxCattoProps } from "./components/Checkbox/CheckboxCatto";
 export { default as EmptyStateCatto } from "./components/EmptyState/EmptyStateCatto";
 export type { EmptyStateCattoProps } from "./components/EmptyState/EmptyStateCatto";
 
+// Accordion — flexible disclosure (data-driven items[] or compound components)
+export {
+  default as AccordionCatto,
+  AccordionItemCatto,
+} from "./components/Accordion/AccordionCatto";
+export type {
+  AccordionCattoProps,
+  AccordionItemCattoProps,
+  AccordionItemData,
+  AccordionType,
+  AccordionVariant,
+  AccordionSize,
+  AccordionIconPosition,
+} from "./components/Accordion/AccordionCatto";
+
 // ErrorPage — branded 404 / runtime-error template
 export { default as ErrorPageCatto } from "./components/ErrorPage/ErrorPageCatto";
 export type {

@@ -5,6 +5,21 @@ All notable changes to @ccatto/ui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.12.0] - 2026-08-22
+
+### Added
+
+- **`AccordionCatto`** (+ **`AccordionItemCatto`**) — flexible, accessible
+  disclosure accordion. Two APIs: data-driven `items={[{ id, title, content }]}`
+  or compound `<AccordionCatto><AccordionItemCatto .../></AccordionCatto>`.
+  Supports `type` `"single"`/`"multiple"`, `collapsible`, controlled (`value` +
+  `onValueChange`) and uncontrolled (`defaultValue`) modes, optional `storageKey`
+  persistence, `variant` (`default`/`bordered`/`separated`), `size`
+  (`sm`/`md`/`lg`), `iconPosition`, and per-item `icon`/`disabled`. Accessible:
+  `button` headers with `aria-expanded`/`aria-controls`, `region` panels, roving
+  Arrow/Home/End keyboard navigation (skips disabled), and `inert` collapsed
+  content.
+
 ## [1.11.0] - 2026-08-10
 
 ### Added
