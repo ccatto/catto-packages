@@ -7,8 +7,9 @@
 // app coupling — pass an array of image URLs (ImageKit or any host). Neutral
 // Tailwind with a `className` override.
 
-import { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import { buildImageKitUrl } from './url';
+import { ImageLightboxCatto } from './ImageLightboxCatto';
 
 export interface ImageGalleryCattoProps {
   /** Image URLs, in display order. */
@@ -21,6 +22,12 @@ export interface ImageGalleryCattoProps {
   mainWidth?: number;
   /** Optional ImageKit transform width for thumbnails. */
   thumbWidth?: number;
+  /** Enable tap/click on the main image to open the fullscreen lightbox. Default true. */
+  enableLightbox?: boolean;
+  /** ImageKit transform width used for the fullscreen image. Default 1600. */
+  lightboxWidth?: number;
+  /** Fired when the lightbox opens/closes (analytics hook). */
+  onLightboxOpenChange?: (open: boolean, index: number) => void;
 }
 
 function tr(src: string, width?: number): string {
@@ -38,10 +45,27 @@ export function ImageGalleryCatto({
   className = '',
   mainWidth = 800,
   thumbWidth = 160,
+  enableLightbox = true,
+  lightboxWidth = 1600,
+  onLightboxOpenChange,
 }: ImageGalleryCattoProps) {
   const clean = images.filter(Boolean);
   const [index, setIndex] = useState(0);
+  const [lightboxOpen, setLightboxOpen] = useState(false);
+  const mainBtnRef = useRef<HTMLButtonElement>(null);
   const count = clean.length;
+
+  const openLightbox = useCallback(() => {
+    setLightboxOpen(true);
+    onLightboxOpenChange?.(true, index);
+  }, [index, onLightboxOpenChange]);
+
+  const closeLightbox = useCallback(() => {
+    setLightboxOpen(false);
+    onLightboxOpenChange?.(false, index);
+    // Restore focus to the trigger that opened the overlay.
+    mainBtnRef.current?.focus();
+  }, [index, onLightboxOpenChange]);
 
   const go = useCallback(
     (next: number) => setIndex((i) => (count ? (next + count) % count : 0)),
@@ -79,17 +103,38 @@ export function ImageGalleryCatto({
     <div className={`flex flex-col gap-3 ${className}`}>
       {/* Main image */}
       <div className="relative overflow-hidden rounded-2xl bg-gray-100 dark:bg-gray-800">
-        {/* eslint-disable-next-line @next/next/no-img-element */}
-        <img
-          src={tr(current, mainWidth)}
-          alt={`${alt} ${index + 1} of ${count}`}
-          className="mx-auto aspect-square w-full object-contain"
-        />
+        {enableLightbox ? (
+          <button
+            ref={mainBtnRef}
+            type="button"
+            onClick={openLightbox}
+            aria-label={`Open image ${index + 1} of ${count} fullscreen`}
+            aria-haspopup="dialog"
+            className="block w-full cursor-zoom-in"
+          >
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={tr(current, mainWidth)}
+              alt={`${alt} ${index + 1} of ${count}`}
+              className="mx-auto aspect-square w-full object-contain"
+            />
+          </button>
+        ) : (
+          /* eslint-disable-next-line @next/next/no-img-element */
+          <img
+            src={tr(current, mainWidth)}
+            alt={`${alt} ${index + 1} of ${count}`}
+            className="mx-auto aspect-square w-full object-contain"
+          />
+        )}
         {count > 1 && (
           <>
             <button
               type="button"
-              onClick={() => go(index - 1)}
+              onClick={(e) => {
+                e.stopPropagation();
+                go(index - 1);
+              }}
               aria-label="Previous image"
               className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-gray-800 shadow transition hover:bg-white dark:bg-gray-900/80 dark:text-gray-100"
             >
@@ -97,7 +142,10 @@ export function ImageGalleryCatto({
             </button>
             <button
               type="button"
-              onClick={() => go(index + 1)}
+              onClick={(e) => {
+                e.stopPropagation();
+                go(index + 1);
+              }}
               aria-label="Next image"
               className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-white/80 p-2 text-gray-800 shadow transition hover:bg-white dark:bg-gray-900/80 dark:text-gray-100"
             >
@@ -135,6 +183,18 @@ export function ImageGalleryCatto({
             </button>
           ))}
         </div>
+      )}
+
+      {enableLightbox && (
+        <ImageLightboxCatto
+          images={clean}
+          open={lightboxOpen}
+          index={index}
+          onIndexChange={setIndex}
+          onClose={closeLightbox}
+          alt={alt}
+          width={lightboxWidth}
+        />
       )}
     </div>
   );

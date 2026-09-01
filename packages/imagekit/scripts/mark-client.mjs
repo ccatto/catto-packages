@@ -5,7 +5,11 @@ import { readFileSync, writeFileSync } from 'fs';
 
 // Client components whose "use client" directive must be the FIRST line (tsc
 // emits "use strict" first, which hides it from Next's RSC boundary detection).
-const files = ['dist/ImageUploadCatto.js', 'dist/ImageGalleryCatto.js'];
+const files = [
+  'dist/ImageUploadCatto.js',
+  'dist/ImageGalleryCatto.js',
+  'dist/ImageLightboxCatto.js',
+];
 
 for (const file of files) {
   let src = readFileSync(file, 'utf8');
