@@ -60,7 +60,7 @@ catto-packages/
 | `@ccatto/logger` | 1.0.0 | Pino factories for browser and Node.js |
 | `@ccatto/shared` | 1.0.0 | Shared utilities (geo, color, profanity re-exports) — source dir is `packages/catto-shared/` |
 | `@ccatto/profanity` | 1.0.0 | Content moderation / profanity filtering (Zod + NestJS helpers) |
-| `@ccatto/imagekit` | 1.1.0 | ImageKit upload auth signer + client upload + React uploader/gallery |
+| `@ccatto/imagekit` | 1.2.0 | ImageKit upload auth signer + client upload + React uploader/gallery + fullscreen zoom/pan lightbox (`ImageLightboxCatto`) |
 | `@ccatto/react-auth` | 1.4.0 | Better Auth + JWT + mobile auth hooks |
 | `@ccatto/react-contact` | 1.1.0 | Plug-n-play contact form: `ContactFormCatto` + hooks + framework-agnostic Telnyx SMS notifier (`/server` subpath) |
 | `@ccatto/react-mobile` | 1.0.0 | Capacitor hooks (haptics, deep links, network, etc.) |

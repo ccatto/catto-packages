@@ -15,3 +15,5 @@ export { ImageUploadCatto } from './ImageUploadCatto';
 export type { ImageUploadCattoProps } from './ImageUploadCatto';
 export { ImageGalleryCatto } from './ImageGalleryCatto';
 export type { ImageGalleryCattoProps } from './ImageGalleryCatto';
+export { ImageLightboxCatto } from './ImageLightboxCatto';
+export type { ImageLightboxCattoProps } from './ImageLightboxCatto';

@@ -82,6 +82,7 @@ IMAGEKIT_PRIVATE_KEY=private_xxx             # server only — never expose
 import { ImageGalleryCatto, buildImageKitUrl } from '@ccatto/imagekit';
 
 // Multi-image viewer with thumbnails (auto-applies ImageKit transforms).
+// Tapping the main image opens a fullscreen lightbox by default.
 <ImageGalleryCatto images={urls} alt="Paddle" mainWidth={800} thumbWidth={120} />;
 
 // Or build a transformed URL directly.
@@ -91,12 +92,33 @@ const thumb = buildImageKitUrl(url, { width: 200, quality: 80, format: 'auto' })
 `ImageKitTransform`: `{ width?, height?, quality?, format?: 'auto'|'webp'|'jpg'|'png'|'avif', crop? }`.
 `buildImageKitUrl` returns non-ImageKit URLs unchanged, so it's safe to call on any `src`.
 
+### Fullscreen lightbox
+
+`ImageGalleryCatto` opens a fullscreen modal when the main image is tapped, with
+pinch-zoom (touch), wheel / double-click zoom (desktop), drag-to-pan when zoomed,
+prev/next paging (arrow keys + swipe), an X / Esc / backdrop close, body scroll
+lock, and a focus-trapped `role="dialog"`. It is enabled by default and respects
+`prefers-reduced-motion`.
+
+```tsx
+<ImageGalleryCatto
+  images={urls}
+  alt="Paddle"
+  enableLightbox            // default true — pass {false} to opt out
+  lightboxWidth={1600}      // ImageKit transform width for the fullscreen image
+  onLightboxOpenChange={(open, index) => track('lightbox', { open, index })}
+/>;
+```
+
+The overlay is also exported standalone as `ImageLightboxCatto` (controlled:
+`open`, `index`, `onIndexChange`, `onClose`) if you want to drive it yourself.
+
 ## Exports
 
 | Import | From | Kind |
 | --- | --- | --- |
 | `uploadToImageKit`, `buildImageKitUrl` | `@ccatto/imagekit` | client helpers |
-| `ImageUploadCatto`, `ImageGalleryCatto` | `@ccatto/imagekit` | React components |
+| `ImageUploadCatto`, `ImageGalleryCatto`, `ImageLightboxCatto` | `@ccatto/imagekit` | React components |
 | `createImageKitAuthParams` | `@ccatto/imagekit/server` | server-only signer |
 
 ## License
