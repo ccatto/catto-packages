@@ -61,6 +61,10 @@ export type {
   AccordionIconPosition,
 } from "./components/Accordion/AccordionCatto";
 
+// StickyBuyBar — bottom-pinned price + Buy CTA for product detail pages
+export { default as StickyBuyBarCatto } from "./components/StickyBuyBar/StickyBuyBarCatto";
+export type { StickyBuyBarCattoProps } from "./components/StickyBuyBar/StickyBuyBarCatto";
+
 // ErrorPage — branded 404 / runtime-error template
 export { default as ErrorPageCatto } from "./components/ErrorPage/ErrorPageCatto";
 export type {
