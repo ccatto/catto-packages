@@ -5,6 +5,23 @@ All notable changes to @ccatto/ui will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [1.13.0] - 2026-09-04
+
+### Added
+
+- **`StickyBuyBarCatto`** — a bottom-pinned "buy bar" for product detail pages
+  (paddles, balls, any product). Shows a price (+ optional struck-through
+  compare-at and a discount-code chip) and a primary Buy link that opens `buyUrl`
+  in a new tab with affiliate-safe `rel="nofollow sponsored noopener noreferrer"`.
+  Domain-agnostic: the app maps its product onto the props; renders nothing when
+  `buyUrl` is absent. Reveals on scroll — hidden while `revealAfterRef` (e.g. the
+  hero) is on screen, else after a `revealAfterPx` scroll threshold — so it never
+  duplicates an above-the-fold CTA. Prices formatted with `Intl.NumberFormat`
+  (`currency`, default USD) unless `priceLabel`/`compareAtLabel` are passed.
+  `onBuyClick` analytics hook. Mode-aware theme tokens, `env(safe-area-inset-bottom)`
+  padding, an in-flow spacer so content isn't hidden behind the bar, SSR-safe
+  (guards `window`/IntersectionObserver), and `motion-reduce` respected.
+
 ## [1.12.0] - 2026-08-22
 
 ### Added

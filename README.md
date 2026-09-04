@@ -6,7 +6,7 @@ Shared TypeScript packages for the Catto ecosystem. Monorepo managed with Yarn W
 
 | Package | Description |
 |---------|-------------|
-| `@ccatto/ui` | Component library (ButtonCatto, CardCatto, TableCatto, AccordionCatto, etc.) |
+| `@ccatto/ui` | Component library (ButtonCatto, CardCatto, TableCatto, AccordionCatto, StickyBuyBarCatto, etc.) |
 | `@ccatto/logger` | Pino-based structured logging for browser and Node.js |
 | `@ccatto/profanity` | Content moderation / profanity filtering |
 | `@ccatto/shared` | Shared utilities (geo, color, profanity re-exports) |
